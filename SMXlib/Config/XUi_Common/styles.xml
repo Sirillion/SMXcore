@@ -1,0 +1,386 @@
+<SMXlib name="XUi_Common/styles.xml">
+
+<!--	// MODLET:			SMXlib
+
+		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
+
+		// VERSION:			r20.rc2
+
+		// BUILD:			A20.0
+
+		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
+							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
+							and you can verify this by looking at the date of the standard files when an update have occured.
+
+		// MOD DESCRIPTION:	The purpose of this modlet is to unite all assets and some styles that are shared between the different SMX modlets into one
+							modlet. It contains all the custom graphics and icons needed to make SMX modlets run properly.
+
+		// DEPENDENCIES:	.
+
+		// TERMS OF USE:	You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate.
+
+							You are under no circumstance allowed to distribute any SMX and/or ZMX branded modlets without written consent from the main developer.
+
+							If you wish to distribute SMX and/or ZMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX and/or ZMX modlet or modlets in question remain unaltered and you cannot
+							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
+
+							If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
+							as is with no change to its files what so ever.
+
+							If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
+
+							You are not allowed to use any of the assets bundled with SMX and/or ZMX branded modlets in other projects. This restriction
+							applies to all files that the SMX and/or ZMX modlets consist of. EXCEPTION: The content of the Harmony folder is to be considered
+							open source and can be used freely as long as the original credit comments within the files are not removed or altered other than
+							adding to.
+
+							You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							SMX and/or ZMX branded modlets.
+
+							You are required to inform the main developer when your project that contains any SMX and/or ZMX modlet or modlets have been made
+							available to the public.
+
+		// CREDITS:			Sirillion (main developer/designer/harmony/frontend/backend/author), sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend)
+-->
+
+<!--	// SMX // Global Colors | SMX COMMENT: MOST of the colors used in SMX can be adjusted below -->
+
+		<append xpath="/styles/global">
+
+<!-- SMXui -->
+
+			<style_entry name="smxui_element_bg"						value="7,7,7" />			<!-- This entry sets the color for: UI Element Backgrounds -->
+			<style_entry name="smxlib_window_window_bg"					value="32,32,32" />			<!-- This attribute sets the color for windows window background -->
+			<style_entry name="smxlib_window_module_bg"					value="64,64,64" />			<!-- This attribute sets the color for windows module background -->
+
+			<style_entry name="smxlib_window_header_bg"					value="175,30,25" />		<!-- This attribute sets the color for windows headers -->
+			<style_entry name="smxlib_window_header_bg_new"				value="255,144,24" />		<!-- This attribute sets the color for windows headers - NEW -->
+
+			<style_entry name="smxlib_window_sep_line"					value="255,255,255" />		<!-- This attribute sets the color for windows separation lines -->
+			<style_entry name="smxlib_window_sep_line_alt"				value="92,85,81" />			<!-- This attribute sets the color for windows separation lines - ALTERNATIVE -->
+			<style_entry name="smxlib_window_sep_line_menu"				value="128,128,128" />		<!-- This attribute sets the color for windows separation lines - MENU -->
+
+			<style_entry name="smxlib_window_accentcolor_1"				value="175,30,25" />		<!-- This attribute sets the color for windows accents - PRIMARY -->
+			<style_entry name="smxlib_window_accentcolor_1_alt"			value="255,144,24" />		<!-- This attribute sets the color for windows accents - PRIMARY - ALTERNATIVE -->
+			<style_entry name="smxlib_window_accentcolor_2"				value="46,69,36" />			<!-- This attribute sets the color for windows accents - SECONDARY -->
+
+			<style_entry name="smxlib_window_buttons"					value="175,30,25" />		<!-- This attribute sets the color for windows buttons -->
+			<style_entry name="smxlib_window_buttons_alt"				value="255,144,24" />		<!-- This attribute sets the color for windows buttons - ALTERNATIVE -->
+			<style_entry name="smxlib_window_buttons_hover"				value="255,255,255" />		<!-- This attribute sets the color for windows buttons hover -->
+
+			<style_entry name="smxlib_window_slot_bg"					value="56,62,66,128" />		<!-- This attribute sets the color for windows slot backgrounds -->
+			<style_entry name="smxlib_window_slot_bg_alt" 				value="32,32,32" />			<!-- This attribute sets the color for windows slot backgrounds - ALTERNATIVE -->
+			<style_entry name="smxlib_window_slot_frame"				value="255,255,255" />		<!-- This attribute sets the color for windows slot frames -->
+			<style_entry name="smxlib_window_slot_frame_alt"			value="96,96,96" />			<!-- This attribute sets the color for windows slot frames - ALTERNATIVE -->
+
+			<style_entry name="smxlib_window_icons_1"					value="255,255,255" />		<!-- This attribute sets the color for windows icons 1 -->
+			<style_entry name="smxlib_window_icons_2"					value="128,128,128" />		<!-- This attribute sets the color for windows icons 2 -->
+			<style_entry name="smxlib_window_icons_bg"					value="64,64,64" />			<!-- This attribute sets the color for windows icons background -->
+
+			<style_entry name="smxlib_window_input_frame"				value="255,255,255" />		<!-- This attribute sets the color for windows text input frames -->
+			<style_entry name="smxlib_window_input_bg"					value="64,64,64" />			<!-- This attribute sets the color for windows text input backgrounds -->
+
+			<style_entry name="smxui_labelcolor_1"						value="255,255,255" />		<!-- This entry sets the color for: PRIMARY UI labels -->
+			<style_entry name="smxui_labelcolor_2"						value="128,128,128" />		<!-- This entry sets the color for: SECONDARY UI labels -->
+			<style_entry name="smxui_labelcolor_2_alt1"					value="92,85,81" />			<!-- This entry sets the color for: SECONDARY UI labels - ALTERNATIVE 1 -->
+			<style_entry name="smxui_labelcolor_2_alt2"					value="192,192,192" />		<!-- This entry sets the color for: SECONDARY UI labels - ALTERNATIVE 2 -->
+
+			<style_entry name="smxlib_window_durability_bg"				value="96,96,96" />			<!-- This attribute sets the color for windows durability bar background -->
+
+<!-- SMXlib - Common Colors -->
+
+			<style_entry name="smxlib_effect_color_1"					value="20,20,20,230" />		<!-- This entry sets the color for: Global effect_color for labels -->
+
+			<style_entry name="smxlib_item_durability_background"		value="96,96,96" />			<!-- This entry sets the color for: Item durability bar background -->
+			<style_entry name="smxlib_timer_color"						value="222,206,163" />		<!-- This entry sets the color for: Timer label color -->
+			<style_entry name="smxlib_cancel_color"						value="255,0,0" />			<!-- This entry sets the color for: Cancel icon color -->
+
+			<style_entry name="smxlib_window_module_title_bg"			value="255,255,255" />		<!-- This attribute sets the color for windows module title background -->
+
+			<style_entry name="smxlib_window_valid_color"				value="76,153,0" />			<!-- This attribute sets the color for windows checkmark valid color -->
+			<style_entry name="smxlib_window_invalid_color"				value="175,30,25" />		<!-- This attribute sets the color for windows checkmark invalid color -->
+
+			<style_entry name="smxlib_tooltip_bg"						value="0,0,0" />			<!-- This entry sets the color for: Tooltip window background -->
+			<style_entry name="smxlib_tooltip_border"					value="255,0,0" />			<!-- This entry sets the color for: Tooltip window border -->
+
+			<style_entry name="smxlib_window_table_entry_bg_1"			value="128,128,128" />		<!-- This attribute sets the color for window table entry background -->
+			<style_entry name="smxlib_window_table_entry_bg_2"			value="96,96,96" />			<!-- This attribute sets the color for window table entry background -->
+
+			<style_entry name="smxlib_window_twitchLogo_enabled"		value="100,65,164" />		<!-- This attribute sets the color for the player window twitch logo - ENABLED -->
+			<style_entry name="smxlib_window_twitchLogo_disabled"		value="[red]" />			<!-- This attribute sets the color for the player window twitch logo - DISABLED -->
+
+			<style_entry name="smxlib_backpack_lockslot_bg"				value="96,96,96" />			<!-- This attribute sets the color for backpack locked slots background -->
+			<style_entry name="smxlib_backback_lockslot_bar"			value="255,255,255" />		<!-- This attribute sets the color for backpack locked slots bar -->
+
+			<style_entry name="smxlib_crafting_ingredient_yes"			value="255,255,255" />		<!-- This attribute sets the color for crafting recipes that has ingredients (brightens them) -->
+			<style_entry name="smxlib_crafting_ingredient_no"			value="128,128,128" />		<!-- This attribute sets the color for crafting recipes that don't have ingredients (dims them) -->
+
+			<style_entry name="smxlib_crafting_forgeinput_valid"		value="76,153,0" />			<!-- This attribute sets the color for forge input valids -->
+			<style_entry name="smxlib_crafting_forgeinput_invalid"		value="175,30,25" />		<!-- This attribute sets the color for forge input invalids -->
+
+			<style_entry name="smxlib_skills_attribute_rowcolor"		value="160,160,160" />		<!-- This attribute sets the color for the selected attribute -->
+			<style_entry name="smxlib_skills_perk_rowcolor"				value="160,160,160" />		<!-- This attribute sets the color for the selected attribute -->
+<!-- SMXhud -->
+			<style_entry name="smxhud_compass_indicator"				value="255,255,255" />		<!-- This entry sets the color for: PRIMARY Compass window indicator -->
+			<style_entry name="smxhud_compass_indicator_alt"			value="114,114,114" />		<!-- This entry sets the color for: ALTERNATIVE Compass window indicator -->
+
+			<style_entry name="smxhud_element_bg"						value="7,7,7" />			<!-- This entry sets the color for: HUD Element Backgrounds -->
+			<style_entry name="smxlib_hud_window_bg"					value="32,32,32" />			<!-- This attribute sets the color for HUD window background -->
+			<style_entry name="smxhud_module_bg"						value="64,64,64" />			<!-- This entry sets the color for: HUD Module Backgrounds -->
+
+			<style_entry name="smxhud_icons_1"							value="255,255,255" />		<!-- This entry sets the color for: PRIMARY HUD icons -->
+			<style_entry name="smxhud_icons_2"							value="128,128,128" />		<!-- This entry sets the color for: SECONDARY HUD icons -->
+			
+			<style_entry name="smxhud_accentcolor_1"					value="175,30,25" />		<!-- This entry sets the color for: HUD accent color -->
+			<style_entry name="smxhud_accentcolor_1_alt"				value="255,144,24" />		<!-- This entry sets the color for: HUD accent color - ALTERNATIVE -->
+			<style_entry name="smxlib_hud_accentcolor_2"				value="46,69,36" />			<!-- This attribute sets the color for HUD accents - SECONDARY -->
+
+			<style_entry name="smxhud_bar_background"					value="96,96,96" />			<!-- This entry sets the color for: HUD bar backgrounds -->
+			<style_entry name="smxhud_bar_background_alt"				value="192,192,192" />		<!-- This entry sets the color for: HUD bar backgrounds - ALTERNATIVE -->
+
+			<style_entry name="smxhud_standard_xp_bar"					value="255,255,255" />		<!-- This entry sets the color for: XP Bar standard -->
+			<style_entry name="smxhud_updating_xp_bar"					value="43,124,18" />		<!-- This entry sets the color for: XP Bar updates -->
+			<style_entry name="smxhud_deficit_xp_bar"					value="175,30,25" />		<!-- This entry sets the color for: XP Bar deficits -->
+
+			<style_entry name="smxhud_diamond_frame"					value="255,144,24" />		<!-- This entry sets the color for: Diamond frame color -->
+			<style_entry name="smxhud_diamond_frame_alt"				value="192,192,192" />		<!-- This entry sets the color for: Diamond frame color - ALTERNATIVE -->
+
+			<style_entry name="smxhud_throw_bar"						value="43,124,18" />		<!-- This entry sets the color for: Throw Bar -->
+
+			<style_entry name="smxhud_unitframe_stealth_bar"			value="255,174,28" />		<!-- This entry sets the color for: Stealth Bar -->
+			<style_entry name="smxhud_unitframe_health_bar"				value="175,30,25" />		<!-- This entry sets the color for: Health Bar -->
+			<style_entry name="smxhud_unitframe_health_bar_twitch"		value="100,65,165,128" />		<!-- This entry sets the color for: Twitch Health Bar -->
+			<style_entry name="smxhud_unitframe_stamina_bar"			value="17,97,146" />		<!-- This entry sets the color for: Stamina Bar -->
+			<style_entry name="smxhud_unitframe_hunger_bar"				value="43,124,18" />		<!-- This entry sets the color for: Hunger Bar -->
+			<style_entry name="smxhud_unitframe_thirst_bar"				value="13,82,111" />		<!-- This entry sets the color for: Thirst Bar -->
+
+			<style_entry name="smxhud_vehicle_fuel_bar"					value="152,174,0" />		<!-- This entry sets the color for: Fuel Bar -->
+
+			<style_entry name="smxhud_unitframe_background"				value="0,0,0" />			<!-- This entry sets the color for: Unitframe main background -->
+			<style_entry name="smxhud_unitframe_separation"				value="192,192,192" />		<!-- This entry sets the color for: Unitframe separation lines -->
+
+			<style_entry name="smxhud_unitframe_buff_background"		value="0,0,0" />			<!-- This entry sets the color for: Unitframe BUFF background -->
+
+			<style_entry name="smxhud_toolbelt_main_background"			value="0,0,0" />			<!-- This entry sets the color for: Toolbelt MAIN background -->
+			<style_entry name="smxhud_toolbelt_slot_background" 		value="32,32,32" />			<!-- This entry sets the color for: Toolbelt SLOT background -->
+			<style_entry name="smxhud_toolbelt_item_background"			value="64,64,64" />			<!-- This entry sets the color for: Toolbelt ITEM background (non QL) -->
+
+			<style_entry name="smxhud_quest_complete_color"				value="13,82,111" />		<!-- This entry sets the color for: Complete Quest color -->
+			<style_entry name="smxhud_quest_incomplete_color"			value="255,0,0" />			<!-- This entry sets the color for: Incomplete Quest color -->
+
+			<style_entry name="smxhud_labelcolor_1"						value="255,255,255" />		<!-- This entry sets the color for: PRIMARY HUD labels -->
+			<style_entry name="smxhud_labelcolor_2"						value="128,128,128" />		<!-- This entry sets the color for: SECONDARY HUD labels -->
+			<style_entry name="smxhud_labelcolor_2_alt1"				value="92,85,81" />			<!-- This entry sets the color for: SECONDARY HUD labels - ALTERNATIVE 1 -->
+			<style_entry name="smxhud_labelcolor_2_alt2"				value="192,192,192" />		<!-- This entry sets the color for: SECONDARY HUD labels - ALTERNATIVE 2 -->
+
+			<style_entry name="smxlib_hud_toolbelt_slot_lbl"			value="96,96,96,255" />		<!-- This attribute sets the color for the toolbelt slot number label -->
+			<style_entry name="smxlib_hud_throw_bar"					value="0,180,0,120" />		<!-- This attribute sets the color for the throw/draw bar -->
+<!-- SMXmenu -->
+			<style_entry name="smxmenu_element_bg"						value="7,7,7" />			<!-- This entry sets the color for: MENU Element Backgrounds -->
+
+			<style_entry name="smxmenu_buttons_1"						value="175,30,25" />		<!-- This entry sets the color for: MENU Primary Buttons -->
+			<style_entry name="smxmenu_buttons_2"						value="255,144,24" />		<!-- This entry sets the color for: MENU Secondary Buttons -->
+			<style_entry name="smxmenu_buttons_hover"					value="255,255,255" />		<!-- This entry sets the color for: MENU Button Hover -->
+
+			<style_entry name="smxmenu_icons_1"							value="255,255,255" />		<!-- This entry sets the color for: PRIMARY MENU icons -->
+			<style_entry name="smxmenu_icons_2"							value="128,128,128" />		<!-- This entry sets the color for: SECONDARY MENU icons -->
+
+			<style_entry name="smxmenu_sep_line"						value="255,255,255" />		<!-- This entry sets the color for: PRIMARY MENU separation lines -->
+			<style_entry name="smxmenu_sep_line_alt"					value="92,85,81" />			<!-- This entry sets the color for: SECONDARY MENU separation lines -->
+			<style_entry name="smxmenu_sep_line_mainmenu"				value="128,128,128" />		<!-- This entry sets the color for: PRIMARY MAINMENU separation lines -->
+
+			<style_entry name="smxmenu_labelcolor_1"					value="255,255,255" />		<!-- This entry sets the color for: PRIMARY MENU labels -->
+			<style_entry name="smxmenu_labelcolor_2"					value="128,128,128" />		<!-- This entry sets the color for: SECONDARY MENU labels -->
+			<style_entry name="smxmenu_labelcolor_2_alt1"				value="92,85,81" />			<!-- This entry sets the color for: SECONDARY MENU labels - ALTERNATIVE 1 -->
+			<style_entry name="smxmenu_labelcolor_2_alt2"				value="192,192,192" />		<!-- This entry sets the color for: SECONDARY MENU labels - ALTERNATIVE 2 -->
+
+		</append>
+
+
+<!--	// SMX // Global Colors | SMX COMMENT: MOST of the colors used in SMX can be adjusted above -->
+
+
+<!--	// SMX // hoverColor Color "Correction" --> <!-- SMX COMMENT: Disabled in wait of SMXui. -->
+
+		<!--set xpath="/styles/global/style_entry[@name='hoverColor']/@value">96,96,96</set-->
+
+
+<!--	// SMX // Defined Icon Colors -->
+
+		<append xpath="/styles">
+			<style name="smxlib_icon_colors">
+				<style_entry name="defaultcolor" 						value="[mediumGrey]" />
+				<style_entry name="hovercolor" 							value="[lightGrey]" />
+				<style_entry name="selectedcolor" 						value="[white]" />
+			</style>
+		</append>
+
+
+<!--	// SMX // Defined Label Designs -->
+
+		<append xpath="/styles">
+			<style name="smxlib_window_title" 						type="label">
+				<style_entry name="font_size"						value="36" />
+				<style_entry name="color"							value="[smxhud_labelcolor_1]" />
+				<style_entry name="crispness"						value="Never" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxlib_effect_color_1]" />
+				<style_entry name="pivot"							value="center" />
+				<style_entry name="justify"							value="center" />
+				<style_entry name="upper_case"						value="true" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxlib_label_normal"						type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smxhud_labelcolor_1]" />
+				<style_entry name="crispness"						value="Always" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxlib_effect_color_1]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxlib_label_paragraph"					type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smxhud_labelcolor_1]" />
+				<style_entry name="crispness"						value="Never" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxlib_effect_color_1]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxlib_label_numbers"						type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smxhud_labelcolor_1]" />
+				<style_entry name="crispness"						value="Always" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxlib_effect_color_1]" />
+			</style>
+		</append>
+
+
+<!--	// SMX // Backpack & Looting ItemStack Layouts -->
+
+		<append xpath="/styles">
+			<style name="smxui_backpack_item_stack">
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="background_color" 				value="[mediumGrey]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="width" 							value="72"/>
+				<style_entry name="height" 							value="72"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxlib_item_stack">
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="background_color" 				value="[mediumGrey]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxui_partlist_item_stack">
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="background_color" 				value="[white]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="width" 							value="58"/>
+				<style_entry name="height" 							value="58"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+<!-- \/\/\/ PENDING \/\/\/ -->
+
+		<append xpath="/styles">
+			<style name="smxui_window_header" 						type="panel">
+				<style_entry name="depth" 							value="3" />
+				<style_entry name="pos" 							value="0,5" />
+				<style_entry name="height" 							value="80" />
+				<style_entry name="disableautobackground" 			value="true" />
+			</style>
+		</append>
+
+<!--	// SMX // Item Preview -->
+
+		<append xpath="/styles">
+			<style name="smxui_item_preview_frame" 					type="sprite">
+				<style_entry name="depth" 							value="3" />
+				<style_entry name="pos" 							value="40,-2" />
+				<style_entry name="size" 							value="143,143" />
+				<style_entry name="sprite" 							value="smxlib_ui_element_slot_frame_wide" />
+				<style_entry name="color" 							value="[mediumGrey]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxui_item_preview_background" 			type="sprite">
+				<style_entry name="depth" 							value="2" />
+				<style_entry name="pos" 							value="30,-89" />
+				<style_entry name="size" 							value="138,94" />
+				<style_entry name="sprite" 							value="smxlib_ui_element_slot_background" />
+				<style_entry name="color" 							value="[mediumGrey]" />
+				<style_entry name="rotation" 						value="45" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxui_item_preview_icon" 					type="sprite">
+				<style_entry name="depth" 							value="3" />
+				<style_entry name="pos" 							value="116,-77" />
+				<style_entry name="size" 							value="110,110" />
+				<style_entry name="atlas" 							value="ItemIconAtlas" />
+				<style_entry name="pivot" 							value="center" />
+				<style_entry name="foregroundlayer" 				value="true" />
+			</style>
+		</append>
+
+
+		<append xpath="/styles">
+			<style name="smxui_assembly_item_part_stack">
+				<style_entry name="background_color" value="[darkGrey]"/>
+				<style_entry name="highlight_color" value="[mediumGrey]"/>
+				<style_entry name="width" value="320"/>
+				<style_entry name="height" value="54"/>
+				<style_entry name="hover_icon_grow" value="1.5"/>
+				<style_entry name="on_press" value="true"/>
+				<style_entry name="sound_volume" value="0.75"/>
+				<style_entry name="pickup_sound" value="[pickup_click]"/>
+				<style_entry name="place_sound" value="[place_click]"/>
+			</style>
+		</append>
+
+</SMXlib>

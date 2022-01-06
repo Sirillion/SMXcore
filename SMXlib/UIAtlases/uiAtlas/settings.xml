@@ -1,3 +1,5 @@
-<SMXuiAtlas>
-  <sprite name="smxlib_ui_game_element_panel_background" borderleft="0" borderright="0" bordertop="80" borderbottom="80" />
-</SMXuiAtlas>
+<UIAtlas>
+  <sprite name="smxlib_window_background_detail" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
+  <sprite name="smxlib_window_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
+  <sprite name="smxlib_window_header_background" borderleft="0" borderright="0" bordertop="20" borderbottom="0" />
+</UIAtlas>

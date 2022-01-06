@@ -1,103 +1,40 @@
-<SMXlib name="styles.xml">
+<SMXlib name="XUi/styles.xml">
 
-<!--	// MODLET:			SMXlib
-
-		// EAC:				Friendly
-
-		// VERSION:			r19.rc1
-
-		// BUILD:			A19.5
-
-		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
-							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
-							and you can verify this by looking at the date of the standard files when an update have occured.
-
-		// MOD DESCRIPTION:	The purpose of this modlet is to unite all assets and some styles that are shared between the different SMX modlets into one
-							modlet. It contains all the custom graphics and icons needed to make SMX modlets run properly.
-
-		// DEPENDENCIES:	.
-
-		// TERMS OF USE:	You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate.
-		
-							You are under no circumstance allowed to distribute any SMX and/or ZMX branded modlets without written consent from the developer.
-
-							If you wish to distribute SMX and/or ZMX branded modlets as part of your own project and consent have been given you are required
-							to do so in such a way so that all the files of the SMX and/or ZMX modlet or modlets in question remain unaltered and you cannot
-							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
-							
-							If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
-							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
-							as is with no change to its files what so ever.
-
-							If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
-							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
-
-							You are not allowed to use any of the assets bundled with SMX and/or ZMX branded modlets in other projects. This restriction
-							applies to all files that the SMX and/or ZMX modlets consist of.
-
-							You are required to seek special consent from the developer should you wish to make changes to any asset files provided with the
-							SMX and/or ZMX branded modlets.
-
-							You are required to inform the developer when your project that contains any SMX and/or ZMX modlet or modlets have been	made
-							available to the public.
-
-		// CREDITS:			Sirillion (developer, author)
--->
-
-<!--	// SMX // Global Colors -->
-
-		<append xpath="/styles/global">
-			<style_entry name="SMXlibElementsSlotBackground"			value="56,62,66,128" />
-
-			<style_entry name="SMXlibElementsBG"						value="0,0,0" />
-			<style_entry name="SMXlibElementsHDR"						value="175,30,25" />
-			<style_entry name="SMXlibElementsLine"						value="255,255,255" />
-			<style_entry name="SMXlibElementsLineMenu"					value="128,128,128" />
-
-			<style_entry name="SMXlibElementsButtons"					value="175,30,25" />
-			<style_entry name="SMXlibElementsAccentColor1"				value="175,30,25" />
-			<style_entry name="SMXlibElementsAccentColor2"				value="46,69,36" />
-
-			<style_entry name="SMXlibElementsIcon"						value="255,255,255" />
-			<style_entry name="SMXlibElementsLBLPri"					value="255,255,255" />
-			<style_entry name="SMXlibElementsLBLSec"					value="128,128,128" />
-
-			<style_entry name="SMXlibElementsCPSInd"					value="114,114,114" />
-
-			<style_entry name="SMXlibElementsTBSlotLBL"					value="96,96,96,255" />
-			<style_entry name="SMXlibElementsTHRWBar"					value="0,180,0,120" />
-
-			<style_entry name="SMXlibElementsHealth"					value="175,30,25" />
-			<style_entry name="SMXlibElementsStamina"					value="17,97,146" />
-			<style_entry name="SMXlibElementsFuel"						value="152,174,0" />
-
-			<style_entry name="SMXlibElementsStealth"					value="255,174,28" />
-			<style_entry name="SMXlibElementsFood"						value="23,81,23" />
-			<style_entry name="SMXlibElementsWater"						value="16,77,96" />
-
-			<style_entry name="SMXlibElementsTipBorder"					value="255,0,0" />
-			<style_entry name="SMXlibElementsTipBackground"				value="0,0,0" />
-
-			<style_entry name="SMXlibElementsCraftNeed"					value="128,128,128" />
-			<style_entry name="SMXlibElementsCraftHave"					value="255,255,255" />
-
-			<style_entry name="SMXlibElementsPerkLine"					value="96,96,96" />
-			<style_entry name="SMXlibElementsMapOverlay"				value="0,0,0,96" />
-
-			<style_entry name="SMXlibElementsLockSlotBackground"		value="96,96,96" />
-			<style_entry name="SMXlibElementsLockSlotsBar"				value="255,255,255" />
-
-			<style_entry name="SMXlibElementsTwitchLogo"				value="100,65,164" />
-		</append>
-
-
-<!--	// SMX // Defined Icon Colors -->
+<!--	// SMX // Paging Header Window -->
 
 		<append xpath="/styles">
-			<style name="smxlib_icon_colors">
-				<style_entry name="color" 								value="[white]" />				
-				<style_entry name="hovercolor" 							value="[mediumGrey]" />				
-				<style_entry name="selectedcolor" 						value="[lightGrey]" />				
+			<style name="smxui_window_paging_icons"						type="button">
+				<style_entry name="depth" 								value="2"/>
+				<style_entry name="width" 								value="198"/>
+				<style_entry name="height" 								value="42"/>
+				<style_entry name="pivot" 								value="center" />
+				<style_entry name="hoverscale" 							value="1" />
+				<style_entry name="collider_scale" 						value="1.0" />
+				<style_entry name="defaultcolor" 						value="[smxlib_window_window_bg]" />
+				<style_entry name="selectedcolor" 						value="[smxlib_window_accentcolor_1]" />
+				<style_entry name="disabledcolor" 						value="[smxlib_window_module_bg]" />
+				<style_entry name="hoversprite" 						value="smxlib_window_paging_button" />
+				<style_entry name="selectedsprite" 						value="smxlib_window_paging_button" />
+				<style_entry name="globalopacitymod" 					value="1.2"/>
+				<style_entry name="sound" 								value="[paging_click]"/>
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxui_window_paging_icons"						type="sprite">
+				<style_entry name="depth" 								value="2"/>
+				<style_entry name="width" 								value="198"/>
+				<style_entry name="height" 								value="42"/>
+				<style_entry name="pivot" 								value="center" />
+				<style_entry name="hoverscale" 							value="1" />
+				<style_entry name="collider_scale" 						value="1.0" />
+				<style_entry name="defaultcolor" 						value="[smxlib_window_window_bg]" />
+				<style_entry name="selectedcolor" 						value="[smxlib_window_accentcolor_1]" />
+				<style_entry name="disabledcolor" 						value="[smxlib_window_module_bg]" />
+				<style_entry name="hoversprite" 						value="smxlib_window_paging_button" />
+				<style_entry name="selectedsprite" 						value="smxlib_window_paging_button" />
+				<style_entry name="globalopacitymod" 					value="1.2"/>
+				<style_entry name="sound" 								value="[paging_click]"/>
 			</style>
 		</append>
 
