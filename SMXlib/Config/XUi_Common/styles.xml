@@ -4,7 +4,7 @@
 
 		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
 
-		// VERSION:			r20.rc4
+		// VERSION:			r20.rc5
 
 		// BUILD:			A20.0
 
@@ -225,7 +225,7 @@
 
 			<style_entry name="smxhud_unitframe_throwdraw_bar"					value="[smxlib_unitframe_throwdraw_bar]" />				<!-- This entry sets the color for: HUD Unit Frame Throw/Draw bar -->
 
-			<style_entry name="smxhud_partyframe_health_bar"					value="[smxlib_partyframe_health_bar" />				<!-- This entry sets the color for: HUD Party Frame health bar -->
+			<style_entry name="smxhud_partyframe_health_bar"					value="[smxlib_partyframe_health_bar]" />				<!-- This entry sets the color for: HUD Party Frame health bar -->
 
 			<style_entry name="smxhud_targetframe_health_bar"					value="[smxlib_targetframe_health_bar]" />				<!-- This entry sets the color for: HUD Target Frame health bar -->
 
@@ -397,6 +397,22 @@
 			</style>
 		</append>
 
+		<append xpath="/styles">
+			<style type="smxlib_curved_label">
+				<style_entry name="color"							value="[smxlib_element_labelcolor_2]" />
+				<style_entry name="font_face"						value="ReferenceFont" />
+				<style_entry name="font_size"						value="28" />
+				<style_entry name="crispness"						value="Always" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxlib_element_labelcolor_effect]" />
+				<style_entry name="justify"							value="left" />
+				<style_entry name="pivot"							value="topleft" />
+				<style_entry name="text"							value="" />
+				<style_entry name="upper_case"						value="false" />
+			</style>
+		</append>
+
 
 <!--	// SMX // Backpack & Looting ItemStack Layouts -->
 
@@ -456,6 +472,7 @@
 				<style_entry name="place_sound" 					value="[place_click]"/>
 			</style>
 		</append>
+
 
 
 
