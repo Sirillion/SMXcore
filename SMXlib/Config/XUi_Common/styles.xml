@@ -4,7 +4,7 @@
 
 		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
 
-		// VERSION:			r20.rc5
+		// VERSION:			r20.rc6
 
 		// BUILD:			A20.0
 
@@ -58,6 +58,11 @@
 
 			<style_entry name="smxlib_tooltip_background"						value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window backgrounds -->
 			<style_entry name="smxlib_tooltip_border"							value="255,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window borders -->
+
+			<style_entry name="smxlib_scrollbar_background"						value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Scrollview scrollbar background -->
+			<style_entry name="smxlib_scrollbar_background_hover"				value="7,7,7" />										<!-- This entry sets the color for: GLOBAL Scrollview scrollbar background hover (mouseover) -->
+			<style_entry name="smxlib_scrollbar_handler"						value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Scrollview scrollbar handler -->
+			<style_entry name="smxlib_scrollbar_handler_hover"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Scrollview scrollbar handler hover (mouseover) -->
 
 			<style_entry name="smxlib_element_compass_indicator_1"				value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Primary compass window indicator -->
 			<style_entry name="smxlib_element_compass_indicator_2"				value="114,114,114" />									<!-- This entry sets the color for: GLOBAL Secondary compass window indicator (alternative) -->
@@ -244,6 +249,11 @@
 			<style_entry name="smxui_element_backdrop_1"						value="[smxlib_element_backdrop_1]" />					<!-- This entry sets the color for: UI Element primary backdrops (module backgrounds) -->
 			<style_entry name="smxui_element_backdrop_2"						value="[smxlib_element_backdrop_2]" />					<!-- This entry sets the color for: UI Element secondary backdrops (module backgrounds) -->
 
+			<style_entry name="smxui_scrollbar_background"						value="[smxlib_scrollbar_background]" />				<!-- This entry sets the color for: UI Scrollview scrollbar background -->
+			<style_entry name="smxui_scrollbar_background_hover"				value="[smxlib_scrollbar_background_hover]" />			<!-- This entry sets the color for: UI Scrollview scrollbar background hover (mouseover) -->
+			<style_entry name="smxui_scrollbar_handler"							value="[smxlib_scrollbar_handler]" />					<!-- This entry sets the color for: UI Scrollview scrollbar handler -->
+			<style_entry name="smxui_scrollbar_handler_hover"					value="[smxlib_scrollbar_handler_hover]" />				<!-- This entry sets the color for: UI Scrollview scrollbar handler hover (mouseover) -->
+
 			<style_entry name="smxui_element_separation_1"						value="[smxlib_element_separation_1]" />				<!-- This entry sets the color for: UI Element primary separation lines -->
 			<style_entry name="smxui_element_separation_2"						value="[smxlib_element_separation_2]" />				<!-- This entry sets the color for: UI Element secondary separation lines -->
 
@@ -311,6 +321,11 @@
 			<style_entry name="smxmenu_element_background"						value="[smxlib_element_background]" />					<!-- This entry sets the color for: MENU Element backgrounds -->
 			<style_entry name="smxmenu_element_backdrop_1"						value="[smxlib_element_backdrop_1]" />					<!-- This entry sets the color for: MENU Element primary backdrops (module backgrounds) -->
 			<style_entry name="smxmenu_element_backdrop_2"						value="[smxlib_element_backdrop_2]" />					<!-- This entry sets the color for: MENU Element secondary backdrops (module backgrounds) -->
+
+			<style_entry name="smxmenu_scrollbar_background"					value="[smxlib_scrollbar_background]" />				<!-- This entry sets the color for: MENU Scrollview scrollbar background -->
+			<style_entry name="smxmenu_scrollbar_background_hover"				value="[smxlib_scrollbar_background_hover]" />			<!-- This entry sets the color for: MENU Scrollview scrollbar background hover (mouseover) -->
+			<style_entry name="smxmenu_scrollbar_handler"						value="[smxlib_scrollbar_handler]" />					<!-- This entry sets the color for: MENU Scrollview scrollbar handler -->
+			<style_entry name="smxmenu_scrollbar_handler_hover"					value="[smxlib_scrollbar_handler_hover]" />				<!-- This entry sets the color for: MENU Scrollview scrollbar handler hover (mouseover) -->
 
 			<style_entry name="smxmenu_element_separation_1"					value="[smxlib_element_separation_1]" />				<!-- This entry sets the color for: MENU Element primary separation lines -->
 			<style_entry name="smxmenu_element_separation_2"					value="[smxlib_element_separation_2]" />				<!-- This entry sets the color for: MENU Element secondary separation lines -->
