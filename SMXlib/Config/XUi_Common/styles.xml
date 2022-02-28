@@ -4,9 +4,9 @@
 
 		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
 
-		// VERSION:			r20.rc6
+		// VERSION:			r20.rc7
 
-		// BUILD:			A20.0
+		// BUILD:			A20.3
 
 		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
 							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
@@ -17,35 +17,36 @@
 
 		// DEPENDENCIES:	.
 
-		// TERMS OF USE:	You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate.
+		// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate.
 
-							You are under no circumstance allowed to distribute any SMX and/or ZMX branded modlets without written consent from the main developer.
+							2. You are under no circumstance allowed to distribute any SMX and/or ZMX branded modlets without written consent from the main developer.
 
-							If you wish to distribute SMX and/or ZMX branded modlets as part of your own project and consent have been given you are required
+							3. If you wish to distribute SMX and/or ZMX branded modlets as part of your own project and consent have been given you are required
 							to do so in such a way so that all the files of the SMX and/or ZMX modlet or modlets in question remain unaltered and you cannot
 							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
 
-							If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
 							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
 							as is with no change to its files what so ever.
 
-							If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
 							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
 
-							You are not allowed to use any of the assets bundled with SMX and/or ZMX branded modlets in other projects. This restriction
+							6. You are not allowed to use any of the assets bundled with SMX and/or ZMX branded modlets in other projects. This restriction
 							applies to all files that the SMX and/or ZMX modlets consist of. EXCEPTION: The content of the Harmony folder is to be considered
 							open source and can be used freely as long as the original credit comments within the files are not removed or altered other than
 							adding to.
 
-							You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
 							SMX and/or ZMX branded modlets.
 
-							You are required to inform the main developer when your project that contains any SMX and/or ZMX modlet or modlets have been made
+							8. You are required to inform the main developer when your project that contains any SMX and/or ZMX modlet or modlets have been made
 							available to the public.
 
-		// CREDITS:			Sirillion (main developer/designer/harmony/frontend/backend/author), sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend)
+		// CREDITS:			Sirillion (main developer/designer/harmony/frontend/backend/author)
+							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
 
-		// CONTRIBUTORS:	Laydor (code), Mumpfy (art)
+		// CONTRIBUTORS:	Mumpfy (art)
 -->
 
 <!--	// SMX // Global Colors | SMX COMMENT: MOST of the colors used in SMX can be adjusted below -->
@@ -103,6 +104,7 @@
 
 			<style_entry name="smxlib_element_iconcolor_1"						value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary icons -->
 			<style_entry name="smxlib_element_iconcolor_2"						value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Element secondary icons -->
+			<style_entry name="smxlib_element_iconcolor_disabled"				value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Element disabled icons -->
 
 			<style_entry name="smxlib_element_twitchLogo_enabled"				value="100,65,164" />									<!-- This entry sets the color for: GLOBAL Element Twitch logo enabled -->
 			<style_entry name="smxlib_element_twitchLogo_disabled"				value="[red]" />										<!-- This entry sets the color for: GLOBAL Element Twitch logo disabled -->
@@ -112,6 +114,8 @@
 			<style_entry name="smxlib_slot_item_background"						value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Slot item backgrounds (non QL) -->
 
 			<style_entry name="smxlib_slot_frame_normal"						value="96,96,96" />										<!-- This entry sets the color for: GLOBAL Slot frames normal color -->
+			<style_entry name="smxlib_slot_frame_locked"						value="175,30,25,128" />								<!-- This entry sets the color for: GLOBAL Slot frames locked color -->
+			<style_entry name="smxlib_slot_frame_search"						value="255,144,24,255" />								<!-- This entry sets the color for: GLOBAL Slot frames search hit color -->
 
 			<style_entry name="smxlib_slot_timer_color"							value="222,206,163" />									<!-- This entry sets the color for: GLOBAL Slot timer label colors -->
 			<style_entry name="smxlib_slot_cancel_color"						value="255,0,0" />										<!-- This entry sets the color for: GLOBAL Slot timer cancel colors -->
@@ -198,6 +202,7 @@
 
 			<style_entry name="smxhud_element_iconcolor_1"						value="[smxlib_element_iconcolor_1]" />					<!-- This entry sets the color for: HUD Element primary icons -->
 			<style_entry name="smxhud_element_iconcolor_2"						value="[smxlib_element_iconcolor_2]" />					<!-- This entry sets the color for: HUD Element secondary icons -->
+			<style_entry name="smxhud_element_iconcolor_disabled"				value="[smxlib_element_iconcolor_disabled]" />			<!-- This entry sets the color for: HUD Element disabled icons -->
 
 			<style_entry name="smxhud_slot_main_background"						value="[smxlib_slot_main_background]" />				<!-- This entry sets the color for: HUD Slot main backgrounds -->
 			<style_entry name="smxhud_slot_slot_background"						value="[smxlib_slot_slot_background]" />				<!-- This entry sets the color for: HUD Slot slot backgrounds -->
@@ -286,6 +291,7 @@
 
 			<style_entry name="smxui_element_iconcolor_1"						value="[smxlib_element_iconcolor_1]" />					<!-- This entry sets the color for: UI Element primary icons -->
 			<style_entry name="smxui_element_iconcolor_2"						value="[smxlib_element_iconcolor_2]" />					<!-- This entry sets the color for: UI Element secondary icons -->
+			<style_entry name="smxui_element_iconcolor_disabled"				value="[smxlib_element_iconcolor_disabled]" />			<!-- This entry sets the color for: UI Element disabled icons -->
 
 			<style_entry name="smxui_element_twitchLogo_enabled"				value="[smxlib_element_twitchLogo_enabled]" />			<!-- This entry sets the color for: UI Element Twitch logo enabled -->
 			<style_entry name="smxui_element_twitchLogo_disabled"				value="[smxlib_element_twitchLogo_disabled]" />			<!-- This entry sets the color for: UI Element Twitch logo disabled -->
@@ -295,6 +301,8 @@
 			<style_entry name="smxui_slot_item_background"						value="[smxlib_slot_item_background]" />				<!-- This entry sets the color for: UI Slot item backgrounds (non QL) -->
 
 			<style_entry name="smxui_slot_frame_normal"							value="[smxlib_slot_frame_normal]" />					<!-- This entry sets the color for: UI Slot frames normal color -->
+			<style_entry name="smxui_slot_frame_locked"							value="[smxlib_slot_frame_locked]" />					<!-- This entry sets the color for: UI Slot frames locked color -->
+			<style_entry name="smxui_slot_frame_search"							value="[smxlib_slot_frame_search]" />					<!-- This entry sets the color for: UI Slot frames search hit color -->
 
 			<style_entry name="smxui_slot_timer_color"							value="[smxlib_slot_timer_color]" />					<!-- This entry sets the color for: UI Slot timer label colors -->
 			<style_entry name="smxui_slot_cancel_color"							value="[smxlib_slot_cancel_color]" />					<!-- This entry sets the color for: UI Slot timer cancel colors -->
@@ -414,7 +422,7 @@
 
 		<append xpath="/styles">
 			<style type="smxlib_curved_label">
-				<style_entry name="color"							value="[smxlib_element_labelcolor_2]" />
+				<style_entry name="color"							value="[smxlib_element_labelcolor_3]" />
 				<style_entry name="font_face"						value="ReferenceFont" />
 				<style_entry name="font_size"						value="28" />
 				<style_entry name="crispness"						value="Always" />
@@ -440,7 +448,9 @@
 				<style_entry name="holding_color" 					value="[white]"/>
 				<style_entry name="press_color" 					value="[white]"/>
 				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
-				<!--style_entry name="attribute_lock_color"			value="[red]"/-->
+				<style_entry name="lockedslot_color"				value="[smxui_slot_frame_locked]"/>
+				<style_entry name="search_color"					value="[smxui_slot_frame_search]"/>
+				<style_entry name="nomatch_iconcolor"				value="[smxui_element_iconcolor_disabled]"/>
 				<style_entry name="hover_icon_grow" 				value="1.5"/>
 				<style_entry name="on_press" 						value="true"/>
 				<style_entry name="sound_volume" 					value="0.75"/>
@@ -459,7 +469,9 @@
 				<style_entry name="background_color" 				value="[smxui_slot_frame_normal]"/>
 				<style_entry name="highlight_color" 				value="[white]"/>
 				<style_entry name="holding_color" 					value="[white]"/>
-				<!--style_entry name="attribute_lock_color"			value="[red]"/-->
+				<style_entry name="lockedslot_color"				value="[smxui_slot_frame_locked]"/>
+				<style_entry name="search_color"					value="[smxui_slot_frame_search]"/>
+				<style_entry name="nomatch_iconcolor"				value="[smxui_element_iconcolor_disabled]"/>
 				<style_entry name="width" 							value="72"/>
 				<style_entry name="height" 							value="72"/>
 				<style_entry name="hover_icon_grow" 				value="1.5"/>
