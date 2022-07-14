@@ -10,7 +10,7 @@
 
 With the release of A20 SMXhud has now evolved into the world of Harmony. This means that it does now mod deeper than ever before and that opens the door for more and better features. On the flip side this means it is no longer EAC friendly, so turn EAC off.
 
-SMXlib is a library of assets needed by ALL SMX branded modlets. This is the CORE SMX modlet and must be installed together with ANY of the main SMX downloads, SMXhud, SMXmenu or SMXui. NONE of them will work without this one!
+SMXcore is a library of assets needed by ALL SMX branded modlets. This is the CORE SMX modlet and must be installed together with ANY of the main SMX downloads, SMXhud, SMXmenu or SMXui. NONE of them will work without this one!
 
 
 <p align="center">
@@ -24,7 +24,7 @@ Welcome to the new and improved SMX series for 7 Days to Die - Alpha 20.
 
 The goal with this mod is to give the entire 7 Days to Die user interface an extreme makeover an refashion it into how I believe the user interface for the game should be experienced. SMX consist of several modlets which can be broken down into three separate mods: SMXhud, SMXmenu and SMXui. These are all stand alone and can be used separately or, as is the intention, together with the other two and all three mods combined is what makes the SMX experience complete!
 
-In addition we have the core, the main modlet if you will, SMXlib. This is a library modlet and even though it makes very little changes on its own it holds all the assets that the other mods need to function. Because of this it is a mandatory modlet that will need to be downloaded and installed no matter which of the other ones you choose to use.
+In addition we have the core, the main modlet if you will, SMXcore. This is a library modlet and even though it makes very little changes on its own it holds all the assets that the other mods need to function. Because of this it is a mandatory modlet that will need to be downloaded and installed no matter which of the other ones you choose to use.
 
 SMX tries to create an experience as close up towards the vanilla user interface as possible. With little to no changes that can disrupt the balance of the game. The only exception being the extra slot on the crafting queue which is there to make the design fit and hardly disrupts game balance!
 
@@ -69,7 +69,7 @@ As of A20 I decided to move SMX into the lands of Harmony and with that digging 
 We strive to make SMX in the best possible way and try to make user actions with it as smooth as possible. But we are still here to answer questions if you run into problems with it or it's installation procedure. Please, do not hesitate to contact us for any issue, big or small, we just ask you to run this simple checklist before coming to ask us for help and just maybe you will be able to help yourself first.
 
 - Did you install all the downloaded folders? Do note that SMXhud and SMXui both have an additional folder that needs installing. (ZMXhudCP and ZMXuiCP)
-- Did you install SMXlib? This modlet contains all the assets (custom graphics) we use and without this your UI will be mostly transparent.
+- Did you install SMXcore? This modlet contains all the assets (custom graphics) we use and without this your UI will be mostly transparent.
 - Did you check the folder hierarchy and made sure you didn't install the modlets too deep?
 - Did you disable ALL other mods or modlets and then try again to see if the problem still exists? (Be careful with this, backup your save!)
 - Did you check the support sites to see if anyone else have had the same problem recently?
