@@ -1,0 +1,539 @@
+<SMXcore name="XUi_Common/styles.xml">
+
+<!--	// MODLET:			SMXcore
+
+		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
+
+		// VERSION:			r20.rc9
+
+		// BUILD:			A20.5
+
+		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
+							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
+							and you can verify this by looking at the date of the standard files when an update have occured.
+
+		// MOD DESCRIPTION:	The purpose of this modlet is to unite all assets, code and styles that are shared between the different SMX modlets into one
+							modlet. It contains all the custom graphics and icons needed to make SMX modlets run properly.
+
+		// DEPENDENCIES:	Quartz by Laydor.
+
+		// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate.
+
+							2. You are under no circumstance allowed to distribute any SMX and/or ZMX branded modlets without written consent from the main developer.
+
+							3. If you wish to distribute SMX and/or ZMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX and/or ZMX modlet or modlets in question remain unaltered and you cannot
+							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
+
+							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
+							as is with no change to its files what so ever.
+
+							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
+
+							6. You are not allowed to use any of the assets bundled with SMX and/or ZMX branded modlets in other projects. This restriction
+							applies to all files that the SMX and/or ZMX modlets consist of. EXCEPTION: The content of the Harmony folder is to be considered
+							open source and can be used freely as long as the original credit comments within the files are not removed or altered other than
+							adding to.
+
+							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							SMX and/or ZMX branded modlets.
+
+							8. You are required to inform the main developer when your project that contains any SMX and/or ZMX modlet or modlets have been made
+							available to the public.
+
+		// CREDITS:			Sirillion (main developer/designer/harmony/frontend/backend/author)
+							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
+
+		// CONTRIBUTORS:	Mumpfy (art)
+-->
+
+<!--	// SMX // Global Colors | SMX COMMENT: MOST of the colors used in SMX can be adjusted below -->
+
+		<append xpath="/styles/global">
+
+			<!-- SMX COMMENT: SMXcore GLOBAL colors. -->
+			<!-- SMX COMMENT: Changing a color in the SMXcore section will change the same color in the SMXhud, SMXui and SMXmenu sections also if it exists. -->
+			<!-- SMX COMMENT: To deviate from this and set separate colors for the different modlets set those colors directly. -->
+
+			<style_entry name="smxcore_tooltip_background"						value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window backgrounds -->
+			<style_entry name="smxcore_tooltip_border"							value="255,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window borders -->
+
+			<style_entry name="smxcore_scrollbar_background"					value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Scrollview scrollbar background -->
+			<style_entry name="smxcore_scrollbar_background_hover"				value="7,7,7" />										<!-- This entry sets the color for: GLOBAL Scrollview scrollbar background hover (mouseover) -->
+			<style_entry name="smxcore_scrollbar_handler"						value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Scrollview scrollbar handler -->
+			<style_entry name="smxcore_scrollbar_handler_hover"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Scrollview scrollbar handler hover (mouseover) -->
+
+			<style_entry name="smxcore_element_compass_indicator_1"				value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Primary compass window indicator -->
+			<style_entry name="smxcore_element_compass_indicator_2"				value="114,114,114" />									<!-- This entry sets the color for: GLOBAL Secondary compass window indicator (alternative) -->
+
+			<style_entry name="smxcore_element_background"						value="7,7,7" />										<!-- This entry sets the color for: GLOBAL Element backgrounds -->
+			<style_entry name="smxcore_element_backdrop_1"						value="32,32,32" />										<!-- This entry sets the color for: GLOBAL Element primary backdrops (module backgrounds) -->
+			<style_entry name="smxcore_element_backdrop_2"						value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Element secondary backdrops (module backgrounds) -->
+
+			<style_entry name="smxcore_element_separation_1"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary separation lines -->
+			<style_entry name="smxcore_element_separation_2"					value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Element secondary separation lines -->
+
+			<style_entry name="smxcore_element_header_background"				value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Element header backgrounds -->
+			<style_entry name="smxcore_element_header_background_alt"			value="255,144,24" />									<!-- This entry sets the color for: GLOBAL Element header backgrounds - Alternative -->
+
+			<style_entry name="smxcore_element_module_title_background"			value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element module title backgrounds -->
+
+			<style_entry name="smxcore_element_button_background"				value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Element primary button backgrounds (deactivated) -->
+			<style_entry name="smxcore_element_button_foreground"				value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Element primary button foregrounds (active) -->
+			<style_entry name="smxcore_element_button_hover"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary button hover (mouseover) -->
+
+			<style_entry name="smxcore_element_hover"							value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element mouseover/hover -->
+
+			<style_entry name="smxcore_element_input_frame"						value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element text input frames -->
+
+			<style_entry name="smxcore_element_accentcolor_1"					value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Element primary accents -->
+			<style_entry name="smxcore_element_accentcolor_2"					value="255,144,24" />									<!-- This entry sets the color for: GLOBAL Element secondary accents -->
+			<style_entry name="smxcore_element_accentcolor_3"					value="192,192,192" />									<!-- This entry sets the color for: GLOBAL Element tertiary accents -->
+
+			<style_entry name="smxcore_element_labelcolor_1"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary labels -->
+			<style_entry name="smxcore_element_labelcolor_2"					value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Element secondary labels -->
+			<style_entry name="smxcore_element_labelcolor_3"					value="192,192,192" />									<!-- This entry sets the color for: GLOBAL Element tertiary labels -->
+			<style_entry name="smxcore_element_labelcolor_4"					value="92,85,81" />										<!-- This entry sets the color for: Global Element quaternary labels -->
+
+			<style_entry name="smxcore_element_labelcolor_effect"				value="20,20,20,230" />									<!-- This entry sets the color for: GLOBAL Element primary effect_color for labels -->
+
+			<style_entry name="smxcore_element_labelcolor_enabled"				value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element crafting recipes that has ingredients (brightens them) -->
+			<style_entry name="smxcore_element_labelcolor_disabled"				value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Element crafting recipes that don't have ingredients (dims them) -->
+
+			<style_entry name="smxcore_element_iconcolor_1"						value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary icons -->
+			<style_entry name="smxcore_element_iconcolor_2"						value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Element secondary icons -->
+			<style_entry name="smxcore_element_iconcolor_disabled"				value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Element disabled icons -->
+
+			<style_entry name="smxcore_element_twitchLogo_enabled"				value="100,65,164" />									<!-- This entry sets the color for: GLOBAL Element Twitch logo enabled -->
+			<style_entry name="smxcore_element_twitchLogo_disabled"				value="[red]" />										<!-- This entry sets the color for: GLOBAL Element Twitch logo disabled -->
+
+			<style_entry name="smxcore_slot_main_background"					value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Slot main backgrounds -->
+			<style_entry name="smxcore_slot_slot_background"					value="32,32,32" />										<!-- This entry sets the color for: GLOBAL Slot slot backgrounds -->
+			<style_entry name="smxcore_slot_item_background"					value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Slot item backgrounds (non QL) -->
+
+			<style_entry name="smxcore_slot_frame_normal"						value="96,96,96" />										<!-- This entry sets the color for: GLOBAL Slot frames normal color -->
+			<style_entry name="smxcore_slot_frame_locked"						value="175,30,25,128" />								<!-- This entry sets the color for: GLOBAL Slot frames locked color -->
+			<style_entry name="smxcore_slot_frame_search"						value="255,144,24,255" />								<!-- This entry sets the color for: GLOBAL Slot frames search hit color -->
+
+			<style_entry name="smxcore_slot_timer_color"						value="222,206,163" />									<!-- This entry sets the color for: GLOBAL Slot timer label colors -->
+			<style_entry name="smxcore_slot_cancel_color"						value="255,0,0" />										<!-- This entry sets the color for: GLOBAL Slot timer cancel colors -->
+
+			<style_entry name="smxcore_lockslot_background"						value="96,96,96" />										<!-- This entry sets the color for: GLOBAL Container locked slots bar backgrounds -->
+			<style_entry name="smxcore_lockslot_foreground"						value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Container locked slots bar foregrounds (the bar) -->
+
+			<style_entry name="smxcore_unitframe_bar_background_1"				value="96,96,96" />										<!-- This entry sets the color for: GLOBAL Primary Unit Frame bar backgrounds -->
+			<style_entry name="smxcore_unitframe_bar_background_2"				value="192,192,192" />									<!-- This entry sets the color for: GLOBAL Secondary Unit Frame bar backgrounds (alternative)-->
+
+			<style_entry name="smxcore_unitframe_main_background"				value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Unit Frame main background -->
+
+			<style_entry name="smxcore_unitframe_separation"					value="192,192,192" />									<!-- This entry sets the color for: GLOBAL Unit Frame separation lines -->
+
+			<style_entry name="smxcore_unitframe_stealth_bar"					value="255,174,28" />									<!-- This entry sets the color for: GLOBAL Unit Frame stealth bar -->
+			<style_entry name="smxcore_unitframe_health_bar"					value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Unit Frame health bar -->
+			<style_entry name="smxcore_unitframe_health_bar_twitch"				value="100,65,165,128" />								<!-- This entry sets the color for: GLOBAL Unit Frame health bar (twitch) -->
+			<style_entry name="smxcore_unitframe_stamina_bar"					value="17,97,146" />									<!-- This entry sets the color for: GLOBAL Unit Frame stamina bar -->
+			<style_entry name="smxcore_unitframe_hunger_bar"					value="43,124,18" />									<!-- This entry sets the color for: GLOBAL Unit Frame hunger bar -->
+			<style_entry name="smxcore_unitframe_thirst_bar"					value="13,82,111" />									<!-- This entry sets the color for: GLOBAL Unit Frame thirst bar -->
+
+			<style_entry name="smxcore_unitframe_xp_bar_normal"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Unit Frame XP Bar normal -->
+			<style_entry name="smxcore_unitframe_xp_bar_update"					value="43,124,18" />									<!-- This entry sets the color for: GLOBAL Unit Frame XP Bar update -->
+			<style_entry name="smxcore_unitframe_xp_bar_deficit"				value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Unit Frame XP Bar deficit -->
+
+			<style_entry name="smxcore_unitframe_buff_background"				value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Unit Frame BUFF background -->
+
+			<style_entry name="smxcore_unitframe_throwdraw_bar"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Unit Frame Throw/Draw bar -->
+
+			<style_entry name="smxcore_partyframe_health_bar"					value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Party Frame health bar -->
+			<style_entry name="smxcore_partyframe_chat_muted"					value="200,0,0,255" />									<!-- This entry sets the color for: GLOBAL Party Frame health bar -->
+			<style_entry name="smxcore_partyframe_chat_active"					value="255,255,255,255" />									<!-- This entry sets the color for: GLOBAL Party Frame health bar -->
+			<style_entry name="smxcore_partyframe_chat_inactive"				value="128,128,128,255" />									<!-- This entry sets the color for: GLOBAL Party Frame health bar -->
+
+			<style_entry name="smxcore_targetframe_health_bar"					value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Target Frame health bar -->
+
+			<style_entry name="smxcore_vehicle_health_bar"						value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Vehicle Frame health bar -->
+			<style_entry name="smxcore_vehicle_fuel_bar"						value="152,174,0" />									<!-- This entry sets the color for: GLOBAL Vehicle Frame fuel bar -->
+
+			<style_entry name="smxcore_item_durability_background"				value="96,96,96" />										<!-- This entry sets the color for: GLOBAL Item durability bar background -->
+
+			<style_entry name="smxcore_crafting_valid_entry"					value="76,153,0" />										<!-- This entry sets the color for: GLOBAL Crafting valid entries -->
+			<style_entry name="smxcore_crafting_invalid_entry"					value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Crafting invalid entries -->
+
+			<style_entry name="smxcore_quest_complete_color"					value="13,82,11" />										<!-- This entry sets the color for: GLOBAL Quest complete color -->
+			<style_entry name="smxcore_quest_incomplete_color"					value="255,0,0" />										<!-- This entry sets the color for: GLOBAL Quest incomplete color -->
+
+			<style_entry name="smxcore_table_entry_background_1"				value="96,96,96" />										<!-- This entry sets the color for: GLOBAL Primary table entry backgrounds -->
+			<style_entry name="smxcore_table_entry_background_2"				value="128,128,128" />									<!-- This entry sets the color for: GLOBAL Secondary table entry backgrounds -->
+			<style_entry name="smxcore_table_entry_background_3"				value="32,32,32" />										<!-- This entry sets the color for: GLOBAL Tertiary table entry backgrounds -->
+			<style_entry name="smxcore_table_entry_background_4"				value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Quaternary table entry backgrounds -->
+
+
+			<!-- SMX COMMENT: SMXhud colors. -->
+
+			<style_entry name="smxhud_element_compass_indicator_1"				value="[smxcore_element_compass_indicator_1]" />		<!-- This entry sets the color for: HUD Primary compass window indicator -->
+			<style_entry name="smxhud_element_compass_indicator_2"				value="[smxcore_element_compass_indicator_2]" />		<!-- This entry sets the color for: HUD Secondary compass window indicator (alternative) -->
+
+			<style_entry name="smxhud_element_background"						value="[smxcore_element_background]" />					<!-- This entry sets the color for: HUD Element backgrounds -->
+			<style_entry name="smxhud_element_backdrop_1"						value="[smxcore_element_backdrop_1]" />					<!-- This entry sets the color for: HUD Element primary backdrops (module backgrounds) -->
+			<style_entry name="smxhud_element_backdrop_2"						value="[smxcore_element_backdrop_2]" />					<!-- This entry sets the color for: HUD Element secondary backdrops (module backgrounds) -->
+
+			<style_entry name="smxhud_element_separation_1"						value="[smxcore_element_separation_1]" />				<!-- This entry sets the color for: HUD Element primary separation lines -->
+			<style_entry name="smxhud_element_separation_2"						value="[smxcore_element_separation_2]" />				<!-- This entry sets the color for: HUD Element secondary separation lines -->
+
+			<style_entry name="smxhud_element_header_background"				value="[smxcore_element_header_background]" />			<!-- This entry sets the color for: HUD Element header backgrounds -->
+			<style_entry name="smxhud_element_header_background_alt"			value="[smxcore_element_header_background_alt]" />		<!-- This entry sets the color for: HUD Element header backgrounds - Alternative -->
+
+			<style_entry name="smxhud_element_module_title_background"			value="[smxcore_element_module_title_background]" />	<!-- This entry sets the color for: HUD Element module title backgrounds -->
+
+			<style_entry name="smxhud_element_button_background"				value="[smxcore_element_button_background]" />			<!-- This entry sets the color for: HUD Element primary button backgrounds (deactivated) -->
+			<style_entry name="smxhud_element_button_foreground"				value="[smxcore_element_button_foreground]" />			<!-- This entry sets the color for: HUD Element primary button foregrounds (active) -->
+			<style_entry name="smxhud_element_button_hover"						value="[smxcore_element_button_hover]" />				<!-- This entry sets the color for: HUD Element primary button hover (mouseover) -->
+			
+			<style_entry name="smxhud_element_hover"							value="[smxcore_element_hover]" />						<!-- This entry sets the color for: HUD Element mouseover/hover -->
+
+			<style_entry name="smxhud_element_accentcolor_1"					value="[smxcore_element_accentcolor_1]" />				<!-- This entry sets the color for: HUD Element primary accents -->
+			<style_entry name="smxhud_element_accentcolor_2"					value="[smxcore_element_accentcolor_2]" />				<!-- This entry sets the color for: HUD Element secondary accents -->
+			<style_entry name="smxhud_element_accentcolor_3"					value="[smxcore_element_accentcolor_3]" />				<!-- This entry sets the color for: HUD Element tertiary accents -->
+
+			<style_entry name="smxhud_element_labelcolor_1"						value="[smxcore_element_labelcolor_1]" />				<!-- This entry sets the color for: HUD Element primary labels -->
+			<style_entry name="smxhud_element_labelcolor_2"						value="[smxcore_element_labelcolor_2]" />				<!-- This entry sets the color for: HUD Element secondary labels -->
+			<style_entry name="smxhud_element_labelcolor_3"						value="[smxcore_element_labelcolor_3]" />				<!-- This entry sets the color for: HUD Element tertiary labels -->
+			<style_entry name="smxhud_element_labelcolor_4"						value="[smxcore_element_labelcolor_4]" />				<!-- This entry sets the color for: HUD Element quaternary labels -->
+
+			<style_entry name="smxhud_element_labelcolor_effect"				value="[smxcore_element_labelcolor_effect]" />			<!-- This entry sets the color for: HUD Element primary effect_color for labels -->
+
+			<style_entry name="smxhud_element_iconcolor_1"						value="[smxcore_element_iconcolor_1]" />				<!-- This entry sets the color for: HUD Element primary icons -->
+			<style_entry name="smxhud_element_iconcolor_2"						value="[smxcore_element_iconcolor_2]" />				<!-- This entry sets the color for: HUD Element secondary icons -->
+			<style_entry name="smxhud_element_iconcolor_disabled"				value="[smxcore_element_iconcolor_disabled]" />			<!-- This entry sets the color for: HUD Element disabled icons -->
+
+			<style_entry name="smxhud_slot_main_background"						value="[smxcore_slot_main_background]" />				<!-- This entry sets the color for: HUD Slot main backgrounds -->
+			<style_entry name="smxhud_slot_slot_background"						value="[smxcore_slot_slot_background]" />				<!-- This entry sets the color for: HUD Slot slot backgrounds -->
+			<style_entry name="smxhud_slot_item_background"						value="[smxcore_slot_item_background]" />				<!-- This entry sets the color for: HUD Slot item backgrounds (non QL) -->
+
+			<style_entry name="smxhud_slot_frame_normal"						value="[smxcore_slot_frame_normal]" />					<!-- This entry sets the color for: HUD Slot frames normal color -->
+
+			<style_entry name="smxhud_slot_timer_color"							value="[smxcore_slot_timer_color]" />					<!-- This entry sets the color for: HUD Slot timer label colors -->
+			<style_entry name="smxhud_slot_cancel_color"						value="[smxcore_slot_cancel_color]" />					<!-- This entry sets the color for: HUD Slot timer cancel colors -->
+
+			<style_entry name="smxhud_unitframe_bar_background_1"				value="[smxcore_unitframe_bar_background_1]" />			<!-- This entry sets the color for: HUD Primary Unit Frame bar backgrounds -->
+			<style_entry name="smxhud_unitframe_bar_background_2"				value="[smxcore_unitframe_bar_background_2]" />			<!-- This entry sets the color for: HUD Secondary Unit Frame bar backgrounds (alternative)-->
+
+			<style_entry name="smxhud_unitframe_main_background"				value="[smxcore_unitframe_main_background]" />			<!-- This entry sets the color for: HUD Unit Frame main background -->
+
+			<style_entry name="smxhud_unitframe_separation"						value="[smxcore_unitframe_separation]" />				<!-- This entry sets the color for: HUD Unit Frame separation lines -->
+
+			<style_entry name="smxhud_unitframe_stealth_bar"					value="[smxcore_unitframe_stealth_bar]" />				<!-- This entry sets the color for: HUD Unit Frame stealth bar -->
+			<style_entry name="smxhud_unitframe_health_bar"						value="[smxcore_unitframe_health_bar]" />				<!-- This entry sets the color for: HUD Unit Frame health bar -->
+			<style_entry name="smxhud_unitframe_health_bar_twitch"				value="[smxcore_unitframe_health_bar_twitch]" />			<!-- This entry sets the color for: HUD Unit Frame health bar (twitch) -->
+			<style_entry name="smxhud_unitframe_stamina_bar"					value="[smxcore_unitframe_stamina_bar]" />				<!-- This entry sets the color for: HUD Unit Frame stamina bar -->
+			<style_entry name="smxhud_unitframe_hunger_bar"						value="[smxcore_unitframe_hunger_bar]" />				<!-- This entry sets the color for: HUD Unit Frame hunger bar -->
+			<style_entry name="smxhud_unitframe_thirst_bar"						value="[smxcore_unitframe_thirst_bar]" />				<!-- This entry sets the color for: HUD Unit Frame thirst bar -->
+
+			<style_entry name="smxhud_unitframe_xp_bar_normal"					value="[smxcore_unitframe_xp_bar_normal]" />			<!-- This entry sets the color for: HUD Unit Frame XP Bar normal -->
+			<style_entry name="smxhud_unitframe_xp_bar_update"					value="[smxcore_unitframe_xp_bar_update]" />			<!-- This entry sets the color for: HUD Unit Frame XP Bar update -->
+			<style_entry name="smxhud_unitframe_xp_bar_deficit"					value="[smxcore_unitframe_xp_bar_deficit]" />			<!-- This entry sets the color for: HUD Unit Frame XP Bar deficit -->
+
+			<style_entry name="smxhud_unitframe_buff_background"				value="[smxcore_unitframe_buff_background]" />			<!-- This entry sets the color for: HUD Unit Frame BUFF background -->
+
+			<style_entry name="smxhud_unitframe_throwdraw_bar"					value="[smxcore_unitframe_throwdraw_bar]" />			<!-- This entry sets the color for: HUD Unit Frame Throw/Draw bar -->
+
+			<style_entry name="smxhud_partyframe_health_bar"					value="[smxcore_partyframe_health_bar]" />				<!-- This entry sets the color for: HUD Party Frame health bar -->
+
+			<style_entry name="smxhud_targetframe_health_bar"					value="[smxcore_targetframe_health_bar]" />				<!-- This entry sets the color for: HUD Target Frame health bar -->
+
+			<style_entry name="smxhud_vehicle_health_bar"						value="[smxcore_vehicle_health_bar]" />					<!-- This entry sets the color for: HUD Vehicle Frame health bar -->
+			<style_entry name="smxhud_vehicle_fuel_bar"							value="[smxcore_vehicle_fuel_bar]" />					<!-- This entry sets the color for: HUD Vehicle Frame fuel bar -->
+
+			<style_entry name="smxhud_item_durability_background"				value="[smxcore_item_durability_background]" />			<!-- This entry sets the color for: HUD Item durability bar background -->
+
+			<style_entry name="smxhud_quest_complete_color"						value="[smxcore_quest_complete_color]" />				<!-- This entry sets the color for: HUD Quest complete color -->
+			<style_entry name="smxhud_quest_incomplete_color"					value="[smxcore_quest_incomplete_color]" />				<!-- This entry sets the color for: HUD Quest incomplete color -->
+
+
+			<!-- SMX COMMENT: SMXui colors. -->
+
+			<style_entry name="smxui_element_background"						value="[smxcore_element_background]" />					<!-- This entry sets the color for: UI Element backgrounds -->
+			<style_entry name="smxui_element_backdrop_1"						value="[smxcore_element_backdrop_1]" />					<!-- This entry sets the color for: UI Element primary backdrops (module backgrounds) -->
+			<style_entry name="smxui_element_backdrop_2"						value="[smxcore_element_backdrop_2]" />					<!-- This entry sets the color for: UI Element secondary backdrops (module backgrounds) -->
+
+			<style_entry name="smxui_scrollbar_background"						value="[smxcore_scrollbar_background]" />				<!-- This entry sets the color for: UI Scrollview scrollbar background -->
+			<style_entry name="smxui_scrollbar_background_hover"				value="[smxcore_scrollbar_background_hover]" />			<!-- This entry sets the color for: UI Scrollview scrollbar background hover (mouseover) -->
+			<style_entry name="smxui_scrollbar_handler"							value="[smxcore_scrollbar_handler]" />					<!-- This entry sets the color for: UI Scrollview scrollbar handler -->
+			<style_entry name="smxui_scrollbar_handler_hover"					value="[smxcore_scrollbar_handler_hover]" />			<!-- This entry sets the color for: UI Scrollview scrollbar handler hover (mouseover) -->
+
+			<style_entry name="smxui_element_separation_1"						value="[smxcore_element_separation_1]" />				<!-- This entry sets the color for: UI Element primary separation lines -->
+			<style_entry name="smxui_element_separation_2"						value="[smxcore_element_separation_2]" />				<!-- This entry sets the color for: UI Element secondary separation lines -->
+
+			<style_entry name="smxui_element_header_background"					value="[smxcore_element_header_background]" />			<!-- This entry sets the color for: UI Element header backgrounds -->
+			<style_entry name="smxui_element_header_background_alt"				value="[smxcore_element_header_background_alt]" />		<!-- This entry sets the color for: UI Element header backgrounds - Alternative -->
+
+			<style_entry name="smxui_element_module_title_background"			value="[smxcore_element_module_title_background]" />	<!-- This entry sets the color for: UI Element module title backgrounds -->
+
+			<style_entry name="smxui_element_button_background"					value="[smxcore_element_button_background]" />			<!-- This entry sets the color for: UI Element primary button backgrounds (deactivated) -->
+			<style_entry name="smxui_element_button_foreground"					value="[smxcore_element_button_foreground]" />			<!-- This entry sets the color for: UI Element primary button foregrounds (active) -->
+			<style_entry name="smxui_element_button_hover"						value="[smxcore_element_button_hover]" />				<!-- This entry sets the color for: UI Element primary button hover (mouseover) -->
+
+			<style_entry name="smxui_element_hover"								value="[smxcore_element_hover]" />						<!-- This entry sets the color for: UI Element mouseover/hover -->
+
+			<style_entry name="smxui_element_input_frame"						value="[smxcore_element_input_frame]" />				<!-- This entry sets the color for: UI Element text input frames -->
+
+			<style_entry name="smxui_element_accentcolor_1"						value="[smxcore_element_accentcolor_1]" />				<!-- This entry sets the color for: UI Element primary accents -->
+			<style_entry name="smxui_element_accentcolor_2"						value="[smxcore_element_accentcolor_2]" />				<!-- This entry sets the color for: UI Element secondary accents -->
+			<style_entry name="smxui_element_accentcolor_3"						value="[smxcore_element_accentcolor_3]" />				<!-- This entry sets the color for: UI Element tertiary accents -->
+
+			<style_entry name="smxui_element_labelcolor_1"						value="[smxcore_element_labelcolor_1]" />				<!-- This entry sets the color for: UI Element primary labels -->
+			<style_entry name="smxui_element_labelcolor_2"						value="[smxcore_element_labelcolor_2]" />				<!-- This entry sets the color for: UI Element secondary labels -->
+			<style_entry name="smxui_element_labelcolor_3"						value="[smxcore_element_labelcolor_3]" />				<!-- This entry sets the color for: UI Element tertiary labels -->
+			<style_entry name="smxui_element_labelcolor_4"						value="[smxcore_element_labelcolor_4]" />				<!-- This entry sets the color for: UI Element quaternary labels -->
+
+			<style_entry name="smxui_element_labelcolor_effect"					value="[smxcore_element_labelcolor_effect]" />			<!-- This entry sets the color for: UI Element primary effect_color for labels -->
+
+			<style_entry name="smxui_element_labelcolor_enabled"				value="[smxcore_element_labelcolor_enabled]" />			<!-- This entry sets the color for: UI Element crafting recipes that has ingredients (brightens them) -->
+			<style_entry name="smxui_element_labelcolor_disabled"				value="[smxcore_element_labelcolor_disabled]" />		<!-- This entry sets the color for: UI Element crafting recipes that don't have ingredients (dims them) -->
+
+			<style_entry name="smxui_element_iconcolor_1"						value="[smxcore_element_iconcolor_1]" />				<!-- This entry sets the color for: UI Element primary icons -->
+			<style_entry name="smxui_element_iconcolor_2"						value="[smxcore_element_iconcolor_2]" />				<!-- This entry sets the color for: UI Element secondary icons -->
+			<style_entry name="smxui_element_iconcolor_disabled"				value="[smxcore_element_iconcolor_disabled]" />			<!-- This entry sets the color for: UI Element disabled icons -->
+
+			<style_entry name="smxui_element_twitchLogo_enabled"				value="[smxcore_element_twitchLogo_enabled]" />			<!-- This entry sets the color for: UI Element Twitch logo enabled -->
+			<style_entry name="smxui_element_twitchLogo_disabled"				value="[smxcore_element_twitchLogo_disabled]" />		<!-- This entry sets the color for: UI Element Twitch logo disabled -->
+
+			<style_entry name="smxui_slot_main_background"						value="[smxcore_slot_main_background]" />				<!-- This entry sets the color for: UI Slot main backgrounds -->
+			<style_entry name="smxui_slot_slot_background"						value="[smxcore_slot_slot_background]" />				<!-- This entry sets the color for: UI Slot slot backgrounds -->
+			<style_entry name="smxui_slot_item_background"						value="[smxcore_slot_item_background]" />				<!-- This entry sets the color for: UI Slot item backgrounds (non QL) -->
+
+			<style_entry name="smxui_slot_frame_normal"							value="[smxcore_slot_frame_normal]" />					<!-- This entry sets the color for: UI Slot frames normal color -->
+			<style_entry name="smxui_slot_frame_locked"							value="[smxcore_slot_frame_locked]" />					<!-- This entry sets the color for: UI Slot frames locked color -->
+			<style_entry name="smxui_slot_frame_search"							value="[smxcore_slot_frame_search]" />					<!-- This entry sets the color for: UI Slot frames search hit color -->
+
+			<style_entry name="smxui_slot_timer_color"							value="[smxcore_slot_timer_color]" />					<!-- This entry sets the color for: UI Slot timer label colors -->
+			<style_entry name="smxui_slot_cancel_color"							value="[smxcore_slot_cancel_color]" />					<!-- This entry sets the color for: UI Slot timer cancel colors -->
+
+			<style_entry name="smxui_lockslot_background"						value="[smxcore_lockslot_background]" />				<!-- This entry sets the color for: UI Container locked slots bar backgrounds -->
+			<style_entry name="smxui_lockslot_foreground"						value="[smxcore_lockslot_foreground]" />				<!-- This entry sets the color for: UI Container locked slots bar foregrounds (the bar) -->
+
+			<style_entry name="smxui_item_durability_background"				value="[smxcore_item_durability_background]" />			<!-- This entry sets the color for: UI Item durability bar background -->
+
+			<style_entry name="smxui_crafting_valid_entry"						value="[smxcore_crafting_valid_entry]" />				<!-- This entry sets the color for: UI Crafting valid entries -->
+			<style_entry name="smxui_crafting_invalid_entry"					value="[smxcore_crafting_invalid_entry]" />				<!-- This entry sets the color for: UI Crafting invalid entries -->
+
+			<style_entry name="smxui_quest_complete_color"						value="[smxcore_quest_complete_color]" />				<!-- This entry sets the color for: UI Quest complete color -->
+			<style_entry name="smxui_quest_incomplete_color"					value="[smxcore_quest_incomplete_color]" />				<!-- This entry sets the color for: UI Quest incomplete color -->
+
+			<style_entry name="smxui_table_entry_background_1"					value="[smxcore_table_entry_background_1]" />			<!-- This entry sets the color for: UI Primary table entry backgrounds -->
+			<style_entry name="smxui_table_entry_background_2"					value="[smxcore_table_entry_background_2]" />			<!-- This entry sets the color for: UI Secondary table entry backgrounds -->
+			<style_entry name="smxui_table_entry_background_3"					value="[smxcore_table_entry_background_3]" />			<!-- This entry sets the color for: UI Tertiary table entry backgrounds -->
+			<style_entry name="smxui_table_entry_background_4"					value="[smxcore_table_entry_background_4]" />			<!-- This entry sets the color for: UI Quaternary table entry backgrounds -->
+
+
+			<!-- SMX COMMENT: SMXmenu colors. -->
+
+			<style_entry name="smxmenu_element_background"						value="[smxcore_element_background]" />					<!-- This entry sets the color for: MENU Element backgrounds -->
+			<style_entry name="smxmenu_element_backdrop_1"						value="[smxcore_element_backdrop_1]" />					<!-- This entry sets the color for: MENU Element primary backdrops (module backgrounds) -->
+			<style_entry name="smxmenu_element_backdrop_2"						value="[smxcore_element_backdrop_2]" />					<!-- This entry sets the color for: MENU Element secondary backdrops (module backgrounds) -->
+
+			<style_entry name="smxmenu_scrollbar_background"					value="[smxcore_scrollbar_background]" />				<!-- This entry sets the color for: MENU Scrollview scrollbar background -->
+			<style_entry name="smxmenu_scrollbar_background_hover"				value="[smxcore_scrollbar_background_hover]" />			<!-- This entry sets the color for: MENU Scrollview scrollbar background hover (mouseover) -->
+			<style_entry name="smxmenu_scrollbar_handler"						value="[smxcore_scrollbar_handler]" />					<!-- This entry sets the color for: MENU Scrollview scrollbar handler -->
+			<style_entry name="smxmenu_scrollbar_handler_hover"					value="[smxcore_scrollbar_handler_hover]" />			<!-- This entry sets the color for: MENU Scrollview scrollbar handler hover (mouseover) -->
+
+			<style_entry name="smxmenu_element_separation_1"					value="[smxcore_element_separation_1]" />				<!-- This entry sets the color for: MENU Element primary separation lines -->
+			<style_entry name="smxmenu_element_separation_2"					value="[smxcore_element_separation_2]" />				<!-- This entry sets the color for: MENU Element secondary separation lines -->
+
+			<style_entry name="smxmenu_element_header_background"				value="[smxcore_element_header_background]" />			<!-- This entry sets the color for: MENU Element header backgrounds -->
+			<style_entry name="smxmenu_element_header_background_alt"			value="[smxcore_element_header_background_alt]" />		<!-- This entry sets the color for: MENU Element header backgrounds - Alternative -->
+
+			<style_entry name="smxmenu_element_module_title_background"			value="[smxcore_element_module_title_background]" />	<!-- This entry sets the color for: MENU Element module title backgrounds -->
+
+			<style_entry name="smxmenu_element_button_background"				value="[smxcore_element_button_background]" />			<!-- This entry sets the color for: MENU Element primary button backgrounds (deactivated) -->
+			<style_entry name="smxmenu_element_button_foreground"				value="[smxcore_element_button_foreground]" />			<!-- This entry sets the color for: MENU Element primary button foregrounds (active) -->
+			<style_entry name="smxmenu_element_button_hover"					value="[smxcore_element_button_hover]" />				<!-- This entry sets the color for: MENU Element primary button hover (mouseover) -->
+
+			<style_entry name="smxmenu_element_hover"							value="[smxcore_element_hover]" />						<!-- This entry sets the color for: MENU Element mouseover/hover -->
+
+			<style_entry name="smxmenu_element_input_frame"						value="[smxcore_element_input_frame]" />				<!-- This entry sets the color for: MENU Element text input frames -->
+
+			<style_entry name="smxmenu_element_accentcolor_1"					value="[smxcore_element_accentcolor_1]" />				<!-- This entry sets the color for: MENU Element primary accents -->
+			<style_entry name="smxmenu_element_accentcolor_2"					value="[smxcore_element_accentcolor_2]" />				<!-- This entry sets the color for: MENU Element secondary accents -->
+			<style_entry name="smxmenu_element_accentcolor_3"					value="[smxcore_element_accentcolor_3]" />				<!-- This entry sets the color for: MENU Element tertiary accents -->
+
+			<style_entry name="smxmenu_element_labelcolor_1"					value="[smxcore_element_labelcolor_1]" />				<!-- This entry sets the color for: MENU Element primary labels -->
+			<style_entry name="smxmenu_element_labelcolor_2"					value="[smxcore_element_labelcolor_2]" />				<!-- This entry sets the color for: MENU Element secondary labels -->
+			<style_entry name="smxmenu_element_labelcolor_3"					value="[smxcore_element_labelcolor_3]" />				<!-- This entry sets the color for: MENU Element tertiary labels -->
+			<style_entry name="smxmenu_element_labelcolor_4"					value="[smxcore_element_labelcolor_4]" />				<!-- This entry sets the color for: MENU Element quaternary labels -->
+
+			<style_entry name="smxmenu_element_labelcolor_effect"				value="[smxcore_element_labelcolor_effect]" />			<!-- This entry sets the color for: MENU Element primary effect_color for labels -->
+
+			<style_entry name="smxmenu_element_iconcolor_1"						value="[smxcore_element_iconcolor_1]" />				<!-- This entry sets the color for: MENU Element primary icons -->
+			<style_entry name="smxmenu_element_iconcolor_2"						value="[smxcore_element_iconcolor_2]" />				<!-- This entry sets the color for: MENU Element secondary icons -->
+
+			<style_entry name="smxmenu_slot_main_background"					value="[smxcore_slot_main_background]" />				<!-- This entry sets the color for: MENU Slot main backgrounds -->
+			<style_entry name="smxmenu_slot_slot_background"					value="[smxcore_slot_slot_background]" />				<!-- This entry sets the color for: MENU Slot slot backgrounds -->
+			<style_entry name="smxmenu_slot_item_background"					value="[smxcore_slot_item_background]" />				<!-- This entry sets the color for: MENU Slot item backgrounds (non QL) -->
+
+			<style_entry name="smxmenu_slot_frame_normal"						value="[smxcore_slot_frame_normal]" />					<!-- This entry sets the color for: MENU Slot frames normal color -->
+
+
+			<!-- SMX COMMENT: !!! OLD COLORS !!! UPCOMING COLORS !!! -->
+
+			<style_entry name="smxui_skillwindow_undefined_1"					value="128,128,128" />									<!-- This entry sets the color for: SMXUI SKILLS Undefined 1 -->
+			<style_entry name="smxui_skillwindow_undefined_2"					value="160,160,160" />									<!-- This entry sets the color for: SMXUI SKILLS Undefined 2 -->
+
+		</append>
+
+<!--	// SMX // Global Colors | SMX COMMENT: MOST of the colors used in SMX can be adjusted above -->
+
+
+<!--	// SMX // Defined Icon Colors -->
+
+		<append xpath="/styles">
+			<style name="smxcore_icon_colors">
+				<style_entry name="defaultcolor" 						value="[mediumGrey]" />
+				<style_entry name="hovercolor" 							value="[lightGrey]" />
+				<style_entry name="selectedcolor" 						value="[white]" />
+			</style>
+		</append>
+
+
+<!--	// SMX // Defined Label Designs -->
+
+		<append xpath="/styles">
+			<style name="smxcore_window_title" 						type="label">
+				<style_entry name="font_size"						value="36" />
+				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
+				<style_entry name="crispness"						value="Always" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
+				<style_entry name="pivot"							value="center" />
+				<style_entry name="justify"							value="center" />
+				<style_entry name="upper_case"						value="true" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxcore_label_normal"						type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
+				<style_entry name="crispness"						value="Always" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style type="smxcore_curved_label">
+				<style_entry name="color"							value="[smxcore_element_labelcolor_3]" />
+				<style_entry name="font_face"						value="ReferenceFont" />
+				<style_entry name="font_size"						value="28" />
+				<style_entry name="crispness"						value="Always" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
+				<style_entry name="justify"							value="left" />
+				<style_entry name="pivot"							value="topleft" />
+				<style_entry name="text"							value="" />
+				<style_entry name="upper_case"						value="false" />
+			</style>
+		</append>
+
+
+<!--	// SMX // Backpack & Looting ItemStack Layouts -->
+
+<!-- NEW! -->
+		<append xpath="/styles">
+			<style name="smxcore_item_stack">
+				<style_entry name="background_color" 				value="[smxui_slot_frame_normal]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="lockedslot_color"				value="[smxui_slot_frame_locked]"/>
+				<style_entry name="search_color"					value="[smxui_slot_frame_search]"/>
+				<style_entry name="nomatch_iconcolor"				value="[smxui_element_iconcolor_disabled]"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+
+<!-- DEPRECATED? -->
+		<append xpath="/styles">
+			<style name="smxui_backpack_item_stack">
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="background_color" 				value="[smxui_slot_frame_normal]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="lockedslot_color"				value="[smxui_slot_frame_locked]"/>
+				<style_entry name="search_color"					value="[smxui_slot_frame_search]"/>
+				<style_entry name="nomatch_iconcolor"				value="[smxui_element_iconcolor_disabled]"/>
+				<style_entry name="width" 							value="72"/>
+				<style_entry name="height" 							value="72"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smxui_partlist_item_stack">
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="background_color" 				value="[white]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="width" 							value="58"/>
+				<style_entry name="height" 							value="58"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+
+
+
+
+
+<!-- \/\/\/ PENDING \/\/\/ -->
+
+		<append xpath="/styles">
+			<style name="smxui_item_preview_icon" 					type="sprite">
+				<style_entry name="depth" 							value="3" />
+				<style_entry name="pos" 							value="116,-77" />
+				<style_entry name="size" 							value="110,110" />
+				<style_entry name="atlas" 							value="ItemIconAtlas" />
+				<style_entry name="pivot" 							value="center" />
+				<style_entry name="foregroundlayer" 				value="true" />
+			</style>
+		</append>
+
+
+		<append xpath="/styles">
+			<style name="smxui_assembly_item_part_stack">
+				<style_entry name="background_color" value="[darkGrey]"/>
+				<style_entry name="highlight_color" value="[mediumGrey]"/>
+				<style_entry name="width" value="320"/>
+				<style_entry name="height" value="54"/>
+				<style_entry name="hover_icon_grow" value="1.5"/>
+				<style_entry name="on_press" value="true"/>
+				<style_entry name="sound_volume" value="0.75"/>
+				<style_entry name="pickup_sound" value="[pickup_click]"/>
+				<style_entry name="place_sound" value="[place_click]"/>
+			</style>
+		</append>
+
+</SMXcore>

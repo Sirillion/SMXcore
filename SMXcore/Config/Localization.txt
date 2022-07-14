@@ -1,0 +1,13 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+
+smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
+smxCurrentVersionNumber,UI,Menu,x,,r20.rc9
+
+xuiChangeLogHeaderHUD,UI,Menu,x,,SMXhud - Not Installed
+xuiChangeLogHUD,UI,Menu,x,,[AF1E19][-]  \n[AF1E19][-]  [AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n,,,,,
+
+xuiChangeLogHeaderMENU,UI,Menu,x,,SMXmenu - Not Installed
+xuiChangeLogMENU,UI,Menu,x,,[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n,,,,,
+
+xuiChangeLogHeaderUI,UI,Menu,x,,SMXui - Not Installed
+xuiChangeLogUI,UI,Menu,x,,[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n,,,,,

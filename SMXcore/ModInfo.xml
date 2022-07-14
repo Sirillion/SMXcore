@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xml>
+	<ModInfo>
+		<Name value="SMXcore" />
+		<Description value="A library of assets for SMX branded mods and modlets. The CORE modlet." />
+		<Author value="Sirillion" />
+		<Version value="r20.rc9" />
+		<Website value="http://www.nexusmods.com/7daystodie/mods/22/?" />
+	</ModInfo>
+</xml>
