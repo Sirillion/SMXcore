@@ -1,7 +1,7 @@
-# SMXlib - THE CORE MODLET
-> Verified to work with: A20.3B3
+# SMXcore - THE CORE MODLET
+> Verified to work with: A20.5B2
 
-> Dependencies: None.
+> Dependencies: Quartz by Laydor. (Included)
 
 > Compatibility: This is an asset library, it can overwrite asset references from other mods that change vanilla icons and sprites.
 
