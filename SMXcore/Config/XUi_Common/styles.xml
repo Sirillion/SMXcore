@@ -4,9 +4,9 @@
 
 		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
 
-		// VERSION:			r20.rc9
+		// VERSION:			r20.rc10
 
-		// BUILD:			A20.5
+		// BUILD:			A20.6
 
 		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
 							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
@@ -83,6 +83,7 @@
 			<style_entry name="smxcore_element_button_background"				value="64,64,64" />										<!-- This entry sets the color for: GLOBAL Element primary button backgrounds (deactivated) -->
 			<style_entry name="smxcore_element_button_foreground"				value="175,30,25" />									<!-- This entry sets the color for: GLOBAL Element primary button foregrounds (active) -->
 			<style_entry name="smxcore_element_button_hover"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary button hover (mouseover) -->
+			<style_entry name="smxcore_element_button_selected"					value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element primary button selection (clicked) -->
 
 			<style_entry name="smxcore_element_hover"							value="255,255,255" />									<!-- This entry sets the color for: GLOBAL Element mouseover/hover -->
 
@@ -189,6 +190,7 @@
 			<style_entry name="smxhud_element_button_background"				value="[smxcore_element_button_background]" />			<!-- This entry sets the color for: HUD Element primary button backgrounds (deactivated) -->
 			<style_entry name="smxhud_element_button_foreground"				value="[smxcore_element_button_foreground]" />			<!-- This entry sets the color for: HUD Element primary button foregrounds (active) -->
 			<style_entry name="smxhud_element_button_hover"						value="[smxcore_element_button_hover]" />				<!-- This entry sets the color for: HUD Element primary button hover (mouseover) -->
+			<style_entry name="smxhud_element_button_selected"					value="[smxcore_element_button_selected]" />			<!-- This entry sets the color for: HUD Element primary button selection (clicked) -->
 			
 			<style_entry name="smxhud_element_hover"							value="[smxcore_element_hover]" />						<!-- This entry sets the color for: HUD Element mouseover/hover -->
 
@@ -273,6 +275,7 @@
 			<style_entry name="smxui_element_button_background"					value="[smxcore_element_button_background]" />			<!-- This entry sets the color for: UI Element primary button backgrounds (deactivated) -->
 			<style_entry name="smxui_element_button_foreground"					value="[smxcore_element_button_foreground]" />			<!-- This entry sets the color for: UI Element primary button foregrounds (active) -->
 			<style_entry name="smxui_element_button_hover"						value="[smxcore_element_button_hover]" />				<!-- This entry sets the color for: UI Element primary button hover (mouseover) -->
+			<style_entry name="smxui_element_button_selected"					value="[smxcore_element_button_selected]" />			<!-- This entry sets the color for: UI Element primary button selection (clicked) -->
 
 			<style_entry name="smxui_element_hover"								value="[smxcore_element_hover]" />						<!-- This entry sets the color for: UI Element mouseover/hover -->
 
@@ -349,6 +352,7 @@
 			<style_entry name="smxmenu_element_button_background"				value="[smxcore_element_button_background]" />			<!-- This entry sets the color for: MENU Element primary button backgrounds (deactivated) -->
 			<style_entry name="smxmenu_element_button_foreground"				value="[smxcore_element_button_foreground]" />			<!-- This entry sets the color for: MENU Element primary button foregrounds (active) -->
 			<style_entry name="smxmenu_element_button_hover"					value="[smxcore_element_button_hover]" />				<!-- This entry sets the color for: MENU Element primary button hover (mouseover) -->
+			<style_entry name="smxmenu_element_button_selected"					value="[smxcore_element_button_selected]" />			<!-- This entry sets the color for: MENU Element primary button selection (clicked) -->
 
 			<style_entry name="smxmenu_element_hover"							value="[smxcore_element_hover]" />						<!-- This entry sets the color for: MENU Element mouseover/hover -->
 
@@ -402,7 +406,7 @@
 			<style name="smxcore_window_title" 						type="label">
 				<style_entry name="font_size"						value="36" />
 				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
-				<style_entry name="crispness"						value="Always" />
+				<style_entry name="crispness"						value="OnDesktop" />
 				<style_entry name="effect" 							value="outline" />
 				<style_entry name="effect_distance"					value="1,1" />
 				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
@@ -416,7 +420,7 @@
 			<style name="smxcore_label_normal"						type="label">
 				<style_entry name="font_size"						value="22" />
 				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
-				<style_entry name="crispness"						value="Always" />
+				<style_entry name="crispness"						value="OnDesktop" />
 				<style_entry name="effect" 							value="outline" />
 				<style_entry name="effect_distance"					value="1,1" />
 				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
@@ -428,7 +432,7 @@
 				<style_entry name="color"							value="[smxcore_element_labelcolor_3]" />
 				<style_entry name="font_face"						value="ReferenceFont" />
 				<style_entry name="font_size"						value="28" />
-				<style_entry name="crispness"						value="Always" />
+				<style_entry name="crispness"						value="OnDesktop" />
 				<style_entry name="effect" 							value="outline" />
 				<style_entry name="effect_distance"					value="1,1" />
 				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
@@ -500,39 +504,6 @@
 				<style_entry name="sound_volume" 					value="0.75"/>
 				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
 				<style_entry name="place_sound" 					value="[place_click]"/>
-			</style>
-		</append>
-
-
-
-
-
-
-<!-- \/\/\/ PENDING \/\/\/ -->
-
-		<append xpath="/styles">
-			<style name="smxui_item_preview_icon" 					type="sprite">
-				<style_entry name="depth" 							value="3" />
-				<style_entry name="pos" 							value="116,-77" />
-				<style_entry name="size" 							value="110,110" />
-				<style_entry name="atlas" 							value="ItemIconAtlas" />
-				<style_entry name="pivot" 							value="center" />
-				<style_entry name="foregroundlayer" 				value="true" />
-			</style>
-		</append>
-
-
-		<append xpath="/styles">
-			<style name="smxui_assembly_item_part_stack">
-				<style_entry name="background_color" value="[darkGrey]"/>
-				<style_entry name="highlight_color" value="[mediumGrey]"/>
-				<style_entry name="width" value="320"/>
-				<style_entry name="height" value="54"/>
-				<style_entry name="hover_icon_grow" value="1.5"/>
-				<style_entry name="on_press" value="true"/>
-				<style_entry name="sound_volume" value="0.75"/>
-				<style_entry name="pickup_sound" value="[pickup_click]"/>
-				<style_entry name="place_sound" value="[place_click]"/>
 			</style>
 		</append>
 
