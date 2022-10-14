@@ -96,7 +96,6 @@ namespace SMXcore
                 {
                     Vehicle = (EntityVehicle)LocalPlayer.AttachedToEntity;
                     IsDirty = true;
-                    xui.CollectedItemList.SetYOffset(100);
                 }
                 else if (Vehicle != null && LocalPlayer.AttachedToEntity == null)
                 {
