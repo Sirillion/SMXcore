@@ -1,4 +1,5 @@
-﻿using SMXcore.HarmonyPatches;
+﻿using Quartz;
+using SMXcore.HarmonyPatches;
 using System.Collections.Generic;
 
 namespace SMXcore
@@ -7,29 +8,21 @@ namespace SMXcore
     {
         private List<ProgressionValue> skills = new List<ProgressionValue>();
 
-        private List<ProgressionValue> currentBooks = new List<ProgressionValue>();
+        private List<ProgressionValue> currentSkills = new List<ProgressionValue>();
 
-        private List<ProgressionValue> currentPerks = new List<ProgressionValue>();
-
-        private List<ProgressionValue> currentAttributes = new List<ProgressionValue>();
-
-        private XUiC_SkillEntry[] bookEntries;
-
-        private XUiC_SkillEntry[] perkEntries;
-
-        private XUiC_SkillEntry[] attributeEntries;
+        private XUiC_SkillEntry[] skillEntries;
 
         private string filterText = "";
 
         private string selectName;
 
-        private XUiC_SkillEntry selectedEntry;
+        private XUiC_SkillSubEntry selectedEntry;
 
         private XUiC_TextInput txtInput;
 
         private string category = "";
 
-        public XUiC_SkillEntry SelectedEntry
+        public XUiC_SkillSubEntry SelectedEntry
         {
             get
             {
@@ -89,28 +82,26 @@ namespace SMXcore
                 txtInput.Text = "";
             }
 
-            XUiController grid = GetChildById("attributes");
-            attributeEntries = grid?.GetChildrenByType<XUiC_SkillEntry>();
+            XUiController grid = GetChildById("skills");
+            skillEntries = grid?.GetChildrenByType<XUiC_SkillEntry>();
 
-            foreach (XUiC_SkillEntry entry in attributeEntries)
+            XUiC_SkillSubEntry[] subEntries = grid?.GetChildrenByType<XUiC_SkillSubEntry>();
+            foreach (XUiC_SkillSubEntry entry in subEntries)
             {
                 entry.OnPress += XUiC_SkillEntry_OnPress;
             }
 
-            grid = GetChildById("perks");
-            perkEntries = grid?.GetChildrenByType<XUiC_SkillEntry>();
+        }
 
-            foreach (XUiC_SkillEntry entry in perkEntries)
+        public override bool GetBindingValue(ref string value, string bindingName)
+        {
+            switch (bindingName)
             {
-                entry.OnPress += XUiC_SkillEntry_OnPress;
-            }
-
-            grid = GetChildById("books");
-            bookEntries = grid?.GetChildrenByType<XUiC_SkillEntry>();
-
-            foreach (XUiC_SkillEntry entry in bookEntries)
-            {
-                entry.OnPress += XUiC_SkillEntry_OnPress;
+                case "smxskilllistrows":
+                    value = GetSkillListRowCount().ToString();
+                    return true;
+                default:
+                    return base.GetBindingValue(ref value, bindingName);
             }
         }
 
@@ -139,7 +130,7 @@ namespace SMXcore
 
         internal int GetActiveCount()
         {
-            return currentBooks.Count;
+            return currentSkills.Count;
         }
 
         public void SetFilterText(string _text)
@@ -155,19 +146,12 @@ namespace SMXcore
 
         public void SelectFirstEntry()
         {
-            if (IsBook)
-            {
-                SelectedEntry = bookEntries[0];
-            } 
-            else
-            {
-                SelectedEntry = attributeEntries[0];
-            }
+            SelectedEntry = skillEntries[0].GetFirstEntry();
         }
 
         private void XUiC_SkillEntry_OnPress(XUiController _sender, int _mouseButton)
         {
-            XUiC_SkillEntry xUiC_SkillEntry = (XUiC_SkillEntry)_sender;
+            XUiC_SkillSubEntry xUiC_SkillEntry = (XUiC_SkillSubEntry)_sender;
             if (xUiC_SkillEntry.Skill != null && (xUiC_SkillEntry.Skill.ProgressionClass.Type != ProgressionType.Skill || IsBook))
             {
                 SelectedEntry = xUiC_SkillEntry;
@@ -195,21 +179,26 @@ namespace SMXcore
                     CategoryList.SetCategory(Category);
                 }
             }
-            else if (Category != "attbooks")
-            {
-                CategoryList.SetCategory("");
-            }
             else
             {
-                CategoryList.SetCategory(Category);
+                if (Category != "attbooks")
+                {
+                    CategoryList.CurrentCategory = null;
+                    Category = "";
+                    RefreshSkillList();
+                    SelectFirstEntry();
+                    WindowGroup.Controller.IsDirty = true;
+                }
+                else
+                {
+                    CategoryList.SetCategory(Category);
+                }
             }
         }
 
         private void UpdateFilteredList()
         {
-            currentAttributes.Clear();
-            currentPerks.Clear();
-            currentBooks.Clear();
+            currentSkills.Clear();
             string category = Category.Trim();
             foreach (ProgressionValue skill in skills)
             {
@@ -226,27 +215,22 @@ namespace SMXcore
                     continue;
                 }
 
-
                 if (IsBook)
                 {
                     if(progressionClass.IsBook && !progressionClass.IsPerk && !progressionClass.IsAttribute)
                     {
-                        currentBooks.Add(skill);
+                        currentSkills.Add(skill);
                     }
                 }
                 else
                 {
-                    if(category.EqualsCaseInsensitive(progressionClass.Name) && progressionClass.IsAttribute)
+                    if((category == "" && !progressionClass.IsSkill && !progressionClass.IsBook)
+                        || (category.EqualsCaseInsensitive(progressionClass.Name) && progressionClass.IsAttribute) 
+                        || (progressionClass.Parent != null && progressionClass.Parent != progressionClass && progressionClass.IsPerk && category.EqualsCaseInsensitive(progressionClass.Parent.Parent.Name)))
                     {
-                        currentAttributes.Add(skill);
-                    }
-
-                    if(progressionClass.Parent != null && progressionClass.Parent != progressionClass && progressionClass.IsPerk && category.EqualsCaseInsensitive(progressionClass.Parent.Parent.Name))
-                    {
-                        currentPerks.Add(skill);
+                        currentSkills.Add(skill);
                     }
                 }
-
 
                 //if (progressionClass != null 
                 //    && ((!IsBook && !progressionClass.IsBook) || (IsBook && !progressionClass.IsPerk && !progressionClass.IsAttribute && progressionClass.IsBook)) 
@@ -254,59 +238,26 @@ namespace SMXcore
                 //    && (progressionClass.NameKey.ContainsCaseInsensitive(filterText) || Localization.Get(progressionClass.NameKey).ContainsCaseInsensitive(filterText)) 
                 //    && !progressionClass.Name.EqualsCaseInsensitive("attBooks") 
                 //    && (filterText == "" || !progressionClass.IsSkill || progressionClass.IsBook) 
-                //    && (category == "" 
-                //        || category.EqualsCaseInsensitive(progressionClass.Name) 
-                //        || (progressionClass.Parent != null && progressionClass.Parent != progressionClass  && progressionClass.IsSkill && category.EqualsCaseInsensitive(progressionClass.Parent.Name)) 
-                //        || (progressionClass.Parent != null && progressionClass.Parent != progressionClass  && progressionClass.IsPerk  && category.EqualsCaseInsensitive(progressionClass.Parent.Parent.Name))))
+                //    && (category == ""
+                //      || category.EqualsCaseInsensitive(progressionClass.Name)
+                //      || (progressionClass.Parent != null && progressionClass.Parent != progressionClass  && progressionClass.IsSkill && category.EqualsCaseInsensitive(progressionClass.Parent.Name)) 
+                //      || (progressionClass.Parent != null && progressionClass.Parent != progressionClass  && progressionClass.IsPerk  && category.EqualsCaseInsensitive(progressionClass.Parent.Parent.Name))))
                 //{
                 //    currentBooks.Add(skill);
                 //}
             }
 
-            currentBooks.Sort(ProgressionClass.ListSortOrderComparer.Instance);
-            currentAttributes.Sort(ProgressionClass.ListSortOrderComparer.Instance);
-            currentPerks.Sort(ProgressionClass.ListSortOrderComparer.Instance);
-            //if (filterText == "")
-            //{
-            //    for (int i = 0; i < currentBooks.Count; i++)
-            //    {
-            //        if (currentBooks[i].ProgressionClass.IsAttribute)
-            //        {
-            //            for (; i % bookEntries.Length != 0; i++)
-            //            {
-            //                currentBooks.Insert(i, null);
-            //            }
-            //        }
-            //    }
-            //}
+            currentSkills.Sort(ProgressionClass.ListSortOrderComparer.Instance);
         }
 
         private void RefreshSkillListEntries()
         {
             SelectedEntry = null;
-
-            if (!IsBook)
-            {
-                //Populate the Attributes and the Perks if not displaying books
-                PopulateSkillEntry(attributeEntries, currentAttributes, false);
-                PopulateSkillEntry(perkEntries, currentPerks, false);
-            }
-            else
-            {
-                //Populates the Skill Books
-                PopulateSkillEntry(bookEntries, currentBooks, true);
-            }
+            PopulateSkillEntry(skillEntries, currentSkills, IsBook);
 
             if (SelectedEntry == null)
             {
-                if (!IsBook)
-                {
-                    SelectedEntry = attributeEntries[0];
-                }
-                else
-                {
-                    SelectedEntry = bookEntries[0];
-                }
+                SelectedEntry = skillEntries[0].GetFirstEntry();
                 ((XUiC_SkillWindowGroup)WindowGroup.Controller).CurrentSkill = SelectedEntry.Skill;
             }
 
@@ -325,25 +276,51 @@ namespace SMXcore
 
         private void PopulateSkillEntry(XUiC_SkillEntry[] entries, List<ProgressionValue> progressionValues, bool isBook)
         {
+            int skillIndex = 0;
             for (int i = 0; i < entries.Length; i++)
             {
                 XUiC_SkillEntry entry = entries[i];
-                if (i < progressionValues.Count && progressionValues[i] != null && Progression.ProgressionClasses.ContainsKey(progressionValues[i].Name))
+                if (skillIndex < progressionValues.Count && progressionValues[skillIndex] != null && Progression.ProgressionClasses.ContainsKey(progressionValues[skillIndex].Name))
                 {
-                    entry.Skill = progressionValues[i];
-                    entry.IsBook = isBook;
-                    entry.ViewComponent.Enabled = true;
-
-                    if ((!string.IsNullOrEmpty(selectName) && selectName == entry.Skill.ProgressionClass.Name)
-                        || (xui.selectedSkill != null && entry.Skill.Name == xui.selectedSkill.Name))
+                    ProgressionValue skill = progressionValues[skillIndex];
+                    ProgressionValue skill2 = null;
+                    if (skill.ProgressionClass.IsAttribute)
                     {
-                        SelectedEntry = entry;
+                        entry.SetAttributeEntry(skill);
+                        skillIndex++;
                     }
+                    else
+                    {
+                        skillIndex++;
+                        if(skillIndex < progressionValues.Count && progressionValues[skillIndex] != null 
+                            && Progression.ProgressionClasses.ContainsKey(progressionValues[skillIndex].Name)
+                            && !progressionValues[skillIndex].ProgressionClass.IsAttribute)
+                        {
+                           skill2 = progressionValues[skillIndex];
+                           skillIndex++;
+                        }
+
+                        entry.SetSkillEntries(skill, skill2, isBook);
+                    }
+
+                    if(!string.IsNullOrEmpty(selectName)) 
+                    {
+                        if (skill.ProgressionClass.Name == selectName)
+                        {
+                            SelectedEntry = entry.GetFirstEntry();
+                            ((XUiC_SkillWindowGroup)WindowGroup.Controller).CurrentSkill = SelectedEntry.Skill;
+                        }
+                        else if (skill2 != null && skill2.ProgressionClass.Name == selectName)
+                        {
+                            SelectedEntry = entry.GetSecondEntry();
+                            ((XUiC_SkillWindowGroup)WindowGroup.Controller).CurrentSkill = SelectedEntry.Skill;
+                        }
+                    }
+                   
                 }
                 else
                 {
-                    entry.Skill = null;
-                    entry.ViewComponent.Enabled = false;
+                    entry.ClearEntries();
                 }
             }
         }
@@ -360,6 +337,33 @@ namespace SMXcore
         {
             base.OnClose();
             selectName = "";
+        }
+
+        private int GetSkillListRowCount()
+        {
+            int skillCount = 0;
+            int bookCount = 0;
+
+            foreach (ProgressionClass progressionClass in Progression.ProgressionClasses.Values)
+            {
+                if (progressionClass == null || progressionClass.Name == null || progressionClass.Name.EqualsCaseInsensitive("attBooks"))
+                {
+                    continue;
+                }
+
+                if (progressionClass.IsBook && !progressionClass.IsPerk && !progressionClass.IsAttribute)
+                {
+                    bookCount++;
+                }
+                else if ((!progressionClass.IsSkill && !progressionClass.IsBook)
+                        && (progressionClass.IsAttribute || (progressionClass.Parent != null && progressionClass.Parent != progressionClass && progressionClass.IsPerk)))
+                {
+                    skillCount++;
+                }
+            }
+            int rowCount = (MathUtils.Max(skillCount, bookCount) / 2) + 1;
+
+            return rowCount;
         }
     }
 }

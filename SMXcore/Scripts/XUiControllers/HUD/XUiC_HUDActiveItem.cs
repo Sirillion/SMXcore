@@ -46,6 +46,7 @@ namespace SMXcore
             if (localPlayer == null && XUi.IsGameRunning())
             {
                 localPlayer = xui.playerUI.entityPlayer;
+                IsDirty = true;
             }
 
             if (currentSlotIndex != xui.PlayerInventory.Toolbelt.GetFocusedItemIdx())
@@ -54,7 +55,7 @@ namespace SMXcore
                 IsDirty = true;
             }
 
-            if (HasChanged() || IsDirty)
+            if (IsDirty || HasChanged())
             {
                 SetupActiveItemEntry();
                 updateActiveItemAmmo();
@@ -67,7 +68,6 @@ namespace SMXcore
             base.OnOpen();
             xui.PlayerInventory.OnBackpackItemsChanged += PlayerInventory_OnBackpackItemsChanged;
             xui.PlayerInventory.OnToolbeltItemsChanged += PlayerInventory_OnToolbeltItemsChanged;
-            RefreshBindings(true);
             IsDirty = true;
         }
 
@@ -226,6 +226,11 @@ namespace SMXcore
                 }
                 else if (itemValue.ItemClass.IsDynamicMelee() || itemValue.ItemClass.HasAnyTags(FastTags.Parse("tool")))
                 {
+                    if (itemValue.ItemClass.GetIconName() == "missingIcon")
+                    {
+                        return;
+                    }
+
                     itemAction = itemValue.ItemClass.Actions[0];
                     displayItemClass = itemValue.ItemClass;
 

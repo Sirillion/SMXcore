@@ -1,4 +1,5 @@
 ﻿using GUI_2;
+using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,8 +45,8 @@ namespace SMXcore
             skillSkillInfoWindow = GetChildByType<XUiC_SkillSkillInfoWindow>();
             skillPerkInfoWindow = GetChildByType<XUiC_SkillPerkInfoWindow>();
             skillBookInfoWindow = GetChildByType<XUiC_SkillBookInfoWindow>();
-            XUiC_SkillEntry[] skillEntries = GetChildrenByType<XUiC_SkillEntry>();
-            foreach(XUiC_SkillEntry entry in skillEntries)
+            XUiC_SkillSubEntry[] skillEntries = GetChildrenByType<XUiC_SkillSubEntry>();
+            foreach(XUiC_SkillSubEntry entry in skillEntries)
             {
                 entry.OnPress += XUiC_SkillEntry_OnPress;
             }
@@ -63,7 +64,6 @@ namespace SMXcore
         {
             skillList.Category = _categoryEntry.CategoryName;
             skillList.RefreshSkillList();
-            skillList.SelectFirstEntry();
             IsDirty = true;
         }
 
@@ -72,7 +72,6 @@ namespace SMXcore
             skillList.Category = _categoryEntry.CategoryName;
             skillList.SetFilterText("");
             skillList.RefreshSkillList();
-            skillList.SelectFirstEntry();
             IsDirty = true;
         }
 
@@ -95,7 +94,7 @@ namespace SMXcore
                 return;
             }
 
-            CurrentSkill = base.xui.selectedSkill;
+            CurrentSkill = xui.selectedSkill;
             skillAttributeInfoWindow.SkillChanged();
             skillSkillInfoWindow.IsDirty = true;
             skillPerkInfoWindow.SkillChanged();
@@ -137,7 +136,6 @@ namespace SMXcore
 
             skillList.Category = categoryList.CurrentCategory.CategoryName;
             skillList.RefreshSkillList();
-            skillList.SelectFirstEntry();
             IsDirty = true;
         }
     }
