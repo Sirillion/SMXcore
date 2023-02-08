@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+//	Terms of Use: You can use this file as you want as long as this line and the credit lines are not removed or changed other than adding to them!
+//	Credits: The Fun Pimps.
+//	Tweaked: Laydor
+
+//	Changes the SkillListWindow XUiController to use the SMX SkillEntry and SkillSubEntry XUiControllers. Also replaces the CategoryList with SkillCategoryList
 
 namespace SMXcore
 {
@@ -22,7 +23,7 @@ namespace SMXcore
 
         private string booksTitle = "";
 
-        private XUiC_CategoryList categoryList;
+        private XUiC_SkillCategoryList categoryList;
 
         private XUiC_SkillList skillList;
 
@@ -38,10 +39,10 @@ namespace SMXcore
             skillsTitle = Localization.Get("xuiSkills");
             booksTitle = Localization.Get("lblCategoryBooks");
             skillList = GetChildByType<XUiC_SkillList>();
-            XUiController childByType = GetChildByType<XUiC_CategoryList>();
+            XUiController childByType = GetChildByType<XUiC_SkillCategoryList>();
             if (childByType != null)
             {
-                categoryList = (XUiC_CategoryList)childByType;
+                categoryList = (XUiC_SkillCategoryList)childByType;
                 categoryList.CategoryChanged += CategoryList_CategoryChanged;
             }
 
@@ -49,7 +50,7 @@ namespace SMXcore
             skillList.SkillListWindow = this;
         }
 
-        private void CategoryList_CategoryChanged(XUiC_CategoryEntry _categoryEntry)
+        private void CategoryList_CategoryChanged(XUiC_SkillCategoryEntry _categoryEntry)
         {
             categoryName = _categoryEntry.CategoryDisplayName;
             categoryIcon = _categoryEntry.SpriteName;

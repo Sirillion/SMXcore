@@ -115,6 +115,8 @@
     <Compile Include="Scripts\XUiControllers\Map\XUiC_MapPopupList.cs" />
     <Compile Include="Scripts\XUiControllers\Map\XUiC_MapSubPopupEntry.cs" />
     <Compile Include="Scripts\XUiControllers\Map\XUiC_MapSubPopupList.cs" />
+    <Compile Include="Scripts\XUiControllers\SkillWindowGroup\Categories\XUiC_SkillCategoryEntry.cs" />
+    <Compile Include="Scripts\XUiControllers\SkillWindowGroup\Categories\XUiC_SkillCategoryList.cs" />
     <Compile Include="Scripts\XUiControllers\SkillWindowGroup\SkillLevels\XUiC_SkillAttributeLevel.cs" />
     <Compile Include="Scripts\XUiControllers\SkillWindowGroup\SkillLevels\XUiC_SkillBookLevel.cs" />
     <Compile Include="Scripts\XUiControllers\SkillWindowGroup\SkillLevels\XUiC_SkillPerkLevel.cs" />

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//	Terms of Use: You can use this file as you want as long as this line and the credit lines are not removed or changed other than adding to them!
+//	Credits: Laydor.
+
+//	A container controller for SkillSubEntries to set which ones should be visible or not at a given time
 
 namespace SMXcore
 {

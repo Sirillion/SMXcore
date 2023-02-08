@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+//	Terms of Use: You can use this file as you want as long as this line and the credit lines are not removed or changed other than adding to them!
+//	Credits: The Fun Pimps.
+//	Tweaked: Laydor
+
+//	Changes a bit of the Behaviour of the SkillEntry
+
 namespace SMXcore
 {
     public class XUiC_SkillSubEntry : XUiController

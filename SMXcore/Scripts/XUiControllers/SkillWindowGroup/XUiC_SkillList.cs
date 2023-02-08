@@ -1,6 +1,11 @@
-﻿using Quartz;
-using SMXcore.HarmonyPatches;
+﻿using SMXcore.HarmonyPatches;
 using System.Collections.Generic;
+
+//	Terms of Use: You can use this file as you want as long as this line and the credit lines are not removed or changed other than adding to them!
+//	Credits: The Fun Pimps.
+//	Tweaked: Laydor
+
+//	Changes the SkillWindowGroup XUiController to use the SMX SkillEntry and SkillSubEntry XUiControllers. Also replaces the CategoryList with SkillCategoryList
 
 namespace SMXcore
 {
@@ -45,7 +50,7 @@ namespace SMXcore
             }
         }
 
-        public XUiC_CategoryList CategoryList { get; set; }
+        public XUiC_SkillCategoryList CategoryList { get; set; }
 
         public XUiC_SkillListWindow SkillListWindow { get; set; }
 

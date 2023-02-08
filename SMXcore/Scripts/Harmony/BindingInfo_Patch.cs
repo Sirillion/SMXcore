@@ -18,7 +18,7 @@ namespace SMXcore.HarmonyPatches
         {
             //Refreshes the bindingInfo if its sourceText matches a set text.
             //This allows XUiControllers to set the size of the grid on creation so the right amount of rows or columns are created
-            if (_sourceText.Contains("smxskilllistrows"))
+            if (_sourceText.Contains("smxskilllistrows") || _sourceText.Contains("smxskillcategoryrows"))
             {
                 __instance.RefreshValue(true);
             }
