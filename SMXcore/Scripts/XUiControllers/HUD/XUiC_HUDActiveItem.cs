@@ -27,8 +27,8 @@ namespace SMXcore
 
         private EntityPlayer localPlayer;
 
-        private readonly CachedStringFormatter<int> statcurrentFormatterInt = new CachedStringFormatter<int>((int _i) => _i.ToString());
-        private readonly CachedStringFormatter<int> currentPaintAmmoFormatter = new CachedStringFormatter<int>((int _i) => _i.ToString());
+        private readonly CachedStringFormatter<int> statcurrentFormatterInt = new CachedStringFormatterInt();
+        private readonly CachedStringFormatter<int> currentPaintAmmoFormatter = new CachedStringFormatterInt();
         private readonly CachedStringFormatter<int, int> statcurrentWMaxFormatterAOfB = new CachedStringFormatter<int, int>((int _i, int _i1) => $"{_i}/{_i1}");
         private readonly CachedStringFormatterXuiRgbaColor staticoncolorFormatter = new CachedStringFormatterXuiRgbaColor();
         private readonly CachedStringFormatter<int> levelFormatter = new CachedStringFormatter<int>((int _i) => _i.ToString("+0;-#"));

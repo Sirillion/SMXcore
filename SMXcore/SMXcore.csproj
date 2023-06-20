@@ -83,10 +83,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Scripts\Dependencies\DependencyInfo.cs" />
-    <Compile Include="Scripts\Dependencies\DependencyInfoLoader.cs" />
-    <Compile Include="Scripts\Dependencies\ModDependent.cs" />
-    <Compile Include="Scripts\Dependencies\ModDependencyManager.cs" />
     <Compile Include="Scripts\Harmony\BindingInfo_Patch.cs" />
     <Compile Include="Scripts\Harmony\ItemActionEntryShowPerk_Patch.cs" />
     <Compile Include="Scripts\Harmony\SMXHarmonyPatcher.cs" />
@@ -94,7 +90,6 @@
     <Compile Include="Scripts\Harmony\XUiC_MapWaypointListEntry_Patch.cs" />
     <Compile Include="Scripts\Harmony\XUiC_PartList_Patch.cs" />
     <Compile Include="Scripts\ModApis\SMXcoreGears.cs" />
-    <Compile Include="Scripts\SMXDependencyChecker.cs" />
     <Compile Include="Scripts\ModApis\SMXcoreVanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\XUiControllers\HUD\XUiC_ActiveBuffEntry.cs" />

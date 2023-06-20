@@ -334,7 +334,7 @@ namespace SMXcore
         {
             base.OnOpen();
             skills.Clear();
-            xui.playerUI.entityPlayer.Progression.ProgressionValues.Dict.CopyValuesTo(skills);
+            xui.playerUI.entityPlayer.Progression.GetDict().CopyValuesTo(skills);
             RefreshSkillList();
         }
 

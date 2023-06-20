@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SMXcore
 {
-    public class XUiC_MapInvitesListEntry : MapInvitesListEntry
+    public class XUiC_MapInvitesListEntry : Quartz.XUiC_MapInvitesListEntry
     {
 
         public override void Init()

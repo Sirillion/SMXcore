@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static BlockPlacement;
-
+﻿
 namespace SMXcore
 {
     public class XUiC_TargetBar : global::XUiC_TargetBar
@@ -15,6 +9,7 @@ namespace SMXcore
         {
             viewComponent.IsVisible = (!(xui.playerUI.entityPlayer.AttachedToEntity != null) || !(xui.playerUI.entityPlayer.AttachedToEntity is EntityVehicle)) && !xui.playerUI.entityPlayer.IsDead();
             base.Update(_dt);
+
         }
 
         public override bool GetBindingValue(ref string value, string bindingName)

@@ -4,9 +4,9 @@
 
 		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
 
-		// VERSION:			r20.rc13
+		// VERSION:			21.0.317.0
 
-		// BUILD:			A20.6
+		// BUILD:			A21.0
 
 		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
 							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
@@ -422,6 +422,17 @@
 				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
 				<style_entry name="crispness"						value="OnDesktop" />
 				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smx_label_outline"							type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
+				<style_entry name="crispness"						value="OnDesktop" />
+				<style_entry name="effect" 							value="Outline8" />
 				<style_entry name="effect_distance"					value="1,1" />
 				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
 			</style>

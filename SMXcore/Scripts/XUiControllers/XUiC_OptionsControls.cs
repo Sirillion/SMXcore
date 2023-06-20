@@ -292,9 +292,9 @@ namespace SMXcore
 
         private void updateOptions()
         {
-            comboLookSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsMouseSensitivity);
-            comboZoomSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsZoomMouseSensitivity);
-            comboVehicleSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsVehicleMouseSensitivity);
+            //comboLookSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsMouseSensitivity);
+            //comboZoomSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsZoomMouseSensitivity);
+            //comboVehicleSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsVehicleMouseSensitivity);
             comboWeaponAiming.Value = GamePrefs.GetBool(EnumGamePrefs.OptionsWeaponAiming);
             comboInvertMouseLookY.Value = GamePrefs.GetBool(EnumGamePrefs.OptionsInvertMouse);
             comboAllowController.Value = GamePrefs.GetBool(EnumGamePrefs.OptionsAllowController);
@@ -367,7 +367,7 @@ namespace SMXcore
             {
                 tabs.SetTabCaption(num, Localization.Get(item.Key.tabNameKey));
                 Transform uiTransform = tabs.GetTabRect(num).Controller.GetChildById("controlsGrid").ViewComponent.UiTransform;
-                ScrollView scrollView = tabs.GetTabRect(num).Controller.GetChildById("scrollview").ViewComponent as ScrollView;
+                XUiV_ScrollView scrollView = tabs.GetTabRect(num).Controller.GetChildById("scrollview").ViewComponent as XUiV_ScrollView;
                 int num2 = 0;
                 foreach (KeyValuePair<PlayerActionData.ActionGroup, List<PlayerAction>> item2 in item.Value)
                 {
@@ -404,7 +404,7 @@ namespace SMXcore
             }
         }
 
-        private void createHeader(Transform _parent, PlayerActionData.ActionGroup _group, ScrollView scrollView)
+        private void createHeader(Transform _parent, PlayerActionData.ActionGroup _group, XUiV_ScrollView scrollView)
         {
             GameObject gameObject = UnityEngine.Object.Instantiate(headerTemplate, _parent);
             if (_group == null)
@@ -430,7 +430,7 @@ namespace SMXcore
             }
         }
 
-        private void createControl(Transform _parent, PlayerAction _action, int _controlNum, ScrollView scrollView)
+        private void createControl(Transform _parent, PlayerAction _action, int _controlNum, XUiV_ScrollView scrollView)
         {
             PlayerActionData.ActionUserData actionUserData = (PlayerActionData.ActionUserData)_action.UserData;
             GameObject gameObject = UnityEngine.Object.Instantiate(controlTemplate, _parent);
@@ -481,7 +481,7 @@ namespace SMXcore
                     UIEventListener.Get(transform2.gameObject).onScroll += scrollView.OnScroll;
                     UIEventListener.Get(transform3.gameObject).onScroll += scrollView.OnScroll;
 
-                }
+                } 
             }
             else
             {
@@ -526,9 +526,9 @@ namespace SMXcore
 
         private void applyChanges()
         {
-            GamePrefs.Set(EnumGamePrefs.OptionsMouseSensitivity, (float)comboLookSensitivity.Value);
-            GamePrefs.Set(EnumGamePrefs.OptionsZoomMouseSensitivity, (float)comboZoomSensitivity.Value);
-            GamePrefs.Set(EnumGamePrefs.OptionsVehicleMouseSensitivity, (float)comboVehicleSensitivity.Value);
+            //GamePrefs.Set(EnumGamePrefs.OptionsMouseSensitivity, (float)comboLookSensitivity.Value);
+            //GamePrefs.Set(EnumGamePrefs.OptionsZoomMouseSensitivity, (float)comboZoomSensitivity.Value);
+            //GamePrefs.Set(EnumGamePrefs.OptionsVehicleMouseSensitivity, (float)comboVehicleSensitivity.Value);
             GamePrefs.Set(EnumGamePrefs.OptionsWeaponAiming, comboWeaponAiming.Value);
             GamePrefs.Set(EnumGamePrefs.OptionsInvertMouse, comboInvertMouseLookY.Value);
             GamePrefs.Set(EnumGamePrefs.OptionsAllowController, comboAllowController.Value);
