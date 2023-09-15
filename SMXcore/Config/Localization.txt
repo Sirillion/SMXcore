@@ -1,7 +1,7 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,21.0.317.0
+smxCurrentVersionNumber,UI,Menu,x,,21.1.16.0
 
 xuiChangeLogHeaderHUD,UI,Menu,x,,SMXhud - Not Installed
 xuiChangeLogHUD,UI,Menu,x,,[AF1E19][-]  \n[AF1E19][-]  [AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n[AF1E19][-]  \n,,,,,

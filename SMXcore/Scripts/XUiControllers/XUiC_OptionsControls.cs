@@ -4,9 +4,6 @@ using Quartz.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace SMXcore
@@ -53,53 +50,37 @@ namespace SMXcore
         private XUiC_TabSelector tabs;
 
         private XUiC_ComboBoxFloat comboLookSensitivity;
-
         private XUiC_ComboBoxFloat comboZoomSensitivity;
-
+        private XUiC_ComboBoxFloat comboZoomAccel;
         private XUiC_ComboBoxFloat comboVehicleSensitivity;
-
         private XUiC_ComboBoxBool comboWeaponAiming;
-
         private XUiC_ComboBoxBool comboInvertMouseLookY;
-
         private XUiC_ComboBoxBool comboAllowController;
-
         private XUiC_ComboBoxBool comboControllerVibration;
-
         private XUiC_ComboBoxFloat comboControllerInterfaceSensitivity;
-
         private XUiC_ComboBoxBool comboShowDS4;
-
         private XUiC_ComboBoxList<string> comboShowBindingsFor;
 
         private XUiC_SimpleButton btnBack;
-
         private XUiC_SimpleButton btnDefaults;
-
         private XUiC_SimpleButton btnApply;
 
         private GameObject headerTemplate;
-
         private GameObject controlTemplate;
 
         private Color unbindButtonDefaultColor;
-
         private Color unbindButtonHoverColor;
 
         private readonly Dictionary<PlayerAction, UILabel> actionToValueLabel = new Dictionary<PlayerAction, UILabel>();
 
         private bool initialized;
-
         private bool closedForNewBinding;
 
         private readonly List<string> actionBindingsOnOpen = new List<string>();
-
         private readonly List<ControllerLabelMapping> labelsForControllers = new List<ControllerLabelMapping>();
 
         private PlayerActionsBase actionSetIngame;
-
         private PlayerActionsBase actionSetVehicles;
-
         private PlayerActionsBase actionSetMenu;
 
         public static event Action OnSettingsChanged;
@@ -110,6 +91,7 @@ namespace SMXcore
             global::XUiC_OptionsControls.ID = base.WindowGroup.ID;
             comboLookSensitivity = GetChildById("LookSensitivity").GetChildByType<XUiC_ComboBoxFloat>();
             comboZoomSensitivity = GetChildById("ZoomSensitivity").GetChildByType<XUiC_ComboBoxFloat>();
+            comboZoomAccel = GetChildById("ZoomAccel").GetChildByType<XUiC_ComboBoxFloat>();
             comboVehicleSensitivity = GetChildById("VehicleSensitivity").GetChildByType<XUiC_ComboBoxFloat>();
             comboWeaponAiming = GetChildById("WeaponAiming").GetChildByType<XUiC_ComboBoxBool>();
             comboInvertMouseLookY = GetChildById("InvertMouseLookY").GetChildByType<XUiC_ComboBoxBool>();
@@ -120,6 +102,7 @@ namespace SMXcore
             comboShowBindingsFor = GetChildById("ShowBindingsFor").GetChildByType<XUiC_ComboBoxList<string>>();
             comboLookSensitivity.OnValueChangedGeneric += Combo_OnValueChangedGeneric;
             comboZoomSensitivity.OnValueChangedGeneric += Combo_OnValueChangedGeneric;
+            comboZoomAccel.OnValueChangedGeneric += Combo_OnValueChangedGeneric;
             comboVehicleSensitivity.OnValueChangedGeneric += Combo_OnValueChangedGeneric;
             comboWeaponAiming.OnValueChangedGeneric += Combo_OnValueChangedGeneric;
             comboInvertMouseLookY.OnValueChangedGeneric += Combo_OnValueChangedGeneric;
@@ -130,6 +113,8 @@ namespace SMXcore
             comboLookSensitivity.Max = 1.5;
             comboZoomSensitivity.Min = 0.05000000074505806;
             comboZoomSensitivity.Max = 1.0;
+            comboZoomAccel.Min = 0.0;
+            comboZoomAccel.Max = 3.0;
             comboVehicleSensitivity.Min = 0.05000000074505806;
             comboVehicleSensitivity.Max = 3.0;
             comboControllerInterfaceSensitivity.Min = 0.05000000074505806;
@@ -292,9 +277,10 @@ namespace SMXcore
 
         private void updateOptions()
         {
-            //comboLookSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsMouseSensitivity);
-            //comboZoomSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsZoomMouseSensitivity);
-            //comboVehicleSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsVehicleMouseSensitivity);
+            comboLookSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsLookSensitivity);
+            comboZoomSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsZoomSensitivity);
+            comboZoomAccel.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsZoomAccel);
+            comboVehicleSensitivity.Value = GamePrefs.GetFloat(EnumGamePrefs.OptionsVehicleLookSensitivity);
             comboWeaponAiming.Value = GamePrefs.GetBool(EnumGamePrefs.OptionsWeaponAiming);
             comboInvertMouseLookY.Value = GamePrefs.GetBool(EnumGamePrefs.OptionsInvertMouse);
             comboAllowController.Value = GamePrefs.GetBool(EnumGamePrefs.OptionsAllowController);
@@ -526,9 +512,10 @@ namespace SMXcore
 
         private void applyChanges()
         {
-            //GamePrefs.Set(EnumGamePrefs.OptionsMouseSensitivity, (float)comboLookSensitivity.Value);
-            //GamePrefs.Set(EnumGamePrefs.OptionsZoomMouseSensitivity, (float)comboZoomSensitivity.Value);
-            //GamePrefs.Set(EnumGamePrefs.OptionsVehicleMouseSensitivity, (float)comboVehicleSensitivity.Value);
+            GamePrefs.Set(EnumGamePrefs.OptionsLookSensitivity, (float)comboLookSensitivity.Value);
+            GamePrefs.Set(EnumGamePrefs.OptionsZoomSensitivity, (float)comboZoomSensitivity.Value);
+            GamePrefs.Set(EnumGamePrefs.OptionsZoomAccel, (float)comboZoomAccel.Value);
+            GamePrefs.Set(EnumGamePrefs.OptionsVehicleLookSensitivity, (float)comboVehicleSensitivity.Value);
             GamePrefs.Set(EnumGamePrefs.OptionsWeaponAiming, comboWeaponAiming.Value);
             GamePrefs.Set(EnumGamePrefs.OptionsInvertMouse, comboInvertMouseLookY.Value);
             GamePrefs.Set(EnumGamePrefs.OptionsAllowController, comboAllowController.Value);
