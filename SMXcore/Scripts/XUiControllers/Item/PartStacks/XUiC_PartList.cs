@@ -39,13 +39,13 @@ namespace SMXcore
                 if (parts.Length > i && parts[i] != null && !parts[i].IsEmpty())
                 {
                     ItemStack itemStack = new ItemStack(parts[i].Clone(), 1);
-                    ((XUiC_ItemStack)itemControllers[num]).ItemStack = itemStack;
-                    ((XUiC_ItemStack)itemControllers[num]).GreyedOut = false;
+                    itemControllers[num].ItemStack = itemStack;
+                    itemControllers[num].GreyedOut = false;
                 }
                 else
                 {
-                    ((XUiC_ItemStack)itemControllers[num]).ItemStack = ItemStack.Empty.Clone();
-                    ((XUiC_ItemStack)itemControllers[num]).GreyedOut = false;
+                    itemControllers[num].ItemStack = ItemStack.Empty.Clone();
+                    itemControllers[num].GreyedOut = false;
                 }
 
                 itemControllers[num].ViewComponent.EventOnPress = false;
