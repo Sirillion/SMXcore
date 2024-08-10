@@ -1,5 +1,5 @@
 # SMXcore - THE CORE MODLET
-> Verified to work with: A21.2B30
+> Verified to work with: 1.333
 
 > Dependencies: [Quartz](https://github.com/s7092910/Quartz) by Laydor. (Included)
 
