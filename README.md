@@ -5,6 +5,8 @@
 
 > Compatibility: This is an asset library, it can overwrite asset references from other mods that change vanilla icons and sprites.
 
+> Changelog: https://sirillion.github.io/smxcorechangelog/
+
 
 ## **DESCRIPTION:**
 
