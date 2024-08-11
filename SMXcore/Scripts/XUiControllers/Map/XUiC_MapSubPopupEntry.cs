@@ -44,7 +44,7 @@ namespace SMXcore
             }
         }
 
-        protected override void OnHovered(bool _isOver)
+        public override void OnHovered(bool _isOver)
         {
             select(_isOver);
         }

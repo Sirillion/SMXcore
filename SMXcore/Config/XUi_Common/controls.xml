@@ -1,0 +1,1174 @@
+<SMXcore file="XUi_Common/controls.xml">
+
+<!--	// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate. This does
+							not include distributing this modlet to your server users.
+
+							2. You are under no circumstance allowed to distribute any SMX branded modlets without written consent from the main developer.
+
+							3. If you wish to distribute SMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX modlet or modlets in question remain unaltered and you cannot
+							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
+
+							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
+							as is with no change to its files what so ever.
+
+							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
+
+							6. You are not allowed to use any of the assets bundled with SMX branded modlets in other projects. This restriction
+							applies to all files that the SMX modlets consist of.
+							
+								EXCEPTION: The content of the Scripts folder is to be considered open source and can be used freely as long as the original credit
+								comments within the files are not removed or altered other than	adding to.
+
+							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							SMX branded modlets.
+
+							8. You are required to inform the main developer when your project that contains any SMX modlet or modlets have been made available
+							to the public.
+
+		// CREDITS:			Sirillion (main developer/designer/frontend)
+							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
+
+		// CONTRIBUTORS:	Mumpfy (art)
+-->
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMXmenu | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!--	// SMX // Button Designs -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<!--	// SMX // Menu Button -->
+
+				<append xpath="/controls">
+
+					<smx_menu_button	depth="3"
+										pos="0,0"
+										width="${width}"
+										height="${height}"
+										pivot="${pivot}"
+										caption=""
+										caption_key="${caption_key}"
+										enabled_font_color="255,255,255,255"
+										disabled_font_color="160,160,160,255"
+										tooltip_key=""
+										visible="true"
+										enabled="true"
+										sound="[default_click]"
+										parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<button	name="clickable"
+									pos="10,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									sprite="smx_button_background"
+									defaultcolor="[smx_element_button_foreground]"
+									selectedcolor="[smx_element_button_selected]"
+									hoversprite="smx_button_foreground"
+									hovercolor="[smx_element_button_hover]"
+									hoverscale="1.1"
+									disabledcolor="[lightGrey]"
+									tooltip_key="${tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+
+							<label		name="btnLabel"
+										depth="2"
+										pos="10,${Round(-2-height/2,0)}"
+										width="${width}"
+										height="${height}"
+										pivot="${pivot}"
+										style="smx_label_outline"
+										text="${caption}"
+										text_key="${caption_key}"
+										font_size="${font_size}"
+										justify="center"
+										upper_case="true"
+										spacing_x="1"
+										parse_actions="${parse_actions}" />
+						</rect>
+					</smx_menu_button>
+
+				<!--	// SMX // Edit Menu Button -->
+
+					<smx_edit_button	depth="3"
+										pos="0,0"
+										width="${width}"
+										height="${height}"
+										pivot="${pivot}"
+										caption=""
+										caption_key="${caption_key}"
+										enabled_font_color="255,255,255,255"
+										disabled_font_color="160,160,160,255"
+										tooltip_key=""
+										visible="true"
+										enabled="true"
+										sound="[default_click]"
+										parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<button	name="clickable"
+									pos="10,${Round(-height/2,0)+35}"
+									pivot="${pivot}"
+									sprite="menu_empty"
+									type="sliced"
+									defaultcolor="0,0,0,196"
+									selectedcolor="7,7,7,196"
+									hoversprite="menu_empty"
+									hovercolor="100,100,100,100"
+									hoverscale="1.02"
+									tooltip_key="${tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+
+							<label		name="btnLabel"
+										depth="2"
+										pos="10,-475"
+										width="400"
+										height="65"
+										pivot="${pivot}"
+										style="smx_label_outline"
+										text="${caption}"
+										text_key="${caption_key}"
+										font_size="${font_size}"
+										spacing_x="2" 
+										justify="center"
+										upper_case="true"
+										parse_actions="${parse_actions}" />
+						</rect>
+					</smx_edit_button>
+
+				<!--	// SMX // Back Button -->
+
+					<smx_back_button	depth="3"
+										pos="0,0"
+										width="${width}"
+										height="${height}"
+										pivot="center"
+										enabled_font_color="255,255,255,255"
+										disabled_font_color="160,160,160,255"
+										bordersprite="smx_diamond_background"
+										bordercolor="7,7,7,500"
+										defaultsprite="smx_diamond_foreground"
+										defaultcolor="255,144,24,196"
+										hoversprite="smx_diamond_foreground"
+										hovercolor="255,255,255,500"
+										selectedsprite="smx_diamond_foreground"
+										selectedcolor="[smxcore_element_accentcolor_2]"
+										foregroundlayer="true"
+										tooltip_key=""
+										visible="true"
+										enabled="true"
+										disabled_tooltip_key="xuiBack"
+										sound="[default_click]"
+										justify="center"
+										caption=""
+										caption_key=""
+										font_size="28"
+										upper_case="false"
+										parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<sprite	name="border"
+									depth="5"
+									pos="0,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									sprite="${bordersprite}"
+									color="${bordercolor}"
+									type="sliced"
+									fillcenter="false"
+									foregroundlayer="true"
+									rotation="45" />	
+
+							<button	name="clickable"
+									depth="6"
+									pos="0,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									sprite="${defaultsprite}"
+									defaultcolor="${defaultcolor}"
+									disabledcolor="[darkGrey]"
+									hoversprite="${hoversprite}"
+									hovercolor="${hovercolor}"
+									selectedsprite="${selectedsprite}"
+									selectedcolor="${selectedcolor}"
+									foregroundlayer="${foregroundlayer}"
+									type="sliced"
+									hoverscale="1.1"
+									tooltip_key="${tooltip_key}"
+									disabled_tooltip_key="${disabled_tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}"
+									rotation="45" /> 
+
+							<sprite name="x"
+									depth="10"
+									size="24,24"
+									pos="0,${Round(-height/2,0)}"
+									pivot="center"
+									sprite="ui_game_symbol_add"
+									color="[white]"
+									type="sliced"
+									fillcenter="false"
+									foregroundlayer="true"
+									rotation="45" />	
+
+							<label	name="btnLabel"
+									depth="2"
+									width="${width}"
+									height="${height-2}"
+									pos="0,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									text="${caption}"
+									text_key="${caption_key}"
+									effect="outline"
+									font_size="${font_size}"
+									justify="${justify}"
+									upper_case="${upper_case}"
+									parse_actions="${parse_actions}" />
+						</rect>
+					</smx_back_button>
+
+				<!--	// SMX // MOD Button -->
+
+					<smx_mod_button	depth="3"
+									pos="0,0"
+									width="${width}"
+									height="${height}"
+									pivot="${pivot}"
+									caption=""
+									caption_key=""
+									enabled_font_color="[labelColor]"
+									disabled_font_color="[disabledLabelColor]"
+									tooltip_key=""
+									visible="true"
+									enabled="true"
+									sound="[default_click]"
+									parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<button	name="clickable"
+									pos="10,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									sprite="${sprite}"
+									defaultcolor="[darkGrey]"
+									selectedcolor="[smx_element_button_selected]"
+									hoversprite="${sprite}"
+									hovercolor="[smx_element_button_hover]"
+									hoverscale="1.1"
+									tooltip_key="${tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+
+							<label		name="btnLabel"
+										depth="2"
+										pos="10,${Round(-2-height/2,0)}"
+										width="${width}"
+										height="${height}"
+										pivot="${pivot}"
+										style="smx_label_outline"
+										text="${caption}"
+										text_key="${caption_key}"
+										font_size="${font_size}"
+										justify="center"
+										upper_case="true"
+										spacing_x="1"
+										parse_actions="${parse_actions}" force_hide="true" />
+						</rect>
+					</smx_mod_button>
+
+				<!--	// SMX // TFP Credit Button -->
+
+					<smx_tfpcredit_button	depth="3"
+											pos="0,0"
+											width="200"
+											height="32"
+											pivot="left"
+											caption=""
+											caption_key=""
+											enabled_font_color="[labelColor]"
+											disabled_font_color="[disabledLabelColor]"
+											tooltip_key=""
+											visible="true"
+											enabled="true"
+											sound="[default_click]">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}" 
+								height="${height}" 
+								enabled_font_color="${enabled_font_color}" 
+								disabled_font_color="${disabled_font_color}" 
+								controller="SimpleButton" 
+								visible="${visible}" 
+								button_enabled="${enabled}">
+
+							<button	name="clickable"
+									pos="10,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									sprite="smx_mainmenu_tfp"
+									hovercolor="[smx_element_button_hover]"
+									hoverscale="1.1"
+									tooltip_key="${tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+
+							<label	name="btnLabel"
+									depth="2"
+									pos="10,${Round(-height/2,0)}"
+									width="${width-20}"
+									pivot="${pivot}" 
+									style="smx_label_normal"
+									text="${caption}"
+									text_key="" 
+									font_size="${height-26}"
+									justify="center"
+									upper_case="true" />
+						</rect>
+					</smx_tfpcredit_button>
+
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // UI Structure Designs -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<!--	// SMX // News Combobox Design -->
+
+				<append xpath="/controls">
+
+					<smx_combobox_news	depth="3"
+										pos="0,0"
+										width="200"
+										height="30"
+										value_min="@DEF"
+										value_max="@DEF"
+										value_wrap="@DEF"
+										value_increment="@DEF"
+										scroll_by_increment="false"
+										values="@DEF"
+										reverse_list="@DEF"
+										localization_prefix=""
+										localization_key_caseinsensitive="false"
+										format_string=""
+										enabled_color="[white]"
+										disabled_color="[lightGrey]"
+										bg_color="[black]"
+										enabled_fill_color="[white]"
+										disabled_fill_color="[lightGrey]"
+										visible="true"
+										segmented_fill="false"
+										segment_height="5"
+										segment_count="10"
+										segment_spacing="10"
+										tooltip_key=""
+										foregroundlayer="false"
+										index_markers="false"
+										gamepad_selectable="true"
+										gamepad_decrease=""
+										gamepad_increase=""
+										gamepad_callout_size_increase="0">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								pivot="left"
+								controller="${type}"
+								value_min="${value_min}"
+								value_max="${value_max}"
+								value_wrap="${value_wrap}"
+								value_increment="${value_increment}"
+								scroll_by_increment="${scroll_by_increment}"
+								values="${values}"
+								reverse_list="${reverse_list}"
+								localization_prefix="${localization_prefix}"
+								localization_key_caseinsensitive="${localization_key_caseinsensitive}"
+								format_string="${format_string}"
+								enabled_color="${enabled_color}"
+								disabled_color="${disabled_color}"
+								bg_color="${bg_color}"
+								enabled_fill_color="${enabled_fill_color}"
+								disabled_fill_color="${disabled_fill_color}"
+								visible="${visible}"
+								segmented_fill="${segmented_fill}"
+								segment_spacing="${segment_spacing}"
+								index_markers="${index_markers}"
+								gamepad_decrease="${gamepad_decrease}"
+								gamepad_increase="${gamepad_increase}">
+
+							<button	name="back"
+									depth="${1+depth}"
+									pos="${height/2-5},${-height/2}"
+									width="${height}"
+									height="${height}"
+									pivot="center"
+									style="icon30px, press, hover"
+									sprite="ui_game_symbol_arrow_menu"
+									disabledcolor="[disabledColor]"
+									sound="[paging_click]"
+									tooltip_key="${tooltip_key}"
+									gamepad_selectable="false"
+									enabled="{can_backward}"
+									visible="{# !hascontrollershortcuts or !is_controller_input}" />
+
+							<gamepad_icon	name="gamepadIconBack"
+											depth="${1+depth}"
+											pos="${height/2-gamepad_callout_size_increase/2},${-height/2}"
+											width="${0+height+gamepad_callout_size_increase}"
+											height="${0+height+gamepad_callout_size_increase}"
+											pivot="center"
+											color="{# can_backward ? '255,255,255' : '160,160,160'}"
+											visible="{# hascontrollershortcuts and is_controller_input}"
+											action="${gamepad_decrease}" />
+
+							<rect name="regularFill" pos="${2+height},0" width="${width-height*2-4}" height="${height}" force_hide="${ segmented_fill }">
+								<sprite name="background" depth="${1+depth}" pivot="topleft" color="{bgcolor}" type="sliced" foregroundlayer="${foregroundlayer}" />
+								<filledsprite name="fill" depth="${2+depth}" pivot="topleft" color="{fillcolor}" fill="{fillvalue}" filldirection="horizontal" visible="{isnumber}" foregroundlayer="true" />
+							</rect>
+
+							<rect name="segmentedFill" pos="${2+height},${-height/2+Round(segment_height/2,0)}" width="${width-height*2-4}" height="${segment_height}" force_hide="${ !segmented_fill }" repeat_content="true" repeat_count="${segmented_fill ? segment_count : 1}">
+								<rect pos="${repeat_i * 25},0">
+									<sprite name="bg" depth="${1+depth}" width="20" pivot="topleft" color="{bgcolor}" type="sliced" foregroundlayer="${foregroundlayer}" />
+									<filledsprite name="fillSegment" depth="${2+depth}" width="20" pivot="topleft" color="{fillcolor}" fill="{# segment_fill_${repeat_i}}" filldirection="horizontal" visible="{isnumber}" foregroundlayer="true" />
+								</rect>
+							</rect>
+
+							<label name="currentValue" depth="${3+depth}" pos="${2+height},${-height/2}" width="${width-height*2-4}" height="${height-2}" pivot="left" text="{valuetext}" font_size="${Defined(font_size) ? font_size : height-4}" justify="center" color="{valuecolor}" effect="outline" effect_color="[black]" effect_distance="1,1" />
+
+							<button name="forward" depth="${1+depth}" style="icon30px, press, hover" pos="${width-height/2+5},${-height/2}" width="${height}" height="${height}" pivot="center" sprite="ui_game_symbol_arrow_menu" disabledcolor="[disabledColor]" sound="[paging_click]" tooltip_key="${tooltip_key}" flip="Horizontally" gamepad_selectable="false" enabled="{can_forward}" visible="{# !hascontrollershortcuts or !is_controller_input}" />
+							<gamepad_icon name="gamepadIconForward" depth="${1+depth}" pos="${width-height/2+gamepad_callout_size_increase/2},${-height/2}" width="${0+height+gamepad_callout_size_increase}" height="${0+height+gamepad_callout_size_increase}" pivot="center" visible="{# hascontrollershortcuts and is_controller_input}" color="{# can_forward ? '255,255,255' : '160,160,160'}" action="${gamepad_increase}" />
+
+							<panel name="directvalue" pos="${2+height},0" width="${width-height*2-4}" height="${height}" pivot="topleft" style="press, scroll, hover, drag" disableautobackground="true" tooltip_key="${tooltip_key}" gamepad_selectable="${gamepad_selectable}" />
+							
+							<rect name="indexMarkers" pos="${2+height},${-height+5}" width="${width-height*2-4}" height="5" visible="{usesmarkers}" active_color="[white]" inactive_color="[darkGrey]" repeat_content="true" repeat_count="${index_markers ? 20 : 1}">
+								<sprite depth="${2+depth}" width="20" pivot="topleft" color="[white]" type="sliced" foregroundlayer="true" />
+							</rect>
+						</rect>
+					</smx_combobox_news>
+
+				<!--	// SMX // Default Combobox Design -->
+
+					<smx_combobox_default	depth="3"
+											pos="0,0"
+											width="200"
+											height="30"
+											value_min="@DEF"
+											value_max="@DEF"
+											value_wrap="@DEF"
+											value_increment="@DEF"
+											scroll_by_increment="false"
+											values="@DEF"
+											reverse_list="@DEF"
+											localization_prefix=""
+											localization_key_caseinsensitive="false"
+											format_string=""
+											enabled_color="[white]"
+											disabled_color="[lightGrey]"
+											bg_color="[black]"
+											enabled_fill_color="[white]"
+											disabled_fill_color="[lightGrey]"
+											visible="true"
+											segmented_fill="false"
+											segment_height="15"
+											segment_count="10"
+											segment_spacing="10"
+											tooltip_key=""
+											foregroundlayer="false"
+											index_markers="false"
+											gamepad_selectable="true"
+											gamepad_decrease=""
+											gamepad_increase=""
+											gamepad_callout_size_increase="0" >
+
+						<rect	name="${name}"
+								controller="${type}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								value_min="${value_min}"
+								value_max="${value_max}"
+								value_wrap="${value_wrap}"
+								value_increment="${value_increment}"
+								scroll_by_increment="${scroll_by_increment}"
+								values="${values}"
+								reverse_list="${reverse_list}"
+								localization_prefix="${localization_prefix}"
+								localization_key_caseinsensitive="${localization_key_caseinsensitive}"
+								format_string="${format_string}"
+								enabled_color="${enabled_color}"
+								disabled_color="${disabled_color}"
+								bg_color="${bg_color}"
+								enabled_fill_color="${enabled_fill_color}"
+								disabled_fill_color="${disabled_fill_color}"
+								visible="${visible}"
+								segmented_fill="${segmented_fill}"
+								segment_spacing="${segment_spacing}"
+								pivot="left"
+								index_markers="${index_markers}"
+								gamepad_decrease="${gamepad_decrease}"
+								gamepad_increase="${gamepad_increase}" >
+
+							<button	name="back"
+									depth="${1+depth}"
+									style="press, hover"
+									pos="${height/2-5},${-height/2}"
+									width="18"
+									height="18"
+									pivot="center"
+									sprite="ui_game_symbol_arrow_menu"
+									disabledcolor="[disabledColor]"
+									sound="[paging_click]"
+									tooltip_key="${tooltip_key}"
+									gamepad_selectable="false"
+									enabled="{can_backward}"
+									visible="{# !hascontrollershortcuts or !is_controller_input}" />
+
+							<gamepad_icon	name="gamepadIconBack"
+											depth="${1+depth}"
+											pos="${height/2-gamepad_callout_size_increase/2},${-height/2}"
+											width="${0+height+gamepad_callout_size_increase}"
+											height="${0+height+gamepad_callout_size_increase}"
+											pivot="center"
+											visible="{# hascontrollershortcuts and is_controller_input}"
+											color="{# can_backward ? '255,255,255' : '160,160,160'}"
+											action="${gamepad_decrease}" />
+
+							<rect	name="regularFill"
+									pos="${2+height},0"
+									width="${width-height*2-4}"
+									height="${height}"
+									force_hide="${ segmented_fill }">
+
+								<sprite	name="background"
+										depth="${1+depth}"
+										pivot="topleft"
+										color="{bgcolor}"
+										type="sliced"
+										foregroundlayer="${foregroundlayer}" />
+
+								<filledsprite	name="fill"
+												depth="${2+depth}"
+												pivot="topleft"
+												color="{fillcolor}"
+												fill="{fillvalue}"
+												filldirection="horizontal"
+												visible="{isnumber}"
+												foregroundlayer="true" />
+							</rect>
+
+							<rect	name="segmentedFill"
+									pos="${2+height},${-height/2+Round(segment_height/2,0)}"
+									width="${width-height*2-4}"
+									height="${segment_height}"
+									force_hide="${ !segmented_fill }"
+									repeat_content="true"
+									repeat_count="${segmented_fill ? segment_count : 1}">
+
+								<rect pos="${repeat_i * 25},0">
+									<sprite	name="bg"
+											depth="${1+depth}"
+											width="20"
+											pivot="topleft"
+											color="{bgcolor}"
+											type="sliced"
+											foregroundlayer="${foregroundlayer}" />
+
+									<filledsprite	name="fillSegment"
+													depth="${2+depth}"
+													width="20"
+													pivot="topleft"
+													color="{fillcolor}"
+													fill="{# segment_fill_${repeat_i}}"
+													filldirection="horizontal"
+													visible="{isnumber}"
+													foregroundlayer="true" />
+								</rect>
+							</rect>
+
+							<label	name="currentValue"
+									depth="${3+depth}"
+									pos="${2+height},${-height/2}"
+									width="${width-height*2-4}"
+									height="${height-2}"
+									pivot="left"
+									text="{valuetext}"
+									font_size="${Defined(font_size) ? font_size : height-4}"
+									justify="center"
+									color="{valuecolor}"
+									effect="outline"
+									effect_color="[black]"
+									effect_distance="1,1" />
+
+							<button	name="forward"
+									depth="${1+depth}"
+									style="press, hover"
+									pos="${width-height/2+5},${-height/2}"
+									width="18"
+									height="18"
+									pivot="center"
+									sprite="ui_game_symbol_arrow_menu"
+									disabledcolor="[disabledColor]"
+									sound="[paging_click]"
+									tooltip_key="${tooltip_key}"
+									flip="Horizontally"
+									gamepad_selectable="false"
+									enabled="{can_forward}"
+									visible="{# !hascontrollershortcuts or !is_controller_input}" />
+
+							<gamepad_icon	name="gamepadIconForward"
+											depth="${1+depth}"
+											pos="${width-height/2+gamepad_callout_size_increase/2},${-height/2}"
+											width="${0+height+gamepad_callout_size_increase}"
+											height="${0+height+gamepad_callout_size_increase}"
+											pivot="center"
+											visible="{# hascontrollershortcuts and is_controller_input}"
+											color="{# can_forward ? '255,255,255' : '160,160,160'}"
+											action="${gamepad_increase}" />
+
+							<panel	name="directvalue"
+									style="press, scroll, hover, drag"
+									pos="${2+height},0"
+									width="${width-height*2-4}"
+									height="${height}"
+									pivot="topleft"
+									disableautobackground="true"
+									tooltip_key="${tooltip_key}"
+									gamepad_selectable="${gamepad_selectable}"/>
+							
+							<rect	name="indexMarkers"
+									pos="${2+height},${-height+5}"
+									width="${width-height*2-4}"
+									height="5"
+									visible="{usesmarkers}"
+									active_color="[white]"
+									inactive_color="[darkGrey]"
+									repeat_content="true"
+									repeat_count="${index_markers ? 20 : 1}">
+
+								<sprite depth="${2+depth}" width="20" pivot="topleft" color="[white]" type="sliced" foregroundlayer="true" />
+
+							</rect>
+
+							<rect name="smxOutline" depth="99">
+								<sprite name="smxOutlineTop" pos="${2+height-5},2" width="${width-height*2+10}" height="3" sprite="smx_sepline_1" />
+								<sprite name="smxOutlineLeft" pos="${2+height-2},-36" width="${8+height}" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="${2+width-height-7},-38" width="${8+height}" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineBottom" pos="${2+height-8},-30" width="${width-height*2+10}" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+							</rect>
+
+						</rect>
+					</smx_combobox_default>
+
+				<!--	// SMX // Pager Navigation Control -->
+
+					<smx_pager_controls	depth="3"
+										pos="0,0"
+										width="100"
+										height="32"
+										show_max_page="false"
+										separator=" / "
+										primary_pager="true"
+										contents_parent="">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								disableautobackground="true"
+								controller="Paging"
+								visible="{paging_visible}"
+								show_max_page="${show_max_page}"
+								separator="${separator}"
+								primary_pager="${primary_pager}"
+								contents_parent="${contents_parent}"> <!-- default size: 100x32 -->
+
+							<button	name="pageDown"
+									depth="4"							
+									pos="${Round(height/2, 0)-10},${Round(-height/2, 0)}"
+									width="${height-15}"
+									height="${height-15}"
+									pivot="center"
+									style="press"
+									sprite="ui_game_symbol_arrow_menu"
+									enabled="{# int(pagenumber) &gt; 1}"
+									disabledcolor="[lightGrey]"
+									sound="[paging_click]"
+									use_selection_box="false" />
+
+							<rect depth="4" pos="${height},${Round(-height/2, 0)}">
+								<sprite name="background" pos="${width/2-32},0" width="${20+width}" height="${height}" pivot="center" color="[black]" type="sliced" />
+								<label depth="5" pos="18,0" width="${width-2*height}" height="${height-2}" pivot="center" style="smx_label_outline" text="{#showmaxpage ? pagenumber + separator + maxpagenumber : pagenumber}" font_size="${font_size}" justify="center" />
+							</rect>
+
+							<button	name="pageUp"
+									depth="4"							
+									pos="${Round(width - height/2, 0)+10},${Round(-height/2, 0)}"
+									width="${height-15}"
+									height="${height-15}"
+									pivot="center"
+									style="press"
+									sprite="ui_game_symbol_arrow_menu"
+									enabled="{# int(pagenumber) &lt; int(maxpagenumber)}"
+									disabledcolor="[lightGrey]"
+									sound="[paging_click]"
+									use_selection_box="false" 
+									flip="Horizontally" />
+						</rect>
+					</smx_pager_controls>
+
+				<!--	// SMX // Default Textfield Design -->
+
+					<smx_textfield_default	depth="3"
+											pos="0,0"
+											width="200"
+											height="32"
+											value=""
+											active_text_color="[labelColor]"
+											caret_color="[labelColor]"
+											selection_color="[mediumGrey_half_alpha]"
+											character_limit="0"
+											validation="none"
+											backgroundcolor="[black]"
+											on_hover="false"
+											on_scroll="false"
+											virtual_keyboard_prompt=""
+											pivot="center"
+											visible="true"
+											on_return="submit"
+											tooltip_key=""
+											search_field="false"
+											password_field="false"
+											clear_button="false"
+											focus_on_open="false"
+											clear_on_open="false"
+											close_group_on_tab="false"
+											open_vk_on_open="false"
+											foregroundlayer="false"
+											justify="center"
+											overflow="ShrinkContent"
+											max_line_count="0"
+											font_face="ReferenceFont"
+											crispness="Never"
+											font_size="${font_size}">
+
+						<panel name="${name}" depth="${depth}" controller="TextInput" pos="${pos}" width="${password_field? width-height-10 : width}" height="${height}" value="${value}"
+							active_text_color="${active_text_color}" caret_color="${caret_color}" selection_color="${selection_color}" 
+							character_limit="${character_limit}" validation="${validation}" backgroundcolor="${backgroundcolor}" style="press, select" on_hover="${on_hover}" on_scroll="${on_scroll}" snapCursor="true" virtual_keyboard_prompt="${virtual_keyboard_prompt}"
+							disableautobackground="true" pivot="${pivot}" visible="${visible}" on_return="${on_return}" tooltip_key="${tooltip_key}"
+							search_field="${search_field}" password_field="${password_field}" clear_button="${clear_button}" focus_on_open="${focus_on_open}" clear_on_open="${clear_on_open}" close_group_on_tab="${close_group_on_tab}" open_vk_on_open="${open_vk_on_open}" font_size="${font_size}">
+							<sprite depth="0" name="background" color="${backgroundcolor}" type="sliced" pivot="${pivot}" foregroundlayer="${foregroundlayer}" width="${password_field ? width-height-10 : width}"/>
+							<label depth="1" pos="0,0" name="text" justify="${justify}" font_size="${Defined(font_size) ? font_size : height}" pivot="${pivot}" overflow="${overflow}" max_line_count="${max_line_count}" font_face="${font_face}" crispness="${crispness}" width="${width - (password_field ? 10+height : 0) - (clear_button ? 6+min(height,36) : 0)}"/>
+							<button name="btnShowPassword" pos="${Round(width-height/2-5,0)},-${Round(height/2,0)}" width="${height-2}" height="${height-2}" sprite="ui_game_symbol_stealth" defaultcolor="180,180,180" hovercolor="[white]" selectedcolor="[selectedColor]" foregroundlayer="true" type="simple" hoverscale="1.1" pivot="center" tooltip_key="xuiShowPassword" selected="{showpassword}" visible="{passwordfield}" />
+							<button name="btnClearInput" pos="${password_field ? width-height-Round(min(height,36)/2,0)-12 : width-Round(min(height,36)/2,0)-3},-${Round(height/2,0)}" width="${4+min(height,36)}" height="${min(height,36)-4}" pivot="center" sprite="ui_game_symbol_clear_textfield" hoverscale="1.1" tooltip_key="xuiClearTextInput" visible="{clearbutton}" />
+						</panel>
+					</smx_textfield_default>
+
+				<!--	// SMX // Outlined Textfield Design -->
+
+					<smx_textfield_outline	depth="3"
+											pos="0,0"
+											width="200"
+											height="32"
+											value=""
+											active_text_color="[labelColor]"
+											caret_color="[labelColor]"
+											selection_color="[mediumGrey_half_alpha]"
+											character_limit="0"
+											validation="none"
+											backgroundcolor="[black]"
+											on_hover="false"
+											on_scroll="false"
+											virtual_keyboard_prompt=""
+											pivot="center"
+											visible="true"
+											on_return="submit"
+											tooltip_key=""
+											search_field="false"
+											password_field="false"
+											clear_button="false"
+											focus_on_open="false"
+											clear_on_open="false"
+											close_group_on_tab="false"
+											open_vk_on_open="false"
+											foregroundlayer="false"
+											justify="center"
+											overflow="ShrinkContent"
+											max_line_count="0"
+											font_face="ReferenceFont"
+											crispness="Never"
+											font_size="${font_size}">
+
+						<panel name="${name}" depth="${depth}" controller="TextInput" pos="${pos}" width="${password_field? width-height-10 : width}" height="${height}" value="${value}"
+							active_text_color="${active_text_color}" caret_color="${caret_color}" selection_color="${selection_color}" 
+							character_limit="${character_limit}" validation="${validation}" backgroundcolor="${backgroundcolor}" style="press, select" on_hover="${on_hover}" on_scroll="${on_scroll}" snapCursor="true" virtual_keyboard_prompt="${virtual_keyboard_prompt}"
+							disableautobackground="true" pivot="${pivot}" visible="${visible}" on_return="${on_return}" tooltip_key="${tooltip_key}"
+							search_field="${search_field}" password_field="${password_field}" clear_button="${clear_button}" focus_on_open="${focus_on_open}" clear_on_open="${clear_on_open}" close_group_on_tab="${close_group_on_tab}" open_vk_on_open="${open_vk_on_open}" font_size="${font_size}">
+							<sprite depth="0" name="background" color="${backgroundcolor}" type="sliced" pivot="${pivot}" foregroundlayer="${foregroundlayer}" width="${password_field ? width-height-10 : width}"/>
+							<label depth="1" pos="0,0" name="text" justify="${justify}" font_size="${Defined(font_size) ? font_size : height}" pivot="${pivot}" overflow="${overflow}" max_line_count="${max_line_count}" font_face="${font_face}" crispness="${crispness}" width="${width-80 - (password_field ? 10+height : 0) - (clear_button ? 6+min(height,36) : 0)}"/>
+							<button name="btnShowPassword" pos="${Round(width-height/2-5,0)},-${Round(height/2,0)}" width="${height-2}" height="${height-2}" sprite="ui_game_symbol_stealth" defaultcolor="180,180,180" hovercolor="[white]" selectedcolor="[selectedColor]" foregroundlayer="true" type="simple" hoverscale="1.1" pivot="center" tooltip_key="xuiShowPassword" selected="{showpassword}" visible="{passwordfield}" />
+							<button name="btnClearInput" pos="${password_field ? width-height-Round(min(height,36)/2,0)-12 : width-Round(min(height,36)/2,0)-3},-${Round(height/2,0)}" width="${4+min(height,36)}" height="${min(height,36)-4}" pivot="center" sprite="ui_game_symbol_clear_textfield" hoverscale="1.1" tooltip_key="xuiClearTextInput" visible="{clearbutton}" />
+
+							<rect name="smxOutline" depth="0">
+								<sprite name="smxOutlineTop" pos="${width-430},${height-height+20}" width="${30+width}" height="3" sprite="smx_sepline_1" />
+								<sprite name="smxOutlineLeft" pos="${-width/2+width/2-140},${-height+15}" width="${14+height}" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="${-width/2+width/2+136},${-height+12}" width="${20+height}" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineBottom" pos="${width-422},${height-height-20}" width="${30+width}" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+							</rect>
+
+						</panel>
+					</smx_textfield_outline>
+
+				<!--	// SMX // Server Password Textfield -->
+
+					<smx_textfield_serverpw	depth="3"
+											pos="0,0"
+											width="200"
+											height="32"
+											value=""
+											active_text_color="[labelColor]"
+											caret_color="[labelColor]"
+											selection_color="[mediumGrey_half_alpha]" 
+											character_limit="0"
+											validation="none"
+											backgroundcolor="[black]"
+											on_hover="false"
+											on_scroll="false"
+											virtual_keyboard_prompt=""
+											pivot="topleft"
+											visible="true"
+											on_return="submit"
+											tooltip_key=""
+											search_field="false"
+											password_field="false"
+											clear_button="false"
+											focus_on_open="false"
+											clear_on_open="false"
+											close_group_on_tab="false"
+											open_vk_on_open="false"
+											foregroundlayer="false"
+											justify="center"
+											overflow="ShrinkContent"
+											max_line_count="0"
+											font_face="ReferenceFont"
+											crispness="Never">
+
+						<panel	name="${name}"
+								depth="${depth}"
+								controller="TextInput"
+								pos="${pos}"
+								width="${password_field? width-height-10 : width}"
+								height="${height}"
+								value="${value}"
+								active_text_color="${active_text_color}"
+								caret_color="${caret_color}"
+								selection_color="${selection_color}" 
+								character_limit="${character_limit}"
+								validation="${validation}"
+								backgroundcolor="${backgroundcolor}"
+								style="press, select"
+								on_hover="${on_hover}"
+								on_scroll="${on_scroll}"
+								snapCursor="true"
+								virtual_keyboard_prompt="${virtual_keyboard_prompt}"
+								disableautobackground="true"
+								pivot="${pivot}"
+								visible="${visible}"
+								on_return="${on_return}"
+								tooltip_key="${tooltip_key}"
+								search_field="${search_field}"
+								password_field="${password_field}"
+								clear_button="${clear_button}"
+								focus_on_open="${focus_on_open}"
+								clear_on_open="${clear_on_open}"
+								close_group_on_tab="${close_group_on_tab}"
+								open_vk_on_open="${open_vk_on_open}">
+
+							<sprite	depth="0"
+									name="background"
+									color="${backgroundcolor}"
+									type="sliced"
+									pivot="${pivot}"
+									foregroundlayer="${foregroundlayer}"
+									width="${password_field ? width-height-10 : width}" />
+
+							<label	depth="1"
+									name="text"
+									justify="${justify}"
+									font_size="${Defined(font_size) ? font_size : height}"
+									pivot="${pivot}"
+									overflow="${overflow}"
+									max_line_count="${max_line_count}"
+									font_face="${font_face}"
+									crispness="${crispness}"
+									width="${width - (password_field ? 10+height : 0) - (clear_button ? 6+min(height,36) : 0)}" />
+
+							<button name="btnShowPassword"
+									depth="99"
+									pos="120,0"
+									width="${height-2}"
+									height="${height-2}"
+									sprite="ui_game_symbol_stealth"
+									defaultcolor="180,180,180"
+									hovercolor="[white]"
+									selectedcolor="[selectedColor]"
+									foregroundlayer="true"
+									type="simple"
+									hoverscale="1.1"
+									pivot="center"
+									tooltip_key="xuiShowPassword"
+									selected="{showpassword}"
+									visible="{passwordfield}" />
+
+							<button name="btnClearInput"
+									pos="${password_field ? width-height-Round(min(height,36)/2,0)-12 : width-Round(min(height,36)/2,0)-3},-${Round(height/2,0)}"
+									width="${4+min(height,36)}"
+									height="${min(height,36)-4}"
+									pivot="center"
+									sprite="ui_game_symbol_clear_textfield"
+									hoverscale="1.1"
+									tooltip_key="xuiClearTextInput"
+									visible="{clearbutton}" />
+						</panel>
+					</smx_textfield_serverpw>
+
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMX CC | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!--	// SMX // GEARS Menu Modifications -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<!--	// SMX // Settings Navigation -->
+
+				<append xpath="/controls">
+
+					<smx_gears_nav_button	depth="3"
+											pos="0,0"
+											width="200"
+											height="32"
+											enabled_font_color="[labelColor]"
+											disabled_font_color="[disabledLabelColor]"
+											visible="true"
+											enabled="true"
+											bordersprite="menu_empty2px"
+											bordercolor="[black]"
+											pivot="left"
+											defaultsprite="menu_empty"
+											defaultcolor="[mediumGrey]"
+											hoversprite="ui_game_select_row"
+											hovercolor="[white]"
+											selectedsprite="ui_game_select_row"
+											selectedcolor="[mediumGrey]"
+											foregroundlayer="true"
+											tooltip_key=""
+											disabled_tooltip_key=""
+											sound="[default_click]"
+											justify="center"
+											caption=""
+											caption_key=""
+											font_size="28"
+											upper_case="false"
+											flip="Nothing"
+											parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<sprite	depth="1"
+									name="border"
+									sprite="${bordersprite}"
+									pos="0,${Round(-height/2,0)}"
+									color="${bordercolor}"
+									type="sliced"
+									fillcenter="false"
+									foregroundlayer="true"
+									pivot="${pivot}" />	
+<!--
+							<button	name="clickable"
+									pos="0,${Round(-height/2,0)}"
+									width="${height-15}"
+									height="${height-15}"
+									sprite="${defaultsprite}"
+									defaultcolor="${defaultcolor}"
+									disabledcolor="[darkGrey]"
+									hoversprite="${hoversprite}"
+									hovercolor="${hovercolor}"
+									selectedsprite="${selectedsprite}"
+									selectedcolor="${selectedcolor}"
+									foregroundlayer="${foregroundlayer}"
+									type="sliced"
+									hoverscale="1.0"
+									pivot="${pivot}"
+									tooltip_key="${tooltip_key}"
+									disabled_tooltip_key="${disabled_tooltip_key}"
+									flip="${flip}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+-->
+
+							<button	name="clickable"
+									depth="4"							
+									pos="${Round(height/2, 0)-10},${Round(-height/2, 0)}"
+									width="${height-15}"
+									height="${height-15}"
+									pivot="center"
+									style="press"
+									sprite="${defaultsprite}"
+									defaultcolor="${defaultcolor}"
+									disabledcolor="[darkGrey]"
+									hoversprite="${hoversprite}"
+									hovercolor="${hovercolor}"
+									selectedsprite="${selectedsprite}"
+									selectedcolor="${selectedcolor}"
+									sound="[paging_click]"
+									flip="${flip}"
+									use_selection_box="false" />
+
+							<label	depth="2"
+									name="btnLabel"
+									width="${width}"
+									height="${height-2}"
+									pos="0,${Round(-height/2,0)}"
+									justify="${justify}"
+									text="${caption}"
+									text_key="${caption_key}"
+									effect="outline"
+									pivot="${pivot}"
+									font_size="${font_size}"
+									upper_case="${upper_case}"
+									parse_actions="${parse_actions}" />
+						</rect>
+					</smx_gears_nav_button>
+
+				<!--	// SMX // TAB Button -->
+
+					<smx_gears_tab_button	depth="3"
+											pos="0,0"
+											width="${width}"
+											height="${height}"
+											pivot="${pivot}"
+											caption=""
+											caption_key="${caption_key}"
+											enabled_font_color="255,255,255,255"
+											disabled_font_color="160,160,160,255"
+											tooltip_key=""
+											visible="true"
+											enabled="true"
+											sound="[default_click]"
+											parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<button	name="clickable"
+									pos="10,${Round(-height/2,0)}"
+									pivot="${pivot}"
+									sprite="smx_button_background"
+									defaultcolor="[smx_element_button_foreground]"
+									selectedcolor="[smx_element_button_selected]"
+									hoversprite="smx_button_foreground"
+									hovercolor="[smx_element_button_hover]"
+									hoverscale="1.1"
+									disabledcolor="[transparent]"
+									tooltip_key="${tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+
+							<label		name="btnLabel"
+										depth="2"
+										pos="10,${Round(-2-height/2,0)}"
+										width="${width}"
+										height="${height}"
+										pivot="${pivot}"
+										style="smx_label_outline"
+										text="${caption}"
+										text_key="${caption_key}"
+										font_size="${font_size}"
+										justify="center"
+										upper_case="true"
+										spacing_x="1"
+										parse_actions="${parse_actions}" />
+						</rect>
+					</smx_gears_tab_button>
+
+				</append>
+
+			</if>
+		</conditional>
+
+</SMXcore>

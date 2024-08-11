@@ -11,7 +11,7 @@ namespace SMXcore.HarmonyPatches
         {
             Harmony harmony = SMXHarmonyPatcher.GetHarmonyInstance();
 
-            MethodInfo original = AccessTools.Method(typeof(XUiC_MapWaypointListEntry), "updateSelected");
+            MethodInfo original = AccessTools.Method(typeof(global::XUiC_MapWaypointListEntry), "updateSelected");
             MethodInfo prefix = AccessTools.Method(typeof(XUiC_MapWaypointListEntry_Patch), "updateSelected");
 
             bool alreadyPatched = false;
@@ -32,7 +32,7 @@ namespace SMXcore.HarmonyPatches
         }
 
         //Harmony Prefix Patch for "updateSelected"
-        public static bool updateSelected(XUiC_MapWaypointListEntry __instance, ref bool _bHover, ref XUiV_Sprite ___Background, ref bool ___m_bSelected)
+        public static bool updateSelected(global::XUiC_MapWaypointListEntry __instance, ref bool _bHover, ref XUiV_Sprite ___Background, ref bool ___m_bSelected)
         {
             XUiV_Sprite background = ___Background;
             if (background != null)

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModSettings>
+  <Global>
+    <Tab name="General" displayKey="" tooltipKey="">
+      <Category name="General" displayKey="smxSettingGeneral" tooltipKey="smxSettingGeneralTooltip">
+        <Switch name="ForceSkipNews" displayKey="smxSettingForceSkipNews" tooltipKey="smxSettingForceSkipNewsTooltip" value="On" defaultValue="Off" leftValue="Off" rightValue="On" />
+      </Category>
+    </Tab>
+  </Global>
+  <World />
+</ModSettings>

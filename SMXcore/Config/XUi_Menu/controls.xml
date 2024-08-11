@@ -1,0 +1,672 @@
+<SMXcore file="XUi_Menu/controls.xml">
+
+<!--	// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate. This does
+							not include distributing this modlet to your server users.
+
+							2. You are under no circumstance allowed to distribute any SMX branded modlets without written consent from the main developer.
+
+							3. If you wish to distribute SMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX modlet or modlets in question remain unaltered and you cannot
+							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
+
+							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
+							as is with no change to its files what so ever.
+
+							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
+
+							6. You are not allowed to use any of the assets bundled with SMX branded modlets in other projects. This restriction
+							applies to all files that the SMX modlets consist of.
+							
+								EXCEPTION: The content of the Scripts folder is to be considered open source and can be used freely as long as the original credit
+								comments within the files are not removed or altered other than	adding to.
+
+							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							SMX branded modlets.
+
+							8. You are required to inform the main developer when your project that contains any SMX modlet or modlets have been made available
+							to the public.
+
+		// CREDITS:			Sirillion (main developer/designer/frontend)
+							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
+
+		// CONTRIBUTORS:	Mumpfy (art)
+-->
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMXmenu | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!--	// SMX // Button Designs -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<!--	// SMX // New / Continue Game Options -->
+
+				<append xpath="/controls">
+
+					<smx_game_option	pos="0,0"
+										width="570"
+										visible="true"
+										is_textinput="false"
+										display_names=""
+										value_localization_prefix=""
+										password_field="false"
+										has_default="true"
+										always_show="false"
+										value_min="@DEF"
+										value_max="@DEF"
+										value_wrap="@DEF"
+										value_increment="@DEF"
+										values="@DEF"
+										values_enforced="false"
+										reverse_list="@DEF"
+										localization_prefix=""
+										format_string=""
+										character_limit="0"
+										tooltip_key="">
+
+						<rect	name="${name}"
+								pos="${pos}"
+								width="${width}"
+								height="32"
+								is_textinput="${is_textinput}"
+								value_type="${value_type}"
+								controller="GamePrefSelector"
+								has_default="${has_default}"
+								always_show="${always_show}"
+								values="${values}"
+								values_enforced="${values_enforced}"
+								display_names="${display_names}"
+								value_localization_prefix="${value_localization_prefix}"
+								visible="${visible}">
+
+							<label	name="ControlLabel"
+									depth="4"
+									pos="-8,-4"
+									width="262"
+									height="30"
+									style="hover"
+									tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}"
+									text_key="${title}"
+									font_size="24"
+									color="[white]"
+									justify="right"
+									pivot="topleft" />
+
+							<smx_combobox_default	name="ControlCombo"
+													type="ComboBoxList`1[XUiC_GamePrefSelector+GameOptionValue]"
+													tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}"
+													value_min="${value_min}"
+													value_max="${value_max}"
+													value_wrap="${value_wrap}"
+													value_increment="${value_increment}"
+													values="${values}"
+													reverse_list="${reverse_list}"
+													localization_prefix="${localization_prefix}"
+													format_string="${format_string}"
+													pos="269,0"
+													width="${width-270}"
+													height="32"
+													font_size="24" />
+
+							<textfield	name="ControlText"
+										depth="5"
+										pos="303,0"
+										width="${password_field ? 570-338+32+10 : width-338}"
+										height="32"
+										pivot="topLeft"
+										password_field="${password_field}"
+										character_limit="${character_limit}"
+										font_size="24" />
+						</rect>
+					</smx_game_option>
+
+				<!--	// SMX // Savegames List Entry -->
+
+					<smx_savegames_list_entry width="254" height="30" simplified="false">
+						<rect height="${height}" style="press, doubleclick, hover, scroll" background_color_selected="[red]" background_color_hovered="[lightGrey]" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" controller="ListEntry`1[XUiC_SavegamesList+ListEntry]">
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty2px" height="${1+height}" pos="2,0" width="${width-4}" color="[black]" type="sliced" fillcenter="false" visible="{hasentry}" />
+							<sprite depth="2" name="background" color="[darkGrey]" pos="2,0" width="${width-4}" type="sliced" visible="{hasentry}"/>
+
+						<sprite depth="9" name="versionindicator" sprite="smx_version_indicator" type="sliced" width="4" height="${height-2}" pos="3,-1" visible="{hasentry}" color="{versioncolor}" />
+
+						<sprite name="diamondb" depth="4" sprite="smx_diamond_background" size="70,70" pos="50,-45" visible="{hasentry}" color="7,7,7,500" rotation="45" pivot="center" />
+						<sprite name="diamondb" depth="5" sprite="smx_diamond_foreground" size="70,70" pos="50,-45" visible="{hasentry}" color="255,144,24,196" rotation="45" pivot="center" />
+
+						<label depth="4" name="Name" pos="${width-180},-28" width="${width-120}" height="36" spacing_x="2" style="smx_label_outline" text="{savename}" font_size="36" justify="left" pivot="center" force_hide="${simplified}" visible="{hasentry}" overflow="ShrinkContent" />
+
+							<label depth="4" name="NameSimplified" pos="100,-2" width="${width-100}" height="32" text="{savename}" font_size="26" justify="left" pivot="topleft" color="{entrycolor}" force_hide="${not simplified}" visible="{hasentry}" />
+
+							<label depth="4" name="Version" pos="50,-45" style="smx_label_outline, press, doubleclick, hover, scroll" color="{versioncolor}" width="80" height="32" text="{version}" tooltip="{versiontooltip}" font_size="18" justify="center" pivot="center" sound="[recipe_click]" force_hide="${simplified}" gamepad_selectable="false" visible="{hasentry}" />
+
+						<label depth="4" name="World" pos="${width-180},${-height+34}" style="smx_label_outline, press, doubleclick, hover, scroll" spacing_x="1" color="{worldcolor}" width="${width-120}" height="20" text="{worldname} - {mode}" tooltip="{worldtooltip}" font_size="18" justify="left" pivot="center" visible="{hasentry}" force_hide="${simplified}" sound="[recipe_click]" gamepad_selectable="false" overflow="ShrinkContent" />
+
+							<label depth="4" name="LastPlayed" pos="${width-180},${-height+14}" style="smx_label_outline" spacing_x="1" color="255,255,255,128" width="${width-120}" height="16" text="Last Played: {lastplayed}" font_size="14" justify="right" pivot="center" visible="{hasentry}" />
+
+						<rect name="smxOutline" depth="0" visible="{hasentry}">
+							<sprite name="smxOutlineTop" pos="${width-460},${height-height+1}" width="${30+width}" height="3" sprite="smx_sepline_1" />
+							<sprite name="smxOutlineLeft" pos="${width/2-width/2+1},${height-height-100}" width="${24+height}" height="3" sprite="smx_sepline_1" rotation="90" />
+							<sprite name="smxOutlineRight" pos="${width/2+width/2-5},${height-height-105}" width="${32+height}" height="3" sprite="smx_sepline_1" rotation="90" />
+							<sprite name="smxOutlineBottom" pos="${width-468},${3-height}" width="${30+width}" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+						</rect>
+
+						</rect>
+					</smx_savegames_list_entry>
+
+				<!--	// SMX // Server List Header -->
+
+					<smx_servers_list_header depth="3" pos="0,0" width="254" height="30">
+
+						<rect depth="${depth}" pos="${pos}" height="${height}">
+
+							<sprite name="smxSortByBG" depth="2" pos="0,0" width="${width}" height="${height}" color="[black]" type="sliced" />
+							<sprite name="smxSortBy" depth="9" pos="50,-15" width="100" height="30" pivot="center" sprite="smx_button_background" color="[smx_element_accentcolor_1]" style="hover" tooltip="Select how to sort."/>
+
+							<label depth="10" name="smxSortBy" pos="50,-15" width="100" height="30" text="Sort By:" font_size="18" justify="center" pivot="center" style="smx_label_outline" />
+							<label depth="4" name="ServerName" pos="170,-16" width="120" height="30" text_key="xuiServerBrowserServerName" font_size="18" justify="left" pivot="center" style="smx_label_outline,hover,press" />
+							<label depth="4" name="World" pos="290,-16" width="90" height="30" text_key="xuiServerBrowserWorldName" font_size="18" justify="left" pivot="center" style="smx_label_outline,hover,press" />
+
+							<sprite depth="4" name="Players" pos="420,-16" width="20" height="20" sprite="server_players" color="[white]" type="simple" pivot="center" style="hover,press" tooltip_key="xuiServerBrowserPlayersTooltip" />
+							<sprite depth="4" name="Ping" pos="378,-16" width="20" height="20" sprite="server_ping" color="[white]" type="simple" pivot="center" style="hover,press" tooltip_key="xuiPing" />
+
+						</rect>
+
+					</smx_servers_list_header>
+
+				<!--	// SMX // Server List Entry -->
+
+					<smx_servers_list_entry width="254" height="30">
+						<rect height="${height}" style="press, doubleclick, hover, scroll"  background_color_selected="[red]" background_color_hovered="[lightGrey]" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" controller="ListEntry`1[XUiC_ServersList+ListEntry]">
+							<sprite depth="3" name="backgroundMain" sprite="menu_empty2px" height="${1+height}" pos="2,0" width="${width-4}" color="[black]" type="sliced" fillcenter="false" visible="{hasentry}" />
+							<sprite depth="2" name="background" color="[darkGrey]" pos="2,0" width="${width-4}" type="sliced" visible="{hasentry}" />
+
+							<button name="favorite" depth="4" pos="-16,-16" width="20" height="20" pivot="center" sprite="server_favorite" type="simple" hoverscale="1.1" defaultcolor="180,180,180,355" hovercolor="[white]" selectedcolor="[selectedColor]" selected="{isfavorite}" tooltip_key="xuiServerBrowserToggleFavoriteTooltip" sound="[recipe_click]" sound_play_on_hover="[default_hover]" visible="{hasentry}" />
+
+							<sprite name="anticheat" depth="4" pos="${width-95},-42" width="18" height="18" pivot="center" style="hover" sprite="server_icon_vac" color="{anticheatcolor}" type="simple" tooltip_key="xuiServerBrowserEACTooltip" visible="{hasentry}" />
+							<sprite name="password" depth="4" pos="${width-95},-18" width="18" height="18" pivot="center" style="hover" sprite="server_locked" color="{passwordcolor}" type="simple" tooltip_key="xuiServerBrowserPasswordTooltip" visible="{hasentry}" />
+
+							<label name="Name" depth="4" pos="172,-18" width="${width-130}" height="20" pivot="center" style="smx_label_outline" text="{servername}" font_size="20" justify="left" upper_case="true" color="{textcolor}" support_bb_code="false" overflow="ShrinkContent" />
+							<label name="World" depth="4" pos="${width-288},-45" width="300" height="18" pivot="center" style="smx_label_outline" text="{world}" font_size="18" justify="left" color="[mediumGrey]" support_bb_code="false" overflow="ShrinkContent" visible="{hasentry}" />
+							<sprite name="Players" depth="4" pos="${width-70},-42" width="20" height="20" pivot="center" style="hover" sprite="server_players" color="[lightGrey]" type="simple" tooltip_key="xuiServerBrowserPlayersTooltip" visible="{hasentry}" />
+							<label name="Players" depth="4" pos="${width-35},-43" width="50" height="24" pivot="center" style="smx_label_outline" text="{playersonline}/{playersmax}" font_size="18" justify="right" color="{textcolor}" overflow="ShrinkContent" visible="{hasentry}" />
+
+							<sprite name="Ping" depth="4" pos="${width-70},-18" width="20" height="20" pivot="center" style="hover" sprite="server_ping" color="[lightGrey]" type="simple" tooltip_key="xuiPing" visible="{hasentry}" />
+
+							<label name="Ping" depth="4" pos="${width-28},-18" width="35" height="24" pivot="center" style="smx_label_outline" text="{ping}" font_size="18" justify="right" color="{pingcolor}" overflow="ShrinkContent" visible="{hasentry}" />
+
+							<rect name="smxOutline" depth="0" visible="{hasentry}">
+								<sprite name="smxOutlineTop" pos="-5,1" width="470" height="3" sprite="smx_sepline_1" />
+								<sprite name="smxOutlineLeft" pos="0,-68" width="75" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="445,-73" width="80" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineBottom" pos="-12,-58" width="468" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+							</rect>
+						</rect>
+					</smx_servers_list_entry>
+
+				<!--	// SMX // Server Filtering Strings -->
+
+					<smx_browser_gameoption_string pos="0,0" width="570" visible="true">
+
+						<rect	name="${name}"
+								pos="${pos}"
+								width="${width}"
+								height="32"
+								controller="ServerBrowserGamePrefString"
+								visible="${visible}">
+
+							<label	depth="4"
+									pos="123,-16"
+									width="262"
+									height="30"
+									style="smx_label_normal, hover"
+									tooltip_key="${title}Desc"
+									text_key="${title}"
+									font_size="24"
+									color="[white]"
+									justify="right"
+									pivot="center" />
+
+							<textfield	name="value"
+										depth="5"
+										pos="419,-16"
+										width="${width-340}"
+										height="32"
+										font_size="24"
+										pivot="center" />
+						</rect>
+
+					</smx_browser_gameoption_string>
+
+				<!--	// SMX // Server Filtering Combined -->
+
+					<smx_browser_gameoption_combined	pos="0,0"
+														width="570"
+														visible="true"
+														display_names=""
+														value_localization_prefix=""
+														allow_any="true"
+														allow_custom="true"
+														force_custom="false"
+														default=""
+														default_min=""
+														default_max=""
+														default_string=""
+														value_min="@DEF"
+														value_max="@DEF"
+														value_wrap="@DEF"
+														value_increment="@DEF"
+														values="@DEF"
+														reverse_list="@DEF"
+														localization_prefix=""
+														format_string=""
+														tooltip_key="">
+
+						<rect	name="${name}"
+								pos="${pos}"
+								width="${width}"
+								height="32"
+								controller="ServerBrowserGamePrefSelectorCombo"
+								values="${values}"
+								display_names="${display_names}"
+								value_localization_prefix="${value_localization_prefix}"
+								allow_any="${allow_any}"
+								allow_custom="${allow_custom}"
+								force_custom="${force_custom}"
+								default="${default}"
+								default_min="${default_min}"
+								default_max="${default_max}"
+								default_string="${default_string}"
+								visible="${visible}">
+
+							<label	depth="4"
+									pos="-8,-4"
+									width="262"
+									height="30"
+									style="smx_label_normal, hover"
+									tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}"
+									text_key="${title}"
+									font_size="24"
+									color="[white]"
+									justify="right"
+									pivot="topleft" />
+
+							<smx_combobox_default	name="ControlCombo"
+													type="ComboBoxList`1[XUiC_ServerBrowserGamePrefSelectorCombo+GameOptionValue]"
+													tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}"
+													value_min="${value_min}"
+													value_max="${value_max}"
+													value_wrap="${value_wrap}"
+													value_increment="${value_increment}"
+													values="${values}"
+													reverse_list="${reverse_list}"
+													localization_prefix="${localization_prefix}"
+													format_string="${format_string}"
+													pos="269,0"
+													width="${width-270}"
+													height="32"
+													font_size="24"
+													visible="{useCombo}" />
+
+							<panel	createuipanel="true" disableautobackground="true" depth="10" visible="{iscustomrange}">
+
+								<textfield	name="valuemin"
+											depth="5"
+											pos="355,-17"
+											width="${Round((width-342-32)/2, 0)}"
+											height="29"
+											pivot="center"
+											validation="integer"
+											character_limit="9"
+											on_scroll="true"
+											font_size="24"
+											clear_button="false" />
+
+								<sprite	depth="3"
+										name="background"
+										pos="303,1"
+										width="${width-342}"
+										height="36"
+										color="[darkestGrey]"
+										type="sliced"
+										pivot="topleft"
+										globalopacity="false" />
+
+								<label	name="comparison"
+										depth="4"
+										pos="${303+1+Round((width-342-32)/2, 0)},-5"
+										width="30"
+										height="32"
+										text="-"
+										font_size="24"
+										color="[white]"
+										justify="center"
+										pivot="topleft" />
+
+								<textfield	name="valuemax"
+											depth="5"
+											pos="${348+1+32+Round((width-342-32)/2, 0)},-17"
+											width="${Round((width-342-32)/2, 0)}"
+											height="29"
+											pivot="center"
+											validation="integer"
+											character_limit="9"
+											on_scroll="true"
+											font_size="24"
+											clear_button="false" />
+							</panel>
+
+							<panel createuipanel="true" disableautobackground="true" depth="10" visible="{iscustomstring}">
+								<textfield name="valuestring" depth="5" pos="303,0" width="${width-342}" height="32" pivot="topLeft" on_scroll="true" />
+								<sprite depth="3" name="background" pos="303,1" width="${width-342}" height="35" color="[mediumGrey]" type="sliced" pivot="topleft" globalopacity="false" />
+							</panel>
+
+						</rect>
+
+					</smx_browser_gameoption_combined>
+
+				<!--	// SMX // Server Info -->
+
+					<smx_browser_gameoption_info pos="2,0" width="570" visible="true" display_names="" value_localization_prefix="">
+
+						<rect	name="${name}"
+								pos="${pos}"
+								width="${width}"
+								height="32"
+								controller="ServerBrowserGamePrefInfo"
+								display_names="${display_names}"
+								value_localization_prefix="${value_localization_prefix}"
+								visible="${visible}">
+
+							<label depth="4" pos="123,-16" width="262" height="30" style="smx_label_normal, hover" tooltip_key="${title}Desc" text_key="${title}" font_size="24" color="[white]" justify="right" pivot="center" />
+
+							<sprite depth="5" pos="419,-16" width="${width-340}" height="32" pivot="center" name="background" color="[black]" type="sliced" />
+
+							<label depth="6" pos="419,-16" width="${width-340}" height="32" style="smx_label_normal" name="value" justify="center" font_size="20" pivot="center" />
+
+							<rect name="smxOutline" depth="99">
+								<sprite name="smxOutlineTop" pos="290,2" width="250" height="3" sprite="smx_sepline_1" />
+								<sprite name="smxOutlineLeft" pos="300,-36" width="40" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="530,-38" width="43" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineBottom" pos="290,-30" width="257" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+							</rect>
+
+						</rect>
+
+					</smx_browser_gameoption_info>
+
+				<!--	// SMX // RWG Biome Distribition -->
+
+					<smx_rwg_biome>
+						<rect>
+							<label depth="4" width="250" height="30" pivot="center" style="smx_label_outline, hover" font_size="24" justify="right" color="[white]" />
+							<smx_combobox_default name="cb" depth="108" pos="140,16" width="300" height="32" pivot="center" font_size="24" type="ComboBoxInt" value_min="5" value_max="50" value="0" value_increment="1" value_wrap="false" />
+							<sprite name="color" depth="4" pos="460,1" width="30" height="30" pivot="center" sprite="menu_empty3px" type="sliced" color="0,64,0" fillcenter="true" globalopacity="false" />
+						</rect>
+					</smx_rwg_biome>
+
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMX CC | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!--	// SMX // Main Menu - Gears Conditional Check - Mods Window -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<append xpath="/controls">
+					<smx_gears_modlist_entry>
+						<rect height="${height}" style="press, hover"  background_color_selected="[red]" background_color_hovered="[lightGrey]" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" controller="${controller}">
+							<sprite name="backgroundMain" depth="3" pos="2,0" height="${1+height}" width="${width-4}" sprite="menu_empty2px" color="[black]" type="sliced" fillcenter="false" />
+							<sprite name="background" depth="2" pos="2,0" width="${width-4}" color="[darkGrey]" type="sliced" />
+
+							<texture name="ModIcon" depth="2" pos="15,-8" width="${height-16}" height="${height-16}" visible="{HasIcon}" />
+
+							<rect pos="60,0">
+								<label name="ModName" depth="4" pos="172,-18" width="${width-130}" height="20" pivot="center" style="smx_label_outline" text="{ModName}" font_size="20" justify="left" upper_case="false" color="{textcolor}" support_bb_code="false" overflow="ShrinkContent" />
+								<label name="ModAuthor" depth="4" pos="${width-288},-45" width="300" height="18" pivot="center" style="smx_label_outline" text="{ModAuthor}" font_size="18" justify="left" color="[mediumGrey]" support_bb_code="false" overflow="ShrinkContent" />
+							</rect>
+
+							<label name="ModVersion" depth="4" pos="${width-60},-43" width="100" height="24" pivot="center" style="smx_label_outline" text="{ModVersion}" font_size="18" justify="right" color="{textcolor}" overflow="ShrinkContent" visible="{hasentry}" />
+
+							<sprite name="HasSettings" depth="4" pos="${width-20},-15" width="18" height="18" pivot="center" sprite="server_favorite" color="255,144,24,196" visible="{HasSettings}" />
+
+							<rect name="smxOutline" depth="0">
+								<sprite name="smxOutlineTop" pos="-5,1" width="470" height="3" sprite="smx_sepline_1" />
+								<sprite name="smxOutlineLeft" pos="0,-68" width="75" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="445,-73" width="80" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineBottom" pos="-12,-58" width="468" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+							</rect>
+						</rect>
+
+					</smx_gears_modlist_entry>
+
+					<smx_gears_modsettings_optioncombined pos="0,0">
+						<rect name="option" depth="1" pos="${pos}" width="570" height="${height}" controller="${controller}">
+							<sprite name="background" depth="1" pos="0,${Round(-height/2,0)}" width="2" height="${height}" pivot="left" type="sliced" color="[transparent]" globalopacity="false" />
+
+							<label name="categoryLabel" depth="2" pos="284,${-height+22}" height="36" pivot="center" style="hover,smx_label_outline" text_key="{displayName}" font_size="26" color="255,255,255,255" justify="center" upper_case="true" tooltip_key="{tooltipKey}" visible="{isCategory}"/>
+
+							<label name="nameLabel" depth="2" pos="110,${Round(-height/2,0)}" width="220" height="30" pivot="center" style="hover, smx_label_outline" text_key="{displayName}" tooltip_key="{tooltipKey}" font_size="24" color="255,255,255,255" justify="right" visible="{#!isCategory}"/>
+
+							<smx_combobox_default name="comboBoxFloat" depth="2" pos="${width-(width-235)},${Round((-height+32)/2,0)}" width="${width-220}" height="32" type="ComboBoxFloat" value_increment="2" value_min="0" value_max="100" value_wrap="false" visible="{isSliderFloat}" font_size="24" />
+							<smx_combobox_default name="comboBoxInt" depth="2" pos="${width-(width-235)},${Round((-height+32)/2,0)}" width="${width-220}" height="32" type="ComboBoxInt" value_increment="2" value_min="0" value_max="100" value_wrap="false" visible="{isSliderInt}" font_size="24" />
+							<smx_combobox_default name="comboBoxList" depth="2" pos="${width-(width-235)},${Round((-height+32)/2,0)}" width="${width-220}" height="32" type="ComboBoxList`1[System.String]" values="{selectorValues}" value_wrap="{wrap}" visible="{isSelector}" font_size="24" />
+
+							<smx_gears_togglebutton	name="toggleButton"
+													depth="2"
+													pos="${width-(width-387)},${Round((-height-1)/2,0)}"
+													width="${width-287}"
+													height="32"
+													pivot="center"
+													font_size="24"
+													left_caption_key="gearsUIDisabled"
+													right_caption_key="gearsUIEnabled"
+													right_selected_font_color="60,255,60,255"
+													left_selected_font_color="255,0,0,255"
+													defaultcolor="[darkGrey]"
+													selectedsprite="smx_toggle_handler"
+													selectedcolor="255,144,24,196"
+													visible="{isSwitch}" />
+
+							<rect name="smxOutline" depth="10" visible="{isSwitch}">
+								<sprite name="smxOutlineTop" pos="250,-5" width="${width-245}" height="3" sprite="smx_sepline_1" />
+								<sprite name="smxOutlineLeft" pos="266,-46" width="51" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="504,-46" width="47" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineBottom" pos="255,-37" width="${width-260}" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+							</rect>
+
+							<smx_gears_controlbinding name="controlBinding" depth="2" pos="${width-(width-270)},${Round((-height+32)/2,0)}" width="${width-250}" height="32" font_size="24" visible="{isBinding}" />
+						</rect>
+					</smx_gears_modsettings_optioncombined>
+
+					<smx_gears_togglebutton	depth="3"
+											pos="0,0"
+											width="200"
+											height="32"
+											enabled_font_color="[labelColor]"
+											disabled_font_color="[disabledLabelColor]"
+											visible="true"
+											enabled="true"
+											bordersprite=""
+											bordercolor="[black]"
+											pivot="left"
+											defaultsprite="smx_toggle_handler"
+											defaultcolor="[mediumGrey]"
+											hoversprite="smx_toggle_handler"
+											hovercolor="[white]"
+											selectedsprite="smx_toggle_handler"
+											selectedcolor="255,144,24,196"
+											foregroundlayer="true"
+											tooltip_key=""
+											sound="[default_click]"
+											justify="center"
+											font_size="24"
+											upper_case="false"
+											parse_actions="false"
+											left_caption="Off"
+											left_caption_key=""
+											right_caption="On"
+											right_caption_key=""
+											selected_font_color=""
+											right_selected_font_color="[labelColor]"
+											left_selected_font_color="[labelColor]"
+											gap_width="0"
+											font_size_hover="26">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								enabled_font_color="${enabled_font_color}"
+								disabled_font_color="${disabled_font_color}"
+								right_selected_font_color="${right_selected_font_color}"
+								left_selected_font_color="${left_selected_font_color}"
+								selected_font_color="${selected_font_color}"
+								visible="${visible}"
+								button_enabled="${enabled}"
+								font_size="${font_size}"
+								font_size_default="${font_size}"
+								font_size_hover="${font_size_hover}"
+								controller="Gears.UI.ToggleButton, Gears">
+
+							<sprite name="border" depth="4" pos="0,0" pivot="${pivot}" sprite="${bordersprite}" type="sliced" color="${bordercolor}" fillcenter="false" foregroundlayer="true" />
+
+							<grid pos="0,0" depth="1" pivot="${pivot}" rows="1" cols="2" cell_width="${Round((width)/2,0)}" cell_height="${height}" repeat_content="false" arrangement="horizontal">
+
+								<rect width="${Round(width/2,0)-Round(gap_width/2,0)}">
+									<button	name="btnLeft"
+											pos="0,0"
+											sprite="${defaultsprite}"
+											defaultcolor="${defaultcolor}"
+											disabledcolor="[darkGrey]"
+											hoversprite="${hoversprite}"
+											hovercolor="${hovercolor}"
+											selectedsprite="${selectedsprite}"
+											selectedcolor="${selectedcolor}"
+											foregroundlayer="${foregroundlayer}"
+											type="sliced"
+											hoverscale="1.0"
+											pivot="topleft"
+											tooltip_key="${tooltip_key}"
+											sound_play_on_hover="[default_hover]"
+											sound="${sound}" />
+
+									<label	name="btnLabelLeft"
+											depth="10"
+											pos="0,${Round(-height/2,0)-1}"
+											height="${height-2}"
+											pivot="left"
+											style="smx_label_outline"
+											text="${left_caption}"
+											text_key="${left_caption_key}"
+											effect="outline"
+											font_size="${font_size}"
+											upper_case="${upper_case}"
+											justify="${justify}"
+											parse_actions="${parse_actions}" />
+								</rect>
+
+								<rect width="${Round(width/2,0)-Round(gap_width/2,0)}">
+									<button	name="btnRight"
+											pos="${Round(width/2,0)},0"
+											sprite="${defaultsprite}"
+											defaultcolor="${defaultcolor}"
+											disabledcolor="[darkGrey]"
+											hoversprite="${hoversprite}"
+											hovercolor="${hovercolor}"
+											selectedsprite="${selectedsprite}"
+											selectedcolor="${selectedcolor}"
+											foregroundlayer="${foregroundlayer}"
+											type="sliced"
+											hoverscale="1.0"
+											pivot="topright"
+											tooltip_key="${tooltip_key}"
+											sound_play_on_hover="[default_hover]"
+											sound="${sound}" />
+
+									<label	name="btnLabelRight"
+											depth="10"
+											pos="${Round(width/2,0)},${Round(-height/2,0)-1}"
+											height="${height-2}"
+											pivot="right"
+											style="smx_label_outline"
+											text="${right_caption}"
+											text_key="${right_caption_key}"
+											font_size="${font_size}"
+											upper_case="${upper_case}"
+											justify="${justify}"
+											parse_actions="${parse_actions}" />
+								</rect>
+							</grid>
+						</rect>
+					</smx_gears_togglebutton>
+
+					<smx_gears_controlbinding pos="0,0" depth="1" width="710" height="32" visible="true">
+						<rect name="${name}" depth="${depth}" pos="${pos}" width="${width}" height="${height}" visible="${visible}">
+							<sprite name="bindingBackground" depth="0" pos="0,${Round(-height/2,0)}" width="${width-36}" height="${height}" pivot="left" on_press="true" color="[black]" type="sliced" foregroundlayer="true" />
+							<label name="bindingValue" depth="1" pos="0,${Round(-height/2,0)}" width="${width-36}" height="${height}" style="smx_label_outline" justify="center" font_size="${font_size}" pivot="left" />
+							<button name="bindingUnbind" depth="1" pos="${width-(width-260)},${Round(-height/2,0)}" width="28" height="28" pivot="center" style="press, hover" sprite="ui_game_symbol_x" sound="[paging_click]" />
+						</rect>
+					</smx_gears_controlbinding>
+
+					<smx_mod_info	pos="0,0"
+									width="570"
+									height="30">
+									
+
+						<rect	name="${name}"
+								pos="${pos}"
+								width="${width}"
+								height="32">
+
+							<label	name="modTitle"
+									depth="4"
+									pos="10,0"
+									width="262"
+									height="30"
+									style="smx_label_outline"
+									text_key="${title}"
+									font_size="24"
+									color="[white]"
+									justify="right"
+									pivot="center" />
+
+							<label	name="modEntry"
+									depth="6"
+									pos="303,0"
+									width="262"
+									height="30"
+									style="smx_label_outline"
+									text_key="${text}"
+									font_size="24"
+									color="[lightGrey]"
+									justify="center"
+									pivot="center" />
+
+							<sprite	name="modEntryBG"
+									depth="5"
+									pos="303,0"
+									width="${width-338}"
+									height="32"
+									pivot="center"
+									sprite="menu_empty"
+									type="sliced"
+									color="7,7,7,255" />
+
+						</rect>
+					</smx_mod_info>
+
+				</append>
+			</if>
+		</conditional>
+
+</SMXcore>

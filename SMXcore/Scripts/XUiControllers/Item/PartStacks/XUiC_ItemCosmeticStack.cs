@@ -14,7 +14,7 @@ namespace SMXcore
 {
     public class XUiC_ItemCosmeticStack : global::XUiC_ItemCosmeticStack
     {
-        protected override void SelectedChanged(bool isSelected)
+        public override void SelectedChanged(bool isSelected)
         {
             SetColor(isSelected ? selectColor : XUiC_BasePartStack.backgroundColor);
             ((XUiV_Sprite)background.ViewComponent).SpriteName = (isSelected ? "smxlib_slot_frame_narrow" : "smxlib_slot_frame_narrow");

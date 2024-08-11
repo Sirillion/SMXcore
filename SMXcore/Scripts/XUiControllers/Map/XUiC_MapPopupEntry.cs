@@ -11,7 +11,7 @@ namespace SMXcore
 {
     public class XUiC_MapPopupEntry : XUiController
     {
-        protected override void OnHovered(bool _isOver)
+        public override void OnHovered(bool _isOver)
         {
             XUiV_Sprite xuiV_Sprite = GetChildById("background").ViewComponent as XUiV_Sprite;
             if (xuiV_Sprite != null)

@@ -104,7 +104,7 @@ namespace SMXcore
 
         public override void Update(float _dt)
         {
-            button.shouldSnap = !string.IsNullOrEmpty(categoryName);
+            //button.shouldSnap = !string.IsNullOrEmpty(categoryName);
             base.Update(_dt);
             if(IsDirty)
             {

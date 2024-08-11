@@ -1,28 +1,12 @@
-<SMXcore name="XUi_Common/styles.xml">
+<SMXcore file="XUi_Common/styles.xml">
 
-<!--	// MODLET:			SMXcore
+<!--	// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate. This does
+							not include distributing this modlet to your server users.
 
-		// EAC:				Non Friendly, SMX requires EAC to be DISABLED.
+							2. You are under no circumstance allowed to distribute any SMX branded modlets without written consent from the main developer.
 
-		// VERSION:			21.2.30.1
-
-		// BUILD:			A21.2
-
-		// DISCLAIMER:		Please be advised that this modlet is intended for use with the build mentioned above. That said it may very well be that
-							it can be used with other builds with little to no risk of failure. It all depends on the standard files being updated or not
-							and you can verify this by looking at the date of the standard files when an update have occured.
-
-		// MOD DESCRIPTION:	The purpose of this modlet is to unite all assets, code and styles that are shared between the different SMX modlets into one
-							modlet. It contains all the custom graphics and icons needed to make SMX modlets run properly.
-
-		// DEPENDENCIES:	Quartz by Laydor.
-
-		// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate.
-
-							2. You are under no circumstance allowed to distribute any SMX and/or ZMX branded modlets without written consent from the main developer.
-
-							3. If you wish to distribute SMX and/or ZMX branded modlets as part of your own project and consent have been given you are required
-							to do so in such a way so that all the files of the SMX and/or ZMX modlet or modlets in question remain unaltered and you cannot
+							3. If you wish to distribute SMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX modlet or modlets in question remain unaltered and you cannot
 							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
 
 							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
@@ -32,18 +16,19 @@
 							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
 							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
 
-							6. You are not allowed to use any of the assets bundled with SMX and/or ZMX branded modlets in other projects. This restriction
-							applies to all files that the SMX and/or ZMX modlets consist of. EXCEPTION: The content of the Harmony folder is to be considered
-							open source and can be used freely as long as the original credit comments within the files are not removed or altered other than
-							adding to.
+							6. You are not allowed to use any of the assets bundled with SMX branded modlets in other projects. This restriction
+							applies to all files that the SMX modlets consist of.
+							
+								EXCEPTION: The content of the Scripts folder is to be considered open source and can be used freely as long as the original credit
+								comments within the files are not removed or altered other than	adding to.
 
 							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
-							SMX and/or ZMX branded modlets.
+							SMX branded modlets.
 
-							8. You are required to inform the main developer when your project that contains any SMX and/or ZMX modlet or modlets have been made
-							available to the public.
+							8. You are required to inform the main developer when your project that contains any SMX modlet or modlets have been made available
+							to the public.
 
-		// CREDITS:			Sirillion (main developer/designer/harmony/frontend/backend/author)
+		// CREDITS:			Sirillion (main developer/designer/frontend)
 							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
 
 		// CONTRIBUTORS:	Mumpfy (art)
@@ -56,6 +41,167 @@
 			<!-- SMX COMMENT: SMXcore GLOBAL colors. -->
 			<!-- SMX COMMENT: Changing a color in the SMXcore section will change the same color in the SMXhud, SMXui and SMXmenu sections also if it exists. -->
 			<!-- SMX COMMENT: To deviate from this and set separate colors for the different modlets set those colors directly. -->
+
+			<style_entry name="smx_tooltip_background"							value="0,0,0,325" />									<!-- This entry sets the color for: GLOBAL Tooltip window backgrounds -->
+			<style_entry name="smx_tooltip_border"								value="175,30,25,355" />								<!-- This entry sets the color for: GLOBAL Tooltip window borders -->
+
+			<style_entry name="smx_element_labelcolor_1"						value="255,255,255,255" />								<!-- This entry sets the color for: GLOBAL Element primary labels -->
+
+			<style_entry name="smx_element_labelcolor_effect"					value="20,20,20,230" />									<!-- This entry sets the color for: GLOBAL Element primary effect_color for labels -->
+
+			<style_entry name="smx_element_accentcolor_1"						value="175,30,25,255" />								<!-- This entry sets the color for: GLOBAL Element primary accents -->
+			<style_entry name="smx_element_accentcolor_2"						value="255,144,24,255" />								<!-- This entry sets the color for: GLOBAL Element secondary accents -->
+			<style_entry name="smx_element_accentcolor_3"						value="192,192,192,255" />								<!-- This entry sets the color for: GLOBAL Element tertiary accents -->
+			<style_entry name="smx_element_accentcolor_4"						value="126,121,115,255" />								<!-- This entry sets the color for: GLOBAL Element tertiary accents -->
+			<style_entry name="smx_element_accentcolor_5"						value="195,195,195,255" />								<!-- This entry sets the color for: GLOBAL Element tertiary accents -->
+
+			<style_entry name="smx_element_accentcolor_green"					value="43,124,18,255" />								<!-- This entry sets the color for: GLOBAL Unit Frame hunger bar -->
+
+			<style_entry name="smx_element_separation_1"						value="255,255,255,255" />								<!-- This entry sets the color for: GLOBAL Element primary separation lines -->
+			<style_entry name="smx_element_separation_2"						value="128,128,128,255" />								<!-- This entry sets the color for: GLOBAL Element secondary separation lines -->
+
+			<style_entry name="smx_element_button_background"					value="64,64,64,255" />									<!-- This entry sets the color for: GLOBAL Element primary button backgrounds (deactivated) -->
+			<style_entry name="smx_element_button_foreground"					value="175,30,25,255" />								<!-- This entry sets the color for: GLOBAL Element primary button foregrounds (active) -->
+			<style_entry name="smx_element_button_hover"						value="255,255,255,255" />								<!-- This entry sets the color for: GLOBAL Element primary button hover (mouseover) -->
+			<style_entry name="smx_element_button_selected"						value="255,255,255,255" />								<!-- This entry sets the color for: GLOBAL Element primary button selection (clicked) -->
+
+
+		</append>
+
+
+<!--	// SMX // Vanilla hoverColor Color "Correction" -->
+
+		<set xpath="/styles/global/style_entry[@name='hoverColor']/@value">96,96,96</set>
+
+
+<!--	// SMX // Paging Header Window -->
+
+		<append xpath="/styles">
+			<style name="smx_window_paging_icons"						type="button">
+				<style_entry name="depth" 								value="2"/>
+				<style_entry name="width" 								value="198"/>
+				<style_entry name="height" 								value="42"/>
+				<style_entry name="pivot" 								value="center" />
+				<style_entry name="hoverscale" 							value="1" />
+				<style_entry name="collider_scale" 						value="1.0" />
+				<style_entry name="defaultcolor" 						value="[smxui_element_backdrop_1]" />
+				<style_entry name="selectedcolor" 						value="[smxui_element_accentcolor_1]" />
+				<style_entry name="disabledcolor" 						value="[smxui_element_button_background]" />
+				<style_entry name="hoversprite" 						value="smxui_button_background" />
+				<style_entry name="selectedsprite" 						value="smxui_button_background" />
+				<style_entry name="globalopacitymod" 					value="1.2"/>
+				<style_entry name="sound" 								value="[paging_click]"/>
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smx_window_paging_icons"						type="sprite">
+				<style_entry name="depth" 								value="2"/>
+				<style_entry name="width" 								value="198"/>
+				<style_entry name="height" 								value="42"/>
+				<style_entry name="pivot" 								value="center" />
+				<style_entry name="hoverscale" 							value="1" />
+				<style_entry name="collider_scale" 						value="1.0" />
+				<style_entry name="defaultcolor" 						value="[smxui_element_backdrop_1]" />
+				<style_entry name="selectedcolor" 						value="[smxui_element_accentcolor_1]" />
+				<style_entry name="disabledcolor" 						value="[smxui_element_button_background]" />
+				<style_entry name="hoversprite" 						value="smxui_button_background" />
+				<style_entry name="selectedsprite" 						value="smxui_button_background" />
+				<style_entry name="globalopacitymod" 					value="1.2"/>
+				<style_entry name="sound" 								value="[paging_click]"/>
+			</style>
+		</append>
+
+
+<!--	// SMX // Defined Icon Colors -->
+
+		<append xpath="/styles">
+			<style name="smx_icon_colors">
+				<style_entry name="defaultcolor" 						value="[mediumGrey]" />
+				<style_entry name="hovercolor" 							value="[lightGrey]" />
+				<style_entry name="selectedcolor" 						value="[white]" />
+			</style>
+		</append>
+
+
+<!--	// SMX // Defined Label Designs -->
+
+		<append xpath="/styles">
+			<style name="smx_window_title"	 						type="label">
+				<style_entry name="font_size"						value="36" />
+				<style_entry name="color"							value="[smx_element_labelcolor_1]" />
+				<style_entry name="crispness"						value="OnDesktop" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smx_element_labelcolor_effect]" />
+				<style_entry name="pivot"							value="center" />
+				<style_entry name="justify"							value="center" />
+				<style_entry name="upper_case"						value="true" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smx_label_normal"							type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smx_element_labelcolor_1]" />
+				<style_entry name="crispness"						value="OnDesktop" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smx_element_labelcolor_effect]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style name="smx_label_outline"							type="label">
+				<style_entry name="font_size"						value="22" />
+				<style_entry name="color"							value="[smx_element_labelcolor_1]" />
+				<style_entry name="crispness"						value="OnDesktop" />
+				<style_entry name="effect" 							value="Outline8" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smx_element_labelcolor_effect]" />
+			</style>
+		</append>
+
+		<append xpath="/styles">
+			<style type="smx_curved_label">
+				<style_entry name="color"							value="[smxcore_element_labelcolor_3]" />
+				<style_entry name="font_face"						value="ReferenceFont" />
+				<style_entry name="font_size"						value="28" />
+				<style_entry name="crispness"						value="OnDesktop" />
+				<style_entry name="effect" 							value="outline" />
+				<style_entry name="effect_distance"					value="1,1" />
+				<style_entry name="effect_color"					value="[smx_element_labelcolor_effect]" />
+				<style_entry name="justify"							value="left" />
+				<style_entry name="pivot"							value="topleft" />
+				<style_entry name="text"							value="" />
+				<style_entry name="upper_case"						value="false" />
+			</style>
+		</append>
+
+
+		<append xpath="/styles">
+			<style name="smx_item_stack">
+				<style_entry name="background_color" 				value="[smxui_slot_frame_normal]"/>
+				<style_entry name="highlight_color" 				value="[white]"/>
+				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="holding_color" 					value="[white]"/>
+				<style_entry name="press_color" 					value="[white]"/>
+				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
+				<style_entry name="lockedslot_color"				value="[smxui_slot_frame_locked]"/>
+				<style_entry name="search_color"					value="[smxui_slot_frame_search]"/>
+				<style_entry name="nomatch_iconcolor"				value="[smxui_element_iconcolor_disabled]"/>
+				<style_entry name="hover_icon_grow" 				value="1.5"/>
+				<style_entry name="on_press" 						value="true"/>
+				<style_entry name="sound_volume" 					value="0.75"/>
+				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
+				<style_entry name="place_sound" 					value="[place_click]"/>
+			</style>
+		</append>
+
+
+
+
+		<append xpath="/styles/global">
 
 			<style_entry name="smxcore_tooltip_background"						value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window backgrounds -->
 			<style_entry name="smxcore_tooltip_border"							value="255,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window borders -->
@@ -389,94 +535,11 @@
 <!--	// SMX // Global Colors | SMX COMMENT: MOST of the colors used in SMX can be adjusted above -->
 
 
-<!--	// SMX // Defined Icon Colors -->
-
-		<append xpath="/styles">
-			<style name="smxcore_icon_colors">
-				<style_entry name="defaultcolor" 						value="[mediumGrey]" />
-				<style_entry name="hovercolor" 							value="[lightGrey]" />
-				<style_entry name="selectedcolor" 						value="[white]" />
-			</style>
-		</append>
-
-
-<!--	// SMX // Defined Label Designs -->
-
-		<append xpath="/styles">
-			<style name="smxcore_window_title" 						type="label">
-				<style_entry name="font_size"						value="36" />
-				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
-				<style_entry name="crispness"						value="OnDesktop" />
-				<style_entry name="effect" 							value="outline" />
-				<style_entry name="effect_distance"					value="1,1" />
-				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
-				<style_entry name="pivot"							value="center" />
-				<style_entry name="justify"							value="center" />
-				<style_entry name="upper_case"						value="true" />
-			</style>
-		</append>
-
-		<append xpath="/styles">
-			<style name="smxcore_label_normal"						type="label">
-				<style_entry name="font_size"						value="22" />
-				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
-				<style_entry name="crispness"						value="OnDesktop" />
-				<style_entry name="effect" 							value="outline" />
-				<style_entry name="effect_distance"					value="1,1" />
-				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
-			</style>
-		</append>
-
-		<append xpath="/styles">
-			<style name="smx_label_outline"							type="label">
-				<style_entry name="font_size"						value="22" />
-				<style_entry name="color"							value="[smxhud_element_labelcolor_1]" />
-				<style_entry name="crispness"						value="OnDesktop" />
-				<style_entry name="effect" 							value="Outline8" />
-				<style_entry name="effect_distance"					value="1,1" />
-				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
-			</style>
-		</append>
-
-		<append xpath="/styles">
-			<style type="smxcore_curved_label">
-				<style_entry name="color"							value="[smxcore_element_labelcolor_3]" />
-				<style_entry name="font_face"						value="ReferenceFont" />
-				<style_entry name="font_size"						value="28" />
-				<style_entry name="crispness"						value="OnDesktop" />
-				<style_entry name="effect" 							value="outline" />
-				<style_entry name="effect_distance"					value="1,1" />
-				<style_entry name="effect_color"					value="[smxcore_element_labelcolor_effect]" />
-				<style_entry name="justify"							value="left" />
-				<style_entry name="pivot"							value="topleft" />
-				<style_entry name="text"							value="" />
-				<style_entry name="upper_case"						value="false" />
-			</style>
-		</append>
 
 
 <!--	// SMX // Backpack & Looting ItemStack Layouts -->
 
 <!-- NEW! -->
-		<append xpath="/styles">
-			<style name="smxcore_item_stack">
-				<style_entry name="background_color" 				value="[smxui_slot_frame_normal]"/>
-				<style_entry name="highlight_color" 				value="[white]"/>
-				<style_entry name="select_color" 					value="[white]"/>
-				<style_entry name="holding_color" 					value="[white]"/>
-				<style_entry name="press_color" 					value="[white]"/>
-				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
-				<style_entry name="lockedslot_color"				value="[smxui_slot_frame_locked]"/>
-				<style_entry name="search_color"					value="[smxui_slot_frame_search]"/>
-				<style_entry name="nomatch_iconcolor"				value="[smxui_element_iconcolor_disabled]"/>
-				<style_entry name="hover_icon_grow" 				value="1.5"/>
-				<style_entry name="on_press" 						value="true"/>
-				<style_entry name="sound_volume" 					value="0.75"/>
-				<style_entry name="pickup_sound" 					value="[pickup_click]"/>
-				<style_entry name="place_sound" 					value="[place_click]"/>
-			</style>
-		</append>
-
 
 <!-- DEPRECATED? -->
 		<append xpath="/styles">

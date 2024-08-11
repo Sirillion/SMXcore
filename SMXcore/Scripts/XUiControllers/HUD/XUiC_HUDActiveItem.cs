@@ -179,7 +179,7 @@ namespace SMXcore
 
         private bool IsToolHeld()
         {
-            return heldItemClass != null && heldItemClass.HasAnyTags(FastTags.Parse("tool")) && !heldItemClass.IsGun();
+            return heldItemClass != null && heldItemClass.HasAnyTags(FastTags<TagGroup.Global>.Parse("tool")) && !heldItemClass.IsGun();
         }
 
         private bool IsMeleeHeld()
@@ -224,7 +224,7 @@ namespace SMXcore
 
                     itemAction = itemActionAttack;
                 }
-                else if (itemValue.ItemClass.IsDynamicMelee() || itemValue.ItemClass.HasAnyTags(FastTags.Parse("tool")))
+                else if (itemValue.ItemClass.IsDynamicMelee() || itemValue.ItemClass.HasAnyTags(FastTags<TagGroup.Global>.Parse("tool")))
                 {
                     if (itemValue.ItemClass.GetIconName() == "missingIcon")
                     {

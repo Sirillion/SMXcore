@@ -12,13 +12,6 @@ namespace SMXcore
 {
     public class XUiC_ActiveBuffEntry : global::XUiC_ActiveBuffEntry
     {
-        private XUiV_Sprite background;
-
-        public override void Init()
-        {
-            base.Init();
-            background = GetChildById("background").ViewComponent as XUiV_Sprite;
-        }
         public override bool GetBindingValue(ref string value, string bindingName)
         {
             switch (bindingName)
@@ -31,7 +24,7 @@ namespace SMXcore
             }
         }
 
-        protected override void SelectedChanged(bool isSelected)
+        public override void SelectedChanged(bool isSelected)
         {
             if (isSelected)
             {

@@ -1,0 +1,312 @@
+<SMXcore file="XUi/xui.xml">
+
+<!--	// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate. This does
+							not include distributing this modlet to your server users.
+
+							2. You are under no circumstance allowed to distribute any SMX branded modlets without written consent from the main developer.
+
+							3. If you wish to distribute SMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX modlet or modlets in question remain unaltered and you cannot
+							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
+
+							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
+							as is with no change to its files what so ever.
+
+							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
+
+							6. You are not allowed to use any of the assets bundled with SMX branded modlets in other projects. This restriction
+							applies to all files that the SMX modlets consist of.
+							
+								EXCEPTION: The content of the Scripts folder is to be considered open source and can be used freely as long as the original credit
+								comments within the files are not removed or altered other than	adding to.
+
+							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							SMX branded modlets.
+
+							8. You are required to inform the main developer when your project that contains any SMX modlet or modlets have been made available
+							to the public.
+
+		// CREDITS:			Sirillion (main developer/designer/frontend)
+							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
+
+		// CONTRIBUTORS:	Mumpfy (art)
+-->
+
+<!--	// SMX // File Attribute Restore -->
+
+		<!-- These values restore the UI to it's default scale settings to try and override other mods that might set scales that will mess with the UI. -->
+
+		<set xpath="/xui/ruleset/@name">default</set>
+		<set xpath="/xui/ruleset[@name='default']/@scale">1.255</set> 										<!-- The scale value with change the size for the entire UI -->
+		<set xpath="/xui/ruleset[@name='default']/@stackpanel_scale">1.05</set> 							<!-- The stackpanel_scale will change the size for the windows attached to panels only. -->
+		<set xpath="/xui/ruleset[@name='default']/@ignore_missing_class">false</set>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMXmenu | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!--	// SMX // In-Game Menu Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='ingameMenu']">
+					<window name="ingameMenu" anchor="LeftBottom" />
+					<window name="ingameMenuLogo" />
+					<window name="smxmenuCleanBG" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='ingameMenu']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMXhud | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!--	// SMX // Death -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='death']">
+					<window name="windowDeathBar" anchor="CenterBottom" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='death']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Drag & Drop Item -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='dragAndDrop']">
+					<window name="dragAndDropItemStack" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='dragAndDrop']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Compass -->
+
+		<conditional>
+			<if cond="not mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
+					<window name="windowCompass" />
+					<window name="windowLocation" anchor="CenterTop" />
+					<window name="windowEntering" anchor="CenterTop" />
+					<window name="windowTargetBar" anchor="CenterTop" />
+					<window name="onScreenIcons" />
+					<window name="smxhudLevelXP" anchor="LeftTop" />
+					<window name="smxhudBuffFrame" anchor="CenterBottom" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='compass']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
+					<window name="windowCompass" />
+					<window name="windowLocation" anchor="CenterTop" />
+					<window name="windowEntering" anchor="CenterTop" />
+					<window name="windowTargetBar" anchor="CenterTop" />
+					<window name="onScreenIcons" />
+					<window name="smxhudLevelXP" anchor="LeftTop" />
+					<window name="smxhudBuffFrame" anchor="CenterBottom" />
+					<window name="windowToolbelt" anchor="CenterBottom" />
+					<window name="HUDLeftStatBars" anchor="LeftBottom" />
+					<window name="HUDRightStatBars" anchor="RightBottom" />
+					<window name="windowQuestTracker" anchor="RightTop" />
+					<window name="windowRecipeTracker" anchor="RightTop" />
+					<window name="windowGroupBars" anchor="LeftTop" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='compass']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Toolbelt -->
+
+		<conditional>
+			<if cond="not mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
+					<window name="windowToolbelt" anchor="CenterBottom" />
+					<window name="HUDLeftStatBars" anchor="LeftBottom" />
+					<window name="HUDRightStatBars" anchor="RightBottom" />
+					<window name="windowQuestTracker" anchor="RightTop" />
+					<window name="windowRecipeTracker" anchor="RightTop" />
+					<window name="windowGroupBars" anchor="LeftTop" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='toolbelt']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
+					<window name="dragAndDropItemStack" anchor="CenterBottom" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='toolbelt']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Tool Tips -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolTip']">
+					<window name="toolTip" />
+					<window name="popupMenu" />
+					<window name="toolTipPopups" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='toolTip']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Interaction Prompt -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='interactionPrompt']">
+					<window name="interactionPrompt" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='interactionPrompt']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Focused Block Health -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='focusedBlockHealth']">
+					<window name="focusedBlockHealth" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='focusedBlockHealth']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Timer -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='timer']">
+					<window name="windowTimer" />
+				</set>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Throw Power -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='throwpower']">
+					<window name="windowThrow" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='throwpower']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Twitch -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='twitch']">
+					<window name="windowTwitch" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='twitch']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Radial -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='radial']">
+					<window name="windowRadial" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='radial']" name="actionset">keyboard</setattribute>
+				<setattribute xpath="/xui//window_group[@name='radial']" name="controller">Radial</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Chat Output -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='chatoutput']">
+					<window name="chatoutput" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='chatoutput']" name="actionset">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Chat -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXhud')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='chat']">
+					<window name="chat" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='chat']" name="defaultSelected">input</setattribute>
+
+			</if>
+		</conditional>
+
+</SMXcore>

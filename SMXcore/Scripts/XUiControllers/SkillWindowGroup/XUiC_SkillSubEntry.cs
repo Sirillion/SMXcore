@@ -219,7 +219,7 @@ namespace SMXcore
             XUiEventManager.Instance.OnSkillExperienceAdded -= Current_OnSkillExperienceAdded;
         }
 
-        protected override void OnHovered(bool _isOver)
+        public override void OnHovered(bool _isOver)
         {
             base.OnHovered(_isOver);
             if (currentSkill != null && (currentSkill.ProgressionClass.Type != ProgressionType.Skill || IsBook))

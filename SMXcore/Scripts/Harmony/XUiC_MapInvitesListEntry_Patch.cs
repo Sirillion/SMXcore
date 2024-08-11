@@ -11,7 +11,7 @@ namespace SMXcore.HarmonyPatches
         {
             Harmony harmony = SMXHarmonyPatcher.GetHarmonyInstance();
 
-            MethodInfo original = AccessTools.Method(typeof(XUiC_MapInvitesListEntry), "updateSelected");
+            MethodInfo original = AccessTools.Method(typeof(global::XUiC_MapInvitesListEntry), "updateSelected");
             MethodInfo prefix = AccessTools.Method(typeof(XUiC_MapInvitesListEntry_Patch), "updateSelected");
 
             bool alreadyPatched = false;

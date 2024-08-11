@@ -53,7 +53,7 @@ namespace SMXcore
             }
         }
 
-        public void SetMainItem(ItemStack itemStack)
+        public new void SetMainItem(ItemStack itemStack)
         {
             mainItem = itemStack;
         }

@@ -1,0 +1,294 @@
+<SMXcore file="XUi_Menu/xui.xml">
+
+<!--	// TERMS OF USE:	1. You are allowed to use this modlet as is for your own personal use and/or on a server you run and/or administrate. This does
+							not include distributing this modlet to your server users.
+
+							2. You are under no circumstance allowed to distribute any SMX branded modlets without written consent from the main developer.
+
+							3. If you wish to distribute SMX branded modlets as part of your own project and consent have been given you are required
+							to do so in such a way so that all the files of the SMX modlet or modlets in question remain unaltered and you cannot
+							under any circumstance claim credit for creating the modlet or modlets or any of the files provided with it/them.
+
+							4. If consent is given you are required to make the changes as a new modlet that injects into the modlet in question and
+							keeping load order in mind it is to be named so that it loads AFTER the original modlet. The original modlet shall be distributed
+							as is with no change to its files what so ever.
+
+							5. If consent is given it is only given on a case to case basis and those that receive consent cannot pass that consent on to another
+							party or project. Nor will the consent pass on to other creators that opt to include consented work into their project.
+
+							6. You are not allowed to use any of the assets bundled with SMX branded modlets in other projects. This restriction
+							applies to all files that the SMX modlets consist of.
+							
+								EXCEPTION: The content of the Scripts folder is to be considered open source and can be used freely as long as the original credit
+								comments within the files are not removed or altered other than	adding to.
+
+							7. You are required to seek special consent from the main developer should you wish to make changes to any asset files provided with the
+							SMX branded modlets.
+
+							8. You are required to inform the main developer when your project that contains any SMX modlet or modlets have been made available
+							to the public.
+
+		// CREDITS:			Sirillion (main developer/designer/frontend)
+							sphereii (developer/harmony/backend), TormentedEmu (developer/harmony/backend), Laydor (developer/harmony/backend)
+
+		// CONTRIBUTORS:	Mumpfy (art)
+-->
+
+<!--	// SMX // File Attribute Restore -->
+
+		<!-- These values restore the UI to it's default scale settings to try and override other mods that might set scales that will mess with the UI. -->
+
+		<set xpath="/xui/ruleset/@name">default</set>
+		<set xpath="/xui/ruleset[@name='default']/@scale">1.255</set> 										<!-- The scale value with change the size for the entire UI -->
+		<set xpath="/xui/ruleset[@name='default']/@stackpanel_scale">1.05</set> 							<!-- The stackpanel_scale will change the size for the windows attached to panels only. -->
+
+
+<!--	// SMX // Mouseover Tooltip -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolTip']">
+					<window name="toolTip" />
+					<window name="popupMenu" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='toolTip']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Menu Background -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='menuBackground']">
+					<window name="menuBackground" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='menuBackground']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Main Menu Logo -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenuLogo']">
+					<window name="mainMenuLogo" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='mainMenuLogo']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Main Menu Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenu']">
+					<window name="mainMenu" anchor="LeftBottom" />
+				</set>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Options Menu Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='optionsMenu']">
+					<window name="optionsMenu" anchor="LeftBottom" />
+					<window name="mainMenuLogo" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='optionsMenu']" name="defaultSelected">btnGeneral</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Editing Tools Menu Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='editingTools']">
+					<window name="editingTools" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='editingTools']" name="defaultSelected">btnRwgPreviewer</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Player Menu Name -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenuPlayerName']">
+					<window name="mainMenuPlayerName" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='mainMenuPlayerName']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // RWG Editor Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='rwgeditor']">
+					<window name="worldGeneration" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='rwgeditor']" name="defaultSelected">seedInput</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Login Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='loginWindow']">
+					<window name="loginWindow" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='loginWindow']" name="defaultSelected">btnRetry</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Message Box Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='messageBox']">
+					<window name="messageBox" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='messageBox']" name="controller">MessageBoxWindowGroup</setattribute>
+
+				<setattribute xpath="/xui//window_group[@name='messageBox']" name="defaultSelected">btnRight</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // New/Continue Game Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='newContinueGame']">
+					<window name="newContinueGame" />
+				</set>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Server Browser Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='serverBrowser']">
+					<window name="serverBrowser" />
+				</set>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Credits Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='credits']">
+					<window name="credits" />
+				</set>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Server Password Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='serverPassword']">
+					<window name="serverPassword" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='serverPassword']" name="defaultSelected">txtPassword</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Progress Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='progress']">
+					<window name="progress" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='progress']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Loading Screen Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='loadingScreen']">
+					<window name="loadingScreen" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='loadingScreen']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Spawn Selection Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='spawnselection']">
+					<window name="spawnselection" />
+				</set>
+
+			</if>
+		</conditional>
+
+</SMXcore>

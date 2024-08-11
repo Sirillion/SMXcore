@@ -1,5 +1,8 @@
 <UIAtlas>
-  <sprite name="smxlib_window_background_detail" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
-  <sprite name="smxlib_window_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
-  <sprite name="smxlib_window_header_background" borderleft="0" borderright="0" bordertop="20" borderbottom="0" />
+  <sprite name="smx_window_foreground" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
+  <sprite name="smx_window_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
+  <!--sprite name="smxlib_window_header_background" borderleft="0" borderright="0" bordertop="20" borderbottom="0" /-->
+
+
+  <sprite name="smx_menu_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
 </UIAtlas>

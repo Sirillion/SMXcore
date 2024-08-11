@@ -2,9 +2,11 @@
 
 <xml>
 	<Name value="SMXcore" />
-	<Author value="Sirillion" />
-	<Description value="A library of code and assets for SMX branded mods and modlets. The CORE modlet." />
 	<DisplayName value="SMXcore" />
+	<Description value="A library of code and assets for SMX branded mods and modlets. The CORE modlet." />
+	<Author value="Sirillion" />
+	<Version value="1.0.333.1" />
 	<Website value="http://www.nexusmods.com/7daystodie/mods/22/?" />
-	<Version value="21.2.30.1" />
+	<Icon value="Gears/smx_gears_icon.png" />
+	<Banner value="Gears/smx_gears_banner.png" />
 </xml>
