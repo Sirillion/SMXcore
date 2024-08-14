@@ -393,33 +393,37 @@
 <!--	// SMX // News Screen - Quartz ChangeLog Conditional Checks -->
 
 		<conditional>
-			<if cond="not mod_loaded('Quartz')">
+			<if cond="mod_loaded('zSMXmenu')">
+				<conditional>
+					<if cond="not mod_loaded('Quartz')">
 
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/s7092910/Quartz/3.0.0/Quartz/News/noquartz.xml</csv>
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/s7092910/Quartz/3.0.0/Quartz/News/noquartz.xml</csv>
 
-				<append xpath="/windows/window[@name='newsScreen']">
-					<rect name="smxQuartzMissing" pos="-13,-30" width="1020" height="40">
-						<sprite name="backgroundGame" pos="-330,-240" depth="3" pivot="center" sprite="menu_empty" color="0,0,0,196" type="sliced" globalopacity="false" />
-						<label name="smxQuartzMissing" depth="4" pos="-330,-240" width="1050" height="50" pivot="center" style="smx_label_outline" text="Quartz is NOT installed on the CLIENT! SMX will NOT work!" font_size="18" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
-						<sprite name="smxQuartzMissing" depth="4" pos="-620,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" />
-						<sprite name="smxQuartzMissing" depth="4" pos="-40,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" />
-					</rect>
-				</append>
+						<append xpath="/windows/window[@name='newsScreen']">
+							<rect name="smxQuartzMissing" pos="-13,-30" width="1020" height="40">
+								<sprite name="backgroundGame" pos="-330,-240" depth="3" pivot="center" sprite="menu_empty" color="0,0,0,196" type="sliced" globalopacity="false" />
+								<label name="smxQuartzMissing" depth="4" pos="-330,-240" width="1050" height="50" pivot="center" style="smx_label_outline" text="Quartz is NOT installed on the CLIENT! SMX will NOT work!" font_size="18" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
+								<sprite name="smxQuartzMissing" depth="4" pos="-620,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" />
+								<sprite name="smxQuartzMissing" depth="4" pos="-40,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" />
+							</rect>
+						</append>
 
-				<append xpath="/windows/window[@name='newsScreen']/rect[@name='continue']">
-					<sprite name="smxQuartzMissing" depth="4" pos="-230,0" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
-				</append>
+						<append xpath="/windows/window[@name='newsScreen']/rect[@name='continue']">
+							<sprite name="smxQuartzMissing" depth="4" pos="-230,0" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
+						</append>
 
-				<append xpath="/windows/window[@name='mainMenu']">
-					<sprite name="smxQuartzMissing" depth="4" pos="-90,95" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
-				</append>
+						<append xpath="/windows/window[@name='mainMenu']">
+							<sprite name="smxQuartzMissing" depth="4" pos="-90,95" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
+						</append>
 
-			</if>
-		</conditional>
+					</if>
+				</conditional>
 
-		<conditional>
-			<if cond="mod_loaded('Quartz')">
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/s7092910/Quartz/3.0.0/Quartz/News/clquartz.xml</csv>
+				<conditional>
+					<if cond="mod_loaded('Quartz')">
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/s7092910/Quartz/3.0.0/Quartz/News/clquartz.xml</csv>
+					</if>
+				</conditional>
 			</if>
 		</conditional>
 
@@ -445,33 +449,37 @@
 <!--	// SMX // News Screen - SMXcore ChangeLog Conditional Checks -->
 
 		<conditional>
-			<if cond="not mod_loaded('SMXcore')">
+			<if cond="mod_loaded('zSMXmenu')">
+				<conditional>
+					<if cond="not mod_loaded('SMXcore')">
 
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/placeholders/nosmxcore.xml</csv>
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/placeholders/nosmxcore.xml</csv>
 
-				<append xpath="/windows/window[@name='newsScreen']">
-					<rect name="smxCoreMissing" pos="-13,20" width="1020" height="40">
-						<sprite name="backgroundGame" pos="-330,-240" depth="3" pivot="center" sprite="menu_empty" color="0,0,0,196" type="sliced" globalopacity="false" />
-						<label name="smxCoreMissing" depth="4" pos="-330,-240" width="1050" height="50" pivot="center" style="smx_label_outline" text="SMXcore is NOT installed on the CLIENT! SMX will NOT work!" font_size="18" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
-						<sprite name="smxCoreMissing" depth="4" pos="-620,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" />
-						<sprite name="smxCoreMissing" depth="4" pos="-40,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" />
-					</rect>
-				</append>
+						<append xpath="/windows/window[@name='newsScreen']">
+							<rect name="smxCoreMissing" pos="-13,20" width="1020" height="40">
+								<sprite name="backgroundGame" pos="-330,-240" depth="3" pivot="center" sprite="menu_empty" color="0,0,0,196" type="sliced" globalopacity="false" />
+								<label name="smxCoreMissing" depth="4" pos="-330,-240" width="1050" height="50" pivot="center" style="smx_label_outline" text="SMXcore is NOT installed on the CLIENT! SMX will NOT work!" font_size="18" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
+								<sprite name="smxCoreMissing" depth="4" pos="-620,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" />
+								<sprite name="smxCoreMissing" depth="4" pos="-40,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" />
+							</rect>
+						</append>
 
-				<append xpath="/windows/window[@name='newsScreen']/rect[@name='continue']">
-					<sprite name="smxCoreMissing" depth="4" pos="-230,0" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
-				</append>
+						<append xpath="/windows/window[@name='newsScreen']/rect[@name='continue']">
+							<sprite name="smxCoreMissing" depth="4" pos="-230,0" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
+						</append>
 
-				<append xpath="/windows/window[@name='mainMenu']">
-					<sprite name="smxQuartzMissing" depth="4" pos="-90,95" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
-				</append>
+						<append xpath="/windows/window[@name='mainMenu']">
+							<sprite name="smxQuartzMissing" depth="4" pos="-90,95" size="40,40" pivot="center" style="hover" sprite="ui_game_symbol_quest" color="[smxcore_element_accentcolor_2]" tooltip="You are missing SMX MODS or DEPENDENCIES!" />
+						</append>
 
-			</if>
-		</conditional>
+					</if>
+				</conditional>
 
-		<conditional>
-			<if cond="mod_loaded('SMXcore')">
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">@modfolder(SMXcore):/Changelog/SMXcoreCL.xml</csv>
+				<conditional>
+					<if cond="mod_loaded('SMXcore')">
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">@modfolder(SMXcore):/Changelog/SMXcoreCL.xml</csv>
+					</if>
+				</conditional>
 			</if>
 		</conditional>
 
@@ -479,14 +487,18 @@
 <!--	// SMX // News Screen - SMXhud ChangeLog Conditional Checks -->
 
 		<conditional>
-			<if cond="not mod_loaded('zSMXhud')">
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/placeholders/nosmxhud.xml</csv>
-			</if>
-		</conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+				<conditional>
+					<if cond="not mod_loaded('zSMXhud')">
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/placeholders/nosmxhud.xml</csv>
+					</if>
+				</conditional>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXhud')">
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">@modfolder(SMXcore):/Changelog/SMXhudCL.xml</csv>
+				<conditional>
+					<if cond="mod_loaded('zSMXhud')">
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">@modfolder(SMXcore):/Changelog/SMXhudCL.xml</csv>
+					</if>
+				</conditional>
 			</if>
 		</conditional>
 
@@ -494,14 +506,18 @@
 <!--	// SMX // News Screen - SMXui ChangeLog Conditional Checks -->
 
 		<conditional>
-			<if cond="not mod_loaded('zSMXui')">
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/placeholders/nosmxui.xml</csv>
-			</if>
-		</conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+				<conditional>
+					<if cond="not mod_loaded('zSMXui')">
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/placeholders/nosmxui.xml</csv>
+					</if>
+				</conditional>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-				<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/changelogs/clsmxui.xml</csv>
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/changelogs/clsmxui.xml</csv>
+					</if>
+				</conditional>
 			</if>
 		</conditional>
 
@@ -1809,15 +1825,19 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
+				<conditional>
+					<if cond="mod_loaded('zSMXmenu')">
 
-				<set xpath="/windows/window[@name='mainMenu']/@controller">Gears.UI.MainMenu, Gears</set>
+						<set xpath="/windows/window[@name='mainMenu']/@controller">Gears.UI.MainMenu, Gears</set>
 
-				<append xpath="/windows/window[@name='mainMenu']">
-					<grid name="smx_mod_grid" depth="3" pos="50,380" pivot="bottomleft" rows="1" cols="3" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
-						<smx_mod_button name="btnMods" width="40" height="40" pivot="center" sprite="smx_progress_cog" font_size="18" overflow="ShrinkContent" tooltip_key="Gears" />
-					</grid>
-				</append>
+						<append xpath="/windows/window[@name='mainMenu']">
+							<grid name="smx_mod_grid" depth="3" pos="50,380" pivot="bottomleft" rows="1" cols="3" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
+								<smx_mod_button name="btnMods" width="40" height="40" pivot="center" sprite="smx_progress_cog" font_size="18" overflow="ShrinkContent" tooltip_key="Gears" />
+							</grid>
+						</append>
 
+					</if>
+				</conditional>
 			</if>
 		</conditional>
 
@@ -1826,187 +1846,191 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
+				<conditional>
+					<if cond="mod_loaded('zSMXmenu')">
 
-				<remove xpath="/windows/window[@name='modsWindow']" />
+						<remove xpath="/windows/window[@name='modsWindow']" />
 
-				<append xpath="/windows">
-					<window name="modsWindow" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="Gears.UI.ModsWindow, Gears" cursor_area="true">
+						<append xpath="/windows">
+							<window name="modsWindow" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="Gears.UI.ModsWindow, Gears" cursor_area="true">
 
-						<texture name="bgTexture" depth="0" texture="Textures/UI/news_background" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+								<texture name="bgTexture" depth="0" texture="Textures/UI/news_background" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
 
-						<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+								<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+								<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+								<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
 
-						<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="gearsUIModsWindowHeader" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+								<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="gearsUIModsWindowHeader" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
 
-						<sprite name="smx_menu_separation" depth="2" pos="-610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-						<sprite name="smx_menu_separation" depth="2" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+								<sprite name="smx_menu_separation" depth="2" pos="-610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+								<sprite name="smx_menu_separation" depth="2" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-						<rect name="leftPanel" pos="-600,-50" height="650" width="590" >
-							<rect name="newContent">
+								<rect name="leftPanel" pos="-600,-50" height="650" width="590" >
+									<rect name="newContent">
 
-								<sprite name="smx_panel_background" depth="1" pos="-40,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
+										<sprite name="smx_panel_background" depth="1" pos="-40,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
 
-								<rect name="modList" pos="-340,-40" controller="Gears.UI.ModList, Gears">
+										<rect name="modList" pos="-340,-40" controller="Gears.UI.ModList, Gears">
 
-									<label name="gearsModList" depth="4" pos="315,70" width="590" height="50" pivot="center" style="smx_label_outline" text="Mod List" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
-									<sprite name="smx_panel_separation" depth="4" pos="320,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+											<label name="gearsModList" depth="4" pos="315,70" width="590" height="50" pivot="center" style="smx_label_outline" text="Mod List" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+											<sprite name="smx_panel_separation" depth="4" pos="320,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-									<rect name="searchControls" depth="4" pos="125,2" height="42" width="400">
-										<sprite name="searchIcon" depth="4" pos="75,-27" size="25,25" pivot="center" sprite="ui_game_symbol_search" />
-										<smx_textfield_outline name="searchInput" depth="5" pos="192,-25" width="275" height="40" font_size="18" search_field="true" />
+											<rect name="searchControls" depth="4" pos="125,2" height="42" width="400">
+												<sprite name="searchIcon" depth="4" pos="75,-27" size="25,25" pivot="center" sprite="ui_game_symbol_search" />
+												<smx_textfield_outline name="searchInput" depth="5" pos="192,-25" width="275" height="40" font_size="18" search_field="true" />
+											</rect>
+
+											<scrollbar name="scrollbarModList" depth="6" pos="583,-333" width="12" height="520" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
+												<button name="handler" sprite="gears_scrollbar_handler" pivot="center" hovercolor="[gears_scrollbar_handler_hover]" color="[gears_scrollbar_handler]" defaultcolor="[gears_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="gears_scrollbar_background" pivot="center" hovercolor="[gears_scrollbar_background_hover]" color="[gears_scrollbar_background]" defaultcolor="[gears_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollviewModList" depth="5" pos="75,-68" width="495" height="526" scrollbar="scrollbarModList" reset_position="true" over_scroll="false" scroll_speed="1">
+												<grid name="list" depth="2" pos="20,-75" height="490" rows="{modCount}" cols="1" cell_width="450" cell_height="65" repeat_content="true" arrangement="vertical">
+													<smx_gears_modlist_entry width="450" height="60" controller="Gears.UI.XUiC_ModListEntry, Gears" />
+												</grid>
+											</scrollview>
+
+										</rect>
 									</rect>
-
-									<scrollbar name="scrollbarModList" depth="6" pos="583,-333" width="12" height="520" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
-										<button name="handler" sprite="gears_scrollbar_handler" pivot="center" hovercolor="[gears_scrollbar_handler_hover]" color="[gears_scrollbar_handler]" defaultcolor="[gears_scrollbar_handler]" hoverscale="1" />
-										<button name="background" sprite="gears_scrollbar_background" pivot="center" hovercolor="[gears_scrollbar_background_hover]" color="[gears_scrollbar_background]" defaultcolor="[gears_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
-									</scrollbar>
-
-									<scrollview name="scrollviewModList" depth="5" pos="75,-68" width="495" height="526" scrollbar="scrollbarModList" reset_position="true" over_scroll="false" scroll_speed="1">
-										<grid name="list" depth="2" pos="20,-75" height="490" rows="{modCount}" cols="1" cell_width="450" cell_height="65" repeat_content="true" arrangement="vertical">
-											<smx_gears_modlist_entry width="450" height="60" controller="Gears.UI.XUiC_ModListEntry, Gears" />
-										</grid>
-									</scrollview>
-
 								</rect>
-							</rect>
-						</rect>
 
-						<rect name="modPanel" pos="0,-90" width="590" height="650" controller="Gears.UI.ModPanel, Gears" select_tab_contents_on_open="false">
+								<rect name="modPanel" pos="0,-90" width="590" height="650" controller="Gears.UI.ModPanel, Gears" select_tab_contents_on_open="false">
 
-							<sprite name="smx_panel_background" depth="1" pos="640,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
+									<sprite name="smx_panel_background" depth="1" pos="640,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
 
-							<rect name="tabsHeader" height="39" depth="0">
+									<rect name="tabsHeader" height="39" depth="0">
 
-								<label name="ModName" depth="4" pos="620,70" width="590" height="50" pivot="center" style="smx_label_outline" text="{ModName}" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+										<label name="ModName" depth="4" pos="620,70" width="590" height="50" pivot="center" style="smx_label_outline" text="{ModName}" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 
-								<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+										<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-								<grid name="tabButtons" depth="2" pos="395,-3" rows="1" cols="4" cell_width="145" cell_height="90" repeat_content="false" arrangement="horizontal">
-									<rect name="info" controller="Gears.UI.TabButton, Gears">
-										<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="xuiBack" font_size="20" foregroundlayer="false" />
+										<grid name="tabButtons" depth="2" pos="395,-3" rows="1" cols="4" cell_width="145" cell_height="90" repeat_content="false" arrangement="horizontal">
+											<rect name="info" controller="Gears.UI.TabButton, Gears">
+												<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="xuiBack" font_size="20" foregroundlayer="false" />
+											</rect>
+											<rect name="settings" controller="Gears.UI.TabButton, Gears">
+												<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="xuiBack" font_size="20" foregroundlayer="false" />
+											</rect>
+										</grid>
 									</rect>
-									<rect name="settings" controller="Gears.UI.TabButton, Gears">
-										<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="xuiBack" font_size="20" foregroundlayer="false" />
-									</rect>
-								</grid>
-							</rect>
 
-							<grid depth="2" pos="395,-3" rows="1" cols="4" cell_width="145" cell_height="90" repeat_content="false" arrangement="horizontal">
-								<rect />
-								<rect />
-								<smx_menu_button name="ModWebsite" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Website" font_size="20" foregroundlayer="false" />
-								<smx_menu_button name="ModFolder" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Open Folder" font_size="20" foregroundlayer="false" />
-							</grid>
-
-
-							<rect name="tabsContents" depth="2" pos="300,-100">
-
-								<rect name="ModInfo" pos="0,0" height="592" width="558" tab_key="gearsUIModsModPanelInfo">
-
-									<texture name="ModBanner" depth="2" pos="28,-400" width="584" height="127" visible="{HasBanner}" />
-
-									<grid name="modInfo" pos="120,5" rows="2" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
-
-										<smx_mod_info name="modAuthorTitle" pos="0,0" title="Created By" text="{ModAuthor}" />
-										<smx_mod_info name="modAuthorTitle" pos="0,0" title="Mod Version" text="{ModVersion}" />
-
+									<grid depth="2" pos="395,-3" rows="1" cols="4" cell_width="145" cell_height="90" repeat_content="false" arrangement="horizontal">
+										<rect />
+										<rect />
+										<smx_menu_button name="ModWebsite" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Website" font_size="20" foregroundlayer="false" />
+										<smx_menu_button name="ModFolder" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Open Folder" font_size="20" foregroundlayer="false" />
 									</grid>
 
-									<sprite name="modDescriptionEntryBG" depth="10" pos="60,-100" width="525" height="250" pivot="topleft" sprite="menu_empty" type="sliced" color="7,7,7,275" />
 
-									<label name="modDescriptionEntry" depth="11" pos="70,-110" width="505" height="230" pivot="topleft" style="smx_label_outline" text="{ModDescription}" font_size="24" justify="left" />
+									<rect name="tabsContents" depth="2" pos="300,-100">
 
-									<rect name="smxOutline" depth="12">
-										<sprite name="smxOutlineTop" pos="40,-100" width="553" height="3" sprite="smx_sepline_1" />
-										<sprite name="smxOutlineLeft" pos="60,-370" width="280" height="3" sprite="smx_sepline_1" rotation="90" />
-										<sprite name="smxOutlineRight" pos="583,-365" width="290" height="3" sprite="smx_sepline_1" rotation="90" />
-										<sprite name="smxOutlineBottom" pos="47,-350" width="565" height="3" sprite="smx_sepline_1" flip="Horizontally" />
-									</rect>
+										<rect name="ModInfo" pos="0,0" height="592" width="558" tab_key="gearsUIModsModPanelInfo">
 
-								</rect>
+											<texture name="ModBanner" depth="2" pos="28,-400" width="584" height="127" visible="{HasBanner}" />
 
-								<rect name="ModSettings" pos="0,0" height="592" width="590" controller="Gears.UI.ModSettings, Gears" tab_key="gearsUIModsModPanelSettings">
+											<grid name="modInfo" pos="120,5" rows="2" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
 
-									<sprite name="smx_panel_separation" depth="4" pos="325,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+												<smx_mod_info name="modAuthorTitle" pos="0,0" title="Created By" text="{ModAuthor}" />
+												<smx_mod_info name="modAuthorTitle" pos="0,0" title="Mod Version" text="{ModVersion}" />
 
-									<smx_gears_nav_button name="backButton" depth="4" pos="50,-8" caption="" font_size="18" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" />
+											</grid>
 
-									<rect name="tabsHeader" height="52" depth="0">
-										<grid name="tabButtons" pos="170,-1" depth="2" rows="1" cols="3" cell_width="145" cell_height="90" repeat_content="true" arrangement="horizontal">
-											<rect visible="{HasSettings}">
-												<smx_gears_tab_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Test" font_size="20" foregroundlayer="false" />
+											<sprite name="modDescriptionEntryBG" depth="10" pos="60,-100" width="525" height="250" pivot="topleft" sprite="menu_empty" type="sliced" color="7,7,7,275" />
+
+											<label name="modDescriptionEntry" depth="11" pos="70,-110" width="505" height="230" pivot="topleft" style="smx_label_outline" text="{ModDescription}" font_size="24" justify="left" />
+
+											<rect name="smxOutline" depth="12">
+												<sprite name="smxOutlineTop" pos="40,-100" width="553" height="3" sprite="smx_sepline_1" />
+												<sprite name="smxOutlineLeft" pos="60,-370" width="280" height="3" sprite="smx_sepline_1" rotation="90" />
+												<sprite name="smxOutlineRight" pos="583,-365" width="290" height="3" sprite="smx_sepline_1" rotation="90" />
+												<sprite name="smxOutlineBottom" pos="47,-350" width="565" height="3" sprite="smx_sepline_1" flip="Horizontally" />
 											</rect>
-										</grid>
-									</rect>
 
-									<smx_gears_nav_button name="forwardButton" depth="4" pos="580,-8" caption="" font_size="20" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" pivot="right" flip="horizontally" />
+										</rect>
 
-									<scrollbar	name="scrollbar" depth="6" pos="600,-298" width="12" height="495" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
-										<button name="handler" sprite="gears_scrollbar_handler" pivot="center" hovercolor="[gears_scrollbar_handler_hover]" color="[gears_scrollbar_handler]" defaultcolor="[gears_scrollbar_handler]" hoverscale="1" />
-										<button name="background" sprite="gears_scrollbar_background" pivot="center" hovercolor="[gears_scrollbar_background_hover]" color="[gears_scrollbar_background]" defaultcolor="[gears_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
-									</scrollbar>
+										<rect name="ModSettings" pos="0,0" height="592" width="590" controller="Gears.UI.ModSettings, Gears" tab_key="gearsUIModsModPanelSettings">
 
-									<scrollview name="scrollview" depth="5" pos="0,-52" width="590" height="495" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+											<sprite name="smx_panel_separation" depth="4" pos="325,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-										<grid name="settingsList" rows="{settingsCount}" cols="1" pos="40,-10" cell_width="525" cell_height="45" repeat_content="true" arrangement="vertical">
-											<smx_gears_modsettings_optioncombined width="525" height="45" controller="Gears.UI.GlobalSettingsOption, Gears"/>
-										</grid>
-									</scrollview>
-								</rect>
-							</rect>
-						</rect>
+											<smx_gears_nav_button name="backButton" depth="4" pos="50,-8" caption="" font_size="18" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" />
 
-						<smx_back_button name="btnBack" depth="3" pos="820,96" width="55" height="55" font_size="32" upper_case="true" tooltip_key="xuiBack" />
-						<smx_menu_button name="btnDefaults" depth="3" pos="602,-800" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" upper_case="true" visible="true" />
-						<smx_menu_button name="btnApply" depth="3" pos="-10,-790" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" upper_case="true" sound="[start]" />
-
-					</window>
-				</append>
-
-				<set xpath="/windows/window[@name='newContinueGame']/rect/rect/grid[@name='tabButtons']/@cell_width">135</set>
-
-				<set xpath="/windows/window[@name='newContinueGame']/rect/rect/grid[@name='tabButtons']/@pos">410,-3</set>
-
-				<set xpath="/windows/window[@name='newContinueGame']/rect[@name='tabs']/@controller">Gears.UI.GameSettingsSelector, Gears</set>
-
-				<insertAfter xpath="/windows/window[@name='newContinueGame']/rect/sprite[@name='smx_panel_background']">
-					<smx_gears_nav_button name="backButton" depth="4" pos="330,-8" caption="" font_size="18" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" />
-					<smx_gears_nav_button name="forwardButton" depth="4" pos="895,-8" caption="" font_size="20" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" pivot="right" flip="horizontally" />
-				</insertAfter>
-
-				<insertAfter xpath="/windows/window[@name='newContinueGame']/rect[@name='tabs']/rect[@name='tabsContents']/rect[@tab_key='xuiGameSettingsMultiplayer']">
-								<rect name="ModSettings" pos="0,-100" height="592" width="590" controller="Gears.UI.WorldSettings, Gears" tab_key="gearsUIModsButton">
-
-									<sprite name="smx_panel_separation" depth="4" pos="325,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-
-									<smx_gears_nav_button name="backButton" depth="4" pos="50,-8" caption="" font_size="18" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" />
-
-									<rect name="tabsHeader" height="52" depth="0">
-										<grid name="tabButtons" pos="170,-1" depth="2" rows="1" cols="3" cell_width="145" cell_height="90" repeat_content="true" arrangement="horizontal">
-											<rect visible="{HasSettings}">
-												<smx_gears_tab_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Test" font_size="20" foregroundlayer="false" />
+											<rect name="tabsHeader" height="52" depth="0">
+												<grid name="tabButtons" pos="170,-1" depth="2" rows="1" cols="3" cell_width="145" cell_height="90" repeat_content="true" arrangement="horizontal">
+													<rect visible="{HasSettings}">
+														<smx_gears_tab_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Test" font_size="20" foregroundlayer="false" />
+													</rect>
+												</grid>
 											</rect>
-										</grid>
+
+											<smx_gears_nav_button name="forwardButton" depth="4" pos="580,-8" caption="" font_size="20" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" pivot="right" flip="horizontally" />
+
+											<scrollbar	name="scrollbar" depth="6" pos="600,-298" width="12" height="495" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
+												<button name="handler" sprite="gears_scrollbar_handler" pivot="center" hovercolor="[gears_scrollbar_handler_hover]" color="[gears_scrollbar_handler]" defaultcolor="[gears_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="gears_scrollbar_background" pivot="center" hovercolor="[gears_scrollbar_background_hover]" color="[gears_scrollbar_background]" defaultcolor="[gears_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="0,-52" width="590" height="495" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<grid name="settingsList" rows="{settingsCount}" cols="1" pos="40,-10" cell_width="525" cell_height="45" repeat_content="true" arrangement="vertical">
+													<smx_gears_modsettings_optioncombined width="525" height="45" controller="Gears.UI.GlobalSettingsOption, Gears"/>
+												</grid>
+											</scrollview>
+										</rect>
 									</rect>
-
-									<smx_gears_nav_button name="forwardButton" depth="4" pos="580,-8" caption="" font_size="20" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" pivot="right" flip="horizontally" />
-
-									<scrollbar	name="scrollbar" depth="6" pos="600,-298" width="12" height="495" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
-										<button name="handler" sprite="gears_scrollbar_handler" pivot="center" hovercolor="[gears_scrollbar_handler_hover]" color="[gears_scrollbar_handler]" defaultcolor="[gears_scrollbar_handler]" hoverscale="1" />
-										<button name="background" sprite="gears_scrollbar_background" pivot="center" hovercolor="[gears_scrollbar_background_hover]" color="[gears_scrollbar_background]" defaultcolor="[gears_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
-									</scrollbar>
-
-									<scrollview name="scrollview" depth="5" pos="0,-62" width="590" height="495" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
-
-										<grid name="settingsList" rows="{settingsCount}" cols="1" pos="40,-10" cell_width="525" cell_height="45" repeat_content="true" arrangement="vertical">
-											<smx_gears_modsettings_optioncombined width="525" height="45" controller="Gears.UI.WorldSettingsOption, Gears"/>
-										</grid>
-									</scrollview>
 								</rect>
-				</insertAfter>
 
+								<smx_back_button name="btnBack" depth="3" pos="820,96" width="55" height="55" font_size="32" upper_case="true" tooltip_key="xuiBack" />
+								<smx_menu_button name="btnDefaults" depth="3" pos="602,-800" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" upper_case="true" visible="true" />
+								<smx_menu_button name="btnApply" depth="3" pos="-10,-790" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" upper_case="true" sound="[start]" />
+
+							</window>
+						</append>
+
+						<set xpath="/windows/window[@name='newContinueGame']/rect/rect/grid[@name='tabButtons']/@cell_width">135</set>
+
+						<set xpath="/windows/window[@name='newContinueGame']/rect/rect/grid[@name='tabButtons']/@pos">410,-3</set>
+
+						<set xpath="/windows/window[@name='newContinueGame']/rect[@name='tabs']/@controller">Gears.UI.GameSettingsSelector, Gears</set>
+
+						<insertAfter xpath="/windows/window[@name='newContinueGame']/rect/sprite[@name='smx_panel_background']">
+							<smx_gears_nav_button name="backButton" depth="4" pos="330,-8" caption="" font_size="18" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" />
+							<smx_gears_nav_button name="forwardButton" depth="4" pos="895,-8" caption="" font_size="20" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" pivot="right" flip="horizontally" />
+						</insertAfter>
+
+						<insertAfter xpath="/windows/window[@name='newContinueGame']/rect[@name='tabs']/rect[@name='tabsContents']/rect[@tab_key='xuiGameSettingsMultiplayer']">
+										<rect name="ModSettings" pos="0,-100" height="592" width="590" controller="Gears.UI.WorldSettings, Gears" tab_key="gearsUIModsButton">
+
+											<sprite name="smx_panel_separation" depth="4" pos="325,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+											<smx_gears_nav_button name="backButton" depth="4" pos="50,-8" caption="" font_size="18" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" />
+
+											<rect name="tabsHeader" height="52" depth="0">
+												<grid name="tabButtons" pos="170,-1" depth="2" rows="1" cols="3" cell_width="145" cell_height="90" repeat_content="true" arrangement="horizontal">
+													<rect visible="{HasSettings}">
+														<smx_gears_tab_button name="tabButton" depth="2" pos="-1,0" width="130" height="45" pivot="center" caption_key="Test" font_size="20" foregroundlayer="false" />
+													</rect>
+												</grid>
+											</rect>
+
+											<smx_gears_nav_button name="forwardButton" depth="4" pos="580,-8" caption="" font_size="20" bordercolor="[transparent]" defaultcolor="[lightGrey]" defaultsprite="ui_game_symbol_arrow_menu" hoversprite="ui_game_symbol_arrow_menu" selectedsprite="ui_game_symbol_arrow_menu" foregroundlayer="false" pivot="right" flip="horizontally" />
+
+											<scrollbar	name="scrollbar" depth="6" pos="600,-298" width="12" height="495" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
+												<button name="handler" sprite="gears_scrollbar_handler" pivot="center" hovercolor="[gears_scrollbar_handler_hover]" color="[gears_scrollbar_handler]" defaultcolor="[gears_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="gears_scrollbar_background" pivot="center" hovercolor="[gears_scrollbar_background_hover]" color="[gears_scrollbar_background]" defaultcolor="[gears_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="0,-62" width="590" height="495" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<grid name="settingsList" rows="{settingsCount}" cols="1" pos="40,-10" cell_width="525" cell_height="45" repeat_content="true" arrangement="vertical">
+													<smx_gears_modsettings_optioncombined width="525" height="45" controller="Gears.UI.WorldSettingsOption, Gears"/>
+												</grid>
+											</scrollview>
+										</rect>
+						</insertAfter>
+
+					</if>
+				</conditional>
 			</if>
 		</conditional>
 
@@ -2015,19 +2039,23 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
-
 				<conditional>
-					<if cond="modsetting('zSMXmenu', 'global', 'Optionals.General.AnimatedBackground') == 'On'">
+					<if cond="mod_loaded('zSMXmenu')">
 
-						<set xpath="/windows/window[@name='menuBackground']/@width">1920</set>
-						<set xpath="/windows/window[@name='menuBackground']/@height">1080</set>
+						<conditional>
+							<if cond="modsetting('zSMXmenu', 'global', 'Optionals.General.AnimatedBackground') == 'On'">
 
-						<append xpath="/windows/window[@name='menuBackground']">
-							<videoplayer name="bgTexture" depth="2" video="@modfolder(SMXcore)://Videos/smxcore_menu_background.mp4" autoplay="true" loop="true" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
-						</append>
+								<set xpath="/windows/window[@name='menuBackground']/@width">1920</set>
+								<set xpath="/windows/window[@name='menuBackground']/@height">1080</set>
+
+								<append xpath="/windows/window[@name='menuBackground']">
+									<videoplayer name="bgTexture" depth="2" video="@modfolder(SMXcore)://Videos/smxcore_menu_background.mp4" autoplay="true" loop="true" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
+								</append>
+							</if>
+						</conditional>
+
 					</if>
 				</conditional>
-
 			</if>
 		</conditional>
 

@@ -5,4 +5,7 @@
 
 
   <sprite name="smx_menu_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
+  
+  
+  <sprite name="smx_info_title" borderleft="0" borderright="0" bordertop="0" borderbottom="100" />
 </UIAtlas>
