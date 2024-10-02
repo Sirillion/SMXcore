@@ -181,9 +181,9 @@
 
 		<append xpath="/styles">
 			<style name="smx_item_stack">
-				<style_entry name="background_color" 				value="[smxui_slot_frame_normal]"/>
-				<style_entry name="highlight_color" 				value="[white]"/>
-				<style_entry name="select_color" 					value="[white]"/>
+				<style_entry name="background_color" 				value="[darkGrey]"/>
+				<style_entry name="highlight_color" 				value="[mediumGrey]"/>
+				<style_entry name="select_color" 					value="196,196,196,196"/>
 				<style_entry name="holding_color" 					value="[white]"/>
 				<style_entry name="press_color" 					value="[white]"/>
 				<style_entry name="final_pressed_color" 			value="[lightGrey]"/>
@@ -197,8 +197,6 @@
 				<style_entry name="place_sound" 					value="[place_click]"/>
 			</style>
 		</append>
-
-
 
 
 		<append xpath="/styles/global">

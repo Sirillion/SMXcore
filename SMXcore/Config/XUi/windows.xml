@@ -80,6 +80,10 @@
 
 						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="8" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
 
+							<smx_menu_button name="btnBugReport" width="230" height="65" pivot="center" caption_key="xuiBugReportHeader" font_size="28" overflow="ShrinkContent" visible="{bug_reporting}" />
+
+							<rect />
+
 							<smx_menu_button name="btnTpPoi" width="230" height="65" pivot="center" caption_key="xuiMenuTeleportPoiButton" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnExportPrefab" width="230" height="65" pivot="center" caption_key="xuiMenuExportPrefab" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnInvite" width="230" height="65" pivot="center" caption_key="xuiMenuInvite" font_size="28" overflow="ShrinkContent" />
@@ -100,6 +104,44 @@
 							<label name="smx_edition_info" depth="9" pos="60,-503" size="300,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionBranch" font_size="14" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
 							<label name="smx_version_info" depth="9" pos="60,-520" size="200,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionNumber" font_size="14" spacing_x="2" justify="center" upper_case="false" color="255,255,255,255" overflow="ShrinkContent" />
 						</rect>
+
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Progress Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<remove xpath="/windows/window[@name='progress']" />
+
+				<append xpath="/windows">
+					<window name="progress" depth="200" pos="-200,50" width="400" height="100" anchor="CenterCenter" controller="ProgressWindow">
+
+						<panel name="pnlShadow" depth="1" pos="-3000,3000" width="10000" height="10000" on_press="true" createuipanel="true" disableautobackground="true" visible="{use_shadow}" gamepad_selectable="false">
+							<texture name="bgTexture" depth="0" texture="Textures/UI/news_background" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+						</panel>
+
+						<panel name="noclick" depth="2" pos="-200,20" width="800" height="200" createuipanel="true" disableautobackground="true">
+							<sprite name="backgroundMain" depth="0" sprite="menu_empty" color="7,7,7,320" type="sliced" fillcenter="true" />
+
+							<sprite name="smxOutlineTop" pos="-20,2" width="850" height="3" sprite="smx_sepline_1" />
+							<sprite name="smxOutlineLeft" pos="-2,-220" width="245" height="3" sprite="smx_sepline_1" rotation="90" />
+							<sprite name="smxOutlineRight" pos="798,-225" width="234" height="3" sprite="smx_sepline_1" rotation="90" />
+							<sprite name="smxOutlineBottom" pos="-30,-198" width="858" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+						</panel>
+
+						<panel depth="10" createuipanel="true" disableautobackground="true">
+							<label name="lblProgress" pos="200,-30" width="500" height="80" pivot="center" style="smx_label_outline" font_size="28" justify="center" />
+							<rect pos="0,100">
+								<sprite name="smx_progress_cog_small" depth="0" pos="172,-203" width="45" height="45" pivot="center" sprite="smx_progress_cog" color="96,96,96,400" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="-8" />
+								<sprite name="smx_progress_cog_large" depth="0" pos="210,-230" width="60" height="60" pivot="center" sprite="smx_progress_cog" color="255,255,255,400" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="8" />
+							</rect>
+						</panel>
 
 					</window>
 				</append>
@@ -1229,6 +1271,11 @@
 
 			</if>
 		</conditional>
+
+
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMXui | < < < < < < < < < < < < < < < < < < < <	-->
 
 
 <!--	> > > > > > > > > > > > > > > > > > > > | SMX MS | < < < < < < < < < < < < < < < < < < < <	-->

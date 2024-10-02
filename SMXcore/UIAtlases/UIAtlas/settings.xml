@@ -1,11 +1,14 @@
 <UIAtlas>
+
   <sprite name="smx_window_foreground" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
+
   <sprite name="smx_window_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
   <!--sprite name="smxlib_window_header_background" borderleft="0" borderright="0" bordertop="20" borderbottom="0" /-->
 
-
   <sprite name="smx_menu_background" borderleft="80" borderright="80" bordertop="80" borderbottom="80" />
-  
+
+  <sprite name="smx_scrollbar_thumb" borderleft="4" borderright="4" bordertop="10" borderbottom="10" />
   
   <sprite name="smx_info_title" borderleft="0" borderright="0" bordertop="0" borderbottom="100" />
+
 </UIAtlas>

@@ -1043,7 +1043,7 @@
 						<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiServerFilters" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" visible="{filtersvisible}" />
 
 						<sprite name="smx_menu_separation" depth="5" pos="-610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-						<sprite name="smx_menu_separation" depth="5" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" visible="{filtersvisible}" />
+						<!--sprite name="smx_menu_separation" depth="5" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" visible="{filtersvisible}" /-->
 
 						<rect name="browser" visible="{# !isprefilteredsearch or !filtersvisible}">
 							<rect name="servers" pos="-592,0" width="700" height="750" controller="ServersList" matching_version_color="60,255,60,128" compatible_version_color="255,216,0" incompatible_version_color="255,0,0" clear_selection_on_open="false" clear_searchtext_on_open="true">
@@ -1185,6 +1185,8 @@
 												<smx_browser_gameoption_info name="MaxSpawnedZombies" title="goMaxSpawnedZombies" />
 												<smx_browser_gameoption_info name="MaxSpawnedAnimals" title="goMaxSpawnedAnimals" />
 												<smx_browser_gameoption_info name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goXPMultiplierValue" />
+												<smx_browser_gameoption_info name="AirDropFrequency" title="goAirDropFrequency" display_names="goDisabled" />
+												<smx_browser_gameoption_info name="AirDropMarker" title="goMarkAirDrops" />
 											</grid>
 										</rect>
 
@@ -1200,10 +1202,8 @@
 												<smx_browser_gameoption_info name="DropOnDeath" title="goDropOnDeath" display_names="goNone,goAll,goToolbelt,goBackpack,goDeleteAll" value_localization_prefix="" />
 												<smx_browser_gameoption_info name="DropOnQuit" title="goDropOnQuit" display_names="goNone,goAll,goToolbelt,goBackpack" value_localization_prefix="" />
 												<smx_browser_gameoption_info name="EnemySpawnMode" title="goEnemySpawn" value_localization_prefix="" />
-												<smx_browser_gameoption_info name="AirDropFrequency" title="goAirDropFrequency" display_names="goDisabled" />
 												<smx_browser_gameoption_info name="BuildCreate" title="goBuildCreate" />
-												<smx_browser_gameoption_info name="AirDropMarker" title="goMarkAirDrops" />
-												<smx_browser_gameoption_info name="QuestProgressionDailyLimit" title="goQuestProgressionDailyLimit" value_type="int" values="-1,1, 2, 3, 4, 5, 6, 7, 8" display_names="goUnlimited"/>
+												<smx_browser_gameoption_info name="QuestProgressionDailyLimit" title="goQuestProgressionDailyLimit" value_type="int" values="-1,1, 2, 3, 4, 5, 6, 7, 8" display_names="-1=goUnlimited"/>
 											</grid>
 										</rect>
 
@@ -1328,7 +1328,7 @@
 										</rect>
 
 										<rect tab_key="xuiGameSettingsBasic">
-											<grid pos="8,-40" rows="13" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
+											<grid pos="8,-40" rows="14" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
 												<smx_browser_gameoption_combined name="GameDifficulty" title="goDifficulty" value_wrap="false" values="" display_names="goDifficulty1,goDifficulty2,goDifficulty3,goDifficulty4,goDifficulty5,goDifficulty6" value_localization_prefix="" allow_custom="false" />
 												<smx_browser_gameoption_combined name="DayNightLength" title="goDayLength" value_wrap="false" values="10, 20, 30, 40, 50, 60, 90, 120" display_names="" value_localization_prefix="goMinute" />
 												<smx_browser_gameoption_combined name="DayLightLength" title="goDayLightLength" value_wrap="false" values="12, 14, 16, 18" display_names="" value_localization_prefix="goDayLightLengthValue" />
@@ -1342,11 +1342,13 @@
 												<smx_browser_gameoption_combined name="MaxSpawnedZombies" title="goMaxSpawnedZombies" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="true" force_custom="true" />
 												<smx_browser_gameoption_combined name="MaxSpawnedAnimals" title="goMaxSpawnedAnimals" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="true" force_custom="true" />
 												<smx_browser_gameoption_combined name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goXPMultiplierValue" />
+												<smx_browser_gameoption_combined name="AirDropFrequency" title="goAirDropFrequency" value_wrap="false" values="0, 24, 72, 168" display_names="goDisabled" value_localization_prefix="goAirDropValue" />
+												<smx_browser_gameoption_combined name="AirDropMarker" title="goMarkAirDrops" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
 											</grid>
 										</rect>
 
 										<rect tab_key="xuiGameSettingsAdvanced">
-											<grid pos="8,-40" rows="13" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
+											<grid pos="8,-40" rows="14" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
 												<smx_browser_gameoption_combined name="BlockDamagePlayer" title="goBlockDamagePlayer" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
 												<smx_browser_gameoption_combined name="BlockDamageAI" title="goBlockDamageAI" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
 												<smx_browser_gameoption_combined name="BlockDamageAIBM" title="goBlockDamageAIBM" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
@@ -1357,19 +1359,17 @@
 												<smx_browser_gameoption_combined name="DropOnDeath" title="goDropOnDeath" value_wrap="false" values="" display_names="goNone,goAll,goToolbelt,goBackpack,goDeleteAll" value_localization_prefix="" allow_custom="false" />
 												<smx_browser_gameoption_combined name="DropOnQuit" title="goDropOnQuit" value_wrap="false" values="" display_names="goNone,goAll,goToolbelt,goBackpack" value_localization_prefix="" allow_custom="false" />
 												<smx_browser_gameoption_combined name="EnemySpawnMode" title="goEnemySpawn" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
-												<smx_browser_gameoption_combined name="AirDropFrequency" title="goAirDropFrequency" value_wrap="false" values="0, 24, 72, 168" display_names="goDisabled" value_localization_prefix="goAirDropValue" />
 												
 												<!--BuildCreate browsergameoptioncombineds, some are for console platforms.-->
 												<smx_browser_gameoption_combined name="BuildCreate" title="goBuildCreate" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" platform="!PS5,!XBOX"/>
 												<smx_browser_gameoption_combined name="BuildCreate" title="goBuildCreate" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" tooltip_key="goBuildCreateServerBrowserDescPS5" platform="PS5"/>
 												<smx_browser_gameoption_combined name="BuildCreate" title="goBuildCreate" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" tooltip_key="goBuildCreateServerBrowserDescXBOX" platform="XBOX"/>
-												<smx_browser_gameoption_combined name="AirDropMarker" title="goMarkAirDrops" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
 												<smx_browser_gameoption_combined name="QuestProgressionDailyLimit" title="goQuestProgressionDailyLimit" value_wrap="false" values="1, 2, 3, 4, 5, 6, 7, 8, -1" display_names="-1=goUnlimited"/>
 											</grid>
 										</rect>
 
 										<rect tab_key="xuiGameSettingsMultiplayer">
-											<grid pos="8,-40" rows="13" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
+											<grid pos="8,-40" rows="14" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
 												<smx_browser_gameoption_combined name="PlayerKillingMode" title="goPlayerKillingMode" value_wrap="false" values="" display_names="goPlayerKillingModeNoKilling,goPlayerKillingModeKillAlliesOnly,goPlayerKillingModeKillStrangersOnly,goPlayerKillingModeKillEveryone" value_localization_prefix="" allow_custom="false" />
 												<smx_browser_gameoption_combined name="LandClaimSize" title="goLandClaimSize" value_wrap="false" values="21, 31, 41, 51, 71" display_names="" value_localization_prefix="goLandClaimSizeValue" />
 												<!--smx_browser_gameoption_combined name="LandClaimDeadZone" title="goLandClaimDeadZone" value_wrap="false" values="0, 5, 10, 15, 20, 30, 40, 50" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" /-->

@@ -234,6 +234,22 @@
 		</conditional>
 
 
+<!--	// SMX // Bug Report Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='bugReportWindow']">
+					<window name="bugReport"/>
+					<window name="bugReportSaveSelect" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='bugReportWindow']" name="defaultSelected">txtDescription</setattribute>
+
+			</if>
+		</conditional>
+
+
 <!--	// SMX // Server Password Window -->
 
 		<conditional>

@@ -163,7 +163,7 @@
 		</conditional>
 
 
-<!--	// SMX // Enhanced Buff Frames -->
+<!--	// SMX // Enhanced Buff Frames - SMXhud -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXhud')">
@@ -364,5 +364,9 @@
 
 			</if>
 		</conditional>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMXui | < < < < < < < < < < < < < < < < < < < <	-->
+
 
 </SMXcore>
