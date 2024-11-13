@@ -199,6 +199,16 @@
 		</append>
 
 
+		<append xpath="/styles">
+			<style name="smx_crafting_info_window" 					type="window">
+				<style_entry name="valid_color" 					value="[green]"/>
+				<style_entry name="invalid_color" 					value="[red]"/>
+				<style_entry name="valid_sprite" 					value="ui_game_symbol_check"/>
+				<style_entry name="invalid_sprite" 					value="ui_game_symbol_x"/>
+			</style>
+		</append>
+
+
 		<append xpath="/styles/global">
 
 			<style_entry name="smxcore_tooltip_background"						value="0,0,0" />										<!-- This entry sets the color for: GLOBAL Tooltip window backgrounds -->

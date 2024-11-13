@@ -109,25 +109,10 @@
 		</conditional>
 
 
-<!--	// SMX // Drag & Drop Item -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<set xpath="/xui/ruleset[@name='default']/window_group[@name='dragAndDrop']">
-					<window name="dragAndDropItemStack" />
-				</set>
-
-				<setattribute xpath="/xui//window_group[@name='dragAndDrop']" name="actionset">false</setattribute>
-
-			</if>
-		</conditional>
-
-
 <!--	// SMX // Compass -->
 
 		<conditional>
-			<if cond="not mod_loaded('zSMXui')">
+			<if cond="mod_loaded('zSMXhud')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
 					<window name="windowCompass" />
@@ -137,13 +122,16 @@
 					<window name="onScreenIcons" />
 					<window name="smxhudLevelXP" anchor="LeftTop" />
 					<window name="smxhudBuffFrame" anchor="CenterBottom" />
+					<window name="windowQuestTracker" anchor="RightTop" />
+					<window name="windowRecipeTracker" anchor="RightTop" />
+					<window name="windowGroupBars" anchor="LeftTop" />
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='compass']" name="actionset">false</setattribute>
 
 			</if>
 		</conditional>
-
+<!--
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
@@ -167,20 +155,17 @@
 
 			</if>
 		</conditional>
-
+-->
 
 <!--	// SMX // Toolbelt -->
 
 		<conditional>
-			<if cond="not mod_loaded('zSMXui')">
+			<if cond="mod_loaded('zSMXhud')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
 					<window name="windowToolbelt" anchor="CenterBottom" />
 					<window name="HUDLeftStatBars" anchor="LeftBottom" />
 					<window name="HUDRightStatBars" anchor="RightBottom" />
-					<window name="windowQuestTracker" anchor="RightTop" />
-					<window name="windowRecipeTracker" anchor="RightTop" />
-					<window name="windowGroupBars" anchor="LeftTop" />
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='toolbelt']" name="actionset">false</setattribute>
@@ -188,15 +173,15 @@
 			</if>
 		</conditional>
 
-
+<!--
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
 					<window name="windowToolbeltHIDDEN" anchor="CenterBottom" />
-					<window name="HUDLeftStatBarsHIDDEN" anchor="LeftBottom" />
+					<window name="HUDLeftStatBarsHIDDEN" anchor="LeftBottom" /-->
 					<!--window name="HUDRightStatBarsHIDDEN" anchor="RightBottom" /--> <!-- BUGS the inventory. We need a hide_when_backpack_open thingy -->
-					<window name="windowQuestTrackerHIDDEN" anchor="RightTop" />
+					<!--window name="windowQuestTrackerHIDDEN" anchor="RightTop" />
 					<window name="windowRecipeTrackerHIDDEN" anchor="RightTop" />
 					<window name="windowGroupBarsHIDDEN" anchor="LeftTop" />
 					<window name="dragAndDropItemStack" anchor="CenterBottom" />
@@ -206,6 +191,7 @@
 
 			</if>
 		</conditional>
+-->
 <!--
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
@@ -358,5 +344,363 @@
 
 <!--	> > > > > > > > > > > > > > > > > > > > | SMXui | < < < < < < < < < < < < < < < < < < < <	-->
 
+
+<!--	// SMX // Window NON Paging Header -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<setattribute xpath="/xui/ruleset[@name='default']/window_group/window[@name='windowNonPagingHeader']" name="anchor">CenterTop</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Window Paging Header -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='windowpaging']">
+					<window name="windowPagingHeader" anchor="CenterTop" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='windowpaging']" name="actionSet">false</setattribute>
+				<setattribute xpath="/xui//window_group[@name='windowpaging']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Backpack Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='backpack']">
+					<window name="itemInfoPanel" />
+					<window name="emptyInfoPanel" />
+					<window name="windowBackpack" />
+					<!--window name="windowToolbelt" anchor="CenterBottom" /-->
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='backpack']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Drag&Drop Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='dragAndDrop']">
+					<window name="dragAndDropItemStack" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='dragAndDrop']" name="actionSet">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Dew Collector Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='dewcollector']">
+					<window name="windowDewCollector"/>
+					<window name="windowDewCollectorMods" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='dewcollector']" name="controller">XUiC_DewCollectorWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='dewcollector']" name="defaultSelected">0</setattribute>
+				<setattribute xpath="/xui//window_group[@name='dewcollector']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='dewcollector']" name="left_panel_valign_top">false</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='crafting']">
+					<window name="windowCraftingList" />
+					<window name="craftingInfoPanel" />
+					<window name="windowCraftingQueue" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='crafting']" name="controller">XUiC_CraftingWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='crafting']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='crafting']" name="open_backpack_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Character Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='character']">
+					<window name="CharacterFrameWindow"/>
+					<window name="buffInfoPanel"/>
+					<window name="ActiveBuffsWindow" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='character']" name="controller">XUiC_CharacterSheetWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='character']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='character']" name="open_backpack_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting Window - Forge -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='workstation_forge']">
+					<window name="windowCraftingListForge"/>
+					<window name="craftingInfoPanel"/>
+					<window name="windowCraftingQueueForge"/>
+					<window name="windowToolsForge" />
+					<window name="windowFuelForge" />
+					<window name="windowForgeInput" />
+					<window name="windowOutputForge" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="controller">XUiC_WorkstationWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting Window - Campfire -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='workstation_campfire']">
+					<window name="windowCraftingListCampfire"/>
+					<window name="craftingInfoPanel"/>
+					<window name="windowCraftingQueueWorkstation"/>
+					<window name="windowToolsCampfire" />
+					<window name="windowFuel" />
+					<window name="windowOutput" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="controller">XUiC_WorkstationWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting Window - Chemistry Station -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='workstation_chemistryStation']">
+					<window name="windowCraftingListChemistryStation"/>
+					<window name="craftingInfoPanel"/>
+					<window name="windowCraftingQueueWorkstation"/>
+					<window name="windowFuel" />
+					<window name="windowOutput" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="controller">XUiC_WorkstationWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_forge']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Looting Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='looting']">
+					<window name="windowLooting"/>
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='looting']" name="left_panel_valign_top">false</setattribute>
+				<setattribute xpath="/xui//window_group[@name='looting']" name="controller">XUiC_LootWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='looting']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting Window - Workbench Station -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='workstation_workbench']">
+					<window name="windowCraftingListWorkstation"/>
+					<window name="craftingInfoPanel"/>
+					<window name="windowCraftingQueueWorkstation"/>
+					<window name="windowOutput" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="controller">XUiC_WorkstationWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_workbench']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting Window - Cement Mixer Station -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='workstation_cementMixer']">
+					<window name="windowCraftingListWorkstation"/>
+					<window name="craftingInfoPanel"/>
+					<window name="windowCraftingQueueWorkstation"/>
+					<window name="windowOutput" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='workstation_cementMixer']" name="controller">XUiC_WorkstationWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_cementMixer']" name="defaultSelected">bp.content</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_cementMixer']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='workstation_cementMixer']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Skills Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='skills']">
+					<window name="windowSkillList"/>
+					<window name="windowSkillAttributeInfo" />
+					<window name="windowSkillSkillInfo" />
+					<window name="windowSkillPerkInfo" />
+					<window name="windowSkillBookInfo" />
+					<window name="windowSkillCraftingInfo" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='skills']" name="controller">XUiC_SkillWindowGroup</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Trader Window - Quest Turn-In -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='questTurnIn']">
+					<window name="windowQuestTurnInDescription" />
+					<window name="windowQuestTurnInRewards" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='questTurnIn']" name="controller">XUiC_QuestTurnInWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='questTurnIn']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='questTurnIn']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='questTurnIn']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Vehicle Window - Storage -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='vehicleStorage']">
+					<window name="windowNonPagingHeader" />
+					<window name="windowVehicleStorage" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='vehicleStorage']" name="controller">XUiC_VehicleStorageWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='vehicleStorage']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='vehicleStorage']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='vehicleStorage']" name="defaultSelected">queue</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Trader Window - Dialog -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='dialog']">
+					<window name="windowRespondentName" />
+					<window name="windowStatement" />
+					<window name="windowResponses" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='dialog']" name="controller">XUiC_DialogWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='dialog']" name="close_compass_on_open">true</setattribute>
+
+			</if>
+		</conditional>
+		
+
+<!--	// SMX // Writable Window - Signs & Storage -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='sign']">
+					<window name="windowSignEdit" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='sign']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
+		
+		
+<!--	// SMX // Lockable Window - Enter Code -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='keypadEdit']">
+					<window name="windowKeypadEdit" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='keypadEdit']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
 
 </SMXcore>

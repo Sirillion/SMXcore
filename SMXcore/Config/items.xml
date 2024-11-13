@@ -1,0 +1,239 @@
+<SMXcore name="items.xml">
+
+<!--	// SMX // Item Type Identifier - Tools -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'meleeToolRepair')]">
+					<property name="WeaponType" value="Repair Tool" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolRepair') and (contains (@name, 'StoneAxe'))]">
+					<property name="WeaponType" value="Repair / Harvesting Tool" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolAxe')]">
+					<property name="WeaponType" value="Harvesting Tool (Wood)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolAxe') and (contains (@name, 'Chainsaw'))]">
+					<property name="WeaponType" value="Harvesting Tool (Motor Tool)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolPick')]">
+					<property name="WeaponType" value="Mining Tool" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolPick') and (contains (@name, 'Auger'))]">
+					<property name="WeaponType" value="Mining Tool (Motor Tool)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolShovel')]">
+					<property name="WeaponType" value="Harvesting Tool (Soil)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolSalvage')]">
+					<property name="WeaponType" value="Salvage Tool" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolWire')]">
+					<property name="WeaponType" value="Electrical Tool" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolPaint')]">
+					<property name="WeaponType" value="Painting Tool" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeToolFlash') or (contains (@name, 'meleeToolTorch'))]">
+					<property name="WeaponType" value="Light Source" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Weapons - Melee -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'meleeWpnBlade')]">
+					<property name="WeaponType" value="Bladed Weapon" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeWpnClub') or (contains (@name, 'meleeWpnBatonT0')) or (contains (@name, 'meleeWpnSledge'))]">
+					<property name="WeaponType" value="Blunt Weapon" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeWpnBatonT2')]">
+					<property name="WeaponType" value="Blunt Weapon (Electrified)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeWpnSpear')]">
+					<property name="WeaponType" value="Thrust Weapon" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'meleeWpnKnuckles')]">
+					<property name="WeaponType" value="Brawling Weapon" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Weapons - Ranged -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'gunHandgunT0') or (contains (@name, 'gunHandgunT1')) or (contains (@name, 'gunHandgunT3DesertVulture'))]">
+					<property name="WeaponType" value="Pistol" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunHandgunT2')]">
+					<property name="WeaponType" value="Revolver" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunHandgunT3SMG5')]">
+					<property name="WeaponType" value="Submachine Gun" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunShotgunT')]">
+					<property name="WeaponType" value="Shotgun" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunRifleT')]">
+					<property name="WeaponType" value="Rifle" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunMGT')]">
+					<property name="WeaponType" value="Machine Gun" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunBowT')]">
+					<property name="WeaponType" value="Archery" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'gunExplosivesT3') and not (contains (@name, 'Molotov'))]">
+					<property name="WeaponType" value="Explosives" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'Molotov')]">
+					<property name="WeaponType" value="FIRE!" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Weapons - Robotics -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'gunBotT')]">
+					<property name="WeaponType" value="Robotics" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Armor Sets -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'armorPrimitiveMaster')]">
+					<property name="WeaponType" value="Primitive Armor Setpiece" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'armorLightMaster')]">
+					<property name="WeaponType" value="Light Armor Setpiece" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'armorMediumMaster')]">
+					<property name="WeaponType" value="Medium Armor Setpiece" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'armorHeavyMaster')]">
+					<property name="WeaponType" value="Heavy Armor Setpiece" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Ammunition -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'ammo') and not (contains (@name, 'GasCan')) and not (contains (@name, 'Rocket')) and not (contains (@name, 'Exploding'))]">
+					<property name="WeaponType" value="Ammunition" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'ammo') and (contains (@name, 'Rocket'))]">
+					<property name="WeaponType" value="Ammunition (Explosive)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'ammo') and (contains (@name, 'Exploding'))]">
+					<property name="WeaponType" value="Ammunition (Explosive)" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Medical Items -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'medical')]">
+					<property name="WeaponType" value="Medical" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'drug')]">
+					<property name="WeaponType" value="Medical (Drugs)" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Food Items -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'food')]">
+					<property name="WeaponType" value="Food" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'food') and (contains (@name, 'RottingFlesh'))]">
+					<property name="WeaponType" value="Food...ish!" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'drink')]">
+					<property name="WeaponType" value="Drink" />
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Type Identifier - Resources -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/items/item[contains (@name, 'resource')]">
+					<property name="WeaponType" value="Resource" />
+				</append>
+
+			</if>
+		</conditional>
+
+</SMXcore>

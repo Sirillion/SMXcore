@@ -1,0 +1,110 @@
+<SMXcore name="loot.xml">
+
+<!--	// SMX // Container Size Conversions -->
+
+		<!-- SIRILLION: Due to the new SMXui design for containers and looting we need to fix the width of the containers to 5 wide -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/lootcontainers/lootcontainer[@size='6,1']/@size">5,2</set>							<!-- SIRILLION: Adjusts from  6 SLOTS to 10 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='6,2']/@size">5,3</set>							<!-- SIRILLION: Adjusts from 12 SLOTS to 15 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='6,3']/@size">5,4</set>							<!-- SIRILLION: Adjusts from 18 SLOTS to 20 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='6,4']/@size">5,5</set>							<!-- SIRILLION: Adjusts from 24 SLOTS to 25 SLOTS -->
+
+				<set xpath="/lootcontainers/lootcontainer[@size='7,2']/@size">5,3</set>							<!-- SIRILLION: Adjusts from 14 SLOTS to 15 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='7,4']/@size">5,6</set>							<!-- SIRILLION: Adjusts from 28 SLOTS to 30 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='7,10']/@size">5,14</set>						<!-- SIRILLION: Adjusts from 70 SLOTS to 70 SLOTS -->
+
+				<set xpath="/lootcontainers/lootcontainer[@size='8,2']/@size">5,4</set>							<!-- SIRILLION: Adjusts from 16 SLOTS to 20 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,4']/@size">5,7</set>							<!-- SIRILLION: Adjusts from 32 SLOTS to 35 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,5']/@size">5,8</set>							<!-- SIRILLION: Adjusts from 40 SLOTS to 40 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,6']/@size">5,10</set>						<!-- SIRILLION: Adjusts from 48 SLOTS to 50 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,8']/@size">5,13</set>						<!-- SIRILLION: Adjusts from 64 SLOTS to 65 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,9']/@size">5,15</set>						<!-- SIRILLION: Adjusts from 72 SLOTS to 75 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,10']/@size">5,16</set>						<!-- SIRILLION: Adjusts from 80 SLOTS to 80 SLOTS -->
+
+				<set xpath="/lootcontainers/lootcontainer[@size='9,1']/@size">5,2</set>							<!-- SIRILLION: Adjusts from  9 SLOTS to 10 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='9,3']/@size">5,6</set>							<!-- SIRILLION: Adjusts from 27 SLOTS to 30 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='9,4']/@size">5,8</set>							<!-- SIRILLION: Adjusts from 36 SLOTS to 40 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='9,5']/@size">5,9</set>							<!-- SIRILLION: Adjusts from 45 SLOTS to 45 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='9,9']/@size">5,17</set>						<!-- SIRILLION: Adjusts from 81 SLOTS to 85 SLOTS -->
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Player Dropped Backpack Size Conversion - Vanilla -->
+
+		<!-- SIRILLION: Due to the new SMXui design for containers and looting we need to fix the width of the containers to 5 wide -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,12</set>				<!-- SIRILLION: Specifies the correct bag size for vanilla -->
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Player Dropped Backpack Size Conversion - Big Bag Mods -->
+
+		<!-- SIRILLION: Adding more slots means we need to add more room in the bag that the player drops upon death. (Minimum: BagSize + 14) -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+
+						<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,23</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 115 SLOTS, 114 needed -->
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+
+						<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,43</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 215 SLOTS, 214 needed -->
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+
+						<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,63</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 315 SLOTS, 314 needed -->
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+						<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,83</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 415 SLOTS, 414 needed -->
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+</SMXcore>

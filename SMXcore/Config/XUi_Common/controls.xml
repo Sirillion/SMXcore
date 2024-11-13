@@ -972,9 +972,9 @@
 									visible="{passwordfield}" />
 
 							<button name="btnClearInput"
-									pos="${password_field ? width-height-Round(min(height,36)/2,0)-12 : width-Round(min(height,36)/2,0)-3},-${Round(height/2,0)}"
-									width="${4+min(height,36)}"
-									height="${min(height,36)-4}"
+									pos="95,35"
+									width="34"
+									height="28"
 									pivot="center"
 									sprite="ui_game_symbol_clear_textfield"
 									hoverscale="1.1"

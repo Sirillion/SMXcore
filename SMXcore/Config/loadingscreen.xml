@@ -2,14 +2,20 @@
 
 <!--	// SMX // Loadingscreen Modifications -->
 
-		<set xpath="/doc/backgrounds">
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_1.png" />
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_2.png" />
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_3.png" />
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_4.png" />
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_5.png" />
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_6.png" />
-			<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_7.png" />
-		</set>
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<set xpath="/doc/backgrounds">
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_1.png" />
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_2.png" />
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_3.png" />
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_4.png" />
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_5.png" />
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_6.png" />
+					<tex file="@modfolder(SMXcore)://Textures/loadingscreens/smx_loadingscreen_7.png" />
+				</set>
+
+			</if>
+		</conditional>
 
 </SMXcore>

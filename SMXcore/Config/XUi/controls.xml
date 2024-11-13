@@ -121,16 +121,12 @@
 						<rect controller="${controller}" width="${4+cell_width}" height="${4+cell_height}" style="hover, smx_item_stack" pivot="center" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" tooltip="{tooltip}">
 
 							<sprite name="mainBackground" depth="0" pos="0,0" width="${cell_width-4}" height="${cell_height-4}" sprite="menu_empty" type="sliced" pivot="center" color="[smxhud_slot_main_background]" globalopacitymod="1.3" />
-							<!--sprite name="mainBackground" depth="0" pos="0,0" width="${cell_width-4}" height="${cell_height-4}" sprite="smx_slot_background" type="sliced" pivot="center" color="[smxhud_slot_main_background]" globalopacitymod="1.3" /-->
-
-							<!--sprite name="slotBackground" depth="1" pos="0,0" width="${cell_width-14}" height="${cell_height-14}" sprite="menu_empty" pivot="center" type="sliced" color="[smxhud_slot_slot_background]" globalopacity="true" /-->
 							<sprite name="slotBackground" depth="1" pos="0,0" width="${cell_width-8}" height="${cell_height-8}" sprite="smx_slot_background" pivot="center" type="sliced" color="[smxhud_slot_slot_background]" globalopacity="true" />
-							<!--sprite name="itemBackgroundDurability" depth="2" pos="0,3" width="${cell_width-9}" height="${cell_height-27}" sprite="smxlib_item_preview_background" pivot="center" rotation="45" color="{durabilitycolor}" globalopacitymod="0.8" visible="{hasdurability}" /-->
+
 							<sprite name="itemBackgroundDurability" depth="2" pos="2,2" width="${cell_width-5}" height="${cell_height-5}" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="{durabilitycolor}" globalopacitymod="0.8" visible="{hasdurability}" />
-							<!--sprite name="itemBackgroundNormal" depth="2" pos="0,3" width="${cell_width-9}" height="${cell_height-27}" sprite="smxlib_item_preview_background" pivot="center" rotation="45" color="[smxhud_slot_item_background]" globalopacitymod="1.2" visible="{#!hasdurability}" /-->
 							<sprite name="itemBackgroundNormal" depth="2" pos="2,2" width="${cell_width-5}" height="${cell_height-5}" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="[smxhud_slot_item_background]" globalopacitymod="0.8" visible="{#!hasdurability}" />
+
 							<sprite name="slotFrame" depth="3" pos="0,0" width="${cell_width-1}" height="${cell_height-1}" sprite="smx_slot_frame_narrow" pivot="center" color="{selectionbordercolor}" globalopacitymod="1.8" />
-							<!--sprite name="slotFrame" depth="3" pos="0,0" width="${cell_width-1}" height="${cell_height-1}" sprite="00_smx_slot_border" pivot="center" color="{selectionbordercolor}" globalopacitymod="1.8" /-->
 
 							<texture name="backgroundTexture" depth="4" pos="0,0" width="${cell_width-12}" height="${cell_height-12}" pivot="center" material="Materials/Transparent Colored" globalopacity="true" />
 
@@ -144,9 +140,6 @@
 							<sprite name="durability" depth="6" pos="0,${-cell_height/2+8}" width="${cell_width-12}" height="5" sprite="smx_item_durability_bar" pivot="center" type="filled" fill="{durabilityfill}" color="{durabilitycolor}" foregroundlayer="true" visible="{hasdurability}" />
 
 							<label name="stackValue" depth="7" pos="0,${-cell_height/2+12}" width="${cell_width-14}" height="${cell_height-68}" style="smx_label_normal" text="{itemcount}" font_size="18" pivot="center" justify="{#hasdurability ? 'Center' : 'Right'}" color="[smxhud_element_labelcolor_1]" visible="{#!hasdurability}" />
-							<!--label name="stackValue" depth="7" pos="0,${-cell_height/2+17}" width="${cell_width-14}" height="${cell_height-68}" style="smx_label_normal" text="QL{itemcount}" font_size="14" pivot="center" justify="{#hasdurability ? 'Right' : 'Center'}" color="[smxhud_element_labelcolor_3]" visible="{hasdurability}" /-->
-
-					<!--label name="stackValue" depth="7" pos="${cell_width-cell_width},${cell_height-cell_height+cell_height/2-12}" width="${cell_width-14}" height="${cell_height-68}" style="smx_label_normal" text=" [C0C0C0]QL{itemcount}[-] " font_size="14" pivot="center" justify="{#hasdurability ? 'Center' : 'Right'}" color="[smxhud_element_labelcolor_1]" visible="{hasdurability}" /-->
 
 							<label name="timer" depth="7" pos="0,-2" width="${cell_width-6}" height="${cell_height-62}" style="smx_label_normal" font_size="18" upper_case="true" pivot="center" justify="center" color="[smxhud_slot_timer_color]" />
 
@@ -368,5 +361,1299 @@
 
 <!--	> > > > > > > > > > > > > > > > > > > > | SMXui | < < < < < < < < < < < < < < < < < < < <	-->
 
+
+<!--	// SMX // Crafting Ingredient Stacks -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_ingredient_row>
+						<rect	width="90"
+								height="90"
+								pivot="center"
+								style="smx_item_stack, press, hover"
+								controller="IngredientEntry"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								collider_scale="1.0"
+								hover_icon_grow="1.1"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{itemname}">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="90,90" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="background" depth="3" pos="0,-4" size="68,68" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="55,55" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+							<sprite name="background2" depth="6" pos="0,-4" size="59,59" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="68,68" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{itemicontint}" foregroundlayer="true" />
+
+							<label name="needCount" depth="17" pos="-20,-43" width="40" height="28" pivot="center" style="smx_label_outline, hover" text="{havecount}" font_size="16" justify="left" color="96,96,96,196" tooltip="YOU HAVE" />
+							<label name="needCount" depth="17" pos="23,-43" width="30" height="28" pivot="center" style="smx_label_outline, hover" text="{needcount}" font_size="16" justify="right" color="255,255,255,255" tooltip="YOU NEED" />
+
+						</rect>
+					</smx_ingredient_row>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Crafting "Unlocked By" -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+				<append xpath="/controls">
+					<smx_unlocked_by_row>
+						<rect	width="90"
+								height="90"
+								pivot="center"
+								style="smx_item_stack, press, hover"
+								controller="UnlockByEntry"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								collider_scale="1.0"
+								hover_icon_grow="1.1">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="90,90" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="background" depth="3" pos="0,-4" size="68,68" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="55,55" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+							<sprite name="background2" depth="6" pos="0,-4" size="59,59" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="icon" depth="7" pos="0,0" size="68,68" pivot="center" style="hover" atlas="{itemiconatlas}" sprite="{itemicon}" foregroundlayer="true" sound="[recipe_click]" sound_play_on_hover="[default_hover]" tooltip="{name}" />
+
+							<!--label name="needCount" depth="17" pos="-20,-43" width="40" height="28" pivot="center" style="smx_label_outline, hover" text="{havecount}" font_size="16" justify="left" tooltip="YOU HAVE" /-->
+							<label name="name" depth="17" pos="23,-43" width="30" height="28" pivot="center" style="smx_label_outline, hover" text="{level}" font_size="16" justify="right" />
+
+						</rect>
+					</smx_unlocked_by_row>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Drag & Drop Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_drag_item_stack>
+						<rect controller="ItemStack" pos="0,0" width="86" height="86">
+							<sprite name="background" depth="3" pos="0,0" width="1" height="1" type="sliced" pivot="center" color="{selectionbordercolor}" globalopacity="true" />
+							<sprite name="itemIcon" depth="6" pos="0,0" size="86,86" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" pivot="center" foregroundlayer="true" />
+							<sprite name="durabilityBackground" depth="3" pos="0,-36" width="73" height="7" sprite="smx_item_durability_bar" pivot="center" color="[smxui_item_durability_background]" foregroundlayer="true" visible="{hasdurability}" />
+							<sprite name="durability" depth="4" pos="0,-36" width="73" height="7" sprite="smx_item_durability_bar" type="filled" fill="{durabilityfill}" pivot="center" color="{durabilitycolor}" foregroundlayer="true" visible="{hasdurability}" />
+							<label name="stackValue" depth="7" pos="0,-28" width="73" height="28" style="smx_label_outline" text="{itemcount}" font_size="20" pivot="center" justify="{#hasdurability ? 'Center' : 'Right'}" color="[smxui_element_labelcolor_1]" visible="{#!hasdurability}" />
+							<!--label name="stackValue" depth="7" pos="0,-28" width="73" height="18" style="smx_label_normal" text="{itemcount}" font_size="14" pivot="center" justify="{#hasdurability ? 'Right' : 'Center'}" color="[smxhud_element_labelcolor_3]" visible="{hasdurability}" /-->
+						</rect>
+					</smx_drag_item_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Skills Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls"> <!-- OLD -->
+					<smx_skills_category_icon categoryname="" spritename="" displayname="" displayname_key="">
+						<button	name="categoryIcon"
+								depth="1"
+								size="65,65"
+								pivot="center"
+								controller="CategoryEntry"
+								categoryname="${categoryname}"
+								spritename="${spritename}"
+								displayname="${displayname}"
+								displayname_key="${displayname_key}"
+								sprite="{categoryicon|once}"
+								tooltip="{categorydisplayname|once}"
+								collider_scale="1.5"
+								sound="[paging_click]"
+								sound_play_on_hover="[default_hover]"
+								use_selection_box="false" />
+					</smx_skills_category_icon>
+				</append>
+
+			</if>
+		</conditional>
+
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skill_category_entry categoryname="" spritename="" displayname="" displayname_key="">
+
+						<button	name="categoryIcon"
+								depth="1"
+								size="150,52"
+								pivot="center"
+								controller="CategoryEntry"
+								categoryname="${categoryname}"
+								spritename="${spritename}"
+								displayname="${displayname}"
+								displayname_key="${displayname_key}"
+								sprite="smx_button_background"
+									defaultcolor="[smx_element_button_foreground]"
+									selectedsprite="smx_button_foreground"
+									selectedcolor="[smx_element_button_selected]"
+									hoversprite="smx_button_foreground"
+									hovercolor="[smx_element_button_hover]"
+									hoverscale="1.03"
+								tooltip="{categorydisplayname|once}"
+								collider_scale="1.0"
+								sound="[paging_click]"
+								sound_play_on_hover="[default_hover]"
+								use_selection_box="false" />
+					</smx_skill_category_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+				<append xpath="/controls">
+					<smxui_skill_perk_level>
+						<panel width="${width}" height="${height}" style="hover, scroll" controller="SkillPerkLevel" disableautobackground="true" color_bg_bought="140,130,100,255" color_bg_available="[lightGrey]" color_bg_locked="[darkGrey]" color_lbl_available="[white]" color_lbl_locked="[lightGrey]" color_lbl_nerfed="204,17,17" color_lbl_buffed="17,204,17" visible="{nothiddenbypager}">
+							<sprite name="background" depth="3" pos="5,-5" size="65,65" sprite="smx_slot_frame_narrow" color="{color_fg}" type="sliced" visible="{hasentry}" />
+							<sprite name="background2" depth="2" pos="2,-42" size="59,41" sprite="smxlib_ui_element_slot_background" color="[SMXlibElementsBG]" type="sliced" rotation="45" visible="{hasentry}" />
+							<sprite name="groupIcon" depth="4" pos="18,-18" size="40,40" sprite="{groupicon}" color="{color_fg}" visible="{hasentry}" />
+							<button name="btnBuy" depth="9" pos="68,-65" style="icon22px, press, hover" sprite="{buyicon}" defaultcolor="{buycolor}" manualcolors="true" pivot="center" tooltip="{buytooltip}" sound="[paging_click]" visible="{buyvisible}" />
+							<label depth="5" pos="37,-82" width="65" text="{level}" color="{color_fg}" font_size="22" crispness="Never" effect="outline" effect_distance="1,1" upper_case="false" pivot="center" justify="center" visible="{hasentry}" />
+						</panel>
+					</smxui_skill_perk_level>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Dummy Attributes (Divide Helper) -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smxui_skill_entry_dummy_attributes>
+						<rect depth="3" size="80,80" style="press, hover, scroll" controller="SkillEntry" disableautobackground="true" enabled_color="[iconColor]" disabled_color="[disabledLabelColor]" row_color="[lightGrey]" hover_color="[mediumGrey]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" tooltip="{groupname}" visible="{hasskill}">
+							<sprite name="backgroundMain" depth="4" pos="5,-5" size="80,80" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" type="sliced" />
+							<sprite name="backgroundMain2" depth="3" pos="2,-52" size="74,52" sprite="smxlib_ui_element_slot_background" color="7,7,7,255" type="sliced" rotation="45" />
+							<sprite name="groupIcon" depth="5" pos="19,-19" size="52,52" sprite="{groupicon}" color="{statuscolor}" foregroundlayer="true" />
+							<label name="groupName" depth="3" pos="99999,99999" width="90" text="" color="{statuscolor}" />
+						</rect>
+					</smxui_skill_entry_dummy_attributes>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Attribute List -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skills_attribute_entry>
+						<rect	depth="3"
+								size="75,75"
+								pivot="center"
+								style="press, hover, scroll"
+								controller="SkillEntry"
+								enabled_color="[iconColor]"
+								disabled_color="[disabledLabelColor]"
+								row_color="[lightGrey]"
+								hover_color="[mediumGrey]"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{groupname}"
+								visible="{hasskill}">
+
+							<sprite name="mainBackground" depth="2" pos="0,5" size="150,160" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="100,100" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="0,-5" size="78,78" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="-45"/>
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="80,80" pivot="center" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" rotation="-45" />
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-44" size="30,30" pivot="center" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-44" size="40,40" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+							<sprite name="groupIcon" depth="7" pos="${pos}" size="${size}" pivot="center" sprite="{groupicon}" color="{statuscolor}" foregroundlayer="true" rotation="${rotation}" />
+
+							<sprite name="textBackground" depth="3" pos="0,72" size="150,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="groupName" depth="4" pos="-65,72" width="150" height="25" pivot="center" style="smx_label_outline" text="{groupname}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+
+							<sprite depth="10" pos="0,-44" size="24,24" sprite="server_favorite" color="255,144,24,255" pivot="center" foregroundlayer="true" visible="{cannotpurchase}" />
+							<sprite depth="10" pos="60,45" size="20,20" sprite="ui_game_symbol_lock" color="175,30,25,225" pivot="center" foregroundlayer="true" visible="{islocked}" />
+
+							<label depth="10" pos="0,-44" width="30" text="{grouplevel}" font_size="14" crispness="Never" effect="outline" effect_distance="1,1" pivot="center" justify="center" color="{statuscolor}" visible="{canpurchase}" />
+						</rect>
+					</smx_skills_attribute_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Perk List -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skills_perk_entry>
+						<rect	depth="3"
+								size="60,60"
+								pivot="center"
+								style="press, hover, scroll"
+								controller="SkillEntry"
+								enabled_color="[iconColor]"
+								disabled_color="[disabledLabelColor]"
+								row_color="[mediumGrey]"
+								hover_color="[lightGrey]"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{groupname}"
+								visible="{hasskill}">
+
+							<sprite name="mainBackground" depth="2" pos="0,5" size="100,160" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{rowstatecolor}" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45"/>
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+							<sprite name="groupIcon" depth="7" pos="${pos}" size="${size}" pivot="center" sprite="{groupicon}" color="{statuscolor}" foregroundlayer="true" hoverscale="1.2" rotation="${rotation}" />
+
+							<label name="groupName" depth="4" pos="52,-13" width="90" text="" color="{statuscolor}" force_hide="true" />
+
+							<sprite depth="10" pos="0,-35" size="22,22" sprite="server_favorite" color="255,144,24,255" pivot="center" foregroundlayer="true" visible="{cannotpurchase}" />
+							<sprite depth="10" pos="35,45" size="18,18" sprite="ui_game_symbol_lock" color="175,30,25,225" pivot="center" foregroundlayer="true" visible="{islocked}" />
+					
+							<label depth="10" pos="0,-35" width="85" pivot="center" style="smx_label_outline" text="{grouplevel}" color="{statuscolor}" font_size="14" justify="center" visible="{canpurchase}" />
+							<label depth="10" pos="0,-35" width="85" pivot="center" style="smx_label_outline" text="{grouppointcost}" color="{statuscolor}" font_size="14" justify="center" visible="{isbook}" />
+						</rect>
+					</smx_skills_perk_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Book List -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skills_book_entry>
+						<rect	depth="3"
+								size="75,75"
+								pivot="center"
+								style="press, hover, scroll"
+								controller="SkillEntry"
+								enabled_color="[iconColor]"
+								disabled_color="[disabledLabelColor]"
+								row_color="[lightGrey]"
+								hover_color="[mediumGrey]"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{groupname}"
+								visible="{hasskill}">
+
+							<sprite name="mainBackground" depth="2" pos="0,5" size="150,160" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="100,100" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="0,-5" size="78,78" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="-45"/>
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="80,80" pivot="center" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" rotation="-45" />
+
+
+							<sprite name="groupIcon" depth="7" pos="${pos}" size="${size}" pivot="center" atlas="ItemIconAtlas" sprite="{groupicon}" color="{statuscolor}" foregroundlayer="true" rotation="${rotation}" />
+
+							<sprite name="textBackground" depth="3" pos="0,72" size="150,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="groupName" depth="4" pos="0,72" width="150" height="25" pivot="center" style="smx_label_outline" text="{groupname}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+
+							<sprite depth="10" pos="0,-44" size="24,24" sprite="server_favorite" color="255,144,24,255" pivot="center" foregroundlayer="true" visible="{cannotpurchase}" />
+							<sprite depth="10" pos="60,45" size="20,20" sprite="ui_game_symbol_lock" color="175,30,25,225" pivot="center" foregroundlayer="true" visible="{islocked}" />
+
+							<label depth="10" pos="0,-44" width="30" text="{grouplevel}" font_size="14" crispness="Never" effect="outline" effect_distance="1,1" pivot="center" justify="center" color="{statuscolor}" visible="{canpurchase}" />
+						</rect>
+					</smx_skills_book_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Perk Levels -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skills_perk_level>
+						<rect	width="${width}"
+								height="${height}"
+								pivot="center"
+								style="hover"
+								controller="SkillPerkLevel"
+								color_bg_bought="140,130,100,255"
+								color_bg_available="[lightGrey]"
+								color_bg_locked="[darkGrey]"
+								color_lbl_available="[white]"
+								color_lbl_locked="[lightGrey]"
+								color_lbl_nerfed="204,17,17"
+								color_lbl_buffed="17,204,17"
+								visible="{nothiddenbypager}">
+
+							<sprite name="mainBackground" depth="2" pos="0,5" size="100,160" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" visible="{hasentry}" />
+
+							<sprite name="backgroundArt" depth="4" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="-45" visible="{hasentry}" />
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" visible="{hasentry}" />
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasentry}" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasentry}" />
+
+							<sprite name="groupIcon" depth="7" pos="0,0" size="75,75" pivot="center" sprite="{groupicon}" color="{color_bg}" foregroundlayer="true" visible="{hasentry}" />
+
+							<sprite name="textBackground" depth="3" pos="0,72" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="groupName" depth="4" pos="0,72" width="100" height="25" pivot="center" style="smx_label_outline" text="{text}" font_size="12" spacing_x="3" justify="center" upper_case="true" color="{color_fg}" force_hide="false" visible="{hasentry}" />
+
+							<label depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{level}" color="{color_fg}" font_size="18" justify="center" visible="{hasentry}" />
+
+							<button name="btnBuy" depth="3" pos="30,-${Round(height/2,0)}" size="20,20" pivot="center" style="press, hover, smx_icon_colors" sprite="{buyicon}" defaultcolor="{buycolor}" manualcolors="true" tooltip="{buytooltip}" sound="[paging_click]" sound_play_on_hover="[default_hover]" visible="{buyvisible}" />
+						</rect>
+					</smx_skills_perk_level>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Book Levels -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skills_book_level>
+						<rect	width="${width}"
+								height="${height}"
+								pivot="center"
+								style="hover"
+								controller="SkillBookLevel"
+								color_bg_bought="140,130,100,255"
+								color_bg_available="[lightGrey]"
+								color_bg_locked="[darkGrey]"
+								color_lbl_available="[white]"
+								color_lbl_locked="[lightGrey]"
+								color_lbl_nerfed="204,17,17"
+								color_lbl_buffed="17,204,17"
+								visible="{nothiddenbypager}"
+								tooltip="{text}">
+
+							<sprite name="mainBackground" depth="2" pos="0,5" size="100,160" pivot="center" sprite="smx_menu_background" color="7,7,7,275" visible="{hasentry}" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" visible="{hasentry}" />
+
+							<sprite name="backgroundArt" depth="4" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="-45" visible="{hasentry}" />
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" visible="{hasentry}" />
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasentry}" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasentry}" />
+
+							<sprite name="groupIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{groupicon}" color="{color_bg}" foregroundlayer="true" visible="{hasentry}" />
+
+							<sprite name="textBackground" depth="3" pos="0,72" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" visible="{hasentry}" />
+
+							<label name="groupName" depth="4" pos="0,72" width="100" height="25" pivot="center" style="smx_label_outline" text="{text}" font_size="12" spacing_x="3" justify="center" upper_case="true" color="{color_fg}" force_hide="false" visible="{hasentry}" />
+
+							<label depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{level}" color="{color_fg}" font_size="18" justify="center" visible="{hasentry}" />
+
+							<sprite depth="10" pos="0,-38" size="30,30" sprite="ui_game_symbol_perk" pivot="center" color="{color_fg}" visible="{iscomplete}" />
+
+							<sprite depth="3" name="btnBuy" pos="30,-${Round(height/2,0)}" size="20,20" sprite="{buyicon}" pivot="center" color="{buycolor}" visible="{buyvisible}" gamepad_selectable="false"/> <!-- Not used in books: tooltip="{buytooltip}" -->
+
+						</rect>
+					</smx_skills_book_level>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Magazine Levels -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skill_crafting_entry>
+						<rect	width="${width}"
+								height="${height}"
+								pivot="center"
+								style="press, hover"
+								controller="SkillCraftingInfoEntry"
+								color_bg_bought="140,130,100,255"
+								color_bg_available="[lightGrey]"
+								color_bg_locked="[darkGrey]"
+								color_lbl_available="[white]"
+								color_lbl_locked="[lightGrey]"
+								color_lbl_nerfed="204,17,17"
+								color_lbl_buffed="17,204,17"
+								visible="{nothiddenbypager}"
+								tooltip="{text}">
+
+							<sprite name="mainBackground" depth="2" pos="0,5" size="100,160" pivot="center" sprite="smx_menu_background" color="7,7,7,275" visible="{hasentry}" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" visible="{hasentry}" />
+
+							<sprite name="durabilityBackground" depth="4" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" visible="{showquality}" />
+							<sprite name="durability" depth="5" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="{currentqualitycolor}" fill="1" type="filled" rotation="45" visible="{showquality}" />
+
+							<sprite name="durabilityBackground" depth="4" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" visible="{notcompletequality}" />
+							<sprite name="durability" depth="5" pos="0,-5" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="{nextqualitycolor}" fill="1" type="filled" rotation="45" visible="{notcompletequality}" />
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" visible="{hasentry}" />
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasentry}" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasentry}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="{iconatlas}" sprite="{itemicon}" color="{itemcolor}" foregroundlayer="true" visible="{hasentry}" />
+
+							<sprite name="textBackground" depth="3" pos="0,72" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" visible="{hasentry}" />
+
+							<label name="groupName" depth="4" pos="0,72" width="100" height="25" pivot="center" style="smx_label_outline" text="{text}" font_size="12" spacing_x="3" justify="center" upper_case="true" color="{color_fg}" force_hide="false" visible="{hasentry}" />
+
+							<label name="stackValue" depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{currentqualitytext}" color="{color_fg}" font_size="18" justify="center" visible="{showquality}" />
+							<label name="stackValue" depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{nextqualitytext}" color="{color_fg}" font_size="18" justify="center" visible="{notcompletequality}" />
+							
+							<label depth="3" pos="560,-${Round(height/2,0)}" text="{nextpoints}" pivot="right" justify="center" width="65" font_size="28" color="{color_fg}" visible="{notcomplete}" />
+
+							<sprite depth="12" pos="30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_check" pivot="center" visible="{showcomplete}" />
+							
+							<sprite depth="12" pos="30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_lock" pivot="center" visible="{showlock}" />
+							
+							<sprite depth="12" pos="30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_unlock" pivot="center" visible="{notcompletenoquality}" />
+							
+						</rect>
+					</smx_skill_crafting_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Backpack Entry Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_backpack_item_stack controller="Quartz.ItemStack, Quartz" on_scroll="false" allow_dropping="true" prefix_id="false">
+						<rect	width="100"
+								height="100"
+								pivot="center"
+								style="smx_item_stack, press, hover"
+								on_scroll="${on_scroll}"
+								allow_dropping="${allow_dropping}"
+								prefix_id="${prefix_id}"
+								controller="${controller}"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								collider_scale="1.0"
+								hover_icon_grow="1.1"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{tooltip}"
+								enabled="{# !userlockmode}">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{selectionbordercolor}" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" visible="{#!hasdurability}" />
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{durabilitycolor}" rotation="-45" visible="{hasdurability}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+							<sprite name="lockTypeIcon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="{locktypeicon}" foregroundlayer="true" />
+							<sprite name="itemtypeicon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="ui_game_symbol_{itemtypeicon}" color="{itemtypeicontint}" foregroundlayer="true" visible="{hasitemtypeicon}" />
+
+							<sprite name="durabilityBackground" depth="23" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[darkGrey]" type="sliced" foregroundlayer="true" visible="{hasdurability}" />
+							<sprite name="durability" depth="24" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" foregroundlayer="true" visible="{hasdurability}" />
+
+							<sprite depth="5" name="disabledOverlay" width="64" height="64" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false"/>
+
+							<label name="stackCount" depth="17" pos="0,-43" width="90" height="28" pivot="center" style="smx_label_outline" text="{stackcount}" font_size="20" justify="right" />
+
+							<label name="itemQLevel" depth="17" pos="0,-34" width="27" height="28" pivot="center" style="smx_label_outline" text="{itemql}" font_size="20" justify="center" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasdurability}" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasdurability}" />
+
+							<label depth="7" name="timer" pos="35,-33" width="62" height="24" font_size="24" justify="center" pivot="center" effect="outline" color="[beige]"/>
+							<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="62" height="62" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+
+							<sprite name="backgroundLock" depth="5" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="175,30,25,136" rotation="45" visible="{isassemblelocked}" />
+							<sprite name="assembleIcon" depth="13" pos="34,30" size="22,22" pivot="center" sprite="{stacklockicon}" color="{stacklockcolor}" foregroundlayer="true" visible="{isassemblelocked}" />
+
+							<button name="rectSlotLock" depth="15" style="press, hover" width="90" height="90" pivot="center" visible="{userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
+								<sprite depth="16" name="button" width="16" height="16" sprite="{# userlockedslot ? 'ui_game_symbol_lock' : 'ui_game_symbol_unlock' }" pos="-34,30" style="icon32px" pivot="center" color="{# userlockedslot ? '128,128,128' : '255,255,255' }" />
+							</button>
+
+							<sprite depth="15" name="iconSlotLock" width="16" height="16" sprite="ui_game_symbol_lock" pos="-34,30" pivot="center" visible="{# userlockedslot and !userlockmode}" color="[lightGrey]" />
+
+						</rect>
+					</smx_backpack_item_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Container Slot Entry Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<container_item_stack controller="Quartz.ItemStack, Quartz" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+						<rect	width="100"
+								height="100"
+								pivot="center"
+								style="smx_item_stack, press, hover"
+								on_scroll="${on_scroll}"
+								allow_dropping="${allow_dropping}"
+								prefix_id="${prefix_id}"
+								show_favorites="${show_favorites}"
+								controller="${controller}"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								collider_scale="1.0"
+								hover_icon_grow="1.1"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{tooltip}">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{selectionbordercolor}" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" visible="{#!hasdurability}" />
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{durabilitycolor}" rotation="-45" visible="{hasdurability}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+							<sprite depth="8" name="favoriteIcon" width="24" height="24" sprite="server_favorite" pos="2,-2" foregroundlayer="true" visible="{isfavorite}"/>
+
+							<sprite name="lockTypeIcon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="{locktypeicon}" foregroundlayer="true" />
+							<sprite name="itemtypeicon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="ui_game_symbol_{itemtypeicon}" color="{itemtypeicontint}" foregroundlayer="true" visible="{hasitemtypeicon}" />
+
+							<sprite name="durabilityBackground" depth="23" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[darkGrey]" type="sliced" foregroundlayer="true" visible="{hasdurability}" />
+							<sprite name="durability" depth="24" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" foregroundlayer="true" visible="{hasdurability}" />
+			
+							<sprite depth="5" name="disabledOverlay" width="64" height="64" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false"/>
+
+							<label name="stackCount" depth="17" pos="0,-43" width="90" height="28" pivot="center" style="smx_label_outline" text="{stackcount}" font_size="20" justify="right" />
+
+							<label name="itemQLevel" depth="17" pos="0,-34" width="27" height="28" pivot="center" style="smx_label_outline" text="{itemql}" font_size="20" justify="center" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasdurability}" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasdurability}" />
+
+							<label depth="7" name="timer" pos="35,-33" width="62" height="24" font_size="24" justify="center" pivot="center" effect="outline" color="[beige]"/>
+							<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="62" height="62" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+
+							<sprite name="backgroundLock" depth="5" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="175,30,25,136" rotation="45" visible="{isassemblelocked}" />
+							<sprite name="assembleIcon" depth="13" pos="34,30" size="22,22" pivot="center" sprite="{stacklockicon}" color="{stacklockcolor}" foregroundlayer="true" visible="{isassemblelocked}" />
+
+							<sprite depth="15" name="iconSlotLock1" width="16" height="16" sprite="ui_game_symbol_lock" pos="-34,30" pivot="center" visible="{# !userlockmode and userlockedslot}" color="{# userlockedslot ? '128,128,128' : '255,255,255' }" />
+							<sprite depth="15" name="iconSlotLock1" width="16" height="16" sprite="ui_game_symbol_lock" pos="-34,30" pivot="center" visible="{# userlockmode and userlockedslot}" color="{# userlockedslot ? '128,128,128' : '255,255,255' }" />
+							<sprite depth="15" name="iconSlotLock2" width="16" height="16" sprite="ui_game_symbol_unlock" pos="-34,30" pivot="center" visible="{# !userlockedslot and userlockmode}" color="{# userlockedslot ? '128,128,128' : '255,255,255' }" />
+
+						</rect>
+					</container_item_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Worn Equipment Slot Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_mod_stack pos="${pos}" controller="ItemStack" on_scroll="false" allow_dropping="true" prefix_id="false">
+						<rect visible="{hasdurability}">
+							<rect	pos="${pos}"
+									width="54"
+									height="54"
+									pivot="center"
+									style="smx_item_stack, press, hover"
+									on_scroll="${on_scroll}"
+									allow_dropping="${allow_dropping}"
+									prefix_id="${prefix_id}"
+									controller="${controller}"
+									enabled_font_color="255,255,255,255"
+									disabled_font_color="[darkGrey]"
+									selectedbackground="smx_diamond_background"
+									nonselectedbackground="smx_diamond_background"
+									collider_scale="1.0"
+									hover_icon_grow="1.1"
+									sound="[recipe_click]"
+									sound_play_on_hover="[default_hover]"
+									tooltip="{tooltip}">
+
+								<sprite name="background" depth="3" pos="0,0" size="50,50" pivot="center" sprite="smx_diamond_background" color="{selectionbordercolor}" rotation="45" />
+								<sprite name="backgroundArt" depth="4" pos="0,-1" size="39,39" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+								<sprite name="background2" depth="6" pos="0,0" size="40,40" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+								<sprite name="itemIcon" depth="7" pos="0,0" size="40,40" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+								<sprite name="icon" depth="20" pos="0,-20" width="12" height="12" pivot="center" sprite="${icon}" color="255,255,255,196" foregroundlayer="true" visible="{#!hasitemtypeicon}" />
+							</rect>
+						</rect>
+					</smx_mod_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Dew Collector Entry Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_dewcollector_stack controller="DewCollectorStack" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+						<rect	width="100"
+								height="100"
+								pivot="center"
+								style="smx_item_stack, hover"
+								on_scroll="${on_scroll}"
+								allow_dropping="${allow_dropping}"
+								prefix_id="${prefix_id}"
+								show_favorites="${show_favorites}"
+								controller="DewCollectorStack"
+								standard_fill_color="236,255,0,96"
+								modded_fill_color="116,204,244,96"
+								collider_scale="1.0"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{tooltip}">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{selectionbordercolor}" rotation="45" />
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" visible="{#!hasdurability}" />
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{durabilitycolor}" rotation="-45" visible="{hasdurability}" />
+
+							<sprite depth="8" name="favoriteIcon" width="24" height="24" sprite="server_favorite" pos="2,-2" foregroundlayer="true" visible="{isfavorite}"/>
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="{itematlas}" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" visible="{showitem}" />
+							<sprite name="fillIcon" depth="7" pos="0,0" size="65,65" pivot="center" sprite="ui_game_symbol_water" color="[darkGrey]" foregroundlayer="true" visible="{showempty}" />
+
+							<sprite name="durabilityBackground" depth="23" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[darkGrey]" type="sliced" foregroundlayer="true" visible="{hasdurability}" />
+							<sprite name="durability" depth="24" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" foregroundlayer="true" visible="{hasdurability}" />
+
+							<sprite depth="5" name="disabledOverlay" width="72" height="72" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false"/>
+
+							<label name="stackValue" depth="17" pos="0,-43" width="90" height="28" pivot="center" style="smx_label_outline" text="{itemcount}" font_size="20" justify="right" />
+
+							<label depth="7" name="timer" pos="35,-38" width="70" height="24" font_size="24" justify="center" pivot="center" effect="outline" color="[beige]"/>
+							<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="70" height="70" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+							<sprite depth="13" name="assembleIcon" size="40,40" sprite="{stacklockicon}" color="{stacklockcolor}" visible="{isassemblelocked}" pos="14,-14" foregroundlayer="true" />
+							
+							<rect pos="0,0" width="100" height="100" >
+								<sprite name="barBackground" depth="3" pos="0,247" size="100,404" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+								<sprite name="BarContent" depth="2" pos="0,247" size="100,400" pivot="center" sprite="smx_menu_background" type="filled" fill="{waterfill}" color="{fillcolor}" filldirection="Vertical" globalopacity="false" />
+							</rect>
+						</rect>
+					</smx_dewcollector_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Worn Equipment Slot Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_equipment_stack_sdcs>
+						<rect	depth="1"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								controller="EquipmentStack"
+								collider_scale="1.0"
+								normal_color="[red]"
+								normal_background_color="[green]"
+								normal_border_color="[darkGrey]"
+								hover_border_color="[lightGrey]"
+								selected_border_color="255,255,255,136"
+								hover_icon_grow="0.3"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="test">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="background" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="{selectionbordercolor}" rotation="45" />
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="background2" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="textBackground" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+							<label name="groupName" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="${text}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="{color_fg}" force_hide="false" visible="{hasentry}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,-10" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="campfire" foregroundlayer="true" />
+							<sprite name="lockTypeIcon" depth="10" pos="-36,-44" width="16" height="16" pivot="center" sprite="" foregroundlayer="true" />
+
+							<sprite name="durabilityBackground" depth="23" pos="0,-65" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[darkGrey]" type="sliced" foregroundlayer="true" />
+							<sprite name="durability" depth="24" pos="0,-65" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[transparent]" type="filled" foregroundlayer="true" />
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-44" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasrecipe}" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-44" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasrecipe}" />
+
+							<label name="stackValue" depth="17" pos="0,-44" width="27" height="28" pivot="center" style="smx_label_outline" text="" font_size="20" justify="center" />
+						</rect>
+					</smx_equipment_stack_sdcs>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Worn Equipment Info Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_equipment_stack_info>
+						<rect	depth="1"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								collider_scale="1.0"
+								normal_color="[red]"
+								normal_background_color="[green]"
+								normal_border_color="[darkGrey]"
+								hover_border_color="[lightGrey]"
+								selected_border_color="255,255,255,136"
+								hover_icon_grow="0.3"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip_key="${tooltip_key}">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="background" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="background2" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="255,144,24,255" rotation="-45" />
+
+							<sprite name="textBackground" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+							<label name="groupName" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="${text}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="{color_fg}" force_hide="false" visible="{hasentry}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,-10" size="75,75" pivot="center" sprite="${icon}" foregroundlayer="true" />
+						</rect>
+					</smx_equipment_stack_info>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Player Core Stats Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_player_stats_entry>
+						<rect width="300" height="29" style="hover" pivot="center" tooltip_key="${tooltip}">
+							<sprite name="background" depth="1" pivot="center" sprite="smx_chat_background" color="${backgroundcolor}" />
+							<sprite name="icon" depth="3" pos="-127,0" size="18,18" pivot="center" sprite="${iconcontent}" color="[white]" />
+							<label name="description" depth="3" pos="50,-1" pivot="center" style="smx_label_outline" font_size="16" text="${textcontent}" justify="left" upper_case="true" color="[white]" spacing_x="1" />
+							<label name="value" depth="3" pos="-15,-1" pivot="center" style="smx_label_outline" font_size="16" text="${valuecontent}" justify="right" color="[selectedColor]" spacing_x="1" />
+						</rect>
+					</smx_player_stats_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Player Extended Stats Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_player_stats_generic_entry>
+						<smx_player_stats_entry backgroundcolor="${backgroundcolor}" textcontent="{playerstattitle${index}|once}" valuecontent="{playerstat${index}}" iconcontent="${iconcontent}" tooltip="{playerstattitle${index}|once}" />
+					</smx_player_stats_generic_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Dialog - Player Response Entry -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_response_entry>
+						<rect	width="300"
+								height="28"
+								pivot="center"
+								style="press, hover, scroll"
+								enabled_color="[iconColor]"
+								disabled_color="[disabledLabelColor]"
+								row_color="[white]"
+								hover_color="[hoverColor]"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								controller="DialogResponseEntry"
+								visible="{showresponse}"
+								use_selection_box="false">
+
+							<sprite name="Icon" depth="6" pos="-135,0" size="10,10" pivot="center" sprite="ui_game_symbol_bullet_point" color="{rowstatecolor}" foregroundlayer="true" />
+							<label name="Text" depth="6" pos="60,0" width="350" height="28" pivot="center" style="smx_label_outline" text="{response}" font_size="26" justify="left" spacing_x="2" spacing_y="2" color="{rowstatecolor}" />
+							
+							<sprite depth="5" width="350" pos="20,0" height="37" pivot="center" sprite="smx_chat_background" color="7,7,7,235" />
+						</rect>
+					</smx_response_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Enhanced Buff Frames - SMXui -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<append xpath="/controls">
+							<smx_active_buff_entry>
+								<rect	width="55"
+										height="77"
+										pivot="center"
+										style="press, hover"
+										controller="SMXcore.ActiveBuffEntry, SMXcore"
+										sound="[recipe_click]"
+										sound_play_on_hover="[default_hover]"
+										visible="{hasbuff}"
+										tooltip="{buffname}" >
+
+									<sprite name="backgroundMain" depth="2" pos="0,0" width="55" height="77" sprite="smx_unitframe_buff_background" pivot="center" color="[smxui_slot_main_background]" />
+									<sprite name="slotBackground" depth="1" pos="0,0" width="55" height="77" sprite="smx_unitframe_buff_background" pivot="center" color="[smxui_slot_slot_background]" />
+
+									<sprite name="background" depth="0" pos="0,0" width="55" height="77" sprite="smx_unitframe_buff_background" pivot="center" color="[smxhud_unitframe_buff_background]" globalopacitymod="1.8" />
+									<sprite name="Icon" depth="2" pos="0,10" width="28" height="28" sprite="{bufficon|once}" pivot="center" color="{buffcolor}" />
+									<label name="smx_buff_label" depth="3" pos="0,-15" width="40" height="20" style="smx_label_outline" text="{buffdisplayinfo}" font_size="12" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" overflow="ShrinkContent" />
+								</rect>
+							</smx_active_buff_entry>
+						</append>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // General Slot Entry Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<general_item_stack controller="Quartz.ItemStack, Quartz" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+						<rect	width="100"
+								height="100"
+								pivot="center"
+								style="smx_item_stack, press, hover"
+								on_scroll="${on_scroll}"
+								allow_dropping="${allow_dropping}"
+								prefix_id="${prefix_id}"
+								show_favorites="${show_favorites}"
+								controller="${controller}"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								collider_scale="1.0"
+								hover_icon_grow="1.1"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{tooltip}">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{selectionbordercolor}" rotation="45" />
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" visible="{#!hasdurability}" />
+							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{durabilitycolor}" rotation="-45" visible="{hasdurability}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+							<sprite depth="8" name="favoriteIcon" width="24" height="24" sprite="server_favorite" pos="2,-2" foregroundlayer="true" visible="{isfavorite}"/>
+
+							<sprite name="lockTypeIcon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="{locktypeicon}" foregroundlayer="true" />
+							<sprite name="itemtypeicon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="ui_game_symbol_{itemtypeicon}" color="{itemtypeicontint}" foregroundlayer="true" visible="{hasitemtypeicon}" />
+
+							<sprite name="durabilityBackground" depth="23" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[darkGrey]" type="sliced" foregroundlayer="true" visible="{hasdurability}" />
+							<sprite name="durability" depth="24" pos="0,-50" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" foregroundlayer="true" visible="{hasdurability}" />
+			
+							<sprite depth="5" name="disabledOverlay" width="64" height="64" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false"/>
+
+							<label name="stackCount" depth="17" pos="0,-43" width="90" height="28" pivot="center" style="smx_label_outline" text="{stackcount}" font_size="20" justify="right" />
+
+							<label name="itemQLevel" depth="17" pos="0,-34" width="27" height="28" pivot="center" style="smx_label_outline" text="{itemql}" font_size="20" justify="center" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasdurability}" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasdurability}" />
+
+							<label name="timer" depth="17" pos="0,-4" width="62" height="24" pivot="center" style="smx_label_outline" font_size="22" justify="center" color="[beige]" />
+							<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="62" height="62" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+
+							<sprite name="backgroundLock" depth="5" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="175,30,25,136" rotation="45" visible="{isassemblelocked}" />
+							<sprite name="assembleIcon" depth="13" pos="36,30" size="16,16" pivot="center" sprite="{stacklockicon}" color="{stacklockcolor}" foregroundlayer="true" visible="{isassemblelocked}" />
+
+						</rect>
+					</general_item_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Tools Slot Entry Design -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<tools_item_stack controller="Quartz.ItemStack, Quartz" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+						<rect	width="100"
+								height="100"
+								pivot="center"
+								style="smx_item_stack, press, hover"
+								on_scroll="${on_scroll}"
+								allow_dropping="${allow_dropping}"
+								prefix_id="${prefix_id}"
+								show_favorites="${show_favorites}"
+								controller="${controller}"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground=""
+								nonselectedbackground=""
+								collider_scale="1.0"
+								hover_icon_grow="1.1"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{tooltip}">
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="menu_empty" color="[transparent]" rotation="45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="28,28" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+							<sprite name="lockTypeIcon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="{locktypeicon}" foregroundlayer="true" />
+							<sprite name="itemtypeicon" depth="10" pos="-36,-34" width="16" height="16" pivot="center" sprite="ui_game_symbol_{itemtypeicon}" color="{itemtypeicontint}" foregroundlayer="true" visible="{hasitemtypeicon}" />
+
+							<sprite depth="5" name="disabledOverlay" width="64" height="64" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false"/>
+
+							<label name="stackCount" depth="17" pos="0,-43" width="90" height="28" pivot="center" style="smx_label_outline" text="{stackcount}" font_size="20" justify="right" />
+
+							<label name="itemQLevel" depth="17" pos="0,-34" width="27" height="28" pivot="center" style="smx_label_outline" text="{itemql}" font_size="20" justify="center" />
+
+							<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="62" height="62" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+
+							<sprite name="backgroundLock" depth="5" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="175,30,25,136" rotation="45" visible="{isassemblelocked}" />
+							<sprite name="assembleIcon" depth="13" pos="36,30" size="16,16" pivot="center" sprite="{stacklockicon}" color="{stacklockcolor}" foregroundlayer="true" visible="{isassemblelocked}" />
+
+						</rect>
+					</tools_item_stack>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Forge Materials List -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_forge_material>
+						<rect name="smx_forgeinput_entry" depth="1" width="101" height="45" tooltip_key="${name}">
+							<sprite depth="1" width="101" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+							<sprite name="materialIcon" depth="2" pos="-33,0" width="32" height="32" pivot="center" atlas="ItemIconAtlas" sprite="${name}" color="{itemicontint}" foregroundlayer="true" />
+							<label name="material" depth="2" width="100" height="24" pivot="center" style="smx_label_outline" force_hide="true" />
+							<label name="weight" depth="2" pos="0,0" width="90" height="24" pivot="center" style="smx_label_outline" font_size="22" justify="right" color="255,255,255,255" />
+						</rect>
+					</smx_forge_material>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Item Info - Action Entry -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_item_action_entry>
+						<rect height="43" controller="SMXcore.ItemActionEntry, SMXcore" disabled_font_color="[disabledLabelColor]" default_font_color="[labelColor]" default_background_color="[mediumGrey]" tooltip="{actionname}">
+							<sprite name="btnBackground" depth="2" pos="0,0" size="40,40" pivot="center" sprite="ui_game_header_fill" color="[darkGrey]" visible="{buttons_visible}" />
+							<sprite name="background" depth="3" pos="0,0" size="24,24" pivot="center" style="press, hover" sprite="{actionicon}" color="{statuscolor}" type="sliced" sound_play_on_hover="[default_hover]" gamepad_selectable="false" tooltip="{actionname}" />
+							<sprite name="Icon" depth="4" pos="0,0" size="24,24" pivot="center" sprite="{actionicon}" color="{statuscolor}" foregroundlayer="true" force_hide="true" />
+							<label depth="4" name="Name" pos="32,-22" width="78" height="26" text="{actionname}" font_size="26" color="{statuscolor}" effect="shadow" pivot="left" force_hide="true" />
+							<gamepad_icon name="gamepadIcon" depth="4" pos="0,-35" size="16,16" pivot="center" visible="{inspectheld}" />
+							<label name="keyboardButton" depth="4" pos="0,-35" width="40" height="20" pivot="center" style="smx_label_outline" text="W" color="{statuscolor}" font_size="16" justify="center" />
+						</rect>
+					</smx_item_action_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Basic Crafting - Categories -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_crafting_category_icon categoryname="" spritename="" displayname="" displayname_key="">
+						<button	name="categoryIcon"
+								depth="1"
+								size="28,28"
+								pivot="center"
+								style="smx_icon_colors"
+								sprite="{categoryicon|once}"
+								categoryname="${categoryname}"
+								spritename="${spritename}"
+								displayname="${displayname}"
+								displayname_key="${displayname_key}"
+								controller="CategoryEntry"
+								tooltip="{categorydisplayname|once}"
+								collider_scale="1.5"
+								sound="[paging_click]"
+								sound_play_on_hover="[default_hover]"
+								use_selection_box="false" />
+					</smx_crafting_category_icon>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Basic Crafting - Recipe Entry -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_recipe_entry>
+						<rect height="43" style="press, hover, scroll" controller="RecipeEntry" disabled_font_color="[disabledLabelColor]" enabled_font_color="[labelColor]" sound="[recipe_click]" sound_play_on_hover="[default_hover]" >
+							<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="396" height="49" color="[black]" type="sliced" fillcenter="false" />
+							<sprite depth="3" name="background" width="100%" height="45" pos="0,1" color="[darkGrey]" type="sliced" />
+							<sprite depth="4" name="Icon" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" size="40,40" pos="34,-22" pivot="center" foregroundlayer="true"/>
+							<sprite depth="8" name="itemtypeicon" width="12" height="12" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+							<label depth="4" name="Name" pos="200,-19" width="270" height="30" text="{recipename}" font_size="28" color="{hasingredientsstatecolor}" justify="center" pivot="center"/>
+							<sprite depth="5" name="Favorite" sprite="server_favorite" size="14,14" pos="6,-4" visible="{isfavorite}" foregroundlayer="true"/>
+							<sprite depth="4" name="Unlocked" sprite="{unlockicon}" size="24,24" pos="352,-10" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+						</rect>
+					</smx_recipe_entry>
+
+					<smx_recipe_entry2>
+						<rect	width="60"
+								height="60"
+								pivot="center"
+								style="press, hover, scroll"
+								controller="Quartz.RecipeEntry, Quartz"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								selectedcolor="196,196,196,196"
+								nonselectedcolor="[darkGrey]"
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]" tooltip="{recipename}" >
+
+							<sprite name="mainBackground" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" visible="{hasrecipe}" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" visible="{hasrecipe}" />
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{hasingredientsstatecolor}" rotation="-45" visible="{hasrecipe}" />
+
+							<sprite name="Icon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{recipeicon}" color="{recipeicontint}" foregroundlayer="true" />
+
+							<sprite depth="10" name="itemtypeicon" width="16" height="16" pivot="center" sprite="ui_game_symbol_{itemtypeicon}" pos="34,-42" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+
+							<sprite depth="10" name="Favorite" sprite="server_favorite" size="22,22" pivot="center" pos="0,-34" color="255,144,24,255" visible="{isfavorite}" foregroundlayer="true"/>
+
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{isfavorite}" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{isfavorite}" />
+			
+							<sprite depth="10" name="Unlocked" sprite="{unlockicon}" size="16,16" pivot="center" pos="-34,30" visible="{isunlockable}" color="{unlockstatecolor}" foregroundlayer="true" />
+						</rect>
+					</smx_recipe_entry2>
+
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Basic Crafting - Recipe Entry -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_recipe_stack>
+						<rect controller="RecipeStack" width="72" height="72" collider_scale="1.0">
+							<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="78" height="78" color="[black]" type="sliced" fillcenter="false" />
+							<sprite name="background" color="[mediumGrey]" type="sliced" style="press" on_hover="true"/>
+							<sprite depth="1" name="itemIcon" width="64" height="64" atlas="ItemIconAtlas" sprite="" pos="36,-35" pivot="center" foregroundlayer="true"/>
+							<sprite depth="4" name="lockIcon" width="24" height="24" sprite="ui_game_symbol_hammer" pos="2,-2" visible="false" foregroundlayer="true"/>
+							<label depth="4" name="count" pos="0,-50" width="70" height="26" text="Test" font_size="24" justify="right" effect="outline" />
+							<label depth="4" name="timer" pos="36,-36" width="70" height="26" font_size="24" justify="center" pivot="center" color="[beige]" effect="outline" effect_distance="1,1" effect_color="0,0,0,255"/>
+							<sprite depth="2" name="overlay" width="72" height="72" color="32,32,32,128" type="sliced"/>
+							<sprite depth="3" name="cancel" sprite="ui_game_symbol_x" width="72" height="72" color="255,0,0,0" type="sliced" visible="false" foregroundlayer="true"/>
+						</rect>
+					</smx_recipe_stack>
+
+					<smx_recipe_stack2>
+						<rect	width="60"
+								height="60"
+								pivot="center"
+								controller="RecipeStack"
+								collider_scale="1.0">
+
+							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" style="press, hover" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="" foregroundlayer="true" />
+
+							<sprite name="lockIcon" depth="3" pos="-34,30" width="16" height="16" pivot="center" sprite="ui_game_symbol_hammer" foregroundlayer="true" visible="false" color="255,255,255,255" />
+
+							<label name="count" depth="10" pos="40,-44" width="50" height="26" pivot="center" style="smx_label_outline" text="Test" font_size="16" justify="center" />
+							<label name="timer" depth="10" pos="0,-37" width="75" height="26" pivot="center" style="smx_label_outline" font_size="18" justify="center" color="[beige]" />
+
+							<sprite name="overlay" depth="11" width="70" height="70" pivot="center" color="32,32,32,128" type="sliced" rotation="45" />
+
+							<sprite name="cancel" depth="12" pos="0,0" width="50" height="50" pivot="center" sprite="ui_game_symbol_x" color="255,0,0,0" visible="false" foregroundlayer="true"/>
+
+						</rect>
+					</smx_recipe_stack2>
+
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMX CC | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!-- 	// SMX // Trader Quest Map // Conditional Check - UI Adaptation -->
+
+		<conditional>
+			<if cond="mod_loaded('WMMTraderQuestMap')">
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<set xpath="/controls/quest_waypoint_entry/rect/@width">290</set>
+						
+						<remove xpath="/controls/quest_waypoint_entry/rect/sprite[@name='backgroundMain']" />
+						<set xpath="/controls/quest_waypoint_entry/rect/sprite[@name='background']/@width">290</set>
+
+						<setattribute xpath="/controls/quest_waypoint_entry/rect/sprite[@name='Icon']" name="size">20,20</setattribute>
+						<set xpath="/controls/quest_waypoint_entry/rect/sprite[@name='Icon']/@pos">10,-9</set>
+
+						<setattribute xpath="/controls/quest_waypoint_entry/rect/label" name="style">smx_label_outline</setattribute>
+						<setattribute xpath="/controls/quest_waypoint_entry/rect/label" name="spacing_x">2</setattribute>
+
+						<set xpath="/controls/quest_waypoint_entry/rect/label/@font_size">16</set>
+
+						<set xpath="/controls/quest_waypoint_entry/rect/label/@width">260</set>
+
+						<set xpath="/controls/quest_waypoint_entry/rect/label[@name='Name']/@pos">160,-20</set>
+						<set xpath="/controls/quest_waypoint_entry/rect/label[@name='Name']/@width">230</set>
+						<set xpath="/controls/quest_waypoint_entry/rect/label[@name='Name']/@justify">left</set>
+						
+						<set xpath="/controls/quest_waypoint_entry/rect/label[@name='Distance']/@pos">160,-20</set>
+						<set xpath="/controls/quest_waypoint_entry/rect/label[@name='Distance']/@width">230</set>
+						<set xpath="/controls/quest_waypoint_entry/rect/label[@name='Distance']/@justify">right</set>
+
+					</if>
+				</conditional>
+			</if>
+		</conditional>
 
 </SMXcore>

@@ -1,0 +1,189 @@
+<SMXcore name="buffs.xml">
+
+<!--	// SMX // God Mode Buff Conversion -->
+
+		<!-- SIRILLION: Adding more slots means we need to adjust the bag size that the player can carry when under the influence of the GOD MODE buff. -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+
+						<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">100</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+
+						<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">200</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+
+						<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">300</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+						<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">400</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Steroid Buff Conversion -->
+
+		<!-- SIRILLION: Adding more slots means we need to adjust the bag size that the player can carry when under the influence of the STEROIDS buff. -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+
+						<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">105</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+
+						<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">205</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+
+						<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">305</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+						<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">405</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Twitch Buff Conversions -->
+
+		<!-- SIRILLION: Adding more slots means we need to adjust the bag size that the player can carry when under the influence of Twitch Effects. -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+
+						<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">105</set>
+						<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">77</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+
+						<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">205</set>
+						<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">177</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+
+						<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">305</set>
+						<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">277</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<conditional>
+					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+						<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">405</set>
+						<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">377</set>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+</SMXcore>

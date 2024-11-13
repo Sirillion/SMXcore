@@ -367,14 +367,14 @@
 													height="18"
 													type="ComboBoxFloat"
 													value_min="0.001"
-													value_max="6"
+													value_max="2"
 													value_wrap="true"
 													value_increment="1"
 													scroll_by_increment="true"
 													format_string=" "
 													index_markers="false"
 													segmented_fill="true"
-													segment_count="6"
+													segment_count="2"
 													bg_color="35,31,31"
 													enabled_fill_color="[red]"
 													gamepad_selectable="false"
@@ -429,22 +429,22 @@
 
 
 <!--	// SMX // News Screen - SCore ChangeLog Conditional Checks --> <!-- REMEMBER TO ADD THE ACTUAL CRAFTING BUTTON SO SMXUI -->
-
-		<!--conditional>
+<!--
+		<conditional>
 			<if cond="mod_loaded('0-SCore_sphereii')">
 
 				<append xpath="/windows/window[@name='newsScreen']">
 					<rect name="smxSCoreInstalled" pos="-13,70" width="1020" height="40">
 						<sprite name="backgroundGame" pos="-330,-240" depth="3" pivot="center" sprite="menu_empty" color="0,0,0,196" type="sliced" globalopacity="false" />
-						<label name="smxSCoreInstalled" depth="4" pos="-330,-240" width="1050" height="50" pivot="center" style="smx_label_outline" text="SCore is installed, broadcast crafting has been enabled." font_size="18" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
+						<label name="smxSCoreInstalled" depth="4" pos="-330,-240" width="1050" height="50" pivot="center" style="smx_label_outline" text="SCore is installed, broadcast crafting can be enabled." font_size="18" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
 						<sprite name="smxSCoreInstalled" depth="4" pos="-620,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" />
 						<sprite name="smxSCoreInstalled" depth="4" pos="-40,-238" size="25,25" pivot="center" sprite="ui_game_symbol_quest" color="[smx_element_accentcolor_2]" />
 					</rect>
 				</append>
 
 			</if>
-		</conditional-->
-
+		</conditional>
+-->
 
 <!--	// SMX // News Screen - SMXcore ChangeLog Conditional Checks -->
 
@@ -515,7 +515,7 @@
 
 				<conditional>
 					<if cond="mod_loaded('zSMXui')">
-						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">https://raw.githubusercontent.com/Sirillion/SMXnews/main/changelogs/clsmxui.xml</csv>
+						<csv xpath="/windows/window[@name='newsScreen']/rect[@name='smxChangeLog']/@sources" delim="," op="add">@modfolder(SMXcore):/Changelog/SMXuiCL.xml</csv>
 					</if>
 				</conditional>
 			</if>
@@ -598,7 +598,7 @@
 
 							<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/password_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
 
 								<label name="descriptionText" depth="11" pos="0,-120" width="350" height="150" pivot="center" style="smx_label_outline" text="{msgText}" font_size="24" justify="center" upper_case="true" overflow="ClampContent" />
 							</panel>
@@ -1004,7 +1004,7 @@
 
 								<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
 									<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-									<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/password_zombie.png" />
+									<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
 
 									<label name="deleteText" depth="11" pos="0,-120" width="350" height="150" pivot="center" style="smx_label_outline" text="{msgText}" font_size="24" justify="center" upper_case="true" overflow="ClampContent" />
 								</panel>
@@ -1243,7 +1243,7 @@
 
 								<panel name="content" pos="0,-350" depth="3" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
 									<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,255" />
-									<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/error_zombie.png" />
+									<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/error_zombie.png" />
 
 									<label name="lblErrorMessage" depth="2" pos="0,-125" width="380" height="170" pivot="center" style="smx_label_outline" justify="center" overflow="ShrinkContent" />
 								</panel>
@@ -1412,7 +1412,7 @@
 							<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
 
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/eac_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/eac_zombie.png" />
 
 								<label name="lbl" depth="11" pos="0,-100" width="380" height="170" pivot="center" style="smx_label_outline" text_key="xuiServerEacNeededText" font_size="24" justify="center" upper_case="false" overflow="ShrinkContent" />
 							</panel>
@@ -1431,7 +1431,7 @@
 
 							<panel name="content" depth="3" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/server_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/server_zombie.png" />
 
 								<label name="lblIp" depth="11" pos="-120,-100" width="60" height="30" pivot="center" style="smx_label_outline" text_key="xuiServerBrowserIp" font_size="24" justify="left" overflow="resizeheight" />
 								<textfield name="txtIp" depth="5" pos="40,-100" width="230" height="30" pivot="center" font_size="24" />
@@ -1614,7 +1614,7 @@
 
 							<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/password_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
 
 								<label name="lblPassNormal" depth="11" pos="0,-100" width="350" pivot="center" style="smx_label_outline" text_key="xuiServerPasswordNormal" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
 
@@ -1652,7 +1652,7 @@
 
 							<panel name="content" depth="10" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/password_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
 
 								<label name="lblCaption" depth="13" pos="0,-90" width="350" pivot="center" style="smx_label_outline" text="{caption}" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
 								<label name="lblReason" depth="13" pos="0,-150" width="350" pivot="center" style="smx_label_outline" text="{reason}" font_size="18" justify="center" color="[lightGrey]" upper_case="true" overflow="ShrinkContent" />
@@ -1678,7 +1678,7 @@
 
 							<panel name="content" depth="10" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/password_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
 
 								<label name="lblCaption" depth="13" pos="0,-90" width="350" pivot="center" style="smx_label_outline" text="{caption}" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
 								<label name="lblReason" depth="13" pos="0,-150" width="350" pivot="center" style="smx_label_outline" text="{reason}" font_size="18" justify="center" color="[lightGrey]" upper_case="true" overflow="ShrinkContent" />
@@ -1703,7 +1703,7 @@
 
 							<panel name="content" depth="10" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
 								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/password_zombie.png" />
+								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
 
 								<label name="lblCaption" depth="13" pos="0,-90" width="350" pivot="center" style="smx_label_outline" text="{caption}" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
 								<label name="lblReason" depth="13" pos="0,-150" width="350" pivot="center" style="smx_label_outline" text="{reason}" font_size="18" justify="center" color="[lightGrey]" upper_case="true" overflow="ShrinkContent" />
@@ -1743,9 +1743,9 @@
 
 							<!--sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_window_background" type="sliced" color="7,7,7,330" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" /-->
 
-							<texture name="smxETMrwgArt" depth="10" pos="-550,50" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/edit_menu_rwg.png" />
-							<texture name="smxETMpeArt" depth="10" pos="0,50" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/edit_menu_prefab.png" />
-							<texture name="smxETMweArt" depth="10" pos="550,50" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://textures/misc/edit_menu_world.png" />
+							<texture name="smxETMrwgArt" depth="10" pos="-550,50" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/edit_menu_rwg.png" />
+							<texture name="smxETMpeArt" depth="10" pos="0,50" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/edit_menu_prefab.png" />
+							<texture name="smxETMweArt" depth="10" pos="550,50" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/edit_menu_world.png" />
 
 							<grid name="buttons" pos="-560,250" rows="1" cols="3" cell_width="550" cell_height="600" repeat_content="false" arrangement="horizontal">
 								<smx_edit_button name="btnRwgPreviewer" pivot="center" width="400" height="600" font_size="26" caption_key="xuiRwgPreviewer" visible="false" />
@@ -1777,7 +1777,7 @@
 
 						<texture name="loading_image" depth="2" texture="{background_texture}" color="[white]" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" original_aspect_ratio="true" keep_aspect_ratio="BasedOnWidth" aspect_ratio="1.779" />
 
-						<texture name="smxMumpfyTag" depth="10" pos="900,450" width="108" height="30" pivot="center" texture="@modfolder(SMXcore)://textures/loadingscreens/smx_mumpfy_watermark.png" rotation="90" />
+						<texture name="smxMumpfyTag" depth="10" pos="900,450" width="108" height="30" pivot="center" texture="@modfolder(SMXcore)://Textures/loadingscreens/smx_mumpfy_watermark.png" rotation="90" />
 
 						<rect name="tips_enabled" visible="{show_tips}">
 
@@ -1785,7 +1785,7 @@
 
 							<sprite name="smxProgressBiohazard" depth="5" pos="-752,-358" width="200" height="200" pivot="center" sprite="smx_ui_game_symbol_biohazard" color="196,196,196,96" controller="Quartz.Spinner, Quartz" spin="false" angle_per_second="1" />
 
-							<texture name="smxPopOutArt" depth="10" pos="-750,-367" width="180" height="92" pivot="center" texture="@modfolder(SMXcore)://textures/misc/smx_loading_logo.png" />
+							<texture name="smxPopOutArt" depth="10" pos="-750,-367" width="180" height="92" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/smx_loading_logo.png" />
 
 							<label name="lblTitle" depth="6" pos="-150,-335" width="900" height="34" pivot="center" style="smx_label_outline" text="{title}" font_size="32" color="255,255,255,225" justify="left" spacing_x="5" parse_actions="true" upper_case="true" />
 
@@ -1874,6 +1874,7 @@
 
 											<label name="gearsModList" depth="4" pos="315,70" width="590" height="50" pivot="center" style="smx_label_outline" text="Mod List" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 											<sprite name="smx_panel_separation" depth="4" pos="320,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+											<label name="authorName" depth="4" pos="315,10" width="500" height="52" pivot="center" style="smx_label_outline" text="Mod by: Laydor" font_size="18" spacing_x="2" justify="left" upper_case="false" color="[mediumGrey]" />
 
 											<rect name="searchControls" depth="4" pos="125,2" height="42" width="400">
 												<sprite name="searchIcon" depth="4" pos="75,-27" size="25,25" pivot="center" sprite="ui_game_symbol_search" />

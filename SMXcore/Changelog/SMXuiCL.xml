@@ -5,9 +5,9 @@
     <date>2024-11-11 12:00:00Z</date>
     <title>Changelog</title>
     <title2>Installed: v1.1.14.1</title2>
-    <text>Click to open the SMXhud changelog.</text>
-    <link>https://sirillion.github.io/smxhudchangelog/</link>
-    <imagerelpath>smxhudcl.png</imagerelpath>
+    <text>Click to open the SMXui changelog.</text>
+    <link>https://sirillion.github.io/smxuichangelog/</link>
+    <imagerelpath>smxuicl.png</imagerelpath>
   </entry>
 
 </news>

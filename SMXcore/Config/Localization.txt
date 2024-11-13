@@ -1,7 +1,7 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
-smxCurrentVersionBranch,UI,Menu,x,,SMXCORE DEVELOPMENT VERSION
-smxCurrentVersionNumber,UI,Menu,x,,1.1.14.1
+smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
+smxCurrentVersionNumber,UI,Menu,x,,1.1.14.2
 
 xuiOpenUrlConfirmationText,UI,Menu,x,,Open browser to the following URL:\n\n[AF1E19]{0}[-],,Browser auf der folgenden URL öffnen:\n\n[AF1E19]{0}[-],Abrir el navegador en la siguiente URL:\n\n[AF1E19]{0}[-],Ouvrir le navigateur à l'adresse suivante :\n\n[AF1E19]{0}[-],Apri il browser al seguente indirizzo:\n\n[AF1E19]{0}[-],ブラウザで以下のURLを開く:\n\n[AF1E19]{0}[-],다음 URL로 브라우저 열기:\n\n[AF1E19]{0}[-],Otwórz przeglądarkę na adres URL:\n\n[AF1E19]{0}[-],Abrir navegador no seguinte URL:\n\n[AF1E19]{0}[-],Открыть браузер со следующим URL:\n\n[AF1E19]{0}[-],Tarayıcıda şu adresi aç:\n\n[AF1E19]{0}[-],打开浏览器访问以下链接：\n\n[AF1E19]{0}[-],打開瀏覽器前往如下URL：\n\n[AF1E19]{0}[-]
 xuiSavegameDeleteConfirmation,UI,XUi Continue Game,x,,Are you sure you want to delete the save game?\n\n[AF1E19]{0}[-],,"Bist du sicher, dass du den folgenden Speicherstand löschen möchtest?\n\n[AF1E19]{0}[-]",¿Seguro que quieres borrar la partida guardada?\n\n[AF1E19]{0}[-],Voulez-vous vraiment supprimer la partie sauvegardée? \n\n[AF1E19]{0}[-] ,Vuoi davvero cancellare la partita salvata?\n\n[AF1E19]{0}[-],本当にセーブゲーム\n\n[AF1E19]{0}[-]を削除しますか？,\n\n[AF1E19]{0}[-] 게임 저장 파일을 삭제하시겠습니까?,Czy na pewno chcesz usunąć tę zapisaną grę?\n\n[AF1E19]{0}[-],Quer mesmo excluir o jogo salvo?\n\n[AF1E19]{0}[-],Вы действительно хотите удалить сохраненную игру?\n\n[AF1E19]{0}[-],Kayıtlı oyunu silmek istediğinden emin misin?\n\n[AF1E19]{0}[-],是否确定删除此存档？\n\n[AF1E19]{0}[-],確定要刪除遊戲檔案嗎？\n\n[AF1E19]{0}[-]
@@ -11,3 +11,5 @@ smxSettingGeneral,UI,Menu,x,,SMXmenu General Settings,,,,,
 smxSettingGeneralTooltip,UI,Menu,x,,General settings for SMXmenu,,,,,
 smxSettingForceSkipNews,UI,Menu,x,,Skip News Screen,,,,,
 smxSettingForceSkipNewsTooltip,UI,Menu,x,,Skips the News Screen on starting the game,,,,,
+smxSettingColorBlindMode,UI,Menu,x,,Colorblind Mode,,,,,
+smxSettingColorBlindModeTooltip,UI,Menu,x,,Changes the QL colors to be more colorblind friendly for SMXhud and SMXui.\n\nRequires restarting the game.,,,,,

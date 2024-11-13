@@ -5,7 +5,7 @@
 	<DisplayName value="SMXcore" />
 	<Description value="A library of code and assets for SMX branded mods and modlets. The CORE modlet." />
 	<Author value="Sirillion" />
-	<Version value="1.1.14.1" />
+	<Version value="1.1.14.2" />
 	<Website value="http://www.nexusmods.com/7daystodie/mods/22/?" />
 	<Icon value="Gears/smx_gears_icon.png" />
 	<Banner value="Gears/smx_gears_banner.png" />
