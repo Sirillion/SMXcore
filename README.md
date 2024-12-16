@@ -1,5 +1,5 @@
 # SMXcore - THE CORE MODLET
-> Verified to work with: 1.1b14
+> Verified to work with: 1.2b27
 
 > Dependencies: [Quartz](https://github.com/s7092910/Quartz) by Laydor. (Included)
 
@@ -22,7 +22,7 @@ SMXcore is a library of assets needed by ALL SMX branded modlets. This is the CO
 
 ## **WELCOME**
 
-Welcome to the new and improved SMX series for 7 Days to Die - Alpha 21.
+Welcome to the new and improved SMX series for 7 Days to Die - v1.0.
 
 The goal with this mod is to give the entire 7 Days to Die user interface an extreme makeover an refashion it into how I believe the user interface for the game should be experienced. SMX consist of several modlets which can be broken down into three separate mods: SMXhud, SMXmenu and SMXui. These are all stand alone and can be used separately or, as is the intention, together with the other two and all three mods combined is what makes the SMX experience complete!
 
