@@ -96,6 +96,7 @@
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenu']">
 					<window name="mainMenu" anchor="LeftBottom" />
+					<window name="0tfpHarmonyMissing" anchor="CenterCenter" />
 				</set>
 
 			</if>

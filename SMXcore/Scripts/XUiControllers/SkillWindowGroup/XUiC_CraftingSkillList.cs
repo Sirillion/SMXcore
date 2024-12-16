@@ -4,21 +4,16 @@ using System;
 using System.Collections.Generic;
 
 //	Terms of Use: You can use this file as you want as long as this line and the credit lines are not removed or changed other than adding to them!
-//	Credits: The Fun Pimps.
-//	Tweaked: Laydor
-
-//	Changes the SkillList XUiController is only track Attribute and Perk skills
+//	Credits: Laydor.
 
 namespace SMXcore
 {
-    public class XUiC_SkillList : XUiController
+    public class XUiC_CraftingSkillList : XUiController
     {
         private List<ProgressionValue> skills = new List<ProgressionValue>();
-        private List<ProgressionValue> currentAttributeSkills = new List<ProgressionValue>();
-        private List<ProgressionValue> currentPerkSkills = new List<ProgressionValue>();
+        private List<ProgressionValue> currentCraftingSkills = new List<ProgressionValue>();
 
-        private XUiC_PerkSkillEntry[] perkEntries;
-        private XUiC_AttributeSkillEntry[] attributeEntries;
+        private XUiC_BookSkillEntry[] craftingSkillEntries;
 
         private string selectName;
 
@@ -56,25 +51,18 @@ namespace SMXcore
         {
             base.Init();
 
-            attributeEntries = GetChildrenByType<XUiC_AttributeSkillEntry>();
-            foreach(XUiC_SkillEntry entry in attributeEntries)
+            craftingSkillEntries = GetChildrenByType<XUiC_BookSkillEntry>();
+            foreach(XUiC_SkillEntry entry in craftingSkillEntries)
             {
                 entry.OnPress += XUiC_SkillEntry_OnPress;
-                entry.DisplayType = ProgressionClass.DisplayTypes.Standard;
-            }
-
-            perkEntries = GetChildrenByType<XUiC_PerkSkillEntry>();
-            foreach (XUiC_SkillEntry entry in perkEntries)
-            {
-                entry.OnPress += XUiC_SkillEntry_OnPress;
-                entry.DisplayType = ProgressionClass.DisplayTypes.Standard;
+                entry.DisplayType = ProgressionClass.DisplayTypes.Book;
             }
 
         }
 
         public void SelectFirstEntry()
         {
-            SelectedEntry = attributeEntries[0];
+            SelectedEntry = craftingSkillEntries[0];
         }
 
         private void XUiC_SkillEntry_OnPress(XUiController sender, int _mouseButton)
@@ -89,7 +77,7 @@ namespace SMXcore
 
         internal int GetActiveCount()
         {
-            return currentAttributeSkills.Count + currentPerkSkills.Count;
+            return currentCraftingSkills.Count;
         }
 
         public void RefreshSkillList()
@@ -100,46 +88,35 @@ namespace SMXcore
 
         private void UpdateSkillLists()
         {
-            currentAttributeSkills.Clear();
-            currentPerkSkills.Clear();
+            currentCraftingSkills.Clear();
 
             foreach (ProgressionValue skill in skills)
             {
                 ProgressionClass progressionClass = skill?.ProgressionClass;
-                if (progressionClass == null || progressionClass.Name == null || !progressionClass.ValidDisplay(ProgressionClass.DisplayTypes.Standard))
+                if (progressionClass == null || progressionClass.Name == null || !progressionClass.ValidDisplay(ProgressionClass.DisplayTypes.Crafting))
                 {
                     continue;
                 }
 
-
-                if (progressionClass.IsPerk)
+                if (progressionClass.IsCrafting)
                 {
-                    currentPerkSkills.Add(skill);
-                    continue;
-                }
-
-                if (progressionClass.IsAttribute && !progressionClass.Name.Equals("attbooks") && !progressionClass.Name.Equals("attcrafting"))
-                {
-                    currentAttributeSkills.Add(skill);
+                    currentCraftingSkills.Add(skill);
                 }
             }
 
-            currentAttributeSkills.Sort(ProgressionClass.ListSortOrderComparer.Instance);
-            currentPerkSkills.Sort(ProgressionClass.ListSortOrderComparer.Instance);
+            currentCraftingSkills.Sort(ProgressionClass.ListSortOrderComparer.Instance);
         }
 
         private void RefreshSkillListEntries()
         {
-            XUiView attributeInfoViewComponent = ((XUiC_SkillWindowGroup)WindowGroup.Controller).skillAttributeInfoWindow.GetChildById("0").ViewComponent;
-            XUiView perkInfoViewComponent = ((XUiC_SkillWindowGroup)WindowGroup.Controller).skillPerkInfoWindow.GetChildById("0").ViewComponent;
+            XUiView bookInfoViewComponent = ((XUiC_SkillWindowGroup)WindowGroup.Controller).skillCraftingInfoWindow.GetChildById("0").ViewComponent;
 
             SelectedEntry = null;
-            PopulateSkillEntry(attributeEntries, currentAttributeSkills, attributeInfoViewComponent);
-            PopulateSkillEntry(perkEntries, currentPerkSkills, perkInfoViewComponent);
+            PopulateSkillEntry(craftingSkillEntries, currentCraftingSkills, bookInfoViewComponent);
 
             if (SelectedEntry == null)
             {
-                SelectedEntry = attributeEntries[0];
+                SelectedEntry = craftingSkillEntries[0];
                 SelectedEntry.RefreshBindings();
                 ((XUiC_SkillWindowGroup)WindowGroup.Controller).CurrentSkill = SelectedEntry.Skill;
             }
@@ -167,7 +144,7 @@ namespace SMXcore
                     ProgressionValue skill = progressionValues[i];
                     entry.Skill = skill;
 
-                    if (!string.IsNullOrEmpty(selectName) && skill.ProgressionClass.Name.Equals(selectName))
+                    if (!string.IsNullOrEmpty(selectName) && skill.ProgressionClass.Name == selectName)
                     {
                         SelectedEntry = entry;
                         ((XUiC_SkillWindowGroup)WindowGroup.Controller).CurrentSkill = SelectedEntry.Skill;
@@ -209,13 +186,9 @@ namespace SMXcore
         public XUiC_SkillEntry GetEntryForSkill(ProgressionValue skill)
         {
             XUiC_SkillEntry[] skillEntries = new XUiC_SkillEntry[0];
-            if(skill.ProgressionClass.IsAttribute)
+            if(skill.ProgressionClass.IsCrafting)
             {
-                skillEntries = attributeEntries;
-            } 
-            else if (skill.ProgressionClass.IsPerk)
-            {
-                skillEntries = perkEntries;
+                skillEntries = craftingSkillEntries;
             }
 
             foreach (XUiC_SkillEntry xuiC_SkillEntry in skillEntries)
@@ -226,6 +199,39 @@ namespace SMXcore
                 }
             }
             return null;
+        }
+
+        public override bool GetBindingValue(ref string value, string bindingName)
+        {
+            switch (bindingName)
+            {
+                case "craftingskillcount":
+                    value = GetMaxItemCount().ToString();
+                    return true;
+
+                default:
+                    return base.GetBindingValue(ref value, bindingName);
+            }
+        }
+
+        private int GetMaxItemCount()
+        {
+            int count = 0;
+
+            foreach (ProgressionClass progressionClass in Progression.ProgressionClasses.Values)
+            {
+                if (progressionClass == null || progressionClass.Name == null || !progressionClass.ValidDisplay(ProgressionClass.DisplayTypes.Crafting))
+                {
+                    continue;
+                }
+
+                if (progressionClass.IsCrafting)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }

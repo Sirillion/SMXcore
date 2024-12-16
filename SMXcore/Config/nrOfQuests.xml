@@ -1,0 +1,63 @@
+<SMXcore file="nrOfQuests.xml">
+
+<!--	// SMX // More Quests - Gears Settings - Selection -->
+<!--
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="mod_loaded('MoreQuests')">
+
+								<conditional>
+									<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+										<NrOfQuests>10</NrOfQuests>
+
+									</if>
+								</conditional>
+
+								<conditional>
+									<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+										<NrOfQuests>20</NrOfQuests>
+
+									</if>
+								</conditional>
+
+								<conditional>
+									<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+										<NrOfQuests>30</NrOfQuests>
+
+									</if>
+								</conditional>
+
+								<conditional>
+									<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+										<NrOfQuests>40</NrOfQuests>
+
+									</if>
+								</conditional>
+
+								<conditional>
+									<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+										<NrOfQuests>50</NrOfQuests>
+
+									</if>
+								</conditional>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+-->
+</SMXcore>

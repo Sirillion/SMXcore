@@ -499,7 +499,7 @@
 								depth="1"
 								size="150,52"
 								pivot="center"
-								controller="CategoryEntry"
+								controller="SMXcore.SkillCategoryEntry, SMXcore"
 								categoryname="${categoryname}"
 								spritename="${spritename}"
 								displayname="${displayname}"
@@ -572,7 +572,7 @@
 								size="75,75"
 								pivot="center"
 								style="press, hover, scroll"
-								controller="SkillEntry"
+								controller="SMXcore.AttributeSkillEntry, SMXcore"
 								enabled_color="[iconColor]"
 								disabled_color="[disabledLabelColor]"
 								row_color="[lightGrey]"
@@ -597,7 +597,7 @@
 
 							<sprite name="textBackground" depth="3" pos="0,72" size="150,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
 
-							<label name="groupName" depth="4" pos="-65,72" width="150" height="25" pivot="center" style="smx_label_outline" text="{groupname}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+							<label name="groupName" depth="4" pos="0,72" width="150" height="25" pivot="center" style="smx_label_outline" text="{groupname}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
 
 							<sprite depth="10" pos="0,-44" size="24,24" sprite="server_favorite" color="255,144,24,255" pivot="center" foregroundlayer="true" visible="{cannotpurchase}" />
 							<sprite depth="10" pos="60,45" size="20,20" sprite="ui_game_symbol_lock" color="175,30,25,225" pivot="center" foregroundlayer="true" visible="{islocked}" />
@@ -622,7 +622,7 @@
 								size="60,60"
 								pivot="center"
 								style="press, hover, scroll"
-								controller="SkillEntry"
+								controller="SMXcore.PerkSkillEntry, SMXcore"
 								enabled_color="[iconColor]"
 								disabled_color="[disabledLabelColor]"
 								row_color="[mediumGrey]"
@@ -660,6 +660,28 @@
 		</conditional>
 
 
+<!--	// SMX // Skills Grid -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_skills_skill_grid>
+						<rect depth="3" pos="${pos}">
+							<sprite name="textBackground" depth="6" pos="-50,-6" size="${perkCount * 100},25" pivot="topleft" sprite="menu_empty" type="sliced" color="7,7,7,325" />
+							<label name="groupName" depth="7" pos="-50,-11" width="${perkCount * 100}" height="25" pivot="topleft" style="smx_label_outline" text="${groupName}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+
+							<grid name="grid" pos="0,-91" rows="1" cols="${perkCount}" cell_width="100" cell_height="100" repeat_content="true">
+								<smx_skills_perk_entry name="perk1" pos="-64,6" size="70,70" rotation="0" />
+							</grid>
+						</rect>
+					</smx_skills_skill_grid>
+				</append>
+
+			</if>
+		</conditional>
+
+
 <!--	// SMX // Book List -->
 
 		<conditional>
@@ -671,7 +693,7 @@
 								size="75,75"
 								pivot="center"
 								style="press, hover, scroll"
-								controller="SkillEntry"
+								controller="SMXcore.BookSkillEntry, SMXcore"
 								enabled_color="[iconColor]"
 								disabled_color="[disabledLabelColor]"
 								row_color="[lightGrey]"
@@ -719,7 +741,7 @@
 								height="${height}"
 								pivot="center"
 								style="hover"
-								controller="SkillPerkLevel"
+								controller="${controller}"
 								color_bg_bought="140,130,100,255"
 								color_bg_available="[lightGrey]"
 								color_bg_locked="[darkGrey]"
@@ -844,8 +866,8 @@
 
 							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" visible="{hasentry}" />
 
-							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasentry}" />
-							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasentry}" />
+							<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{showquality}" />
+							<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{showquality}" />
 
 							<sprite name="itemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="{iconatlas}" sprite="{itemicon}" color="{itemcolor}" foregroundlayer="true" visible="{hasentry}" />
 
@@ -853,16 +875,14 @@
 
 							<label name="groupName" depth="4" pos="0,72" width="100" height="25" pivot="center" style="smx_label_outline" text="{text}" font_size="12" spacing_x="3" justify="center" upper_case="true" color="{color_fg}" force_hide="false" visible="{hasentry}" />
 
-							<label name="stackValue" depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{currentqualitytext}" color="{color_fg}" font_size="18" justify="center" visible="{showquality}" />
-							<label name="stackValue" depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{nextqualitytext}" color="{color_fg}" font_size="18" justify="center" visible="{notcompletequality}" />
+							<label name="stackValue" depth="10" pos="-1,-35" width="85" pivot="center" style="smx_label_outline" text="{currentqualitytext}" color="{color_fg}" font_size="22" justify="center" visible="{showquality}" />
+							<label name="stackValue" depth="10" pos="0,47" width="90" pivot="center" style="smx_label_outline" text="{nextqualitytext}" color="{color_fg}" font_size="12" justify="left" visible="{notcompletequality}" />
 							
-							<label depth="3" pos="560,-${Round(height/2,0)}" text="{nextpoints}" pivot="right" justify="center" width="65" font_size="28" color="{color_fg}" visible="{notcomplete}" />
+							<label depth="3" pos="0,47" width="90" height="18" pivot="center" text="{nextpoints}" justify="right" font_size="12" color="{color_fg}" visible="{notcomplete}" />
 
 							<sprite depth="12" pos="30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_check" pivot="center" visible="{showcomplete}" />
-							
 							<sprite depth="12" pos="30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_lock" pivot="center" visible="{showlock}" />
-							
-							<sprite depth="12" pos="30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_unlock" pivot="center" visible="{notcompletenoquality}" />
+							<sprite depth="12" pos="-30,-${Round(height/2,0)}" size="20,20" sprite="ui_game_symbol_unlock" pivot="center" visible="{notcompletenoquality}" />
 							
 						</rect>
 					</smx_skill_crafting_entry>

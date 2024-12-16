@@ -5,14 +5,14 @@
 
 //	Changes CategoryEntry to be able to be placed on a non XUiV_Button
 
+using Quartz;
+
 namespace SMXcore
 {
     public class XUiC_SkillCategoryEntry : XUiController
     {
-        private string categoryName = "";
-
+        private ProgressionClass.DisplayTypes categoryType;
         private string categoryDisplayName = "";
-
         private string spriteName = "";
 
         private bool selected;
@@ -21,15 +21,16 @@ namespace SMXcore
 
         public XUiC_SkillCategoryList CategoryList { get; set; }
 
-        public string CategoryName
+        public ProgressionClass.DisplayTypes CategoryType
         {
             get
             {
-                return categoryName;
+                return categoryType;
             }
             set
             {
-                categoryName = value;
+                Logging.Inform("Category Type = " + value);
+                categoryType = value;
                 IsDirty = true;
             }
         }
@@ -76,38 +77,37 @@ namespace SMXcore
         public override void Init()
         {
             base.Init();
-            XUiController buttonController = GetChildById("button");
-            if(buttonController != null)
-            {
-                button = (XUiV_Button)buttonController.ViewComponent;
-                buttonController.OnPress += XUiC_CategoryEntry_OnPress;
-            }
+            //XUiController buttonController = GetChildById("button");
+            //if(buttonController != null)
+            //{
+            //    button = (XUiV_Button)buttonController.ViewComponent;
+            //    buttonController.OnPress += XUiC_CategoryEntry_OnPress;
+            //}
+            button = ViewComponent as XUiV_Button;
+            OnPress += XUiC_CategoryEntry_OnPress;
             IsDirty = true;
         }
 
         private void XUiC_CategoryEntry_OnPress(XUiController _sender, int _mouseButton)
         {
-            if (spriteName != string.Empty)
+            if (CategoryList.CurrentCategory == this && CategoryList.AllowUnselect)
             {
-                if (CategoryList.CurrentCategory == this && CategoryList.AllowUnselect)
-                {
-                    CategoryList.CurrentCategory = null;
-                }
-                else
-                {
-                    CategoryList.CurrentCategory = this;
-                }
-
-                CategoryList.HandleCategoryChanged();
+                CategoryList.CurrentCategory = null;
             }
+            else
+            {
+                CategoryList.CurrentCategory = this;
+            }
+
+            CategoryList.HandleCategoryChanged();
         }
 
         public override void Update(float _dt)
         {
-            //button.shouldSnap = !string.IsNullOrEmpty(categoryName);
             base.Update(_dt);
             if(IsDirty)
             {
+                ViewComponent.IsNavigatable = true;
                 RefreshBindings();
                 IsDirty = false;
             }
@@ -125,6 +125,33 @@ namespace SMXcore
                     return true;
                 default:
                     return false;
+            }
+        }
+
+        public override bool ParseAttribute(string name, string value, XUiController parent)
+        {
+            switch(name)
+            {
+                case "categoryname":
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        CategoryType = EnumUtils.Parse<ProgressionClass.DisplayTypes>(value, true);
+                    }
+                    return true;
+                case "spritename":
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        SpriteName = value;
+                    }
+                    return true;
+                case "displayname_key":
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        CategoryDisplayName = Localization.Get(value);
+                    }
+                    return true;
+                default:
+                    return base.ParseAttribute(name, value, parent);
             }
         }
     }

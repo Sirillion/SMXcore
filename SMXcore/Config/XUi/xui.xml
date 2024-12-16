@@ -131,31 +131,7 @@
 
 			</if>
 		</conditional>
-<!--
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
 
-				<set xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
-					<window name="windowCompass" />
-					<window name="windowLocation" anchor="CenterTop" />
-					<window name="windowEntering" anchor="CenterTop" />
-					<window name="windowTargetBar" anchor="CenterTop" />
-					<window name="onScreenIcons" />
-					<window name="smxhudLevelXP" anchor="LeftTop" />
-					<window name="smxhudBuffFrame" anchor="CenterBottom" />
-					<window name="windowToolbelt" anchor="CenterBottom" />
-					<window name="HUDLeftStatBars" anchor="LeftBottom" />
-					<window name="HUDRightStatBars" anchor="RightBottom" />
-					<window name="windowQuestTracker" anchor="RightTop" />
-					<window name="windowRecipeTracker" anchor="RightTop" />
-					<window name="windowGroupBars" anchor="LeftTop" />
-				</set>
-
-				<setattribute xpath="/xui//window_group[@name='compass']" name="actionset">false</setattribute>
-
-			</if>
-		</conditional>
--->
 
 <!--	// SMX // Toolbelt -->
 
@@ -173,38 +149,6 @@
 			</if>
 		</conditional>
 
-<!--
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
-					<window name="windowToolbeltHIDDEN" anchor="CenterBottom" />
-					<window name="HUDLeftStatBarsHIDDEN" anchor="LeftBottom" /-->
-					<!--window name="HUDRightStatBarsHIDDEN" anchor="RightBottom" /--> <!-- BUGS the inventory. We need a hide_when_backpack_open thingy -->
-					<!--window name="windowQuestTrackerHIDDEN" anchor="RightTop" />
-					<window name="windowRecipeTrackerHIDDEN" anchor="RightTop" />
-					<window name="windowGroupBarsHIDDEN" anchor="LeftTop" />
-					<window name="dragAndDropItemStack" anchor="CenterBottom" />
-				</set>
-
-				<setattribute xpath="/xui//window_group[@name='backpack']" name="actionset">false</setattribute>
-
-			</if>
-		</conditional>
--->
-<!--
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<set xpath="/xui/ruleset[@name='default']/window_group[@name='backpack']">
-					<window name="dragAndDropItemStack" anchor="CenterBottom" />
-				</set>
-
-				<setattribute xpath="/xui//window_group[@name='backpack']" name="actionset">false</setattribute>
-
-			</if>
-		</conditional>
--->
 
 <!--	// SMX // Tool Tips -->
 
@@ -605,13 +549,13 @@
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='skills']">
 					<window name="windowSkillList"/>
 					<window name="windowSkillAttributeInfo" />
-					<window name="windowSkillSkillInfo" />
+					<!--window name="windowSkillSkillInfo" /-->
 					<window name="windowSkillPerkInfo" />
 					<window name="windowSkillBookInfo" />
 					<window name="windowSkillCraftingInfo" />
 				</set>
 
-				<setattribute xpath="/xui//window_group[@name='skills']" name="controller">XUiC_SkillWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='skills']" name="controller">SMXcore.XUiC_SkillWindowGroup, SMXcore</setattribute>
 
 			</if>
 		</conditional>

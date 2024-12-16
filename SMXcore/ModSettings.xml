@@ -2,9 +2,9 @@
 <ModSettings>
   <Global>
     <Tab name="General" displayKey="" tooltipKey="">
-      <Category name="General" displayKey="smxSettingGeneral" tooltipKey="smxSettingGeneralTooltip">
-        <Switch name="ForceSkipNews" displayKey="smxSettingForceSkipNews" tooltipKey="smxSettingForceSkipNewsTooltip" value="On" defaultValue="Off" leftValue="Off" rightValue="On" />
-        <Switch name="ColorBlindMode" displayKey="smxSettingColorBlindMode" tooltipKey="smxSettingColorBlindModeTooltip" value="On" defaultValue="Off" leftValue="Off" rightValue="On" />
+      <Category name="General" displayKey="smxcoreSettingGeneral" tooltipKey="smxcoreSettingGeneralTooltip">
+        <Switch name="ForceSkipNews" displayKey="smxcoreSettingForceSkipNews" tooltipKey="smxcoreSettingForceSkipNewsTooltip" value="Off" defaultValue="Off" leftValue="Off" rightValue="On" />
+        <Switch name="ColorBlindMode" displayKey="smxcoreSettingColorBlindMode" tooltipKey="smxcoreSettingColorBlindModeTooltip" value="Off" defaultValue="Off" leftValue="Off" rightValue="On" />
       </Category>
     </Tab>
   </Global>

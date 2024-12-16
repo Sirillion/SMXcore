@@ -66,6 +66,7 @@
 										localization_prefix=""
 										format_string=""
 										character_limit="0"
+										values_from_gameserverconfig="false"
 										tooltip_key="">
 
 						<rect	name="${name}"
@@ -81,6 +82,7 @@
 								values_enforced="${values_enforced}"
 								display_names="${display_names}"
 								value_localization_prefix="${value_localization_prefix}"
+								values_from_gameserverconfig="${values_from_gameserverconfig}"
 								visible="${visible}">
 
 							<label	name="ControlLabel"
@@ -183,7 +185,7 @@
 							<sprite depth="3" name="backgroundMain" sprite="menu_empty2px" height="${1+height}" pos="2,0" width="${width-4}" color="[black]" type="sliced" fillcenter="false" visible="{hasentry}" />
 							<sprite depth="2" name="background" color="[darkGrey]" pos="2,0" width="${width-4}" type="sliced" visible="{hasentry}" />
 
-							<button name="favorite" depth="4" pos="-16,-16" width="20" height="20" pivot="center" sprite="server_favorite" type="simple" hoverscale="1.1" defaultcolor="180,180,180,355" hovercolor="[white]" selectedcolor="[selectedColor]" selected="{isfavorite}" tooltip_key="xuiServerBrowserToggleFavoriteTooltip" sound="[recipe_click]" sound_play_on_hover="[default_hover]" visible="{hasentry}" />
+							<button name="favorite" depth="4" pos="-16,-16" width="20" height="20" pivot="center" sprite="server_favorite" type="simple" hoverscale="1.1" defaultcolor="180,180,180,355" hovercolor="[white]" selectedcolor="[selectedColor]" selected="{isfavorite}" tooltip_key="xuiServerBrowserToggleFavoriteTooltip" sound="[recipe_click]" sound_play_on_hover="[default_hover]" visible="{isdedicated}" />
 
 							<sprite name="anticheat" depth="4" pos="${width-95},-42" width="18" height="18" pivot="center" style="hover" sprite="server_icon_vac" color="{anticheatcolor}" type="simple" tooltip_key="xuiServerBrowserEACTooltip" visible="{hasentry}" />
 							<sprite name="password" depth="4" pos="${width-95},-18" width="18" height="18" pivot="center" style="hover" sprite="server_locked" color="{passwordcolor}" type="simple" tooltip_key="xuiServerBrowserPasswordTooltip" visible="{hasentry}" />
@@ -452,7 +454,7 @@
 						<rect name="option" depth="1" pos="${pos}" width="570" height="${height}" controller="${controller}">
 							<sprite name="background" depth="1" pos="0,${Round(-height/2,0)}" width="2" height="${height}" pivot="left" type="sliced" color="[transparent]" globalopacity="false" />
 
-							<label name="categoryLabel" depth="2" pos="284,${-height+22}" height="36" pivot="center" style="hover,smx_label_outline" text_key="{displayName}" font_size="26" color="255,255,255,255" justify="center" upper_case="true" tooltip_key="{tooltipKey}" visible="{isCategory}"/>
+							<label name="categoryLabel" depth="2" pos="284,${-height+22}" height="36" pivot="center" style="hover,smx_label_outline" text_key="{displayName}" font_size="26" color="255,255,255,255" justify="center" upper_case="false" tooltip_key="{tooltipKey}" visible="{isCategory}"/>
 
 							<label name="nameLabel" depth="2" pos="110,${Round(-height/2,0)}" width="220" height="30" pivot="center" style="hover, smx_label_outline" text_key="{displayName}" tooltip_key="{tooltipKey}" font_size="24" color="255,255,255,255" justify="right" visible="{#!isCategory}"/>
 
@@ -484,6 +486,7 @@
 							</rect>
 
 							<smx_gears_controlbinding name="controlBinding" depth="2" pos="${width-(width-270)},${Round((-height+32)/2,0)}" width="${width-250}" height="32" font_size="24" visible="{isBinding}" />
+							<smx_gears_colorpicker name="colorPicker" depth="2" pos="${width-(width-230)},${Round((-height+32)/2,0)}" width="${width-250}" height="300" visible="{isColorPicker}" />
 						</rect>
 					</smx_gears_modsettings_optioncombined>
 
@@ -617,6 +620,40 @@
 							<button name="bindingUnbind" depth="1" pos="${width-(width-260)},${Round(-height/2,0)}" width="28" height="28" pivot="center" style="press, hover" sprite="ui_game_symbol_x" sound="[paging_click]" />
 						</rect>
 					</smx_gears_controlbinding>
+
+					<smx_gears_colorpicker pos="0,0" depth="1" width="710" height="32" visible="true">
+						<rect name="${name}" depth="${depth}" pos="${pos}" width="${width}" height="${height}" visible="${visible}">
+							<label depth="2" text_key="R" height="30" width="20" pos="0,-40" />
+							<textfield name="txtColorR" depth="3" pos="20,-40" width="60" height="30" character_limit="3" validation="integer" />
+
+							<label depth="2" text_key="G" height="30" width="20" pos="0,-125" />
+							<textfield name="txtColorG" depth="3" pos="20,-125" width="60" height="30" character_limit="3" validation="integer" />
+																																																				
+					  
+											   
+					  
+
+							<label depth="2" text_key="B" height="30" width="20" pos="0,-210" />
+																	  
+																													   
+							<textfield name="txtColorB" depth="3" pos="20,-210" width="60" height="30" character_limit="3" validation="integer" />
+
+							<label depth="2" text_key="xuiColorPropsHexValue" pos="90,0" width="200" height="30" />
+							<textfield name="txtHex" depth="3" pos="185,0" width="105" height="30" character_limit="6" />
+					  
+											  
+					  
+
+							<rect pos="80,-40" width="200" height="200" controller="ColorPicker">
+								<sprite depth="2" name="selectedColor" pos="212,0" style="icon30px" type="sliced"/>
+								<texture depth="2" name="svPicker" pos="6,0" width="200" height="200" on_drag="true" on_press="true">
+									<sprite depth="2" name="selectedColorSVPointer" pos="0,0" style="icon30px" width="21" height="21" type="sliced" pivot="center" sprite="ui_game_symbol_map_cursor"/>
+								</texture>
+								<texture depth="2" name="hPicker" pos="212,-33" width="30" height="167" on_drag="true" on_press="true" gamepad_selectable="false"/>
+							</rect>
+							<sprite name="padding" depth="1" pos="0,-240" width="2" height="25" color="[transparent]" type="sliced" pivot="left" globalopacity="false" />
+						</rect>
+					</smx_gears_colorpicker>
 
 					<smx_mod_info	pos="0,0"
 									width="570"

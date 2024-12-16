@@ -1,0 +1,7 @@
+<SMXui file="npc.xml">
+
+<!--	// SMX // Drone - Portrait Swap -->
+
+		<set xpath="/npc/npc_info[@id='NPCjunkDrone']/@portrait">smx_portrait_drone</set>
+
+</SMXui>

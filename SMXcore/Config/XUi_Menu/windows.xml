@@ -41,6 +41,40 @@
 <!--	// SMX // Main Menu Background -->
 
 		<conditional>
+			<if cond="mod_loaded('SMXcore')">
+
+				<conditional>
+					<if cond="not mod_loaded('TFP_Harmony')">
+
+						<append xpath="/windows">
+							<window name="0tfpHarmonyMissing" depth="99999" pos="0,400" width="1185" height="780" anchor="CenterCenter" cursor_area="true">
+								<panel depth="200" createuipanel="true" disableautobackground="true">
+
+									<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
+										<sprite name="smxPopOutBG" depth="9" height="900" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,335" />
+										<texture name="smxPopOutArt" depth="10" pos="0,230" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
+
+										<label name="lblTFPMissing" depth="11" pos="0,-200" width="350" height="850" pivot="center" style="smx_label_outline" text_key="smxCoreFTPMissing" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
+									</panel>
+
+								</panel>
+							</window>
+						</append>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<conditional>
+	<if cond="mod_loaded('TFP_Harmony')">
+
+
+<!--	// SMX // Main Menu Background -->
+
+		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
 
 				<set xpath="/windows/window[@name='menuBackground']/texture/@texture">@modfolder(SMXcore)://Textures/smx_mainmenu_background.png</set>
@@ -103,7 +137,7 @@
 							<smx_menu_button name="btnNewGame" width="230" height="65" pivot="center" caption_key="xuiNewGame" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnContinueGame" width="230" height="65" pivot="center" caption_key="xuiContinueGame" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnConnectToServer" width="230" height="65" pivot="center" caption_key="xuiConnectToServer" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnEditingTools" width="230" height="65" pivot="center" caption_key="xuiEditingTools" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnEditingTools" width="230" height="65" pivot="center" caption_key="xuiEditingTools" font_size="28" overflow="ShrinkContent" platform="!CONSOLE" />
 							<smx_menu_button name="btnOptions" width="230" height="65" pivot="center" caption_key="xuiOptions" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnNews" width="230" height="65" pivot="center" caption_key="xuiMMNews" font_size="28" overflow="ShrinkContent" />
 
@@ -148,7 +182,7 @@
 
 						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
 
-						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="8" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
+						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="9" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
 
 							<smx_menu_button name="btnGeneral" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsGeneral" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnVideo" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsVideo" font_size="28" overflow="ShrinkContent" />
@@ -158,6 +192,7 @@
 							<smx_menu_button name="btnAccount" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsAccount" font_size="28" overflow="ShrinkContent" visible="{notreleaseingame}" />
 							<smx_menu_button name="btnTwitch" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsTwitch" font_size="28" overflow="ShrinkContent" visible="{ingamenoteditor}" />
 							<smx_menu_button name="btnProfiles" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsProfiles" font_size="28" overflow="ShrinkContent" visible="{notingame}" />
+							<smx_menu_button name="btnBlockList" width="230" height="65" pivot="center" caption_key="xuiBlockedPlayers" font_size="28" overflow="ShrinkContent" visible="{# showblocklist and notingame}" />
 
 							<rect><sprite name="smx_menu_separation" depth="1" pos="-140,-28" width="301" height="5" sprite="smx_sepline_2" color="[smx_element_separation_2]" /></rect>
 
@@ -830,7 +865,7 @@
 										</rect>
 										<rect>
 											<label depth="4" pos="0,0" width="250" height="30" pivot="center" style="smx_label_outline, hover" text="World Size" text_key="xuiRwgWorldSize" font_size="24" justify="right" color="[white]" tooltip_key="xuiRwgWorldSizeDesc" />
-											<smx_combobox_default name="WorldSize" depth="108" pos="140,15" width="300" height="32" pivot="center" font_size="24" type="ComboBoxList`1[System.String]" values="6144,8192,10240" value_wrap="false" />
+											<smx_combobox_default name="WorldSize" depth="108" pos="140,15" width="300" height="32" pivot="center" font_size="24" type="ComboBoxList`1[System.Int32]" values="6144,8192,10240" value_wrap="false" />
 										</rect>
 										<rect>
 											<label depth="4" pos="0,0" width="250" height="30" pivot="center" style="smx_label_outline, hover" text_key="xuiSaveDataLimit" font_size="24" justify="right" color="[white]" tooltip_key="xuiSaveDataLimitDesc" />
@@ -897,10 +932,12 @@
 										<smx_game_option name="ServerEnabled" title="goServerEnabled" value_wrap="false" value_type="bool" values="" display_names="goServerEnabledOff,goServerEnabledOn" value_localization_prefix="" />
 										<smx_game_option name="Region" title="goRegion" value_wrap="true" value_type="string" values="NorthAmericaEast,NorthAmericaWest,CentralAmerica,SouthAmerica,Europe,Russia,Asia,MiddleEast,Africa,Oceania" display_names="" value_localization_prefix="goRegionName" has_default="false" always_show="true" />
 										<smx_game_option name="ServerVisibility" title="goServerVisibility" value_wrap="false" value_type="int" values="" display_names="goServerVisibility0,goServerVisibility1,goServerVisibility2" value_localization_prefix="" />
+										<smx_game_option name="ServerEACPeerToPeer" title="goEacEnabled" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" has_default="true" enabled="{servereacpeertopeer}" />
+										<smx_game_option name="ServerAllowCrossplay" title="goServerAllowCrossplay" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" tooltip_key="{crossplayTooltip}" />
 										<smx_game_option name="ServerPassword" title="goPassword" value_wrap="false" value_type="string" values="" display_names="" value_localization_prefix="" is_textinput="true" password_field="true" character_limit="30" />
 										
 										<!--ServerMaxPlayerCount gameoptions, some are for console platforms.-->
-										<smx_game_option name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2, 4, 8, 16" display_names="" value_localization_prefix="goPlayer" platform="!PS5,!XBOX_S,!XBOX_X"/>
+										<smx_game_option name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2, 4, 6, 8, 16" display_names="" value_localization_prefix="goPlayer" platform="!PS5,!XBOX_S,!XBOX_X"/>
 										<smx_game_option name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2, 3, 4" values_enforced="true" display_names="" value_localization_prefix="goPlayer" platform="PS5,XBOX_X"/>
 										<smx_game_option name="ServerMaxPlayerCount" title="goMaxPlayers" value_wrap="false" value_type="int" values="2" values_enforced="true" display_names="" value_localization_prefix="goPlayer" platform="XBOX_S"/>
 
@@ -908,21 +945,21 @@
 										
 										<smx_game_option name="GameDifficulty" title="goDifficulty" value_wrap="false" value_type="int" values="" display_names="goDifficulty1,goDifficulty2,goDifficulty3,goDifficulty4,goDifficulty5,goDifficulty6" value_localization_prefix="" />
 										<smx_game_option name="PersistentPlayerProfiles" title="goPersistentCharacters" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
-										<smx_game_option name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goXPMultiplierValue" />
+										<smx_game_option name="XPMultiplier" title="goXPMultiplier" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goXPMultiplierValue" />
 
 										<rect/>
 
-										<smx_game_option name="DayNightLength" title="goDayLength" value_wrap="false" value_type="int" values="10, 20, 30, 40, 50, 60, 90, 120" display_names="" value_localization_prefix="goMinute" />
-										<smx_game_option name="DayLightLength" title="goDayLightLength" value_wrap="false" value_type="int" values="12, 14, 16, 18" display_names="" value_localization_prefix="goDayLightLengthValue" />
+										<smx_game_option name="DayNightLength" title="goDayLength" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goMinute" />
+										<smx_game_option name="DayLightLength" title="goDayLightLength" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goDayLightLengthValue" />
 									</grid>
 								</rect>
 
 								<rect tab_key="xuiGameSettingsBasic">
 									<grid pos="6,-77" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
-										<smx_game_option name="BloodMoonFrequency" title="goBloodMoonFrequency" value_wrap="false" value_type="int" values="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 20, 30" display_names="goDisabled" value_localization_prefix="goDay" />
-										<smx_game_option name="BloodMoonRange" title="goBloodMoonRange" value_wrap="false" value_type="int" values="0, 1, 2, 3, 4, 7, 10, 14, 20" display_names="" value_localization_prefix="goDay" />
-										<smx_game_option name="BloodMoonWarning" title="goBloodMoonWarning" value_wrap="false" value_type="int" values="-1, 8, 18" display_names="goDisabled,goMorning,goEvening" value_localization_prefix="" />
-										<smx_game_option name="BloodMoonEnemyCount" title="goBloodMoonEnemyCount" value_wrap="false" value_type="int" values="4, 6, 8, 10, 12, 16, 24, 32, 64" display_names="" value_localization_prefix="goEnemie" />
+										<smx_game_option name="BloodMoonFrequency" title="goBloodMoonFrequency" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goDisabled" value_localization_prefix="goDay" />
+										<smx_game_option name="BloodMoonRange" title="goBloodMoonRange" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goDay" />
+										<smx_game_option name="BloodMoonWarning" title="goBloodMoonWarning" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goDisabled,goMorning,goEvening" value_localization_prefix="" />
+										<smx_game_option name="BloodMoonEnemyCount" title="goBloodMoonEnemyCount" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goEnemie" />
 										<smx_game_option name="ZombieMove" title="goZombieMove" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMJog,goZMRun,goZMSprint,goZMNightmare" value_localization_prefix="" />
 										<smx_game_option name="ZombieMoveNight" title="goZombieMoveNight" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMJog,goZMRun,goZMSprint,goZMNightmare" value_localization_prefix="" />
 										<smx_game_option name="ZombieFeralMove" title="goZombieFeralMove" value_wrap="false" value_type="int" values="" display_names="goZMWalk,goZMJog,goZMRun,goZMSprint,goZMNightmare" value_localization_prefix="" />
@@ -935,7 +972,7 @@
 										<smx_game_option name="MaxSpawnedZombies" title="goMaxSpawnedZombies" value_wrap="false" value_type="int" values="0, 10, 30, 60" display_names="" value_localization_prefix="" />
 										<smx_game_option name="MaxSpawnedAnimals" title="goMaxSpawnedAnimals" value_wrap="false" value_type="int" values="0, 10, 30, 50" display_names="" value_localization_prefix="" />
 										-->
-										<smx_game_option name="AirDropFrequency" title="goAirDropFrequency" value_wrap="false" value_type="int" values="0, 24, 72, 168" display_names="goDisabled" value_localization_prefix="goAirDropValue" />
+										<smx_game_option name="AirDropFrequency" title="goAirDropFrequency" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goDisabled" value_localization_prefix="goAirDropValue" />
 										<smx_game_option name="AirDropMarker" title="goMarkAirDrops" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" />
 									</grid>
 								</rect>
@@ -943,12 +980,12 @@
 								<rect tab_key="xuiGameSettingsAdvanced">
 									<grid pos="6,-77" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
 										<!--<smx_game_option name="BlockDurabilityModifier" title="goBlockDurability" value_wrap="false" value_type="int" values="25, 50, 100, 200" display_names="" value_localization_prefix="goBlockDurabilityValue" />-->
-										<smx_game_option name="BlockDamagePlayer" title="goBlockDamagePlayer" value_wrap="false" value_type="int" values="25, 50, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
-										<smx_game_option name="BlockDamageAI" title="goBlockDamageAI" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
-										<smx_game_option name="BlockDamageAIBM" title="goBlockDamageAIBM" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 300" display_names="" value_localization_prefix="goBlockDamageValue" />
-										<smx_game_option name="LootAbundance" title="goLootAbundance" value_wrap="false" value_type="int" values="25, 33, 50, 67, 75, 100, 150, 200" display_names="" value_localization_prefix="goLootAbundanceValue" />
-										<smx_game_option name="LootRespawnDays" title="goLootRespawnDays" value_wrap="false" value_type="int" values="-1, 5, 7, 10, 15, 20, 30, 40, 50" display_names="goDisabled" value_localization_prefix="goLootRespawnDaysValue" />
-										<smx_game_option name="MaxChunkAge" title="goMaxChunkAge" value_wrap="false" value_type="int" values="-1, 10, 20, 30, 40, 50, 75, 100" display_names="goDisabled" value_localization_prefix="goDay" />
+										<smx_game_option name="BlockDamagePlayer" title="goBlockDamagePlayer" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goBlockDamageValue" />
+										<smx_game_option name="BlockDamageAI" title="goBlockDamageAI" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goBlockDamageValue" />
+										<smx_game_option name="BlockDamageAIBM" title="goBlockDamageAIBM" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goBlockDamageValue" />
+										<smx_game_option name="LootAbundance" title="goLootAbundance" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goLootAbundanceValue" />
+										<smx_game_option name="LootRespawnDays" title="goLootRespawnDays" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goDisabled" value_localization_prefix="goLootRespawnDaysValue" />
+										<smx_game_option name="MaxChunkAge" title="goMaxChunkAge" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goDisabled" value_localization_prefix="goDay" />
 										<smx_game_option name="DeathPenalty" title="goDeathPenalty" value_wrap="false" value_type="int" values="" display_names="goNone,goXPOnly,goInjured,goPermaDeath" value_localization_prefix="" />
 										<smx_game_option name="DropOnDeath" title="goDropOnDeath" value_wrap="false" value_type="int" values="" display_names="goNone,goAll,goToolbelt,goBackpack,goDeleteAll" value_localization_prefix="" />
 										<smx_game_option name="DropOnQuit" title="goDropOnQuit" value_wrap="false" value_type="int" values="" display_names="goNone,goAll,goToolbelt,goBackpack" value_localization_prefix="" />
@@ -957,23 +994,23 @@
 										<smx_game_option name="BuildCreate" title="goBuildCreate" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" platform="!PS5,!XBOX"/>
 										<smx_game_option name="BuildCreate" title="goBuildCreate" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" tooltip_key="goBuildCreateDescPS5" platform="PS5" />
 										<smx_game_option name="BuildCreate" title="goBuildCreate" value_wrap="false" value_type="bool" values="" display_names="" value_localization_prefix="" tooltip_key="goBuildCreateDescXBOX" platform="XBOX" />
-										<smx_game_option name="QuestProgressionDailyLimit" title="goQuestProgressionDailyLimit" value_wrap="false" value_type="int" values="-1,1,2,3,4,5,6,7,8" display_names="goUnlimited"/>
+										<smx_game_option name="QuestProgressionDailyLimit" title="goQuestProgressionDailyLimit" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goUnlimited"/>
 									</grid>
 								</rect>
 
 								<rect tab_key="xuiGameSettingsMultiplayer">
-									<grid pos="6,-77" rows="13" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
+									<grid pos="6,-77" rows="14" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical">
 										<smx_game_option name="PlayerKillingMode" title="goPlayerKillingMode" value_wrap="false" value_type="int" values="" display_names="goPlayerKillingModeNoKilling,goPlayerKillingModeKillAlliesOnly,goPlayerKillingModeKillStrangersOnly,goPlayerKillingModeKillEveryone" value_localization_prefix="" />
-										<smx_game_option name="LandClaimSize" title="goLandClaimSize" value_wrap="false" value_type="int" values="21, 31, 41, 51, 71" display_names="" value_localization_prefix="goLandClaimSizeValue" />
-										<smx_game_option name="LandClaimDeadZone" title="goLandClaimDeadZone" value_wrap="false" value_type="int" values="0, 5, 10, 15, 20, 30, 40, 50" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
-										<smx_game_option name="LandClaimExpiryTime" title="goLandClaimExpiryTime" value_wrap="false" value_type="int" values="1, 2, 3, 4, 5, 7, 10, 30" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
+										<smx_game_option name="LandClaimSize" title="goLandClaimSize" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goLandClaimSizeValue" />
+										<smx_game_option name="LandClaimDeadZone" title="goLandClaimDeadZone" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
+										<smx_game_option name="LandClaimExpiryTime" title="goLandClaimExpiryTime" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
 										<smx_game_option name="LandClaimDecayMode" title="goLandClaimDecayMode" value_wrap="false" value_type="int" values="" display_names="goLandClaimDecayModeSlow,goLandClaimDecayModeFast,goLandClaimDecayModeNone" value_localization_prefix="" />
-										<smx_game_option name="LandClaimOnlineDurabilityModifier" title="goLandClaimOnlineDurabilityModifier" value_wrap="false" value_type="int" values="0, 1, 2, 4, 8, 16, 32, 64, 128, 256" display_names="goInfinite" value_localization_prefix="goLandClaimOnlineDurabilityModifierValue" />
-										<smx_game_option name="LandClaimOfflineDurabilityModifier" title="goLandClaimOfflineDurabilityModifier" value_wrap="false" value_type="int" values="0, 1, 2, 4, 8, 16, 32, 64, 128, 256" display_names="goInfinite" value_localization_prefix="goLandClaimOfflineDurabilityModifierValue" />
-										<smx_game_option name="LandClaimOfflineDelay" title="goLandClaimOfflineDelay" value_wrap="false" value_type="int" values="0, 1, 5, 10, 20, 30, 60" display_names="" value_localization_prefix="goMinute" />
-										<smx_game_option name="BedrollDeadZoneSize" title="goBedrollDeadZoneSize" value_wrap="false" value_type="int" values="0, 5, 15, 30" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
-										<smx_game_option name="BedrollExpiryTime" title="goBedrollExpiryTime" value_wrap="false" value_type="int" values="3, 7, 15, 30, 45, 60" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
-										<smx_game_option name="PartySharedKillRange" title="goPartySharedKillRange" value_wrap="false" value_type="int" values="0, 100, 500, 1000, 5000, 10000" display_names="goDisabled" value_localization_prefix="goPartySharedKillRangeValue" />
+										<smx_game_option name="LandClaimOnlineDurabilityModifier" title="goLandClaimOnlineDurabilityModifier" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goInfinite" value_localization_prefix="goLandClaimOnlineDurabilityModifierValue" />
+										<smx_game_option name="LandClaimOfflineDurabilityModifier" title="goLandClaimOfflineDurabilityModifier" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goInfinite" value_localization_prefix="goLandClaimOfflineDurabilityModifierValue" />
+										<smx_game_option name="LandClaimOfflineDelay" title="goLandClaimOfflineDelay" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goMinute" />
+										<smx_game_option name="BedrollDeadZoneSize" title="goBedrollDeadZoneSize" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
+										<smx_game_option name="BedrollExpiryTime" title="goBedrollExpiryTime" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
+										<smx_game_option name="PartySharedKillRange" title="goPartySharedKillRange" value_wrap="false" value_type="int" values_from_gameserverconfig="true" values="" display_names="goDisabled" value_localization_prefix="goPartySharedKillRangeValue" />
 										<smx_game_option name="ServerPort" title="goPort" value_wrap="false" value_type="int" values="" display_names="" value_localization_prefix="" is_textinput="true" character_limit="5"/>
 										<smx_game_option name="DayCount" title="goDayCount" value_wrap="false" value_type="int" values="0, 1, 3, 5, 7, 9" display_names="goUnlimited" value_localization_prefix="goDay" />
 										<smx_game_option name="FragLimit" title="goFragLimit" value_wrap="false" value_type="int" values="0, 1, 5, 10, 15, 20, 25, 50" display_names="goUnlimited" value_localization_prefix="goFrag" />
@@ -991,7 +1028,7 @@
 						<smx_menu_button name="btnStart" depth="3" pos="-10,-790" width="300" height="85" pivot="center" caption_key="xuiStart" font_size="40" sound="[start]" parse_actions="true" />
 
 						<rect name="dm_bar_enabled" visible="{showbar}">
-							<dm_data_bar pos="0, -800" width="1185" />
+							<dm_data_bar pos="-600,-820" width="1185" />
 						</rect>
 
 						<panel name="deleteSavePanel" pos="0,0" width="1185" height="780" anchor="CenterCenter" cursor_area="true" createuipanel="true" on_hover="true" disableautobackground="true">
@@ -1147,6 +1184,7 @@
 												<smx_browser_gameoption_info name="CurrentServerTime" title="goServerTime" />
 												
 												<smx_browser_gameoption_info name="Region" title="goRegion" value_localization_prefix="goRegionName" support_bb_code="false" />
+												<smx_browser_gameoption_info name="AllowCrossplay" title="goServerAllowCrossplay" support_bb_code="false" />
 												<smx_browser_gameoption_info name="Language" title="goLanguage" support_bb_code="false" />
 												<smx_browser_gameoption_info name="WorldSize" title="goGameWorldSize" />
 
@@ -1165,7 +1203,7 @@
 												<smx_browser_gameoption_info name="IP" title="goIp" visible="{showip}" />
 												<smx_browser_gameoption_info name="Port" title="goPort" visible="{showip}" />
 
-												<smx_browser_gameoption_info name="ServerVersion" title="goVersion" platform="!SUBMISSION" />
+												<smx_browser_gameoption_info name="ServerVersion" title="goVersion" />
 
 											</grid>
 										</rect>
@@ -1220,7 +1258,7 @@
 												<smx_browser_gameoption_info name="BedrollDeadZoneSize" title="goBedrollDeadZoneSize" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" />
 												<smx_browser_gameoption_info name="BedrollExpiryTime" title="goBedrollExpiryTime" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
 												<smx_browser_gameoption_info name="PartySharedKillRange" title="goPartySharedKillRange" display_names="goDisabled" value_localization_prefix="goPartySharedKillRangeValue" />
-												<smx_browser_gameoption_info name="ShowFriendPlayerOnMap" title="goShowFriendPlayerOnMap" />
+												<!--smx_browser_gameoption_info name="ShowFriendPlayerOnMap" title="goShowFriendPlayerOnMap" /-->
 											</grid>
 										</rect>
 									</rect>
@@ -1270,11 +1308,14 @@
 												<grid pos="21,-77" rows="14" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical">
 													<smx_browser_gameoption_string name="GameHost" title="goGameHost" visible="{isprefilteredsearch}" />
 													<smx_browser_gameoption_combined name="Region" title="goRegion" value_wrap="false" values="NorthAmericaEast,NorthAmericaWest,CentralAmerica,SouthAmerica,Europe,Russia,Asia,MiddleEast,Africa,Oceania" display_names="" value_localization_prefix="goRegionName" allow_custom="false" allow_any="{# !isprefilteredsearch}" />
+													<smx_browser_gameoption_combined name="AllowCrossplay" title="goServerAllowCrossplay" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" tooltip_key="{crossplayTooltip}"/>
 													<smx_browser_gameoption_string name="Language" title="goLanguage" />
 
 													<rect/>
 
-													<smx_browser_gameoption_combined name="EACAndSanctions" title="goEacAndSanctions" value_wrap="false" values="EACEnabledOn,EACEnabledOff,IgnoreEOSSanctionsOff,EACEnabledOn_IgnoreEOSSanctionsOff,EACEnabledOn_IgnoreEOSSanctionsOn,IgnoreEOSSanctionsOn,EACEnabledOff_IgnoreEOSSanctionsOn" display_names="" value_localization_prefix="goEACFilter" allow_custom="false"  allow_any="true" />
+													<smx_browser_gameoption_combined name="EACEnabled" title="goEacEnabled" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
+													<smx_browser_gameoption_combined name="SanctionsIgnored" title="goSanctionsIgnored" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
+													<!--smx_browser_gameoption_combined name="EACAndSanctions" title="goEacAndSanctions" value_wrap="false" values="EACEnabledOn,EACEnabledOff,IgnoreEOSSanctionsOff,EACEnabledOn_IgnoreEOSSanctionsOff,EACEnabledOn_IgnoreEOSSanctionsOn,IgnoreEOSSanctionsOn,EACEnabledOff_IgnoreEOSSanctionsOn" display_names="" value_localization_prefix="goEACFilter" allow_custom="false"  allow_any="true" /-->
 													<smx_browser_gameoption_combined name="IsPasswordProtected" title="goPasswordProtected" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
 
 													<rect/>
@@ -1316,7 +1357,7 @@
 										<rect tab_key="xuiGameSettingsGeneral">
 											<grid pos="8,-40" rows="14" cell_width="725" cell_height="45" repeat_content="false" arrangement="vertical" >
 												<smx_browser_gameoption_string name="LevelName" title="goGameWorld" />
-												<smx_browser_gameoption_combined name="WorldSize" title="goGameWorldSize" value_wrap="false" values="4096,6144,8192,10240" display_names="" value_localization_prefix="" allow_custom="STANDALONE" />
+												<smx_browser_gameoption_combined name="WorldSize" title="goGameWorldSize" value_wrap="false" values="4096,6144,8192,10240" display_names="" value_localization_prefix="" allow_custom="true" />
 												<smx_browser_gameoption_combined name="CurrentServerTime" title="goServerTimeDays" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="true" force_custom="true" />
 
 												<rect/>
@@ -1381,7 +1422,7 @@
 												<!--smx_browser_gameoption_combined name="BedrollDeadZoneSize" title="goBedrollDeadZoneSize" value_wrap="false" values="0, 5, 15, 30" display_names="goLandClaimNoDeadzone" value_localization_prefix="goLandClaimDeadZoneValue" /-->
 												<smx_browser_gameoption_combined name="BedrollExpiryTime" title="goBedrollExpiryTime" value_wrap="false" values="3, 7, 15, 30, 45, 60" display_names="" value_localization_prefix="goLandClaimExpiryTimeValue" />
 												<smx_browser_gameoption_combined name="PartySharedKillRange" title="goPartySharedKillRange" value_wrap="false" values="0, 100, 500, 1000, 5000, 10000" display_names="goDisabled" value_localization_prefix="goPartySharedKillRangeValue" />
-												<smx_browser_gameoption_combined name="ShowFriendPlayerOnMap" title="goShowFriendPlayerOnMap" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" />
+												<!--smx_browser_gameoption_combined name="ShowFriendPlayerOnMap" title="goShowFriendPlayerOnMap" value_wrap="false" values="" display_names="" value_localization_prefix="" allow_custom="false" /-->
 											</grid>
 										</rect>
 
@@ -1434,7 +1475,7 @@
 								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/server_zombie.png" />
 
 								<label name="lblIp" depth="11" pos="-120,-100" width="60" height="30" pivot="center" style="smx_label_outline" text_key="xuiServerBrowserIp" font_size="24" justify="left" overflow="resizeheight" />
-								<textfield name="txtIp" depth="5" pos="40,-100" width="230" height="30" pivot="center" font_size="24" />
+								<textfield name="txtIp" depth="5" pos="40,-100" width="230" height="30" pivot="center" font_size="24" password_field="true" />
 
 								<label name="lblPort" depth="11" pos="-120,-140" width="60" height="30" pivot="center" style="smx_label_outline" text_key="xuiServerBrowserPort" font_size="24" justify="left" overflow="resizeheight" />
 								<textfield name="txtPort" depth="5" pos="40,-140" width="230" height="30" pivot="center" font_size="24" validation="integer" />
@@ -1471,6 +1512,7 @@
 						<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiGenerateWorld" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
 
 						<sprite name="smx_menu_separation" depth="5" pos="-610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+						<sprite name="smx_menu_separation" depth="5" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
 						<label name="countyName" depth="108" pos="0,-30" pivot="center" style="smx_label_outline" font_size="40" justify="center" upper_case="true" />
 
@@ -1492,7 +1534,7 @@
 
 										<rect>
 											<label text="World Size" depth="4" width="250" height="30" pivot="center" style="smx_label_outline, hover" text_key="xuiWorldSize" font_size="24" justify="right" color="[white]" tooltip_key="xuiWorldSize" />
-											<smx_combobox_default name="WorldSize" depth="108" pos="140,16" width="300" height="32" pivot="center" font_size="24" type="ComboBoxList`1[System.String]" values="2048,3072,4096,5120,6144,7168,8192,9216,10240" value_wrap="false" />
+											<smx_combobox_default name="WorldSize" depth="108" pos="140,16" width="300" height="32" pivot="center" font_size="24" type="ComboBoxList`1[System.Int32]" values="2048,3072,4096,5120,6144,7168,8192,9216,10240" value_wrap="false" />
 										</rect>
 
 										<rect />
@@ -1587,8 +1629,14 @@
 						<rect name="windowbuttons" pos="0,-820">
 							<smx_back_button name="btnBack" depth="3" pos="820,916" width="55" height="55" tooltip_key="xuiBack" />
 							<smx_menu_button name="generate" depth="3" pos="-620,20" width="230" height="65" pivot="center" text="Generate World" text_key="xuiGenerateWorld" caption_key="xuiGenerateWorld" font_size="28" upper_case="true" platform="!SUBMISSION" />
-							<smx_menu_button name="btnNewGame" depth="3" pos="-10,30" pivot="center" width="300" height="85" text_key="xuiNewGame" caption_key="xuiNewGame" font_size="40" parse_actions="true" />
+							<smx_menu_button name="btnNewGame" depth="3" pos="-10,30" pivot="center" width="300" height="85" text_key="xuiNewGame" caption_key="xuiNewGame" font_size="40" parse_actions="true" enabled="{canNewGame}" />
+							<smx_menu_button name="btnDataManagement" depth="3" pos="602,20" width="230" height="65" pivot="center" caption_key="xuiDmManageSaves" font_size="28" upper_case="true" />
 						</rect>
+
+						<rect name="dm_bar_enabled" visible="{showbar}">
+							<dm_data_bar pos="-600,-820" width="1185" />
+						</rect>
+
 					</window>
 				</append>
 
@@ -1619,7 +1667,7 @@
 								<label name="lblPassNormal" depth="11" pos="0,-100" width="350" pivot="center" style="smx_label_outline" text_key="xuiServerPasswordNormal" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
 
 								<label name="lblPassIncorrect" depth="11" pos="0,-100" width="350" pivot="center" style="smx_label_outline" text_key="xuiServerPasswordIncorrect" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
-								<smx_textfield_serverpw name="txtPassword" depth="12" pos="0,-150" width="230" height="30" pivot="center" font_size="24" password_field="true" open_vk_on_open="true" character_limit="30" />
+								<smx_textfield_serverpw name="txtPassword" depth="12" pos="0,-150" width="230" height="30" pivot="center" font_size="24" password_field="true" open_vk_on_open="false" character_limit="30" />
 							</panel>
 
 							<panel name="buttons" depth="6" pos="-10,-560" height="32" borderthickness="3" createuipanel="true" disableautobackground="true" >
@@ -1817,6 +1865,9 @@
 			</if>
 		</conditional>
 
+	</if>
+</conditional>
+
 
 <!--	> > > > > > > > > > > > > > > > > > > > | SMX CC | < < < < < < < < < < < < < < < < < < < <	-->
 
@@ -1825,6 +1876,7 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
+
 				<conditional>
 					<if cond="mod_loaded('zSMXmenu')">
 
@@ -1838,6 +1890,7 @@
 
 					</if>
 				</conditional>
+
 			</if>
 		</conditional>
 
@@ -1846,6 +1899,7 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
+
 				<conditional>
 					<if cond="mod_loaded('zSMXmenu')">
 
@@ -1876,9 +1930,10 @@
 											<sprite name="smx_panel_separation" depth="4" pos="320,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 											<label name="authorName" depth="4" pos="315,10" width="500" height="52" pivot="center" style="smx_label_outline" text="Mod by: Laydor" font_size="18" spacing_x="2" justify="left" upper_case="false" color="[mediumGrey]" />
 
-											<rect name="searchControls" depth="4" pos="125,2" height="42" width="400">
+											<rect name="searchControls" depth="4" pos="50,-10" height="42" width="400">
 												<sprite name="searchIcon" depth="4" pos="75,-27" size="25,25" pivot="center" sprite="ui_game_symbol_search" />
 												<smx_textfield_outline name="searchInput" depth="5" pos="192,-25" width="275" height="40" font_size="18" search_field="true" />
+												<smx_menu_button name="btnSortList" depth="4" pos="420,-5" width="130" height="45" pivot="center" caption_key="xuiDefaults" font_size="20" visible="true" />
 											</rect>
 
 											<scrollbar name="scrollbarModList" depth="6" pos="583,-333" width="12" height="520" padding="4" foregroundname="handler" backgroundname="background" pivot="center" globalopacitymod="1.8">
@@ -1973,9 +2028,9 @@
 
 											<scrollview name="scrollview" depth="5" pos="0,-52" width="590" height="495" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
 
-												<grid name="settingsList" rows="{settingsCount}" cols="1" pos="40,-10" cell_width="525" cell_height="45" repeat_content="true" arrangement="vertical">
+												<table name="settingsList" pos="40,-10" cols="1" cell_width="525" cell_height="45" repeat_content="true" repeat_count="{settingsCount}" arrangement="vertical" padding="0,3">
 													<smx_gears_modsettings_optioncombined width="525" height="45" controller="Gears.UI.GlobalSettingsOption, Gears"/>
-												</grid>
+												</table>
 											</scrollview>
 										</rect>
 									</rect>
@@ -2032,6 +2087,7 @@
 
 					</if>
 				</conditional>
+
 			</if>
 		</conditional>
 
@@ -2040,6 +2096,7 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
+
 				<conditional>
 					<if cond="mod_loaded('zSMXmenu')">
 
@@ -2052,11 +2109,13 @@
 								<append xpath="/windows/window[@name='menuBackground']">
 									<videoplayer name="bgTexture" depth="2" video="@modfolder(SMXcore)://Videos/smxcore_menu_background.mp4" autoplay="true" loop="true" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
 								</append>
+
 							</if>
 						</conditional>
 
 					</if>
 				</conditional>
+
 			</if>
 		</conditional>
 

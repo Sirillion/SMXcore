@@ -39,7 +39,7 @@ namespace SMXcore.HarmonyPatches
         public static bool OnActivated(ItemActionEntryShowPerk __instance)
         {
             XUi xui = __instance.ItemController.xui;
-            List<XUiC_SkillList> childrenByType = xui.GetChildrenByType<XUiC_SkillList>();
+            List<XUiC_SkillListWindow> childrenByType = xui.GetChildrenByType<XUiC_SkillListWindow>();
 
             if(childrenByType.Count <= 0)
             {
@@ -48,24 +48,24 @@ namespace SMXcore.HarmonyPatches
 
             xui.playerUI.windowManager.CloseIfOpen("looting");
 
-            XUiC_SkillList xuiC_SkillList = null;
-            foreach (XUiC_SkillList SkillList in childrenByType)
+            XUiC_SkillListWindow xuiC_SkillListWindow = null;
+            foreach (XUiC_SkillListWindow SkillListWindow in childrenByType)
             {
-                if (SkillList.WindowGroup != null && SkillList.WindowGroup.isShowing)
+                if (SkillListWindow.WindowGroup != null && SkillListWindow.WindowGroup.isShowing)
                 {
-                    xuiC_SkillList = SkillList;
+                    xuiC_SkillListWindow = SkillListWindow;
                     break;
                 }
             }
-            if (xuiC_SkillList == null)
+            if (xuiC_SkillListWindow == null)
             {
                 XUiC_WindowSelector.OpenSelectorAndWindow(xui.playerUI.entityPlayer, "skills");
-                xuiC_SkillList = xui.GetChildByType<XUiC_SkillList>();
+                xuiC_SkillListWindow = xui.GetChildByType<XUiC_SkillListWindow>();
             }
 
-            if (xuiC_SkillList != null)
+            if (xuiC_SkillListWindow != null)
             {
-                xuiC_SkillList.SetSelectedByUnlockData(__instance.UnlockData);
+                xuiC_SkillListWindow.SetSelectedByUnlockData(__instance.UnlockData);
             }
 
             return false;

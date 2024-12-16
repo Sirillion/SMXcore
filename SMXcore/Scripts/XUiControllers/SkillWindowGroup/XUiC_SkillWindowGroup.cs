@@ -5,24 +5,25 @@
 
 //	Changes the SkillWindowGroup XUiController to use the SMX SkillEntry and SkillSubEntry XUiControllers. Also replaces the CategoryList with SkillCategoryList
 
+using GUI_2;
+
 namespace SMXcore
 {
     public class XUiC_SkillWindowGroup : XUiController
     {
+        public XUiC_SkillEntry[] skillEntries;
 
-        private XUiC_SkillList skillList;
+        public XUiC_SkillList skillList;
 
-        private XUiC_SkillCategoryList categoryList;
+        public XUiC_SkillCategoryList categoryList;
 
-        private XUiC_SkillAttributeInfoWindow skillAttributeInfoWindow;
+        public XUiC_SkillListWindow skillListWindow;
+        public XUiC_SkillAttributeInfoWindow skillAttributeInfoWindow;
+        public XUiC_SkillPerkInfoWindow skillPerkInfoWindow;
+        public XUiC_SkillBookInfoWindow skillBookInfoWindow;
+        public XUiC_SkillCraftingInfoWindow skillCraftingInfoWindow;
 
-        private XUiC_SkillSkillInfoWindow skillSkillInfoWindow;
-
-        private XUiC_SkillPerkInfoWindow skillPerkInfoWindow;
-
-        private XUiC_SkillBookInfoWindow skillBookInfoWindow;
-
-        private ProgressionValue currentSkill;
+        public ProgressionValue currentSkill;
 
         public ProgressionValue CurrentSkill
         {
@@ -33,6 +34,7 @@ namespace SMXcore
             set
             {
                 currentSkill = value;
+                IsDirty = true;
             }
         }
 
@@ -40,37 +42,28 @@ namespace SMXcore
         {
             base.Init();
             skillList = GetChildByType<XUiC_SkillList>();
+
+            skillListWindow = GetChildByType<XUiC_SkillListWindow>();
+
             skillAttributeInfoWindow = GetChildByType<XUiC_SkillAttributeInfoWindow>();
-            skillSkillInfoWindow = GetChildByType<XUiC_SkillSkillInfoWindow>();
             skillPerkInfoWindow = GetChildByType<XUiC_SkillPerkInfoWindow>();
             skillBookInfoWindow = GetChildByType<XUiC_SkillBookInfoWindow>();
-            XUiC_SkillSubEntry[] skillEntries = GetChildrenByType<XUiC_SkillSubEntry>();
-            foreach(XUiC_SkillSubEntry entry in skillEntries)
-            {
-                entry.OnPress += XUiC_SkillEntry_OnPress;
-            }
+            skillCraftingInfoWindow = GetChildByType<XUiC_SkillCraftingInfoWindow>();
 
-            categoryList = GetChildByType<XUiC_SkillCategoryList>();
-            if (categoryList != null)
+            skillEntries = GetChildrenByType<XUiC_SkillEntry>(null);
+            for (int i = 0; i < skillEntries.Length; i++)
             {
-                categoryList.SetupSkillCategories();
-                categoryList.CategoryChanged += CategoryList_CategoryChanged;
-                categoryList.CategoryClickChanged += CategoryList_CategoryClickChanged;
+                skillEntries[i].OnPress += XUiC_SkillEntry_OnPress;
             }
         }
 
-        private void CategoryList_CategoryChanged(XUiC_SkillCategoryEntry _categoryEntry)
+        private void CategoryList_CategoryChanged(XUiC_SkillCategoryEntry categoryEntry)
         {
-            skillList.Category = _categoryEntry.CategoryName;
-            skillList.RefreshSkillList();
             IsDirty = true;
         }
 
-        private void CategoryList_CategoryClickChanged(XUiC_SkillCategoryEntry _categoryEntry)
+        private void CategoryList_CategoryClickChanged(XUiC_SkillCategoryEntry categoryEntry)
         {
-            skillList.Category = _categoryEntry.CategoryName;
-            skillList.SetFilterText("");
-            skillList.RefreshSkillList();
             IsDirty = true;
         }
 
@@ -83,59 +76,85 @@ namespace SMXcore
         {
             base.OnClose();
             xui.playerUI.windowManager.CloseIfOpen("windowpaging");
+            xui.calloutWindow.DisableCallouts(XUiC_GamepadCalloutWindow.CalloutType.Menu);
         }
 
         public override void Update(float _dt)
         {
             base.Update(_dt);
-            if (!IsDirty)
+            if (IsDirty)
             {
-                return;
-            }
-
-            CurrentSkill = xui.selectedSkill;
-            skillAttributeInfoWindow.SkillChanged();
-            skillSkillInfoWindow.IsDirty = true;
-            skillPerkInfoWindow.SkillChanged();
-            skillBookInfoWindow.SkillChanged();
-            if (skillList.IsBook)
-            {
-                skillBookInfoWindow.ViewComponent.IsVisible = true;
-            }
-            else if (xui.selectedSkill != null)
-            {
-                if (xui.selectedSkill.ProgressionClass.IsAttribute)
+                currentSkill = xui.selectedSkill;
+                skillAttributeInfoWindow.SkillChanged();
+                skillPerkInfoWindow.SkillChanged();
+                skillBookInfoWindow.SkillChanged();
+                skillCraftingInfoWindow.SkillChanged();
+                if (skillListWindow.CategoryType == ProgressionClass.DisplayTypes.Book)
                 {
-                    skillAttributeInfoWindow.ViewComponent.IsVisible = true;
+                    skillBookInfoWindow.ViewComponent.IsVisible = true;
                 }
-                else if (xui.selectedSkill.ProgressionClass.IsSkill)
+                else if (skillListWindow.CategoryType == ProgressionClass.DisplayTypes.Crafting)
                 {
-                    skillSkillInfoWindow.ViewComponent.IsVisible = true;
+                    skillCraftingInfoWindow.ViewComponent.IsVisible = true;
                 }
-                else
+                else if (xui.selectedSkill != null)
                 {
-                    skillPerkInfoWindow.ViewComponent.IsVisible = true;
+                    if (xui.selectedSkill.ProgressionClass.IsAttribute)
+                    {
+                        skillAttributeInfoWindow.ViewComponent.IsVisible = true;
+                    }
+                    else
+                    {
+                        skillPerkInfoWindow.ViewComponent.IsVisible = true;
+                    }
                 }
+                IsDirty = false;
             }
-
-            IsDirty = false;
         }
 
         public override void OnOpen()
         {
             base.OnOpen();
+            if (categoryList == null)
+            {
+                XUiC_SkillCategoryList childByType = GetChildByType<XUiC_SkillCategoryList>();
+                if (childByType != null)
+                {
+                    categoryList = childByType;
+                    categoryList.SetupSkillCategories();
+                    categoryList.CategoryChanged += CategoryList_CategoryChanged;
+                    categoryList.CategoryClickChanged += CategoryList_CategoryClickChanged;
+                }
+            }
+            xui.playerUI.windowManager.OpenIfNotOpen("windowpaging", false, false, true);
+            xui.calloutWindow.ClearCallouts(XUiC_GamepadCalloutWindow.CalloutType.Menu);
+            xui.calloutWindow.AddCallout(UIUtils.ButtonIcon.FaceButtonSouth, "igcoSelect", XUiC_GamepadCalloutWindow.CalloutType.Menu);
+            xui.calloutWindow.AddCallout(UIUtils.ButtonIcon.FaceButtonEast, "igcoExit", XUiC_GamepadCalloutWindow.CalloutType.Menu);
+            xui.calloutWindow.EnableCallouts(XUiC_GamepadCalloutWindow.CalloutType.Menu, 0f);
 
-            xui.playerUI.windowManager.OpenIfNotOpen("windowpaging", _bModal: false);
-            xui.FindWindowGroupByName("windowpaging").GetChildByType<XUiC_WindowSelector>()?.SetSelected("skills");
+            XUiC_WindowSelector childByType2 = xui.FindWindowGroupByName("windowpaging").GetChildByType<XUiC_WindowSelector>();
+            if (childByType2 != null)
+            {
+                childByType2.SetSelected("skills");
+            }
+
             IsDirty = true;
             if (categoryList.CurrentCategory == null)
             {
                 categoryList.SetCategoryToFirst();
             }
-
-            skillList.Category = categoryList.CurrentCategory.CategoryName;
+            skillListWindow.CategoryType = categoryList.CurrentCategory.CategoryType;
             skillList.RefreshSkillList();
+            if (xui.selectedSkill == null)
+            {
+                skillList.SelectFirstEntry();
+            }
+            else
+            {
+                skillList.SelectedEntry.SelectCursorElement(true, false);
+            }
             IsDirty = true;
         }
+
     }
 }

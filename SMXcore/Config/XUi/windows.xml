@@ -78,9 +78,13 @@
 
 						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
 
+						<smx_confirmation_prompt name="unstuckPrompt" pos="400,220" width="400" height="220" pivot="center" anchor="centercenter" />
+
 						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="8" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
 
 							<smx_menu_button name="btnBugReport" width="230" height="65" pivot="center" caption_key="xuiBugReportHeader" font_size="28" overflow="ShrinkContent" visible="{bug_reporting}" />
+							<smx_menu_button name="btnOpenConsole" width="230" height="65" pivot="center" caption_key="xuiOpenConsole" font_size="28" visible="{console_button}" />
+							<!--smx_menu_button name="btnUnstuck" width="230" height="65" pivot="center" caption_key="xuiMenuUnstuck" font_size="28" /-->
 
 							<rect />
 
@@ -162,94 +166,6 @@
 
 				<append xpath="/windows">
 					<window name="HUDLeftStatBars" depth="2" pos="183,108" width="360" height="210" rotation="0" force_hide="false">
-						<rect name="smxhud_unitframe_content" depth="2" pos="-140,0" width="350" height="80">
-
-							<!-- SMX COMMENT: This contains the unitframe core design in the lower left corner. -->
-							<sprite name="smxhud_unitframe_main_background" depth="2" pos="0,0" width="265" height="82" sprite="smx_unitframe_background" color="[smxhud_element_background]" globalopacitymod="1.6" />
-
-							<sprite name="smxhud_unitframe_wellness_smokeeffect_bg" depth="-2" pos="19,-54" width="110" height="110" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="0.8" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="1" />
-							<sprite name="smxhud_unitframe_wellness_smokeeffect_mg" depth="-1" pos="19,-54" width="109" height="109" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.1" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="-3" />
-							<sprite name="smxhud_unitframe_wellness_smokeeffect_fg" depth="0" pos="19,-54" width="108" height="108" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.3" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="5" />
-							<sprite name="smxhud_unitframe_wellness_main_background" depth="1" pos="19,-54" width="110" height="110" sprite="smx_levelxp_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.5" />
-							<!--sprite name="smxhud_unitframe_wellness_main_background" depth="1" pos="-35,1" width="110" height="110" sprite="smx_levelxp_background" color="[white]" globalopacitymod="1.5" /--> <!-- original --> 
-							<sprite name="smx_unitframe_wellness_background" depth="10" pos="-18,-12" width="80" height="80" sprite="smx_unitframe_wellness_background" color="[smxhud_element_background]" globalopacitymod="1.4" />
-							<sprite name="smx_unitframe_wellness_foreground" depth="12" pos="-18,-12" width="80" height="80" sprite="smx_unitframe_wellness_foreground" color="[smxhud_unitframe_bar_background_2]" globalopacitymod="1.3" />
-
-							<!-- SMX COMMENT: Diamond art box, not used but "saved" for future feature. -->
-							<!--sprite name="smxui_artbox_background_45" depth="14" pos="-23,-50" width="32" height="32" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" />
-							<sprite name="smxui_artbox_foreground_45" depth="15" pos="-23,-50" width="28" height="28" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" /-->
-
-							<sprite name="smxhud_unitframe_frameseparator" depth="3" pos="25,-12" width="225" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-							<sprite name="smxhud_unitframe_frameseparator" depth="3" pos="40,-43" width="200" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-							<sprite name="smxhud_unitframe_frameseparator" depth="3" pos="55,-70" width="175" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-							<sprite name="smxhud_unitframe_frameseparator" depth="3" pos="55,-86" width="135" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-
-							<!-- SMX COMMENT: This module contains the unitframe stealth bar design in the lower left corner. -->
-							<rect name="smxhud_statbar_stealth" pos="50,4" width="240" height="20" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Stealth" visible="{statvisible}">
-								<sprite name="smxhud_stealth_main_background" depth="3" pos="-10,-1" width="210" height="18" sprite="smx_unitframe_background" flip="vertically" color="[smxhud_element_background]" globalopacitymod="1.8" />
-								<sprite name="smxhud_stealth_icon_background" depth="6" pos="-10,-10" width="40" height="50" sprite="smx_icon_background" pivot="center" rotation="90" color="[smxhud_element_background]" globalopacitymod="1.8" />
-								<sprite name="smxhud_stealth_bar_background" depth="4" pos="0,-6" width="180" height="8" sprite="smx_unitframe_healthbar_empty" color="[smxhud_unitframe_bar_background_1]" />
-								<filledsprite name="BarContent" depth="5" pos="0,-6" width="180" height="8" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" color="[smxhud_unitframe_stealth_bar]" tooltip_key="xuiStealthBarHUD" />
-								<sprite name="Icon" depth="7" pos="-17,-2" size="16,16" sprite="ui_game_symbol_stealth" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-								<label name="TextContent" depth="7" pos="90,-10" style="smx_label_normal" text="{statcurrent}" font_size="14" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" />
-							</rect>
-
-							<!-- SMX COMMENT: This module contains the unitframe health bar design in the lower left corner. -->
-							<rect name="smxhud_statbar_health" pos="-14,-8" width="240" height="55" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Health" visible="{statvisible}">
-								<sprite name="smxhud_health_main_background" depth="2" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_empty" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
-								<filledsprite name="background" depth="3" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_empty" type="filled" fill="{statmodifiedmax}" color="[smxhud_unitframe_bar_background_1]" globalopacitymod="1.3" />
-								<filledsprite name="BarContent" depth="5" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" color="[smxhud_unitframe_health_bar]" globalopacitymod="1.8" tooltip_key="xuiHealthBarHUD" />
-								<sprite name="Icon" depth="7" pos="82,-13" size="18,18" sprite="ui_game_symbol_add" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-								<label name="TextContent" depth="7" pos="210,-18" width="32" height="26" style="smx_label_normal" text=" [I]{playerhealth}[/I] " font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-								<label name="TextContent" depth="7" pos="228,-17" width="30" height="26" style="smx_label_normal" text=" / " font_size="16" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-								<label name="TextContent" depth="7" pos="243,-16" width="30" height="26" style="smx_label_normal" text=" [I]{playermaxhealth}[/I] " font_size="14" pivot="center" justify="left" color="[smxhud_element_labelcolor_3]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-							</rect>
-
-							<!-- SMX COMMENT: This module contains the unitframe stamina bar design in the lower left corner. -->
-							<rect name="smxhud_statbar_stamina" pos="-8,-37" width="240" height="55" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Stamina" visible="{statvisible}">
-								<sprite name="smxhud_stamina_main_background" depth="2" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_empty" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
-								<filledsprite name="background" depth="3" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_empty" type="filled" fill="{statmodifiedmax}" color="[smxhud_unitframe_bar_background_1]" globalopacitymod="1.3" />
-								<filledsprite name="BarContent" depth="5" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_fill" type="filled" fill="0" color="[smxhud_unitframe_stamina_bar]" globalopacitymod="1.8" tooltip_key="xuiStaminaBarHUD" />
-								<sprite name="Icon" depth="7" pos="74,-12" size="18,18" sprite="ui_game_symbol_run" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-								<label name="TextContent" depth="7" pos="196,-19" width="32" height="26" style="smx_label_normal" text=" [I]{playerstamina}[/I] " font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-								<label name="TextContent" depth="7" pos="214,-18" width="30" height="26" style="smx_label_normal" text=" / " font_size="16" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-								<label name="TextContent" depth="7" pos="229,-17" width="30" height="26" style="smx_label_normal" text=" [I]{playermaxstamina}[/I] " font_size="14" pivot="center" justify="left" color="[smxhud_element_labelcolor_3]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-								<sprite name="sprint" depth="8" pos="260,-23" size="32,32" pivot="left" atlas="{uiatlas}" sprite="server_z_always_run" color="255,255,255,255" visible="{sprintactive}" controller="HUDStatBar" />
-							</rect>
-
-							<!-- SMX COMMENT: This module contains the unitframe hunger bar design in the lower left corner. -->
-							<rect name="smxhud_statbar_hunger" pos="65,-70" width="240" height="20" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Food" visible="{statvisible}">
-								<sprite name="smxhud_hunger_main_background" depth="2" pos="-10,9" width="170" height="32" sprite="smx_unitframe_background" color="[smxhud_element_background]" globalopacitymod="1.8" />
-								<sprite name="smxhud_hunger_icon_background" depth="10" pos="-10,-10" width="40" height="50" sprite="smx_icon_background" pivot="center" flip="vertically" color="[smxhud_element_background]" globalopacitymod="1.8" />
-								<sprite name="smxhud_hunger_bar_background" depth="8" pos="-8,-4" width="155" height="12" sprite="smx_unitframe_healthbar_empty" flip="vertically" color="[smxhud_unitframe_bar_background_1]" />
-								<filledsprite name="BarContent" depth="9" pos="-8,-4" width="155" height="12" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" flip="vertically" color="[smxhud_unitframe_hunger_bar]" globalopacitymod="1.8" tooltip_key="xuiHungerBarHUD" />
-								<sprite name="Icon" depth="11" pos="-14,-1" size="18,18" sprite="ui_game_symbol_fork" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-								<label name="TextContent" depth="10" pos="116,-11" width="30" height="26" style="hover, smx_label_normal" text=" [I]{playerfood}[/I] " font_size="14" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" tooltip="You have a deficiency of: {playerhungerdeficiency} food." />
-							</rect>
-
-							<!-- SMX COMMENT: This module contains the unitframe thirst bar design in the lower left corner. -->
-							<rect name="smxhud_statbar_thirst" pos="-12,-17" width="90" height="90" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Water" visible="{statvisible}">
-								<sprite name="smxhud_thirst_bar_background" depth="11" pos="0,0" width="69" height="69" sprite="smx_unitframe_thirst_bar" color="[smxhud_unitframe_bar_background_1]" globalopacitymod="1.4" />
-								<sprite name="BarContent" depth="12" pos="0,0" width="69" height="69" sprite="smx_unitframe_thirst_bar" type="filled" fill="0" filldirection="vertical" color="[smxhud_unitframe_thirst_bar]" globalopacitymod="1.8" tooltip_key="xuiThirstBarHUD" />
-								<sprite name="Icon" depth="13" pos="12,-12" size="40,40" sprite="smx_ui_game_symbol_thirst" rotation="0" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-								<label name="TextContent" depth="16" pos="33,-62" width="30" height="26" style="hover, smx_label_normal" text=" {playerwater} " font_size="14" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" tooltip="You have a deficiency of: {playerthirstdeficiency} water." />
-							</rect>
-						</rect>
-
-						<!-- SMX COMMENT: This module contains the popup buffs design in the lower left corner. It is "disabled" in favor of the new Enhanced Buff Frames. -->
-						<rect name="smxhud_buffs_module" depth="4" pos="-180,60" width="200" height="300" controller="BuffPopoutList" pivot="BottomLeft" force_hide="true">
-							<rect name="item" pos="0,0" width="168" height="43" style="hover, press" pivot="right" sound="[recipe_click]" visible="false" >
-								<sprite name="Background" depth="3" pos="99999,99999" width="60" height="60" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.0" />
-								<sprite name="smxhud_buff_background" depth="3" pos="42,0" width="60" height="60" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.2" />
-								<sprite name="Icon" depth="4" pos="42,0" size="36,32" pivot="center" color="[transparent]" />
-								<label name="TextContent" depth="6" pos="100,2" height="30" style="smx_label_normal" font_size="22" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" />
-							</rect>
-						</rect>
-					</window>
-				</append>
-
-				<append xpath="/windows">
-					<window name="HUDLeftStatBarsHIDDEN" depth="2" pos="183,108" width="360" height="210" rotation="0" force_hide="true">
 						<rect name="smxhud_unitframe_content" depth="2" pos="-140,0" width="350" height="80">
 
 							<!-- SMX COMMENT: This contains the unitframe core design in the lower left corner. -->
@@ -469,18 +385,6 @@
 					</window>
 				</append>
 
-				<append xpath="/windows">
-					<window name="windowGroupBarsHIDDEN" depth="-20" pos="0,-200" width="380" height="300" controller="PartyWindow" force_hide="true">
-						<grid name="hud" pos="32,-15" width="168" rows="7" cols="1" cell_width="168" cell_height="45" repeat_content="true" controller="PartyEntryList">
-							<smxhud_party_entry />
-						</grid>
-
-						<grid name="hud" pos="32,-25" width="168" rows="7" cols="1" cell_width="168" cell_height="45" repeat_content="true" controller="CompanionEntryList" >
-							<smxhud_companion_entry />
-						</grid>
-					</window>
-				</append>
-
 			</if>
 		</conditional>
 
@@ -494,111 +398,6 @@
 
 				<append xpath="/windows">
 					<window name="HUDRightStatBars" depth="-52" pos="-183,108" width="360" height="210" rotation="0" force_hide="false">
-						<rect name="smxhud_unitframe_content" depth="2" pos="140,0" width="350" height="80">
-
-							<!-- SMX COMMENT: This module contains the item collection design in the lower right corner. -->
-							<rect name="smxhud_item_collection" depth="2" pos="-65,40" width="100" height="100" pivot="center" controller="CollectedItemList">
-
-								<!-- SMX COMMENT: This section contains the backpack, lootstage and inventory info design in the lower right corner. -->
-								<rect name="smxhud_collection_information" depth="2" pos="13,-81" width="110" height="110" pivot="center">
-
-									<sprite name="smxhud_collection_main_background" depth="1" pos="-212,42" width="265" height="82" sprite="smx_unitframe_background" flip="horizontally" color="[smxhud_element_background]" globalopacitymod="1.6" />
-
-									<sprite name="smxhud_collection_frameseparator" depth="3" pos="-197,29" width="225" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-									<sprite name="smxhud_collection_frameseparator" depth="3" pos="-177,-30" width="195" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-									<sprite name="smxhud_collection_frameseparator" depth="3" pos="-125,-47" width="135" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-
-									<sprite name="smxhud_collection_label_background" depth="3" pos="-150,-28" width="170" height="25" sprite="smx_unitframe_background" flip="horizontally" color="[smxhud_element_background]" globalopacitymod="1.8" />
-
-									<sprite name="smxhud_backpack_smokeeffect_bg" depth="-2" pos="29,-13" width="110" height="110" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="0.8" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="1" />
-									<sprite name="smxhud_backpack_smokeeffect_mg" depth="-1" pos="29,-13" width="109" height="109" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.1" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="-3" />
-									<sprite name="smxhud_backpack_smokeeffect_fg" depth="0" pos="29,-13" width="108" height="108" sprite="smx_icon_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.3" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="5" />
-
-									<sprite name="smxhud_backpack_main_background" depth="1" pos="29,-13" width="110" height="110" sprite="smx_levelxp_background" pivot="center" flip="horizontally" color="[smxhud_element_background]" globalopacitymod="1.5" />
-									<sprite name="smxhud_backpack_background" depth="2" pos="30,-12" width="80" height="80" sprite="smx_unitframe_wellness_background" pivot="center" color="[smxhud_element_background]" globalopacitymod="1.4" />
-									<sprite name="smxhud_backpack_foreground1" depth="16" pos="30,-12" width="80" height="80" sprite="smx_unitframe_thirst_bar" pivot="center" color="[smxhud_element_backdrop_2]" globalopacitymod="1.3" />
-									<sprite name="smxhud_backpack_foreground2" depth="17" pos="30,-12" width="80" height="80" sprite="smx_unitframe_wellness_foreground" pivot="center" color="[smxhud_unitframe_bar_background_2]" globalopacitymod="1.3" />
-
-									<sprite name="smxhud_backpack_bar" depth="19" pos="30,-12" width="80" height="80" sprite="smx_unitframe_wellness_foreground" type="filled" fill="{playerbagfill}" filldirection="radial360" pivot="center" color="{playerbagfillcolor}" globalopacitymod="1.8" controller="SMXcore.PlayerStatWindow, SMXcore" />
-									<sprite name="smxhud_backpack_icon" depth="18" pos="30,-12" size="50,50" style="hover" sprite="ui_game_symbol_loot_sack" pivot="center" color="[smxhud_element_iconcolor_1]" globalopacitymod="1.4" tooltip="Total: {playerbagsize} - Used: {playerbagusedslots} = Free: {playerbagfreeslots}" controller="SMXcore.PlayerStatWindow, SMXcore" />
-
-									<sprite name="smxhud_artbox_background_45" depth="19" pos="30,32" width="37" height="37" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" force_hide="false" />
-									<sprite name="smxhud_artbox_foreground_45" depth="20" pos="30,32" width="33" height="33" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" force_hide="false" />
-
-									<label name="smxhud_backpack_lockedslots" depth="21" pos="29,32" width="30" height="30" style="smx_label_normal" text="{playercarrycapacity}" font_size="16" pivot="center" justify="center" overflow="ShrinkContent" color="[smxhud_element_labelcolor_3]" tooltip_key="xuiCarryCapacityHUD" controller="SMXcore.PlayerStatWindow, SMXcore" force_hide="false" />
-
-									<!--label name="smxhud_backpack_lootstage" depth="21" pos="30,-12" width="30" height="30" style="smx_label_normal" text="{playerbagsize}" font_size="40" pivot="center" justify="center" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" /-->
-
-									<!--label name="smxhud_backpack_lootstage" depth="21" pos="30,32" width="30" height="30" style="smx_label_normal" text="{playerlootstage}" font_size="16" pivot="center" justify="center" overflow="ShrinkContent" color="[smxhud_element_labelcolor_3]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-									<label name="smxhud_backpack_slotinfo" depth="3" pos="-60,-42" width="90" height="24" style="smx_label_normal" text=" {playerbagusedslots} / {playercarrycapacity} ([C0C0C0]{playerbagsize}[-]) " font_size="16" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" /-->
-									<label name="smxhud_backpack_lootstage" depth="3" pos="-70,-41" width="100" height="24" style="smx_label_normal" text=" [808080]Lootstage:[-] [C0C0C0]{playerlootstage}[-] " font_size="14" pivot="center" justify="center" upper_case="true" color="[smxhud_element_labelcolor_1]" tooltip_key="xuiLootStageHUD" controller="SMXcore.PlayerStatWindow, SMXcore" force_hide="false" />
-								</rect>
-
-								<!-- SMX COMMENT: This module contains the item collection design in the lower right corner. -->
-								<rect name="item" pos="70,-40" width="168" height="52" pivot="right" visible="false">
-									<sprite name="Background" depth="3" pos="-10,0" width="130" height="56" sprite="smx_unitframe_background_cut" pivot="center" flip="both" color="[smxhud_element_background]" globalopacitymod="1.2" />
-
-									<sprite name="smxhud_artbox_background_45" depth="4" pos="43,0" width="52" height="52" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" />
-									<sprite name="smxhud_artbox_foreground_45" depth="5" pos="43,0" width="48" height="48" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_3]" globalopacitymod="1.2" />
-									<!--sprite name="smxhud_artbox_foreground_45" depth="6" pos="43,0" width="48" height="48" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="{durabilitycolor}" globalopacitymod="1.8" visible="{hasdurability}" /-->
-
-									<sprite name="Icon" depth="6" pos="43,0" size="45,45" atlas="ItemIconAtlas" pivot="center" foregroundlayer="true" />
-									<label name="TextContent" depth="6" pos="-30,0" width="80" height="36" style="smx_label_normal" font_size="22" pivot="center" justify="right" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
-									<sprite name="Negative" depth="6" pos="-45,22" width="40" height="40" sprite="ui_game_symbol_x" color="[smxhud_slot_cancel_color]" globalopacitymod="1.8" />
-								</rect>
-							</rect>
-
-							<!-- SMX COMMENT: This module contains the active item design in the lower right corner. -->
-							<rect name="smxhud_active_item" pos="-140,0" width="350" height="80">
-								<rect name="smxhud_active_item_content" depth="12" pos="-14,-8" width="240" height="55" controller="SMXcore.HUDActiveItem, SMXcore" visible="{statvisible}">
-									<sprite name="Icon" depth="4" pos="49,-24" size="75,75" style="hover" atlas="{staticonatlas|once}" sprite="{staticon}" pivot="center" color="{staticoncolor}" foregroundlayer="true" tooltip_key="{staticon}" />
-
-									<!-- SMX COMMENT: Test label to output icon name, upcoming feature. NOT READY! -->
-									<!--label name="Icon" depth="6" pos="-55,110" width="500" height="60" style="smx_label_normal" text="{staticon}" font_size="22" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" /-->
-
-									<label name="TextContent" depth="6" pos="-55,-10" width="100" height="60" style="smx_label_normal" text="{loadedammo}" font_size="60" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" visible="{isgun}" tooltip_key="xuiCurrentAmmoCountHUD" />
-									<label name="TextContent" depth="6" pos="-55,-45" width="100" height="30" style="smx_label_normal" text="{totalammo}" font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_3]" visible="{isgun}" tooltip_key="xuiTotalAmmoCountHUD" />
-									<label name="TextContent" depth="6" pos="-55,-10" width="100" height="60" style="smx_label_normal" text="{blockdamage}" font_size="60" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" visible="{istool}" tooltip_key="xuiToolBlockDamageHUD" />
-									<label name="TextContent" depth="6" pos="-55,-45" width="100" height="30" style="smx_label_normal" text="{elevation}" font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_3]" visible="{istool}" tooltip_key="xuiElevationHUD" />
-									<label name="TextContent" depth="6" pos="-55,-10" width="100" height="60" style="smx_label_normal" text="{entitydamage}" font_size="60" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" visible="{ismelee}" tooltip_key="xuiMeleeEntityDamageHUD" />
-								</rect>
-							</rect>
-
-							<!-- SMX COMMENT: This module contains the vehicle unit frame design in the lower right corner. -->
-							<rect name="smxhud_vehicle_stats" pos="-140,0" width="350" height="80">
-
-								<!-- SMX COMMENT: This module contains the vehicle health bar in the lower right corner. -->
-								<rect name="smxhud_vehiclestat_health" depth="12" pos="-14,-8" width="240" height="55" controller="SMXcore.HUDStatBar, SMXcore" stat_type="VehicleHealth" visible="{statvisible}">
-									<sprite name="smxhud_vehicle_frameseparator" depth="3" pos="-85,-36" width="195" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
-									<sprite name="background" depth="2" pos="-95,-8" width="205" height="28" sprite="smx_unitframe_healthbar_empty" flip="horizontally" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
-									<filledsprite name="BarContent" depth="5" pos="-95,-8" width="205" height="28" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" fillinvert="true" flip="horizontally" color="[smxhud_vehicle_health_bar]" globalopacitymod="1.8" tooltip_key="xuiVehicleHealthBarHUD" />
-									<sprite name="Icon" depth="7" pos="74,-12" size="18,18" sprite="ui_game_symbol_wrench" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-									<label name="TextContent" depth="7" pos="-65,-16" width="100" height="26" style="smx_label_normal" text=" [I]{statcurrent} / [C0C0C0]{statmax}[-][/I] " font_size="13" color="[smxhud_element_labelcolor_1]" justify="right" pivot="center" />
-
-									<label name="TextContent" depth="16" pos="-65,0" width="100" height="30" style="smx_label_normal" text="{elevation}" font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_3]" tooltip_key="xuiElevationHUD" />
-
-								</rect>
-
-								<!-- SMX COMMENT: This module contains the vehicle fuel bar in the lower right corner. -->
-								<rect name="smxhud_vehiclestat_fuel" depth="14" pos="0,0" width="110" height="110" controller="SMXcore.HUDStatBar, SMXcore" stat_type="VehicleFuel" visible="{statvisible}">
-
-									<!-- SMX COMMENT: Experimental Code. -->
-									<!--sprite name="fuel1" depth="11" pos="50,230" size="120,120" sprite="fuel1" pivot="center" globalopacitymod="1.8" />
-									<sprite name="fuel2" depth="12" pos="50,230" size="15,75" sprite="fuel2" pivot="center" globalopacitymod="1.8" controller="XUiC_DialIndicator, SMXui" indicator_value="{vehiclespeed}" start_angle="135" end_angle="-135" range_min="0" range_max="1" limit_indicator_to_range="true" /-->
-
-									<sprite name="background" depth="2" pos="-103,-38" width="184" height="22" sprite="smx_unitframe_staminabar_empty" flip="horizontally" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
-									<filledsprite name="BarContent" depth="5" pos="-103,-48" width="184" height="22" sprite="smx_unitframe_staminabar_fill" type="filled" fill="0" fillinvert="true" flip="horizontally" color="[smxhud_vehicle_fuel_bar]" globalopacitymod="1.8" tooltip_key="xuiVehicleFuelBarHUD" />
-									<sprite name="Icon" depth="7" pos="58,-49" size="18,18" sprite="ui_game_symbol_gas" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
-
-									<label name="TextContent" depth="7" pos="-100,-56" width="100" height="26" style="smx_label_normal" text=" [I]{statcurrentwithmax}[/I] " font_size="13" color="[smxhud_element_labelcolor_1]" justify="right" pivot="center" />
-								</rect>
-							</rect>
-						</rect>
-					</window>
-				</append>
-
-				<append xpath="/windows">
-					<window name="HUDRightStatBarsHIDDEN" depth="-52" pos="-183,108" width="360" height="210" rotation="0" force_hide="true">
 						<rect name="smxhud_unitframe_content" depth="2" pos="140,0" width="350" height="80">
 
 							<!-- SMX COMMENT: This module contains the item collection design in the lower right corner. -->
@@ -830,34 +629,6 @@
 					</window>
 				</append>
 
-				<append xpath="/windows">
-					<window name="windowToolbeltHIDDEN" depth="5" pos="-440,110" width="880" height="90" anchor="CenterBottom" controller="ToolbeltWindow" backgroundcolor="[black]" cursor_area="true" force_hide="true">
-
-						<!-- SMX COMMENT: 	The toolbelt control is now dynamic. If you want to change it's size you only need to modify the values of the following attributes inside the two grids:
-											pos(grid), cell_width(both grid & entry), cell_height(both grid & entry). Then you can set the typeicon size with the size(entry) value and nudge it into
-											place with the pos(entry) value (not a full pos of x,y here, only a modifier so single digit, start by increasing it with 1 and add as needed.
-											
-											When this has been done the toolbelt should resize itself to fit your new size values. Not 100% perfect but hey, it kinda works! -->
-
-						<rect name="smxhud_toolbelt_content" pos="440,-45" width="880" height="90" controller="Toolbelt">
-							<grid name="inventory" depth="10" pos="44,-43" rows="1" cols="10" cell_width="88" cell_height="86" pivot="center" repeat_content="true"> <!-- SMX COMMENT: grid -->
-								<smxui_toolbelt_item_stack name="0" pos="0" size="18,18" cell_width="86" cell_height="86" /> <!-- SMX COMMENT: entry -->
-							</grid>
-
-							<sprite name="smx_clearinventory_bg" depth="2" pos="470,0" size="50,50"	pivot="center" sprite="ui_game_header_fill" type="sliced" color="[smxcore_element_backdrop_1]" visible="{creativewindowopen}" />
-							<button name="btnClearInventory1" depth="3" pos="470,0" pivot="center" style="icon32px, press, hover" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" sound="[paging_click]" visible="{creativewindowopen}" />
-
-							<grid name="inventory2" depth="10" pos="44,43" rows="1" cols="10" cell_width="88" cell_height="86" pivot="center" repeat_content="true" visible="{secondrow}">
-								<smxui_toolbelt_item_stack name="0" pos="0" size="18,18" cell_width="86" cell_height="86" />
-							</grid>
-
-							<sprite name="smx_clearinventory_bg" depth="2" pos="470,85" size="50,50"	pivot="center" sprite="ui_game_header_fill" type="sliced" color="[smxcore_element_backdrop_1]" visible="{# creativewindowopen and secondrow}" />
-							<button name="btnClearInventory2" depth="3" pos="470,85" pivot="center" style="icon32px, press, hover" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" sound="[paging_click]" visible="{# creativewindowopen and secondrow}" />
-
-						</rect>
-					</window>
-				</append>
-
 			</if>
 		</conditional>
 
@@ -982,21 +753,6 @@
 					</window>
 				</append>
 
-				<append xpath="/windows">
-					<window name="windowQuestTrackerHIDDEN" depth="-20" pos="-255,-90" width="400" height="400" controller="QuestTrackerWindow" visible="{showquest}" force_hide="true">
-						<sprite name="smx_questtracker_background" depth="0" pos="-90,14" width="360" height="182" sprite="smx_questtracker_background" color="[smxhud_element_background]" globalopacitymod="1.5" tooltip_key="xuiQuestTrackerHUD" />
-						<label name="smxhud_questtracker_title" depth="1" pos="105,-15" width="280" height="28" style="smx_label_normal" text="{questtitle}" font_size="26" pivot="center" justify="center" upper_case="true" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
-						<sprite name="windowIcon" depth="1" pos="-75,1" style="icon32px" sprite="{questicon}" justify="left" color="[smxhud_element_iconcolor_1]" />
-						<grid name="objectiveList" depth="1" pos="-60,-50" rows="12" cols="1" cell_width="300" cell_height="26" repeat_content="true" arrangement="vertical" controller="QuestTrackerObjectiveList" complete_icon="ui_game_symbol_check" incomplete_icon="ui_game_symbol_x" complete_color="[green]" incomplete_color="[smxhud_quest_incomplete_color]">
-							<smxhud_quest_objective_tracker_entry />
-						</grid>
-
-						<rect pos="-160,{#trackerheight * -1 - 50}" width="400" height="86" visible="{questhintavailable}">
-							<label name="smx_questtracker_hints" depth="3" style="smx_label_outline" text="{questhint}" font_size="20" justify="right" parse_actions="true" actions_default_format="( [e61a16]###[-] )" spacing_y="5" />
-						</rect>
-					</window>
-				</append>
-
 			</if>
 		</conditional>
 
@@ -1010,18 +766,6 @@
 
 				<append xpath="/windows">
 					<window name="windowRecipeTracker" depth="-20" pos="-255,-90" width="400" height="400" controller="RecipeTrackerWindow" visible="{showrecipe}" force_hide="false">
-						<sprite name="smx_recipetracker_background" depth="0" pos="-90,14" width="360" height="182" sprite="smx_questtracker_background" color="[smxhud_element_background]" globalopacitymod="1.5" tooltip_key="xuiRecipeTrackerHUD" />
-						<label name="smx_recipetracker_title" depth="1" pos="105,-15" width="280" height="28" style="smx_label_normal" text="{recipetitle}" font_size="26" pivot="center" justify="center" upper_case="true" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
-						<sprite name="windowIcon" depth="1" pos="-75,1" style="icon32px" sprite="ui_game_symbol_hammer" justify="left" color="[smxhud_element_iconcolor_1]" />
-
-						<grid name="recipeList" depth="1" pos="-60,-50" rows="12" cols="1" cell_width="300" cell_height="26" repeat_content="true" arrangement="vertical" controller="RecipeTrackerIngredientsList" complete_icon="ui_game_symbol_check" incomplete_icon="ui_game_symbol_x" complete_color="[green]" incomplete_color="[smxhud_quest_incomplete_color]">
-							<smx_recipe_ingredient_tracker_entry />
-						</grid>
-					</window>
-				</append>
-
-				<append xpath="/windows">
-					<window name="windowRecipeTrackerHIDDEN" depth="-20" pos="-255,-90" width="400" height="400" controller="RecipeTrackerWindow" visible="{showrecipe}" force_hide="true">
 						<sprite name="smx_recipetracker_background" depth="0" pos="-90,14" width="360" height="182" sprite="smx_questtracker_background" color="[smxhud_element_background]" globalopacitymod="1.5" tooltip_key="xuiRecipeTrackerHUD" />
 						<label name="smx_recipetracker_title" depth="1" pos="105,-15" width="280" height="28" style="smx_label_normal" text="{recipetitle}" font_size="26" pivot="center" justify="center" upper_case="true" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
 						<sprite name="windowIcon" depth="1" pos="-75,1" style="icon32px" sprite="ui_game_symbol_hammer" justify="left" color="[smxhud_element_iconcolor_1]" />
@@ -1148,7 +892,7 @@
 
 				<append xpath="/windows">
 					<window name="chatoutput" depth="-99" pos="10,-565" width="500" height="250" anchor="LeftTop" controller="ChatOutput" fadeout_wait_time="5" fadeout_duration="2">
-						<textlist name="txtOutput" depth="2" pos="8,-214" width="484" height="210" list_style="chat" font_size="22" crispness="OnDesktop" effect="outline" effect_distance="1,1" effect_color="[black]" pivot="bottomleft" />
+						<textlist name="txtOutput" depth="2" pos="8,-214" width="484" height="210" list_style="chat" font_size="22" crispness="OnDesktop" effect="Outline8" effect_distance="1,1" effect_color="[smx_element_labelcolor_effect]" pivot="bottomleft" />
 					</window>
 				</append>
 
@@ -1170,8 +914,8 @@
 
 						<rect name="input" depth="2" pos="0,-222" height="32">
 							<sprite name="smxhud_chat_separation_line" depth="8" pos="20,3" width="450" height="3" sprite="smx_sepline_1" color="[smxhud_unitframe_separation]" globalopacitymod="1.5" />
-							<smxhud_chat_combobox name="cbxTarget" pos="2,-8" width="100" height="22" type="ComboBoxList`1[EChatType]" value_max="party" font_size="22" localization_prefix="xuiChatTarget" />
-							<smxhudtextfield name="txtInput" depth="2" pos="110,-18" width="386" height="28" font_size="22" crispness="OnDesktop" effect="outline" effect_distance="1,1" effect_color="[black]" pivot="left" justify="left" overflow="ClampContent" backgroundcolor="[transparent]" character_limit="300" max_line_count="1" focus_on_open="true" open_vk_on_open="false" />
+							<smx_combobox_news name="cbxTarget" pos="2,-8" width="150" height="22" type="ComboBoxList`1[EChatType]" value_max="party" font_size="22" localization_prefix="xuiChatTarget" />
+							<smxhudtextfield name="txtInput" depth="2" pos="160,-18" width="336" height="28" font_size="22" crispness="OnDesktop" effect="outline" effect_distance="1,1" effect_color="[black]" pivot="left" justify="left" overflow="ClampContent" backgroundcolor="[transparent]" character_limit="300" max_line_count="1" focus_on_open="true" open_vk_on_open="false" />
 						</rect>
 					</window>
 				</append>
@@ -2432,7 +2176,7 @@
 								<grid name="inventory" rows="4" cols="1" cell_width="101" cell_height="141" controller="EquipmentStackGrid" repeat_content="false">
 									<smx_equipment_stack_sdcs name="0" text="HEAD" />
 									<smx_equipment_stack_sdcs name="0" text="CHEST" />
-									<smx_equipment_stack_sdcs name="0" text="LEGS" />
+									<smx_equipment_stack_sdcs name="0" text="HANDS" />
 									<smx_equipment_stack_sdcs name="0" text="FEET" />
 								</grid>
 							</panel>
@@ -3553,7 +3297,7 @@
 
 						<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
 							<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="ui_game_symbol_map_trader"/>
-							<label controller="PlayerName" on_press="true" style="header.name" size="350,32"/>
+			<player_name width="350" height="32" />
 							<label depth="2" pos="340,-8" width="300" height="28" text="{restocklabel}: {timeleft}" justify="right" visible="{showrestock}" />
 
 							<label pos="600, -6" depth="2" name="availableMoney" width="64" height="32" text="{availablemoney}" font_size="32" justify="right" pivot="topright" visible="{isowner}"/>
@@ -3924,7 +3668,7 @@
 				<remove xpath="/windows/window[@name='windowSkillList']" />
 
 				<append xpath="/windows">
-					<window name="windowSkillList" depth="12" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SkillListWindow" cursor_area="true">
+					<window name="windowSkillList" depth="12" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SMXcore.SkillListWindow, SMXcore" cursor_area="true">
 
 						<panel name="noclick" depth="-2" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false">
 							<texture name="bgTexture" depth="0" texture="Textures/UI/news_background" color="255,255,255,250" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
@@ -3932,13 +3676,13 @@
 
 						<rect name="leftPanel" pos="-600,-50" height="650" width="590" >
 
-							<sprite name="smx_panel_background" depth="1" pos="-40,0" width="1800" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
+							<sprite name="smx_panel_background" depth="1" pos="-40,0" width="1850" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
 
 							<rect name="content" pos="-340,-10">
 
-								<sprite name="smx_panel_separation" depth="4" pos="600,25" width="1100" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+								<sprite name="smx_panel_separation" depth="4" pos="620,25" width="1150" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-								<rect pos="850,101" width="300" height="48" visible="{isnormal}">
+								<rect pos="900,101" width="300" height="48" visible="{isnormal}">
 									<sprite name="background" depth="0" width="200" type="sliced" color="7,7,7,325" />
 									<label name="smxSkillPointTitle" depth="2" pos="65,-25" width="200" height="48" pivot="center" style="smx_label_outline" text="Skill Points" font_size="32" justify="right" upper_case="true" color="255,255,255,255" />
 
@@ -3946,8 +3690,10 @@
 									<label name="smxSkillPoints" pos="215,-25" depth="2" width="100" height="48" pivot="center" style="smx_label_outline" text="{skillpointsavailable}" font_size="40" color="[lightestGrey]" justify="right" controller="SMXcore.PlayerStatWindow, SMXcore" />
 								</rect>
 
-								<grid name="categories" depth="1" pos="130,77" rows="1" cols="3" width="663" height="34" cell_width="170" cell_height="56" repeat_content="true" controller="CategoryList">
-									<smx_skill_category_entry />
+								<grid name="categories" depth="1" pos="130,77" rows="1" cols="3" width="663" height="34" cell_width="170" cell_height="56" repeat_content="false" controller="SMXcore.SkillCategoryList, SMXcore">
+									<smx_skill_category_entry categoryname="standard" spritename="" displayname_key="attSkillsName"/>
+									<smx_skill_category_entry categoryname="book" spritename="" displayname_key="attBooksName"/>
+									<smx_skill_category_entry categoryname="crafting" spritename="" displayname_key="attCraftingName"/>
 								</grid>
 
 								<label name="Skills" depth="200" pos="165,75" width="120" height="22" pivot="center" style="smx_label_outline" text="SKILLS" font_size="22" color="[white]" upper_case="true" />
@@ -3955,433 +3701,89 @@
 								<label name="Skills" depth="200" pos="490,75" width="120" height="22" pivot="center" style="smx_label_outline" text="MAGAZINES" font_size="22" color="[white]" upper_case="true" />
 
 
-								<rect controller="SkillList">
-									<rect visible="{isnormal}">
-		<!-- ATTRIBUTES -->
-										<grid name="SMXuiDummyAttribute" pos="-30,6" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true" force_hide="true">
-											<smxui_skill_entry_dummy_attributes name="dummyAttribute" />
-										</grid>
-										<grid name="attPerception" pos="100,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_attribute_entry name="Perception" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="attStrength" pos="100,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_attribute_entry name="Strength" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="attFortitude" pos="100,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_attribute_entry name="Fortitude" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="attAgility" pos="100,-600" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_attribute_entry name="Agility" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="attIntellect" pos="100,-770" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_attribute_entry name="Intellect" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
+								<rect>
+									<rect controller="SMXcore.SkillList, SMXcore" visible="{isnormal}">
 
-		<!-- PERKS: PERCEPTION: COMBAT -->
-										<sprite name="textBackground" depth="6" pos="381,-18" size="400,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="381,-18" width="400" height="25" pivot="center" style="smx_label_outline" text="Combat" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+										<sprite name="arrowUp" depth="6" pos="35,-10" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+										<sprite name="arrowDown" depth="6" pos="35,-822" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
 
-										<grid name="perkDeadEye" pos="230,-91" rows="1" cols="1" cell_width="80" cell_height="80" repeat_content="true">
-											<smx_skills_perk_entry name="DeadEye" pos="-64,6" size="95,95" rotation="0" />
-										</grid>
-										<grid name="perkDemolitionsExpert" pos="330,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="DemolitionsExpert" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkJavelinMaster" pos="430,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="JavelinMaster" pos="-64,6" size="85,85" rotation="0" />
-										</grid>
-										<grid name="perkFlurryOfPerception" pos="530,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="FlurryOfPerception" pos="-64,0" size="100,100" rotation="0" />
-										</grid>
+										<scrollbar	name="scrollbar"
+											depth="6"
+											pos="35,-415"
+											width="12"
+											height="780"
+											padding="4"
+											foregroundname="handler"
+											foregroundsprite="smx_scrollbar_handler"
+											foregroundcolor="[smxui_scrollbar_handler]"
+											backgroundname="background"
+											backgroundsprite="smx_scrollbar_background"
+											backgroundcolor="[smxui_scrollbar_background]"
+											pivot="center">
 
-		<!-- PERKS: PERCEPTION: GENERAL -->
-										<sprite name="textBackground" depth="6" pos="735,-18" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="735,-18" width="400" height="25" pivot="center" style="smx_label_outline" text="General" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+											<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+											<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+										</scrollbar>
 
-										<grid name="perkInfiltrator" pos="635,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Infiltrator" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkAnimalTracker" pos="735,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="AnimalTracker" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkPenetrator" pos="835,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Penetrator" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
+										<scrollview name="scrollview" depth="5" pos="-50,0" width="1340" height="840" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
 
-		<!-- PERKS: PERCEPTION: SCAVENGER -->
-										<sprite name="textBackground" depth="6" pos="1040,-18" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="1040,-18" width="400" height="25" pivot="center" style="smx_label_outline" text="Scavenging" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
+											<table name="skillList" pos="120,-20" columns="1" padding="-20,-8" reposition_twice="true">
+		<!-- PERKS: PERCEPTION -->
+												<rect name="Perception">
+													<smx_skills_attribute_entry name="Perception" pos="0,2" size="90,90" rotation="0" />
+													<smx_skills_skill_grid pos="130,91" perkCount="4" groupName="Combat" />
+													<smx_skills_skill_grid pos="535,91" perkCount="3" groupName="General" />
+													<smx_skills_skill_grid pos="840,91" perkCount="3" groupName="Scavening" />
+												</rect>
+		<!-- PERKS: STRENGTH -->
+												<rect name="Strength">
+													<smx_skills_attribute_entry name="Strength" pos="0,2" size="90,90" rotation="0" />
+													<smx_skills_skill_grid pos="130,91" perkCount="4" groupName="Combat" />
+													<smx_skills_skill_grid pos="535,91" perkCount="3" groupName="General" />
+													<smx_skills_skill_grid pos="840,91" perkCount="2" groupName="Construction" />
+												</rect>
+		<!-- PERKS: FORTITUDE -->
+												<rect name="Fortitude">
+													<smx_skills_attribute_entry name="Fortitude" pos="0,2" size="90,90" rotation="0" />
+													<smx_skills_skill_grid pos="130,91" perkCount="3" groupName="Combat" />
+													<smx_skills_skill_grid pos="435,91" perkCount="4" groupName="Survival" />
+													<smx_skills_skill_grid pos="840,91" perkCount="3" groupName="Recovery" />
+												</rect>
+		<!-- PERKS: AGILITY -->
+												<rect name="Agility">
+													<smx_skills_attribute_entry name="Agility" pos="0,2" size="90,90" rotation="0" />
+													<smx_skills_skill_grid pos="130,91" perkCount="4" groupName="Combat" />
+													<smx_skills_skill_grid pos="535,91" perkCount="3" groupName="Athletics" />
+													<smx_skills_skill_grid pos="840,91" perkCount="2" groupName="Stealth" />
+												</rect>
+		<!-- PERKS: INTELLECT -->
+												<rect name="Intellect">
+													<smx_skills_attribute_entry name="Intellect" pos="0,2" size="90,90" rotation="0" />
+													<smx_skills_skill_grid pos="130,91" perkCount="3" groupName="Combat" />
+													<smx_skills_skill_grid pos="435,91" perkCount="3" groupName="Influence" />
+													<smx_skills_skill_grid pos="740,91" perkCount="4" groupName="Craftsmanship" />
+												</rect>
 
-										<grid name="perkLuckyLooter" pos="940,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="LuckyLooter" pos="-64,6" size="65,65" rotation="0" />
-										</grid>
-										<grid name="perkTreasureHunter" pos="1040,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="TreasureHunter" pos="-64,6" size="85,85" rotation="0" />
-										</grid>
-										<grid name="perkSalvageOperations" pos="1140,-91" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="SalvageOperations" pos="-64,6" size="75,75" rotation="0" />
-										</grid>
+											</table>
 
-		<!-- PERKS: STRENGTH: COMBAT -->
-										<sprite name="textBackground" depth="6" pos="381,-188" size="400,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="381,-188" width="400" height="25" pivot="center" style="smx_label_outline" text="Combat" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkBoomstick" pos="230,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="BoomStick" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="perkPummelPete" pos="330,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="PummelPete" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkSkullCrusher" pos="430,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="SkullCrusher" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkFlurryOfStrength" pos="530,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="FlurryOfStrength" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-
-		<!-- PERKS: STRENGTH: GENERAL -->
-										<sprite name="textBackground" depth="6" pos="735,-188" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="735,-188" width="400" height="25" pivot="center" style="smx_label_outline" text="General" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkHeavyArmor" pos="635,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="HeavyArmor" pos="-64,4" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkPackMule" pos="735,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="PackMule" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkMasterChef" pos="835,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="MasterChef" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-
-		<!-- PERKS: STRENGTH: CONSTRUCTION -->
-										<sprite name="textBackground" depth="6" pos="990,-188" size="200,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="990,-188" width="200" height="25" pivot="center" style="smx_label_outline" text="Construction" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkMiner69r" pos="940,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Miner69er" pos="-62,6" size="85,85" rotation="0" />
-										</grid>
-										<grid name="perkMotherLode" pos="1040,-260" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="MotherLode" pos="-64,6" size="75,75" rotation="-10" />
-										</grid>
-
-		<!-- PERKS: FORTITUDE: COMBAT -->
-										<sprite name="textBackground" depth="6" pos="330,-358" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="330,-358" width="300" height="25" pivot="center" style="smx_label_outline" text="Combat" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkMachineGunner" pos="230,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="MachineGunner" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="perkBrawler" pos="330,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Brawler" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkFlurryOfFortitude" pos="430,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="FlurryOfFortitude" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-
-		<!-- PERKS: FORTITUDE: SURVIVAL -->
-										<sprite name="textBackground" depth="6" pos="684,-358" size="400,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="684,-358" width="400" height="25" pivot="center" style="smx_label_outline" text="Survival" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkTheHuntsman" pos="535,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Huntsman" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkWellInsulated" pos="635,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="WellInsulated" pos="-64,6" size="75,75" rotation="0" />
-										</grid>
-										<grid name="perkLivingOffTheLand" pos="735,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="LivingofftheLand" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="perkPainTolerance" pos="835,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="PainTolerance" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-
-		<!-- PERKS: FORTITUDE: RECOVERY -->
-										<sprite name="textBackground" depth="6" pos="1041,-358" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="1041,-358" width="300" height="25" pivot="center" style="smx_label_outline" text="Recovery" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkHealingFactor" pos="940,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="HealingFactor" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkSlowMetabolism" pos="1040,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="SlowMetabolism" pos="-64,6" size="65,65" rotation="0" />
-										</grid>
-										<grid name="perkRuleOneCardio" pos="1140,-430" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Cardio" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-
-		<!-- PERKS: AGILITY: COMBAT -->
-										<sprite name="textBackground" depth="6" pos="381,-528" size="400,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="381,-528" width="400" height="25" pivot="center" style="smx_label_outline" text="Combat" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkGunslinger" pos="230,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="GunSlinger" pos="-70,6" size="65,65" rotation="0" />
-										</grid>
-										<grid name="perkArchery" pos="330,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Archery" pos="-68,10" size="90,90" rotation="0" />
-										</grid>
-										<grid name="perkDeepCuts" pos="430,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="DeepCuts" pos="-64,6" size="85,85" rotation="0" />
-										</grid>
-										<grid name="perkFlurryOfAgility" pos="530,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="FlurryOfAgility" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-
-		<!-- PERKS: AGILITY: ATHLETICS -->
-										<sprite name="textBackground" depth="6" pos="735,-528" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="735,-528" width="300" height="25" pivot="center" style="smx_label_outline" text="Athletics" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkRunAndGun" pos="635,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="RunAndGun" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkMediumArmor" pos="735,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="MediumArmor" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkParkour" pos="835,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Parkour" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-
-		<!-- PERKS: AGILITY: STEALTH -->
-										<sprite name="textBackground" depth="6" pos="990,-528" size="200,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="990,-528" width="200" height="25" pivot="center" style="smx_label_outline" text="Stealth" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkHiddenStrike" pos="940,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="HiddenStrike" pos="-64,6" size="75,75" rotation="0" />
-										</grid>
-										<grid name="perkFromTheShadows" pos="1040,-600" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="FromTheShadows" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-
-		<!-- PERKS: INTELLECT: COMBAT -->
-										<sprite name="textBackground" depth="6" pos="330,-698" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="330,-698" width="300" height="25" pivot="center" style="smx_label_outline" text="Combat" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkTurrets" pos="230,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Turrets" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkElectrocutioner" pos="330,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Electrocutioner" pos="-64,6" size="90,90" rotation="0" />
-										</grid>
-										<grid name="perkFlurryOfIntellect" pos="430,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="FlurryOfIntellect" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-
-		<!-- PERKS: INTELLECT: INFLUENCE -->
-										<sprite name="textBackground" depth="6" pos="634,-698" size="300,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="634,-698" width="300" height="25" pivot="center" style="smx_label_outline" text="Influence" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkBetterBarter" pos="535,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="BetterBarter" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkDaringAdventurer" pos="635,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="DaringAdventurer" pos="-64,8" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkCharismaticNature" pos="735,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="CharismaticNature" pos="-64,6" size="75,75" rotation="0" />
-										</grid>
-
-		<!-- PERKS: INTELLECT: CRAFTMANSHIP -->
-										<sprite name="textBackground" depth="6" pos="991,-698" size="400,25" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
-										<label name="groupName" depth="7" pos="991,-698" width="400" height="25" pivot="center" style="smx_label_outline" text="Craftsmanship" font_size="16" spacing_x="3" justify="center" upper_case="true" color="255,255,255,225" force_hide="false" />
-
-										<grid name="perkPhysician" pos="840,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="Physician" pos="-64,0" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkAdvancedEngineering" pos="940,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="AdvancedEngineering" pos="-64,6" size="80,80" rotation="0" />
-										</grid>
-										<grid name="perkGreaseMonkey" pos="1040,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="GreaseMonkey" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
-										<grid name="perkLockPicking" pos="1140,-770" rows="1" cols="1" cell_width="68" cell_height="68" repeat_content="true">
-											<smx_skills_perk_entry name="LockPicking" pos="-64,6" size="70,70" rotation="0" />
-										</grid>
+										</scrollview>
 									</rect>
-
 		<!-- BOOKS -->
-									<rect visible="{isbook}">
-										<grid name="SMXuiDummyAttribute" pos="-30,6" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true" force_hide="true">
-											<smxui_skill_entry_dummy_attributes name="dummyAttribute" />
-										</grid>
+									<grid name="skillBooks" pos="125,-85" rows="{bookgroupcount}" cols="7" cell_width="155" cell_height="170" repeat_content="true" visible="{isbook}" controller="SMXcore.BookList, SMXcore">
+										<smx_skills_book_entry name="entry" pos="0,0" size="90,90" rotation="0" />
+									</grid>
+		<!-- MAGAZINES -->
+									<grid name="skillMagazine" pos="125,-85" rows="{craftingskillcount}" cols="7" cell_width="155" cell_height="170" repeat_content="true" visible="{iscrafting}" controller="SMXcore.CraftingSkillList, SMXcore">
+										<smx_skills_book_entry name="entry" pos="0,0" size="90,90" rotation="0" />
+									</grid>
 
-										<grid name="skillBooks" pos="100,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillArtOfMining" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="255,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillAutoWeapons" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="410,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillBatterUp" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="565,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillBarBrawling" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="720,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillFiremansAlmanac" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="875,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillGreatHeist" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="1030,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillHuntingJournal" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="100,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillLuckyLooter" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="255,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillEnforcer" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="410,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillNightStalker" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="565,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillPistolPete" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="720,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillArchery" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="875,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillShotguns" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="1030,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillSniper" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="100,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillSpearHunter" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="255,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillUrbanCombat" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="410,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillTechJunkie" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillBooks" pos="565,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="skillWasteTreasures" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-									</rect>
-
-									<rect visible="{iscrafting}">
-										<grid name="SMXuiDummyAttribute" pos="-30,6" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true" force_hide="true">
-											<smxui_skill_entry_dummy_attributes name="dummyAttribute" />
-										</grid>
-
-										<grid name="skillMagazine" pos="100,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingHarvestingTools" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="255,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingRepairTools" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="410,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingSalvageTools" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="565,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingKnuckles" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="720,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingBlades" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="875,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingClubs" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="1030,-90" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingSledgehammers" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="100,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingBows" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="255,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingSpears" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="410,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingHandguns" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="565,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingShotguns" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="720,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingRifles" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="875,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingMachineGuns" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="1030,-260" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingExplosives" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="100,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingRobotics" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="255,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingArmor" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="410,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingMedical" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="565,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingFood" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="720,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingSeeds" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="875,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingElectrician" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="1030,-430" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingTraps" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="100,-600" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingWorkstations" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-										<grid name="skillMagazine" pos="255,-600" rows="1" cols="1" cell_width="100" cell_height="120" repeat_content="true">
-											<smx_skills_book_entry name="craftingVehicles" pos="0,0" size="90,90" rotation="0" />
-										</grid>
-
-									</rect>
 								</rect>
 							</rect>
 						</rect>
 					</window>
 				</append>
 
-			</if>
+			</if>																 
 		</conditional>
 
 
@@ -4393,83 +3795,7 @@
 				<remove xpath="/windows/window[@name='windowSkillAttributeInfo']" />
 
 				<append xpath="/windows">
-					<window name="windowSkillAttributeInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SkillAttributeInfoWindow" cursor_area="true" hidden_entries_with_paging="2">
-
-						<rect name="window" pos="0,-90" width="590" height="650">
-
-							<sprite name="smx_panel_background" depth="1" pos="640,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
-
-							<rect name="header" pos="0,30" height="39" depth="0">
-
-								<label name="smxAttInfo" depth="4" pos="620,70" width="590" height="50" pivot="center" style="smx_label_outline" text_key="attSkillsName" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
-
-								<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-							</rect>
-						</rect>
-
-						<rect name="content" pos="0,-46" height="669" depth="1" force_hide="false">
-
-							<rect name="descriptionBox" depth="1" pos="360,-50" width="550" height="100" >
-								<label depth="2" name="descriptionText" pos="6,-6" width="538" height="93" style="smx_label_outline" text="!!! THIS WINDOW IS UNDER CONSTRUCTION !!!" font_size="32" spacing_x="2" />
-								<texture name="smxPopOutArt" depth="10" pos="260,-400" width="500" height="500" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/edit_menu_prefab.png" />
-							</rect>
-
-							<rect name="detailsBox" depth="1" pos="0,-100" width="646" height="179" force_hide="true">
-								<sprite depth="1" name="background" color="[mediumGrey]" type="sliced"/>
-								<sprite depth="6" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="647" height="182" color="[black]" type="sliced" fillcenter="false" />
-								<label depth="2" name="descriptionText" pos="6,-6" width="636" height="172" text="{detailsdescription}"/>
-							</rect>
-
-							<rect name="tableBox" depth="1" pos="0,-280" width="646" height="450" force_hide="true">
-								<sprite depth="1" name="background" color="[darkGrey]" type="sliced"/>
-								<sprite depth="5" pos="0,1" width="647" height="451" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
-
-								<rect name="tableHeader" pos="0,0" width="644" height="43">
-									<sprite depth="1" name="background" color="[lightGrey]" type="sliced"/>
-									<rect depth="1" pos="0,0" width="75" height="40">
-										<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" height="46" color="[black]" type="sliced" fillcenter="false" />
-										<label depth="1" pos="5,-23" text_key="xuiSkillLevel" pivot="left" justify="center" width="65" />
-									</rect>
-									<rect depth="1" pos="72,0" width="503" height="40">
-										<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" height="46" color="[black]" type="sliced" fillcenter="false" />
-										<label depth="1" pos="5,-23" text_key="xuiSkillUnlocks" pivot="left" justify="center" width="493" />
-									</rect>
-									<rect depth="1" pos="572,0" width="75" height="40">
-										<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" height="46" color="[black]" type="sliced" fillcenter="false" />
-										<label depth="1" pos="5,-23" text_key="xuiSkillBuy" pivot="left" justify="center" width="65" />
-									</rect>
-								</rect>
-
-								<grid rows="10" cols="1" pos="0,-46" width="644" cell_width="644" cell_height="40" repeat_content="true" force_hide="true">
-									<skill_attribute_level width="646" height="40" />
-								</grid>
-							</rect>
-
-							<rect name="pagerBox" depth="3" width="644" height="43" pos="3,-689" visible="{showPaging}">
-								<sprite depth="1" name="background" color="[mediumGrey]" type="sliced"/>
-								<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="647" height="47" color="[black]" type="sliced" fillcenter="false" />
-
-								<panel pos="524,0" width="104" height="43" disableautobackground="true">
-									<pager name="pager" pos="-16,-6" contents_parent="content"/>
-								</panel>
-							</rect>
-						</rect>
-					</window>
-				</append>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Skill Window - Perk Info Window -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<remove xpath="/windows/window[@name='windowSkillPerkInfo']" />
-
-				<append xpath="/windows">
-					<window name="windowSkillPerkInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SkillPerkInfoWindow" cursor_area="true" hidden_entries_with_paging="1">
+					<window name="windowSkillAttributeInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SMXcore.SkillAttributeInfoWindow, SMXcore" cursor_area="true" hidden_entries_with_paging="2">
 
 						<rect name="window" pos="0,-90" width="590" height="650">
 
@@ -4537,7 +3863,110 @@
 								</rect>
 
 								<grid name="smxSkillsGrid" pos="-55,-570" rows="2" cols="5" width="500" cell_width="100" cell_height="170" repeat_content="true" justify="center">
-									<smx_skills_perk_level width="100" height="120" />
+									<smx_skills_perk_level width="100" height="120" controller="SkillAttributeLevel" />
+								</grid>
+
+							</rect>
+						</rect>
+
+						<rect name="test" pos="-350,-190" width="590" height="650" select_tab_contents_on_open="false">
+
+							<rect name="content" pos="0,-46" height="669" depth="1">
+
+								<rect name="pagerBox" depth="3" width="644" height="43" pos="3,-639" visible="{showPaging}">
+									<sprite depth="1" name="background" color="[mediumGrey]" type="sliced"/>
+									<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,2" width="647" height="47" color="[black]" type="sliced" fillcenter="false" />
+
+									<panel pos="524,0" width="104" height="43" disableautobackground="true">
+										<pager name="pager" pos="-16,-6" contents_parent="content" />
+									</panel>
+								</rect>
+							</rect>
+						</rect>
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Skill Window - Perk Info Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<remove xpath="/windows/window[@name='windowSkillPerkInfo']" />
+
+				<append xpath="/windows">
+					<window name="windowSkillPerkInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SMXcore.SkillPerkInfoWindow, SMXcore" cursor_area="true" hidden_entries_with_paging="1">
+
+						<rect name="window" pos="0,-90" width="590" height="650">
+
+							<sprite name="smx_panel_background" depth="1" pos="640,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
+
+							<rect name="header" pos="0,30" height="39" depth="0">
+
+								<label name="smx_skill_title" depth="4" pos="690,55" width="425" height="44" pivot="center" style="smx_label_outline" text="{groupname}" font_size="40" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" overflow="ShrinkContent" />
+
+								<rect name="smx_skill_icon" pos="400,28">
+									<sprite name="background" depth="3" pos="0,-4" size="120,120" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+
+									<sprite name="backgroundArt" depth="4" pos="0,-5" size="98,98" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45"/>
+
+									<sprite name="foreground" depth="6" pos="0,-4" size="100,100" pivot="center" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" rotation="-45" />
+
+									<sprite name="smallBackgroundMain" depth="9" pos="0,-52" size="40,40" pivot="center" sprite="smx_slot_frame_narrow" color="{rowstatecolor}" rotation="-45" />
+									<sprite name="smallBackgroundMain2" depth="8" pos="0,-52" size="50,50" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+									<sprite name="groupIcon" depth="7" pos="0,6" size="110,110" pivot="center" sprite="{groupicon}" color="{statuscolor}" foregroundlayer="true" />
+
+									<label name="smx_skill_current" depth="10" pos="0,-54" width="40" height="34" pivot="center" text="{skillLevel}" font_size="32" justify="center" />
+
+									<label name="smx_skill_cost" depth="10" pos="90,-18" width="300" height="22" pivot="center" text="Cost Next Level: {buycost}" font_size="18" color="[mediumGrey]" justify="right" />
+
+									<label name="smx_skill_max" depth="10" pos="335,-18" width="300" height="22" pivot="center" text="No of Levels: {maxSkillLevel}" font_size="18" color="[mediumGrey]" justify="right" />
+
+								</rect>
+
+								<sprite name="smx_panel_separation" depth="2" pos="690,25" width="450" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+								<sprite name="smx_panel_separation" depth="2" pos="400,-120" width="230" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" rotation="90" />
+							</rect>
+
+							<rect name="content" depth="1" pos="477,0" width="425" height="669" >
+
+								<rect name="descriptionBox" depth="1" pos="0,0" width="425" height="160" >
+									<sprite depth="1" name="background" sprite="menu_empty" type="sliced" color="7,7,7,275" />
+
+									<label name="descriptionText" depth="2" pos="10,-10" width="405" height="140" style="smx_label_outline" text="{groupdescription}" font_size="22" />
+
+									<rect name="smxOutline" depth="2">
+										<sprite name="smxOutlineTop" pos="-15,1" width="450" height="3" sprite="smx_sepline_1" />
+										<sprite name="smxOutlineLeft" pos="-1,-168" width="180" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineRight" pos="422,-173" width="185" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineBottom" pos="-12,-158" width="442" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+									</rect>
+
+								</rect>
+
+								<sprite name="smx_panel_separation" depth="2" pos="175,-180" width="520" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" flip="horizontally" />
+
+								<rect name="detailsBox" depth="1" pos="-105,-235" width="500" height="200" >
+									<sprite depth="1" name="background" sprite="menu_empty" type="sliced" color="7,7,7,275" />
+
+									<label name="descriptionText" depth="2" pos="10,-10" width="485" height="180" style="smx_label_outline" text="{detailsdescription}" font_size="22" />
+
+									<rect name="smxOutline" depth="2">
+										<sprite name="smxOutlineTop" pos="-15,1" width="525" height="3" sprite="smx_sepline_1" />
+										<sprite name="smxOutlineLeft" pos="-1,-208" width="220" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineRight" pos="497,-213" width="225" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineBottom" pos="-12,-198" width="517" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+									</rect>
+
+								</rect>
+
+								<grid name="smxSkillsGrid" pos="-55,-570" rows="2" cols="5" width="500" cell_width="100" cell_height="170" repeat_content="true" justify="center">
+									<smx_skills_perk_level width="100" height="120" controller="SkillPerkLevel" />
 								</grid>
 
 							</rect>
@@ -4572,7 +4001,7 @@
 				<remove xpath="/windows/window[@name='windowSkillBookInfo']" />
 
 				<append xpath="/windows">
-					<window name="windowSkillBookInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SkillBookInfoWindow" cursor_area="true" hidden_entries_with_paging="1">
+					<window name="windowSkillBookInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SMXcore.SkillBookInfoWindow, SMXcore" cursor_area="true" hidden_entries_with_paging="1">
 
 						<rect name="window" pos="0,-90" width="590" height="650">
 
@@ -4666,7 +4095,7 @@
 				<remove xpath="/windows/window[@name='windowSkillCraftingInfo']" />
 
 				<append xpath="/windows">
-					<window name="windowSkillCraftingInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SkillCraftingInfoWindow" cursor_area="true" hidden_entries_with_paging="1">
+					<window name="windowSkillCraftingInfo" depth="13" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="SMXcore.SkillCraftingInfoWindow, SMXcore" cursor_area="true" hidden_entries_with_paging="1">
 
 						<rect name="window" pos="0,-90" width="590" height="650">
 
@@ -4714,83 +4143,192 @@
 
 							<sprite name="smx_panel_separation" depth="2" pos="175,-180" width="520" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" flip="horizontally" />
 
-							<rect name="detailsBox" depth="1" pos="-105,-235" width="500" height="200" >
-								<grid rows="2" cols="7" pos="0,0" width="450" height="368" cell_width="92" cell_height="88" repeat_content="false" arrangement="horizontal" >
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas1}" sprite="{unlock_icon1}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked1}" />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip1}" />
+							<rect name="detailsBox" depth="1" pos="-55,-285" width="505" height="303" >
+								<grid rows="3" cols="5" pos="0,0" width="505" height="303" cell_width="101" cell_height="101" repeat_content="false" arrangement="horizontal" >
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked1}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked1}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas1}" sprite="{unlock_icon1}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked1}" />
+										<sprite name="itemIcon1" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip1}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas2}" sprite="{unlock_icon2}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked2}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon2" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip2}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked2}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked2}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas2}" sprite="{unlock_icon2}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked2}" />
+										<sprite name="itemIcon2" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip2}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas3}" sprite="{unlock_icon3}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked3}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon3" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip3}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked3}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked3}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas3}" sprite="{unlock_icon3}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked3}" />
+										<sprite name="itemIcon3" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip3}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas4}" sprite="{unlock_icon4}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked4}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon4" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip4}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked4}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked4}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas4}" sprite="{unlock_icon4}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked4}" />
+										<sprite name="itemIcon4" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip4}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas5}" sprite="{unlock_icon5}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked5}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon5" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip5}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked5}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked5}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas5}" sprite="{unlock_icon5}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked5}" />
+										<sprite name="itemIcon5" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip5}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas6}" sprite="{unlock_icon6}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked6}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon6" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip6}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked6}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked6}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas6}" sprite="{unlock_icon6}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked6}" />
+										<sprite name="itemIcon6" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip6}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas7}" sprite="{unlock_icon7}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked7}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon7" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip7}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked7}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked7}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas7}" sprite="{unlock_icon7}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked7}" />
+										<sprite name="itemIcon7" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip7}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas8}" sprite="{unlock_icon8}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked8}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon8" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip8}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked8}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked8}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas8}" sprite="{unlock_icon8}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked8}" />
+										<sprite name="itemIcon8" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip8}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas9}" sprite="{unlock_icon9}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked9}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon9" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip9}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked9}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked9}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas9}" sprite="{unlock_icon9}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked9}" />
+										<sprite name="itemIcon9" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip9}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas10}" sprite="{unlock_icon10}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked10}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon10" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip10}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked10}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked10}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas10}" sprite="{unlock_icon10}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked10}" />
+										<sprite name="itemIcon10" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip10}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas11}" sprite="{unlock_icon11}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked11}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon11" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip11}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked11}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked11}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas11}" sprite="{unlock_icon11}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked11}" />
+										<sprite name="itemIcon11" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip11}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas12}" sprite="{unlock_icon12}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked12}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon12" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip12}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked12}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked12}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas12}" sprite="{unlock_icon12}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked12}" />
+										<sprite name="itemIcon12" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip12}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas13}" sprite="{unlock_icon13}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked13}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon13" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip13}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked13}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked13}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas13}" sprite="{unlock_icon13}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked13}" />
+										<sprite name="itemIcon13" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip13}" />
 									</rect>
-									<rect width="92" height="88">
-										<sprite depth="6" pos="48,-48" width="64" height="64" atlas="{unlock_icon_atlas14}" sprite="{unlock_icon14}" pivot="center" foregroundlayer="true" />
-										<sprite depth="8" pos="64,-66" style="icon30px" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked14}"  />
-										<sprite color="0,0,0,1" depth="12" width="92" height="88" name="itemIcon14" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip14}" />
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked14}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked14}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas14}" sprite="{unlock_icon14}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-33" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked14}" />
+										<sprite name="itemIcon14" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip14}" />
 									</rect>
-									
+									<rect width="101" height="101">
+										<sprite name="mainBackground" depth="2" pos="0,0" size="100,100" pivot="center" sprite="smx_menu_background" color="7,7,7,275" />
+										<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+										<sprite name="durabilityBackground" depth="4" pos="0,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="69,69,69,196" rotation="45" />
+										<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[lightGrey]" rotation="-45" />
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{unlock_icon_locked15}" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{unlock_icon_locked15}" />
+
+										<sprite depth="6" pos="0,0" width="64" height="64" atlas="{unlock_icon_atlas15}" sprite="{unlock_icon14}" pivot="center" foregroundlayer="true" />
+										<sprite depth="8" pos="0,-30" size="16,16" sprite="ui_game_symbol_unlock" pivot="center" visible="{unlock_icon_locked15}" />
+										<sprite name="itemIcon15" depth="12" pos="0,0" width="100" height="100" pivot="center" color="0,0,0,1" collider_scale="1.0" on_hover="true" on_press="true" tooltip="{unlock_icon_tooltip15}" />
+									</rect>
 								</grid>
 							</rect>
 
-							<grid name="smxSkillsGrid" pos="-55,-570" rows="1" cols="5" width="500" cell_width="100" cell_height="170" repeat_content="true" justify="center">
+							<grid name="smxSkillsGrid" pos="-55,-740" rows="1" cols="5" width="500" cell_width="100" cell_height="170" repeat_content="true" justify="center">
 								<smx_skill_crafting_entry width="100" height="120" />
 							</grid>
 
@@ -5175,9 +4713,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'Optionals.Optionals.TargetHealthBar') == 'On'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='windowTargetBar']/@visibility">always</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'Optionals.Optionals.TargetHealthBar') == 'On'">
+
+								<set xpath="/windows/window[@name='windowTargetBar']/@visibility">always</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5192,27 +4736,33 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.NoElements.ScreenshotMode') == 'On'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='HUDLeftStatBars']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowTargetBar']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowEntering']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowGroupBars']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='HUDRightStatBars']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='interactionPrompt']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='focusedBlockHealth']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowCompass']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='toolTipPopups']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowToolbelt']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowTimer']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowThrow']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowLocation']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowQuestTracker']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='windowRecipeTracker']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='smxhudLevelXP']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='smxhudBuffFrame']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.NoElements.ScreenshotMode') == 'On'">
 
-						<setattribute xpath="/windows/window[@name='onScreenIcons']" name="force_hide">true</setattribute>
+								<set xpath="/windows/window[@name='HUDLeftStatBars']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowTargetBar']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowEntering']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowGroupBars']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='HUDRightStatBars']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='interactionPrompt']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='focusedBlockHealth']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowCompass']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='toolTipPopups']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowToolbelt']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowTimer']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowThrow']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowLocation']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowQuestTracker']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='windowRecipeTracker']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='smxhudLevelXP']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='smxhudBuffFrame']/@force_hide">true</set>
+
+								<setattribute xpath="/windows/window[@name='onScreenIcons']" name="force_hide">true</setattribute>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5227,9 +4777,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.Compass') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='windowCompass']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.Compass') == 'Off'">
+
+								<set xpath="/windows/window[@name='windowCompass']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5244,9 +4800,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.OnScreenIcons') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<setattribute xpath="/windows/window[@name='onScreenIcons']" name="force_hide">true</setattribute>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.OnScreenIcons') == 'Off'">
+
+								<setattribute xpath="/windows/window[@name='onScreenIcons']" name="force_hide">true</setattribute>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5261,9 +4823,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.EnteringPOIPopup') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='windowEntering']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.EnteringPOIPopup') == 'Off'">
+
+								<set xpath="/windows/window[@name='windowEntering']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5278,9 +4846,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.LocationDifficulty') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='windowLocation']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.LocationDifficulty') == 'Off'">
+
+								<set xpath="/windows/window[@name='windowLocation']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5295,9 +4869,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.CurrentTime') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect/label[@name='smxhud_time_label']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.CurrentTime') == 'Off'">
+
+								<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect/label[@name='smxhud_time_label']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5312,9 +4892,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.TipPopup') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='toolTipPopups']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.TipPopup') == 'Off'">
+
+								<set xpath="/windows/window[@name='toolTipPopups']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5329,9 +4915,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.ThrowDrawBar') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='windowThrow']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'UIElements.Elements.ThrowDrawBar') == 'Off'">
+
+								<set xpath="/windows/window[@name='windowThrow']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5346,9 +4938,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Temperatures.AmbientTemp') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect[@name='smxhud_environment_maptemp']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Temperatures.AmbientTemp') == 'Off'">
+
+								<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect[@name='smxhud_environment_maptemp']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5363,9 +4961,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Temperatures.PlayerTemp') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect[@name='smxhud_environment_coretemp']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Temperatures.PlayerTemp') == 'Off'">
+
+								<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect[@name='smxhud_environment_coretemp']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5380,9 +4984,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.BloodMoon') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='windowCompass']/sprite[@name='smx_bloodmoon_indicator']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.BloodMoon') == 'Off'">
+
+								<set xpath="/windows/window[@name='windowCompass']/sprite[@name='smx_bloodmoon_indicator']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5397,9 +5007,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.SkillPoints') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect[@name='smx_skillpoints_current']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.SkillPoints') == 'Off'">
+
+								<set xpath="/windows/window[@name='smxhudLevelXP']/rect/rect/rect[@name='smx_skillpoints_current']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5414,9 +5030,15 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.LootStage') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/label[@name='smxhud_backpack_lootstage']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.LootStage') == 'Off'">
+
+								<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/label[@name='smxhud_backpack_lootstage']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5431,12 +5053,18 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.LockedSlots') == 'Off'">
+					<if cond="mod_loaded('zSMXhud')">
 
-						<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/sprite[@name='smxhud_artbox_background_45']/@force_hide">true</set>
-						<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/sprite[@name='smxhud_artbox_foreground_45']/@force_hide">true</set>
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'SMXFeature.Indicators.LockedSlots') == 'Off'">
 
-						<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/label[@name='smxhud_backpack_lockedslots']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/sprite[@name='smxhud_artbox_background_45']/@force_hide">true</set>
+								<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/sprite[@name='smxhud_artbox_foreground_45']/@force_hide">true</set>
+
+								<set xpath="/windows/window[@name='HUDRightStatBars']/rect/rect/rect/label[@name='smxhud_backpack_lockedslots']/@force_hide">true</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5451,16 +5079,22 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXui', 'global', 'Optionals.Optionals.ThirdForgeSlot') == 'On'">
+					<if cond="mod_loaded('zSMXui')">
 
-						<set xpath="/windows/window[@name='windowForgeInput']/rect[@name='content']/grid/@rows">3</set>
-						<set xpath="/windows/window[@name='windowForgeInput']/grid[@name='slot_preview']/@rows">3</set>
+						<conditional>
+							<if cond="modsetting('zSMXui', 'global', 'Optionals.Optionals.ThirdForgeSlot') == 'On'">
 
-						<append xpath="/windows/window[@name='windowForgeInput']/grid[@name='slot_preview']">
-							<rect>
-								<sprite name="slot" depth="20" width="44" height="44" color="175,30,25,196" sprite="ui_game_symbol_fire" pos="0,0" pivot="center" foregroundlayer="true"/>
-							</rect>
-						</append>
+								<set xpath="/windows/window[@name='windowForgeInput']/rect[@name='content']/grid/@rows">3</set>
+								<set xpath="/windows/window[@name='windowForgeInput']/grid[@name='slot_preview']/@rows">3</set>
+
+								<append xpath="/windows/window[@name='windowForgeInput']/grid[@name='slot_preview']">
+									<rect>
+										<sprite name="slot" depth="20" width="44" height="44" color="175,30,25,196" sprite="ui_game_symbol_fire" pos="0,0" pivot="center" foregroundlayer="true"/>
+									</rect>
+								</append>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5475,10 +5109,16 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+					<if cond="mod_loaded('zSMXui')">
 
-						<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">20</set>
-						<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">23</set>
+						<conditional>
+							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+
+								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">20</set>
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">23</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5493,10 +5133,16 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+					<if cond="mod_loaded('zSMXui')">
 
-						<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">40</set>
-						<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">63</set>
+						<conditional>
+							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+
+								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">40</set>
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">63</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5511,10 +5157,16 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+					<if cond="mod_loaded('zSMXui')">
 
-						<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">60</set>
-						<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">83</set>
+						<conditional>
+							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+
+								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">60</set>
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">83</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5529,10 +5181,16 @@
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
-					<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+					<if cond="mod_loaded('zSMXui')">
 
-						<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">80</set>
-						<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">103</set>
+						<conditional>
+							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+
+								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">80</set>
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">103</set>
+
+							</if>
+						</conditional>
 
 					</if>
 				</conditional>
@@ -5548,6 +5206,7 @@
 
 		<conditional>
 			<if cond="mod_loaded('Gears')">
+
 				<conditional>
 					<if cond="mod_loaded('zSMXmenu')">
 
@@ -5561,6 +5220,7 @@
 
 					</if>
 				</conditional>
+
 			</if>
 		</conditional>
 
@@ -5626,6 +5286,7 @@
 
 		<conditional>
 			<if cond="mod_loaded('WMMTraderQuestMap')">
+
 				<conditional>
 					<if cond="mod_loaded('zSMXui')">
 
@@ -5861,6 +5522,90 @@
 
 					</if>
 				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!-- 	// SMX // Legend Perks // Conditional Check - Skills UI Adaptation -->
+
+		<conditional>
+			<if cond="mod_loaded('LegendPerks')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<append xpath="/windows/window[@name='windowSkillList']/rect[@name='leftPanel']/rect[@name='content']/rect/rect/scrollview/table[@name='skillList']">
+
+							<rect name="LegendPerks">
+								<smx_skills_attribute_entry name="LegendPerks" pos="0,2" size="90,90" rotation="0" />
+								<smx_skills_skill_grid pos="130,91" perkCount="5" groupName="Physical Mastery" />
+								<smx_skills_skill_grid pos="640,91" perkCount="5" groupName="Physical Mastery" />
+								<smx_skills_skill_grid pos="130,-78" perkCount="2" groupName="Physical Mastery" />
+								<smx_skills_skill_grid pos="335,-78" perkCount="4" groupName="Mental Mastery" />
+								<smx_skills_skill_grid pos="740,-78" perkCount="4" groupName="Mental Mastery" />
+								<smx_skills_skill_grid pos="130,-247" perkCount="5" groupName="Mental Mastery" />
+								<smx_skills_skill_grid pos="640,-247" perkCount="5" groupName="Melee Weapon Mastery" />
+								<smx_skills_skill_grid pos="130,-416" perkCount="5" groupName="Melee Weapon Mastery" />
+								<smx_skills_skill_grid pos="635,-416" perkCount="3" groupName="Melee Weapon Mastery" />
+								<smx_skills_skill_grid pos="940,-416" perkCount="2" groupName="Ranged Weapon Mastery" />
+								<smx_skills_skill_grid pos="130,-585" perkCount="5" groupName="Ranged Weapon Mastery" />
+								<smx_skills_skill_grid pos="640,-585" perkCount="5" groupName="Ranged Weapon Mastery" />
+								<smx_skills_skill_grid pos="130,-754" perkCount="2" groupName="Ranged Weapon Mastery" />
+							</rect>
+
+						</append>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!-- 	// SMX // Z Perfection // Conditional Check - Skills UI Adaptation -->
+
+		<conditional>
+			<if cond="mod_loaded('Z_Perfection')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<append xpath="/windows/window[@name='windowSkillList']/rect[@name='leftPanel']/rect[@name='content']/rect/rect/scrollview/table[@name='skillList']">
+
+							<rect name="Z_Perfection">
+								<smx_skills_attribute_entry name="Perfection" pos="0,2" size="90,90" rotation="0" />
+								<smx_skills_skill_grid pos="130,91" perkCount="4" groupName="Self Development" />
+								<smx_skills_skill_grid pos="535,91" perkCount="4" groupName="Self Development" />
+								<smx_skills_skill_grid pos="940,91" perkCount="2" groupName="Resource Gathering" />
+								<smx_skills_skill_grid pos="130,-78" perkCount="2" groupName="Resource Gathering" />
+								<smx_skills_skill_grid pos="335,-78" perkCount="3" groupName="Armor" />
+								<smx_skills_skill_grid pos="640,-78" perkCount="5" groupName="Weapons" />
+								<smx_skills_skill_grid pos="130,-247" perkCount="2" groupName="Weapons" />
+							</rect>
+
+						</append>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!-- 	// SMX // TheMeanOnes Precious Ore Perk // Conditional Check - Skills UI Adaptation -->
+
+		<conditional>
+			<if cond="mod_loaded('TheMeanOnes_PreciousOres')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<set xpath="/windows/window[@name='windowSkillList']/rect[@name='leftPanel']/rect[@name='content']/rect/rect/scrollview/table[@name='skillList']/rect[@name='Strength']/smx_skills_skill_grid[@groupName='Construction']/@perkCount">3</set>
+
+					</if>
+				</conditional>
+
 			</if>
 		</conditional>
 

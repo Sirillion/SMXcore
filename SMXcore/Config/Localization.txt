@@ -1,15 +1,90 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,1.1.14.2
+smxCurrentVersionNumber,UI,Menu,x,,1.2.27.1
+
+smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those red errors spamming the console?\n\nIt seems you have removed the mod called 0_TFP_Harmony! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity...\n\nThen try again...\n\n\n[AF1E19]To exit now[-]: Open the console(F1) then type 'shutdown' and press (enter) to exit the game client.",,,,,
 
 xuiOpenUrlConfirmationText,UI,Menu,x,,Open browser to the following URL:\n\n[AF1E19]{0}[-],,Browser auf der folgenden URL öffnen:\n\n[AF1E19]{0}[-],Abrir el navegador en la siguiente URL:\n\n[AF1E19]{0}[-],Ouvrir le navigateur à l'adresse suivante :\n\n[AF1E19]{0}[-],Apri il browser al seguente indirizzo:\n\n[AF1E19]{0}[-],ブラウザで以下のURLを開く:\n\n[AF1E19]{0}[-],다음 URL로 브라우저 열기:\n\n[AF1E19]{0}[-],Otwórz przeglądarkę na adres URL:\n\n[AF1E19]{0}[-],Abrir navegador no seguinte URL:\n\n[AF1E19]{0}[-],Открыть браузер со следующим URL:\n\n[AF1E19]{0}[-],Tarayıcıda şu adresi aç:\n\n[AF1E19]{0}[-],打开浏览器访问以下链接：\n\n[AF1E19]{0}[-],打開瀏覽器前往如下URL：\n\n[AF1E19]{0}[-]
 xuiSavegameDeleteConfirmation,UI,XUi Continue Game,x,,Are you sure you want to delete the save game?\n\n[AF1E19]{0}[-],,"Bist du sicher, dass du den folgenden Speicherstand löschen möchtest?\n\n[AF1E19]{0}[-]",¿Seguro que quieres borrar la partida guardada?\n\n[AF1E19]{0}[-],Voulez-vous vraiment supprimer la partie sauvegardée? \n\n[AF1E19]{0}[-] ,Vuoi davvero cancellare la partita salvata?\n\n[AF1E19]{0}[-],本当にセーブゲーム\n\n[AF1E19]{0}[-]を削除しますか？,\n\n[AF1E19]{0}[-] 게임 저장 파일을 삭제하시겠습니까?,Czy na pewno chcesz usunąć tę zapisaną grę?\n\n[AF1E19]{0}[-],Quer mesmo excluir o jogo salvo?\n\n[AF1E19]{0}[-],Вы действительно хотите удалить сохраненную игру?\n\n[AF1E19]{0}[-],Kayıtlı oyunu silmek istediğinden emin misin?\n\n[AF1E19]{0}[-],是否确定删除此存档？\n\n[AF1E19]{0}[-],確定要刪除遊戲檔案嗎？\n\n[AF1E19]{0}[-]
 xuiServerBrowserDirectConnect,UI,XUi Server Browser,x,,Connect to IP,,Mit IP verbinden ,Conectarse a IP,Connexion à l'IP,Connetti all'IP,IPに接続,IP 연결,Połącz z IP,Conectar ao IP,Подключить к IP,IP Adresine Bağlan,连接至IP,連接至 IP
 
-smxSettingGeneral,UI,Menu,x,,SMXmenu General Settings,,,,,
-smxSettingGeneralTooltip,UI,Menu,x,,General settings for SMXmenu,,,,,
-smxSettingForceSkipNews,UI,Menu,x,,Skip News Screen,,,,,
-smxSettingForceSkipNewsTooltip,UI,Menu,x,,Skips the News Screen on starting the game,,,,,
-smxSettingColorBlindMode,UI,Menu,x,,Colorblind Mode,,,,,
-smxSettingColorBlindModeTooltip,UI,Menu,x,,Changes the QL colors to be more colorblind friendly for SMXhud and SMXui.\n\nRequires restarting the game.,,,,,
+smxcoreSettingGeneral,UI,Menu,x,,SMXcore GENERAL SETTINGS,,,,,
+smxcoreSettingGeneralTooltip,UI,Menu,x,,General settings for SMXcore,,,,,
+smxcoreSettingForceSkipNews,UI,Menu,x,,Skip News Screen,,,,,
+smxcoreSettingForceSkipNewsTooltip,UI,Menu,x,,Skips the News Screen on starting the game,,,,,
+smxcoreSettingColorBlindMode,UI,Menu,x,,Colorblind Mode,,,,,
+smxcoreSettingColorBlindModeTooltip,UI,Menu,x,,Changes the QL colors to be more colorblind friendly for SMXhud and SMXui.\n\nRequires restarting the game.,,,,,
+
+smxmenuSettingGeneral,UI,Menu,x,,SMXmenu GENERAL SETTINGS,,,,,
+smxmenuSettingGeneralTooltip,UI,Menu,x,,General settings for SMXmenu,,,,,
+smxmenuSettingAnimatedBackground,UI,Menu,x,,Enable Animated Background,,,,,
+smxmenuSettingAnimatedBackgroundTooltip,UI,Menu,x,,Enables an Animated Background by Mumpfy.\n\nRequires restarting the game.,,,,,
+
+smxhudOptionalDownloads,UI,Menu,x,,Optionals,,,,,
+smxhudOptionalDownloadsTooltip,UI,Menu,x,,Contains optional UI elements for SMXhud.,,,,,
+smxhudSettingOptionals,UI,Menu,x,,SMXhud OPTIONALS,,,,,
+smxhudSettingOptionalsTooltip,UI,Menu,x,,Turns optional UI elements on/off for SMXhud.,,,,,
+smxhudSettingTargetHealthBar,UI,Menu,x,,Target Health Bar,,,,,
+smxhudSettingTargetHealthBarTooltip,UI,Menu,x,,Turns the Target Health Bar on/off for SMXhud.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
+smxhudSettingNoElements,UI,Menu,x,,SMXhud - NO HUD,,,,,
+smxhudSettingNoElementsTooltip,UI,Menu,x,,Turns off ALL HUD elements.,,,,,
+smxhudSettingScreenshotMode,UI,Menu,x,,Screenshot Mode,,,,,
+smxhudSettingScreenshotModeTooltip,UI,Menu,x,,No HUD 4 j00!! Turns the entire HUD off!\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
+smxhudUIElements,UI,Menu,x,,ELEMENTS,,,,,
+smxhudUIElementsTooltip,UI,Menu,x,,Contains UI elements.,,,,,
+smxhudSettingElements,UI,Menu,x,,SMXhud ELEMENTS,,,,,
+smxhudSettingElementsTooltip,UI,Menu,x,,Turns HUD UI elements on/off.,,,,,
+smxhudSettingCompass,UI,Menu,x,,Compass,,,,,
+smxhudSettingCompassTooltip,UI,Menu,x,,Turns the Compass on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingOnScreenIcons,UI,Menu,x,,OnScreen Icons,,,,,
+smxhudSettingOnScreenIconsTooltip,UI,Menu,x,,Turns the OnScreen Icons System on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingEnteringPOIPopup,UI,Menu,x,,Entering POI Popup,,,,,
+smxhudSettingEnteringPOIPopupTooltip,UI,Menu,x,,Turns the Entering POI Difficulty Popup on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingLocationDifficulty,UI,Menu,x,,Location Difficulty,,,,,
+smxhudSettingLocationDifficultyTooltip,UI,Menu,x,,Turns the Location Difficulty indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingCurrentTime,UI,Menu,x,,Current Time,,,,,
+smxhudSettingCurrentTimeTooltip,UI,Menu,x,,Turns the clock on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingTipPopup,UI,Menu,x,,Tip Popup,,,,,
+smxhudSettingTipPopupTooltip,UI,Menu,x,,Turns the Tip Popup on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingThrowDrawBar,UI,Menu,x,,Draw Bar,,,,,
+smxhudSettingThrowDrawBarTooltip,UI,Menu,x,,Turns the bar when drawing the bow or throwing something on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
+smxhudSMXFeature,UI,Menu,x,,FEATURES,,,,,
+smxhudSMXFeatureTooltip,UI,Menu,x,,Contains SMX Features for SMXhud.,,,,,
+smxhudSettingTemps,UI,Menu,x,,TEMPERATURE INDICATORS,,,,,
+smxhudSettingTempsTooltip,UI,Menu,x,,Turns Temperature Indicators on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingAmbientTemp,UI,Menu,x,,Ambient Temperature,,,,,
+smxhudSettingAmbientTempTooltip,UI,Menu,x,,Turns the Ambient Temperature Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingPlayerTemp,UI,Menu,x,,Player Temperature,,,,,
+smxhudSettingPlayerTempTooltip,UI,Menu,x,,Turns the Player Temperature Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
+smxhudSettingIndicators,UI,Menu,x,,HUD INDICATORS,,,,,
+smxhudSettingIndicatorsTooltip,UI,Menu,x,,Turns SMX Indicators on/off.,,,,,
+smxhudSettingBloodMoon,UI,Menu,x,,Bloodmoon,,,,,
+smxhudSettingBloodMoonTooltip,UI,Menu,x,,Turns the Bloodmoon Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingSkillPoints,UI,Menu,x,,Unused Skill Points,,,,,
+smxhudSettingSkillPointsTooltip,UI,Menu,x,,Turns the Unused Skill Points Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingLootStage,UI,Menu,x,,Lootstage,,,,,
+smxhudSettingLootStageTooltip,UI,Menu,x,,Turns the Current Lootstage Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingLockedSlots,UI,Menu,x,,Locked Slots,,,,,
+smxhudSettingLockedSlotsTooltip,UI,Menu,x,,Turns the Current Locked Slots Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
+smxuiOptionalDownloads,UI,Menu,x,,Optionals,,,,,
+smxuiOptionalDownloadsTooltip,UI,Menu,x,,Contains optional UI elements for SMXui.,,,,,
+smxuiSettingOptionals,UI,Menu,x,,SMXui OPTIONALS,,,,,
+smxuiSettingOptionalsTooltip,UI,Menu,x,,Turns optional UI elements on/off for SMXui.,,,,,
+smxuiSettingThirdForgeSlot,UI,Menu,x,,Third Forge Slot,,,,,
+smxuiSettingThirdForgeSlotTooltip,UI,Menu,x,,Turns the Third Forge Slot on/off for SMXui.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxuiSettingBigBags,UI,Menu,x,,SMXui BIGBAG MODS,,,,,
+smxuiSettingBigBagsTooltip,UI,Menu,x,,Turns optional Big Bag Mods on/off for SMXui.,,,,,
+smxuiSettingBigBag100,UI,Menu,x,,100 Slot Backpack,,,,,
+smxuiSettingBigBag100Tooltip,UI,Menu,x,,Turns the 100 Slot Backpack on/off for SMXui.\n\nYou can only have one Big Bag Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,
+smxuiSettingBigBag200,UI,Menu,x,,200 Slot Backpack,,,,,
+smxuiSettingBigBag200Tooltip,UI,Menu,x,,Turns the 200 Slot Backpack on/off for SMXui.\n\nYou can only have one Big Bag Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,
+smxuiSettingBigBag300,UI,Menu,x,,300 Slot Backpack,,,,,
+smxuiSettingBigBag300Tooltip,UI,Menu,x,,Turns the 300 Slot Backpack on/off for SMXui.\n\nYou can only have one Big Bag Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,
+smxuiSettingBigBag400,UI,Menu,x,,400 Slot Backpack,,,,,
+smxuiSettingBigBag400Tooltip,UI,Menu,x,,Turns the 400 Slot Backpack on/off for SMXui.\n\nYou can only have one Big Bag Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,

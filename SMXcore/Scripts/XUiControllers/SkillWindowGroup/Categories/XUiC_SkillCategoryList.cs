@@ -1,12 +1,13 @@
 ﻿using GUI_2;
 using Quartz;
 using System.Collections.Generic;
+using System.Reflection;
 
 //	Terms of Use: You can use this file as you want as long as this line and the credit lines are not removed or changed other than adding to them!
 //	Credits: The Fun Pimps.
 //	Tweaked: Laydor
 
-//	Similar to CategoryList, but uses SkillCategoryEntry instead of CategoryEntry. Also determines how many skill categories there are
+//	Similar to CategoryList, but uses SkillCategoryEntry instead of CategoryEntry.
 
 namespace SMXcore
 {
@@ -46,10 +47,9 @@ namespace SMXcore
 
         public int MaxCategories => categoryButtons.Count;
 
-        public delegate void XUiEvent_SkillCategoryChangedEventHandler(XUiC_SkillCategoryEntry _categoryEntry);
+        public delegate void XUiEvent_SkillCategoryChangedEventHandler(XUiC_SkillCategoryEntry categoryEntry);
 
         public event XUiEvent_SkillCategoryChangedEventHandler CategoryChanged;
-
         public event XUiEvent_SkillCategoryChangedEventHandler CategoryClickChanged;
 
         public override void Init()
@@ -85,14 +85,14 @@ namespace SMXcore
             CategoryClickChanged?.Invoke(CurrentCategory);
         }
 
-        private XUiC_SkillCategoryEntry GetCategoryByName(string _category, out int _index)
+        private XUiC_SkillCategoryEntry GetCategoryByType(ProgressionClass.DisplayTypes category, out int index)
         {
-            _index = 0;
+            index = 0;
             for (int i = 0; i < categoryButtons.Count; i++)
             {
-                if (categoryButtons[i].CategoryName == _category)
+                if (categoryButtons[i].CategoryType == category)
                 {
-                    _index = i;
+                    index = i;
                     return categoryButtons[i];
                 }
             }
@@ -116,10 +116,10 @@ namespace SMXcore
             CategoryChanged?.Invoke(CurrentCategory);
         }
 
-        public void SetCategory(string _category)
+        public void SetCategory(ProgressionClass.DisplayTypes category)
         {
-            int _index;
-            XUiC_SkillCategoryEntry categoryByName = GetCategoryByName(_category, out _index);
+            int index;
+            XUiC_SkillCategoryEntry categoryByName = GetCategoryByType(category, out index);
             if (categoryByName != null || AllowUnselect)
             {
                 CurrentCategory = categoryByName;
@@ -148,29 +148,11 @@ namespace SMXcore
                 xUiC_CategoryEntry = categoryButtons[num];
             }
 
-            if (xUiC_CategoryEntry != null && xUiC_CategoryEntry.SpriteName != "")
+            if (xUiC_CategoryEntry != null)
             {
                 CurrentCategory = xUiC_CategoryEntry;
                 HandleCategoryChanged();
             }
-        }
-
-        public void SetCategoryEmpty(int _index)
-        {
-            XUiC_SkillCategoryEntry xUiC_CategoryEntry = categoryButtons[_index];
-            xUiC_CategoryEntry.SpriteName = "";
-            xUiC_CategoryEntry.CategoryDisplayName = "";
-            xUiC_CategoryEntry.CategoryName = "";
-            xUiC_CategoryEntry.ViewComponent.IsVisible = false;
-        }
-
-        public void SetCategoryEntry(int _index, string _categoryName, string _spriteName, string _displayName = null)
-        {
-            XUiC_SkillCategoryEntry xUiC_CategoryEntry = categoryButtons[_index];
-            xUiC_CategoryEntry.CategoryDisplayName = _displayName ?? _categoryName;
-            xUiC_CategoryEntry.CategoryName = _categoryName;
-            xUiC_CategoryEntry.SpriteName = _spriteName ?? "";
-            xUiC_CategoryEntry.ViewComponent.IsVisible = true;
         }
 
         public override void OnOpen()
@@ -186,18 +168,6 @@ namespace SMXcore
         {
             base.OnClose();
             xui.calloutWindow.DisableCallouts(XUiC_GamepadCalloutWindow.CalloutType.MenuCategory);
-        }
-
-        public override bool GetBindingValue(ref string value, string bindingName)
-        {
-            switch (bindingName)
-            {
-                case "smxskillcategoryrows":
-                    value = GetSkillCategoryRowCount().ToString();
-                    return true;
-                default:
-                    return base.GetBindingValue(ref value, bindingName);
-            }
         }
 
         public override bool ParseAttribute(string _name, string _value, XUiController _parent)
@@ -217,33 +187,14 @@ namespace SMXcore
 
         public bool SetupSkillCategories()
         {
-            int index = 0;
-            foreach (KeyValuePair<string, ProgressionClass> progressionClass in Progression.ProgressionClasses)
+            for (int i = 0; i < categoryButtons.Count; i++)
             {
-                if (progressionClass.Value.IsAttribute)
-                {
-                    SetCategoryEntry(index, progressionClass.Value.Name, progressionClass.Value.Icon, Localization.Get(progressionClass.Value.Name));
-                    index++;
-                }
+                XUiC_SkillCategoryEntry entry = categoryButtons[i];
+                entry.ViewComponent.IsVisible = true;
+                entry.ViewComponent.IsNavigatable = true;
             }
+
             return true;
-        }
-
-        private int GetSkillCategoryRowCount()
-        {
-            int rowCount = 0;
-
-            foreach (ProgressionClass progressionClass in Progression.ProgressionClasses.Values)
-            {
-                if (progressionClass.IsAttribute)
-                {
-                    rowCount++;
-                }
-            }
-
-            Logging.Inform("SkillCategoryList", "Skill Category Row Count = " + rowCount);
-
-            return rowCount;
         }
     }
 }
