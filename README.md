@@ -70,8 +70,8 @@ As of A20 I decided to move SMX into the lands of Harmony and with that digging 
 
 We strive to make SMX in the best possible way and try to make user actions with it as smooth as possible. But we are still here to answer questions if you run into problems with it or it's installation procedure. Please, do not hesitate to contact us for any issue, big or small, we just ask you to run this simple checklist before coming to ask us for help and just maybe you will be able to help yourself first.
 
-- Did you install all the downloaded folders? Do note that SMXhud and SMXui both have an additional folder that needs installing. (ZMXhudCP and ZMXuiCP)
-- Did you install SMXcore? This modlet contains all the assets (custom graphics) we use and without this your UI will be mostly transparent.
+- Did you install SMXcore? This modlet contains all the code and assets (custom graphics) we use and without this nothing will work.
+- Did you install all the folders? Do note that SMXcore also consist of Quartz which is required for a lot of features to work in SMX.
 - Did you check the folder hierarchy and made sure you didn't install the modlets too deep?
 - Did you disable ALL other mods or modlets and then try again to see if the problem still exists? (Be careful with this, backup your save!)
 - Did you check the support sites to see if anyone else have had the same problem recently?
