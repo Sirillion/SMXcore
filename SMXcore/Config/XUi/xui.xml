@@ -100,7 +100,7 @@
 			<if cond="mod_loaded('zSMXhud')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='death']">
-					<window name="windowDeathBar" anchor="CenterBottom" />
+					<window name="windowDeathBar" />
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='death']" name="close_compass_on_open">true</setattribute>
@@ -116,15 +116,16 @@
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
 					<window name="windowCompass" />
-					<window name="windowLocation" anchor="CenterTop" />
-					<window name="windowEntering" anchor="CenterTop" />
-					<window name="windowTargetBar" anchor="CenterTop" />
+					<window name="windowLocation" />
+					<window name="windowEntering" />
+					<window name="windowTargetBar" />
 					<window name="onScreenIcons" />
-					<window name="smxhudLevelXP" anchor="LeftTop" />
-					<window name="smxhudBuffFrame" anchor="CenterBottom" />
-					<window name="windowQuestTracker" anchor="RightTop" />
-					<window name="windowRecipeTracker" anchor="RightTop" />
-					<window name="windowGroupBars" anchor="LeftTop" />
+					<window name="smxhudLevelXP" />
+					<window name="smxhudBuffFrame" />
+					<window name="windowQuestTracker" />
+					<window name="windowRecipeTracker" />
+					<window name="windowGroupBars" />
+					<window name="smxMiniMapWindow" />
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='compass']" name="actionset">false</setattribute>
@@ -139,9 +140,9 @@
 			<if cond="mod_loaded('zSMXhud')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
-					<window name="windowToolbelt" anchor="CenterBottom" />
-					<window name="HUDLeftStatBars" anchor="LeftBottom" />
-					<window name="HUDRightStatBars" anchor="RightBottom" />
+					<window name="windowToolbelt" />
+					<window name="HUDLeftStatBars" />
+					<window name="HUDRightStatBars" />
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='toolbelt']" name="actionset">false</setattribute>
@@ -289,24 +290,13 @@
 <!--	> > > > > > > > > > > > > > > > > > > > | SMXui | < < < < < < < < < < < < < < < < < < < <	-->
 
 
-<!--	// SMX // Window NON Paging Header -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/xui/ruleset[@name='default']/window_group/window[@name='windowNonPagingHeader']" name="anchor">CenterTop</setattribute>
-
-			</if>
-		</conditional>
-
-
 <!--	// SMX // Window Paging Header -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='windowpaging']">
-					<window name="windowPagingHeader" anchor="CenterTop" />
+					<window name="windowPagingHeader" />
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='windowpaging']" name="actionSet">false</setattribute>
@@ -608,6 +598,7 @@
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='dialog']">
 					<window name="windowRespondentName" />
 					<window name="windowStatement" />
+					<window name="windowSubtitle" />
 					<window name="windowResponses" />
 				</set>
 
@@ -620,7 +611,7 @@
 
 <!--	// SMX // Writable Window - Signs & Storage -->
 
-		<conditional>
+		<!--conditional>
 			<if cond="mod_loaded('zSMXui')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='sign']">
@@ -630,7 +621,7 @@
 				<setattribute xpath="/xui//window_group[@name='sign']" name="defaultSelected">content</setattribute>
 
 			</if>
-		</conditional>
+		</conditional-->
 		
 		
 <!--	// SMX // Lockable Window - Enter Code -->
@@ -643,6 +634,35 @@
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='keypadEdit']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	> > > > > > > > > > > > > > > > > > > > | SMX CC | < < < < < < < < < < < < < < < < < < < <	-->
+
+
+<!-- 	// SMX // Trader Quest Map // Conditional Check - UI Adaptation -->
+
+		<conditional>
+			<if cond="mod_loaded('WMMTraderQuestMap')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<set xpath="/xui/ruleset[@name='default']/window_group[@name='dialog']">
+							<window name="mapAreaTrader" />
+							<window name="mapTraderQuests" />
+							<window name="windowRespondentName" />
+							<window name="windowStatement" />
+							<window name="windowResponses" />
+						</set>
+
+						<setattribute xpath="/xui//window_group[@name='dialog']" name="controller">XUiC_WMMDialogWindowGroup, WMMTraderQuestMap</setattribute>
+						<setattribute xpath="/xui//window_group[@name='dialog']" name="close_compass_on_open">true</setattribute>
+
+					</if>
+				</conditional>
 
 			</if>
 		</conditional>

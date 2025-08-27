@@ -3,11 +3,13 @@ using System;
 using System.Xml.Linq;
 using UnityEngine;
 using XMLData.Parsers;
+using static UIKeyBinding;
 
 namespace SMXcore
 {
     public class XUiC_HUDActiveItem : XUiController
     {
+        //TODO: Switch over to using Quartz's XUiC_HUDActiveItem and add elevation
         private string statAtlas = "ItemIconAtlas";
 
         private string lastAmmoName = "";
@@ -209,7 +211,7 @@ namespace SMXcore
                 if (itemValue.ItemClass.IsGun())
                 {
                     ItemActionAttack itemActionAttack = itemValue.ItemClass.Actions[0] as ItemActionAttack;
-                    if (itemActionAttack == null || itemActionAttack is ItemActionMelee || (int)EffectManager.GetValue(PassiveEffects.MagazineSize, localPlayer.inventory.holdingItemItemValue, 0f, localPlayer) <= 0)
+                    if (itemActionAttack == null || itemActionAttack is ItemActionMelee || itemActionAttack.InfiniteAmmo && !itemActionAttack.ForceShowAmmo || (int)EffectManager.GetValue(PassiveEffects.MagazineSize, localPlayer.inventory.holdingItemItemValue, 0f, localPlayer) <= 0)
                     {
                         currentAmmoCount = 0;
                         return;

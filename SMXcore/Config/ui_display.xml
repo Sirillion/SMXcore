@@ -181,13 +181,13 @@
 
 <!--	// SMX // Item Display Icon Inject - HypothermalResist -->
 
-		<conditional>
+		<!--conditional>
 			<if cond="mod_loaded('zSMXui')">
 
 				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='HypothermalResist']" name="icon">ui_game_symbol_cold</setattribute>
 
 			</if>
-		</conditional>
+		</conditional-->
 
 
 <!--	// SMX // Item Display Icon Inject - dTargetPenetration -->

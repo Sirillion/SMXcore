@@ -1,0 +1,22 @@
+﻿<SMXcore name="nav_objects.xml">
+
+<!--	// SMX // Minimap Zombie Injection -->
+
+	<!--insertAfter xpath="/nav_object_classes/nav_object_class[@name='zombie']">
+		<property name="requirement_type" value="None" />
+	</insertAfter-->
+
+	<append xpath="/nav_object_classes">
+		<nav_object_class name="zombieMinimap">
+			<map_settings>
+				<property name="sprite_name" value="ui_game_symbol_zombie" />
+				<property name="min_distance" value="0" />
+				<property name="max_distance" value="110" />
+				<property name="color" value="175,30,25,255"/>
+				<property name="has_pulse" value="true"/>
+				<property name="minimap_only" value="true"/>
+			</map_settings>
+		</nav_object_class>
+	</append>
+
+</SMXcore>

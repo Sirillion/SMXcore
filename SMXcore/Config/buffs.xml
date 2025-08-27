@@ -11,7 +11,29 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
+
+								<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">45</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '100'">
 
 								<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">100</set>
 
@@ -31,7 +53,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '200'">
 
 								<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">200</set>
 
@@ -51,7 +74,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '300'">
 
 								<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">300</set>
 
@@ -71,7 +95,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '400'">
 
 								<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">400</set>
 
@@ -96,7 +121,29 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
+
+								<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">50</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '100'">
 
 								<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">105</set>
 
@@ -116,7 +163,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '200'">
 
 								<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">205</set>
 
@@ -136,7 +184,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '300'">
 
 								<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">305</set>
 
@@ -156,7 +205,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '400'">
 
 								<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">405</set>
 
@@ -181,7 +231,30 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
+
+								<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">50</set>
+								<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">22</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '100'">
 
 								<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">105</set>
 								<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">77</set>
@@ -202,7 +275,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '200'">
 
 								<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">205</set>
 								<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">177</set>
@@ -223,7 +297,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '300'">
 
 								<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">305</set>
 								<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">277</set>
@@ -244,7 +319,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '400'">
 
 								<set xpath="/buffs/buff[@name='twitch_buffPackMule']/effect_group/passive_effect[@name='CarryCapacity']/@value">405</set>
 								<set xpath="/buffs/buff[@name='twitch_buffEncumbered']/effect_group/passive_effect[@name='CarryCapacity']/@value">377</set>

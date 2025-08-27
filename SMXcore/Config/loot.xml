@@ -66,7 +66,29 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
+
+								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,9</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 115 SLOTS, 114 needed -->
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '100'">
 
 								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,23</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 115 SLOTS, 114 needed -->
 
@@ -86,7 +108,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '200'">
 
 								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,43</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 215 SLOTS, 214 needed -->
 
@@ -106,7 +129,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '300'">
 
 								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,63</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 315 SLOTS, 314 needed -->
 
@@ -126,7 +150,8 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'">
+							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'"-->
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '400'">
 
 								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,83</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 415 SLOTS, 414 needed -->
 

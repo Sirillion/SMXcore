@@ -1,60 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-<!--/*Copyright 2022 Christopher Beda
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.*/-->
-
 <ModSettings>
-	<Global>
-		<Tab name="General">
-			<Category name="General" displayKey="quartzSettingGeneral" tooltipKey="quartzSettingGeneralTooltip">
-			  <Selector name="TextResolution" displayKey="quartzSettingTextResolution" tooltipKey="quartzSettingTextResolutionTooltip" value="High" defaultValue="High">
-				<Property type="arrayValues" allowedValues="Low,High" />
-			  </Selector>
-			</Category>
-		</Tab>
-		<Tab name="Minimap">
-			<Category name="Minimap" displayKey="quartzSettingMinimap" tooltipKey="quartzSettingMinimapTooltip">
-				<Switch name="MinimapShowOrHide" displayKey="quartzSettingMinimapShow" tooltipKey="quartzSettingMinimapShowTooltip" value="Show" defaultValue="Show" leftValue="Hide" rightValue="Show" />
-				<Switch name="IconsShowOrHide" displayKey="quartzSettingMinimapIconsShow" tooltipKey="quartzSettingMinimapIconsShowTooltip" value="Show" defaultValue="Show" leftValue="Hide" rightValue="Show" />
-				<Switch name="TextShowOrHide" displayKey="quartzSettingMinimapTextShow" tooltipKey="quartzSettingMinimapTextShowTooltip" value="Show" defaultValue="Show" leftValue="Hide" rightValue="Show" />
-				<Switch name="MinimapIconsShowOrHide" displayKey="quartzSettingMinimapIconsOnlyShow" tooltipKey="quartzSettingMinimapIconsOnlyShowTooltip" value="Show" defaultValue="Show" leftValue="Hide" rightValue="Show" />
-				<Switch name="RotateWithPlayer" displayKey="quartzSettingMinimapRotateWithPlayer" tooltipKey="quartzSettingMinimapRotateWithPlayerTooltip" value="Off" defaultValue="Off" leftValue="Off" rightValue="On" />
-				<Slider name="IconScale" displayKey="quartzSettingMinimapIconScale" tooltipKey="quartzSettingMinimapIconScaleTooltip" value="100" defaultValue="100">
-					<Property type="incrementalValuesInt" increment="1" minValue="50" maxValue="200"/>
-				</Slider>
-				<Slider name="IconOpacity" displayKey="quartzSettingMinimapIconOpacity" tooltipKey="quartzSettingMinimapIconOpacityTooltip" value="100" defaultValue="100">
-					<Property type="incrementalValuesInt" increment="1" minValue="0" maxValue="100"/>
-				</Slider>
-				<Slider name="TextureOpacity" displayKey="quartzSettingMinimapTextureOpacity" tooltipKey="quartzSettingMinimapTextureOpacityTooltip" value="100" defaultValue="100">
-					<Property type="incrementalValuesInt" increment="1" minValue="0" maxValue="100"/>
-				</Slider>
-			</Category>
-			<Category name="KeyBindings" displayKey="quartzSettingKeybinding" tooltipKey="quartzSettingInputMinimapKeybindingTooltip">
-				<Binding name="EnabledKeyBinding" displayKey="quartzSettingInputMinimapToggle" tooltipKey="quartzSettingInputMinimapToggleTooltip" />
-				<Binding name="ZoomInKeyBinding" displayKey="quartzSettingInputMinimapZoomIn" tooltipKey="quartzSettingInputMinimapZoomInTooltip" />
-				<Binding name="ZoomOutKeyBinding" displayKey="quartzSettingInputMinimapZoomOut" tooltipKey="quartzSettingInputMinimapZoomOutTooltip" />
-			</Category>
-		</Tab>
-		<Tab name="Inventory">
-			<Category name="KeyBindings" displayKey="quartzSettingKeybinding" tooltipKey="quartzSettingInputInventoryKeybindingTooltip">
-				<Binding name="LockedSlots" displayKey="quartzSettingInputLockedSlots" tooltipKey="quartzSettingInputLockedSlotsTooltip" />
-			</Category>
-		</Tab>
-		<Tab name="Dev Tools">
-			<Category name="Debug" displayKey="quartzSettingDebug" tooltipKey="quartzSettingDebugTooltip">
-				<Switch name="DebugMode" displayKey="quartzSettingDebugMode" tooltipKey="quartzSettingDebugModeTooltip" value="Disabled" defaultValue="Disabled" leftValue="Disabled" rightValue="Enabled" />
-			</Category>
-		</Tab>
-	</Global>
+  <Global>
+    <Tab name="General" displayKey="" tooltipKey="">
+      <Category name="General" displayKey="quartzSettingGeneral" tooltipKey="quartzSettingGeneralTooltip">
+        <Selector name="TextResolution" displayKey="quartzSettingTextResolution" tooltipKey="quartzSettingTextResolutionTooltip" defaultValue="High">
+          <Property type="arrayValues" allowedValues="Low,High" />
+        </Selector>
+      </Category>
+    </Tab>
+    <Tab name="Minimap" displayKey="" tooltipKey="">
+      <Category name="Minimap" displayKey="quartzSettingMinimap" tooltipKey="quartzSettingMinimapTooltip">
+        <Switch name="MinimapShowOrHide" displayKey="quartzSettingMinimapShow" tooltipKey="quartzSettingMinimapShowTooltip" defaultValue="Show" leftValue="Hide" rightValue="Show" />
+        <Switch name="IconsShowOrHide" displayKey="quartzSettingMinimapIconsShow" tooltipKey="quartzSettingMinimapIconsShowTooltip" defaultValue="Show" leftValue="Hide" rightValue="Show" />
+        <Switch name="TextShowOrHide" displayKey="quartzSettingMinimapTextShow" tooltipKey="quartzSettingMinimapTextShowTooltip" defaultValue="Show" leftValue="Hide" rightValue="Show" />
+        <Switch name="MinimapIconsShowOrHide" displayKey="quartzSettingMinimapIconsOnlyShow" tooltipKey="quartzSettingMinimapIconsOnlyShowTooltip" defaultValue="Show" leftValue="Hide" rightValue="Show" />
+        <Switch name="RotateWithPlayer" displayKey="quartzSettingMinimapRotateWithPlayer" tooltipKey="quartzSettingMinimapRotateWithPlayerTooltip" defaultValue="Off" leftValue="Off" rightValue="On" />
+        <Slider name="IconScale" displayKey="quartzSettingMinimapIconScale" tooltipKey="quartzSettingMinimapIconScaleTooltip" defaultValue="100">
+          <Property increment="1" minValue="50" maxValue="200" type="incrementalValuesInt" />
+        </Slider>
+        <Slider name="IconOpacity" displayKey="quartzSettingMinimapIconOpacity" tooltipKey="quartzSettingMinimapIconOpacityTooltip" defaultValue="100">
+          <Property increment="1" minValue="0" maxValue="100" type="incrementalValuesInt" />
+        </Slider>
+        <Slider name="TextureOpacity" displayKey="quartzSettingMinimapTextureOpacity" tooltipKey="quartzSettingMinimapTextureOpacityTooltip" defaultValue="70">
+          <Property increment="1" minValue="0" maxValue="100" type="incrementalValuesInt" />
+        </Slider>
+      </Category>
+      <Category name="KeyBindings" displayKey="quartzSettingKeybinding" tooltipKey="quartzSettingInputMinimapKeybindingTooltip">
+        <Binding name="EnabledKeyBinding" displayKey="quartzSettingInputMinimapToggle" tooltipKey="quartzSettingInputMinimapToggleTooltip" />
+        <Binding name="ZoomInKeyBinding" displayKey="quartzSettingInputMinimapZoomIn" tooltipKey="quartzSettingInputMinimapZoomInTooltip" />
+        <Binding name="ZoomOutKeyBinding" displayKey="quartzSettingInputMinimapZoomOut" tooltipKey="quartzSettingInputMinimapZoomOutTooltip" />
+      </Category>
+    </Tab>
+    <Tab name="Inventory" displayKey="" tooltipKey="">
+      <Category name="KeyBindings" displayKey="quartzSettingKeybinding" tooltipKey="quartzSettingInputInventoryKeybindingTooltip">
+        <Binding name="LockedSlots" displayKey="quartzSettingInputLockedSlots" tooltipKey="quartzSettingInputLockedSlotsTooltip" />
+      </Category>
+    </Tab>
+    <Tab name="Dev Tools" displayKey="" tooltipKey="">
+      <Category name="Debug" displayKey="quartzSettingDebug" tooltipKey="quartzSettingDebugTooltip">
+        <Switch name="DebugMode" displayKey="quartzSettingDebugMode" tooltipKey="quartzSettingDebugModeTooltip" defaultValue="Disabled" leftValue="Disabled" rightValue="Enabled" />
+      </Category>
+    </Tab>
+  </Global>
+  <World />
 </ModSettings>

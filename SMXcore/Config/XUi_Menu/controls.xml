@@ -66,7 +66,6 @@
 										localization_prefix=""
 										format_string=""
 										character_limit="0"
-										values_from_gameserverconfig="false"
 										tooltip_key="">
 
 						<rect	name="${name}"
@@ -82,7 +81,6 @@
 								values_enforced="${values_enforced}"
 								display_names="${display_names}"
 								value_localization_prefix="${value_localization_prefix}"
-								values_from_gameserverconfig="${values_from_gameserverconfig}"
 								visible="${visible}">
 
 							<label	name="ControlLabel"
@@ -122,7 +120,8 @@
 										pivot="topLeft"
 										password_field="${password_field}"
 										character_limit="${character_limit}"
-										font_size="24" />
+										font_size="24"
+										tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}" />
 						</rect>
 					</smx_game_option>
 
@@ -217,14 +216,15 @@
 								width="${width}"
 								height="32"
 								controller="ServerBrowserGamePrefString"
-								visible="${visible}">
+								visible="${visible}"
+								tooltip_key="">
 
 							<label	depth="4"
 									pos="123,-16"
 									width="262"
 									height="30"
 									style="smx_label_normal, hover"
-									tooltip_key="${title}Desc"
+									tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}"
 									text_key="${title}"
 									font_size="24"
 									color="[white]"
@@ -237,7 +237,8 @@
 										width="${width-340}"
 										height="32"
 										font_size="24"
-										pivot="center" />
+										pivot="center"
+										tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}" />
 						</rect>
 
 					</smx_browser_gameoption_string>
@@ -324,7 +325,8 @@
 											character_limit="9"
 											on_scroll="true"
 											font_size="24"
-											clear_button="false" />
+											clear_button="false" 
+											tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}" />
 
 								<sprite	depth="3"
 										name="background"
@@ -357,12 +359,13 @@
 											character_limit="9"
 											on_scroll="true"
 											font_size="24"
-											clear_button="false" />
+											clear_button="false" 
+											tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}" />
 							</panel>
 
 							<panel createuipanel="true" disableautobackground="true" depth="10" visible="{iscustomstring}">
 								<textfield name="valuestring" depth="5" pos="303,0" width="${width-342}" height="32" pivot="topLeft" on_scroll="true" />
-								<sprite depth="3" name="background" pos="303,1" width="${width-342}" height="35" color="[mediumGrey]" type="sliced" pivot="topleft" globalopacity="false" />
+								<sprite depth="3" name="background" pos="303,1" width="${width-342}" height="35" color="[mediumGrey]" type="sliced" pivot="topleft" globalopacity="false" tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}" />
 							</panel>
 
 						</rect>
@@ -471,19 +474,20 @@
 													font_size="24"
 													left_caption_key="gearsUIDisabled"
 													right_caption_key="gearsUIEnabled"
-													right_selected_font_color="60,255,60,255"
-													left_selected_font_color="255,0,0,255"
+													right_selected_font_color="255,255,255,255"
+													left_selected_font_color="255,255,255,255"
 													defaultcolor="[darkGrey]"
-													selectedsprite="smx_toggle_handler"
-													selectedcolor="255,144,24,196"
+													selectedsprite="smx_toggle_thumb"
+													selectedcolor="[smx_element_button_foreground]"
 													visible="{isSwitch}" />
 
-							<rect name="smxOutline" depth="10" visible="{isSwitch}">
+							<!--rect name="smxOutline" depth="10" visible="{isSwitch}">
 								<sprite name="smxOutlineTop" pos="250,-5" width="${width-245}" height="3" sprite="smx_sepline_1" />
 								<sprite name="smxOutlineLeft" pos="266,-46" width="51" height="3" sprite="smx_sepline_1" rotation="90" />
+								<sprite name="smxOutlineRight" pos="385,-46" width="47" height="3" sprite="smx_sepline_1" rotation="90" />
 								<sprite name="smxOutlineRight" pos="504,-46" width="47" height="3" sprite="smx_sepline_1" rotation="90" />
 								<sprite name="smxOutlineBottom" pos="255,-37" width="${width-260}" height="3" sprite="smx_sepline_1" flip="Horizontally" />
-							</rect>
+							</rect-->
 
 							<smx_gears_controlbinding name="controlBinding" depth="2" pos="${width-(width-270)},${Round((-height+32)/2,0)}" width="${width-250}" height="32" font_size="24" visible="{isBinding}" />
 							<smx_gears_colorpicker name="colorPicker" depth="2" pos="${width-(width-230)},${Round((-height+32)/2,0)}" width="${width-250}" height="300" visible="{isColorPicker}" />
@@ -501,12 +505,12 @@
 											bordersprite=""
 											bordercolor="[black]"
 											pivot="left"
-											defaultsprite="smx_toggle_handler"
-											defaultcolor="[mediumGrey]"
-											hoversprite="smx_toggle_handler"
+											defaultsprite="smx_toggle_thumb"
+											defaultcolor="[smx_element_button_selected]"
+											hoversprite="smx_toggle_thumb"
 											hovercolor="[white]"
-											selectedsprite="smx_toggle_handler"
-											selectedcolor="255,144,24,196"
+											selectedsprite="smx_toggle_thumb"
+											selectedcolor="[smx_element_button_foreground]"
 											foregroundlayer="true"
 											tooltip_key=""
 											sound="[default_click]"

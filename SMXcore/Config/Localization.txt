@@ -1,9 +1,11 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,1.2.27.1
+smxCurrentVersionNumber,UI,Menu,x,,2.2.3.0
 
 smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those red errors spamming the console?\n\nIt seems you have removed the mod called 0_TFP_Harmony! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity...\n\nThen try again...\n\n\n[AF1E19]To exit now[-]: Open the console(F1) then type 'shutdown' and press (enter) to exit the game client.",,,,,
+
+xuiDiscordOpen,UI,Menu,x,,"Open Discord",,,,,
 
 xuiOpenUrlConfirmationText,UI,Menu,x,,Open browser to the following URL:\n\n[AF1E19]{0}[-],,Browser auf der folgenden URL öffnen:\n\n[AF1E19]{0}[-],Abrir el navegador en la siguiente URL:\n\n[AF1E19]{0}[-],Ouvrir le navigateur à l'adresse suivante :\n\n[AF1E19]{0}[-],Apri il browser al seguente indirizzo:\n\n[AF1E19]{0}[-],ブラウザで以下のURLを開く:\n\n[AF1E19]{0}[-],다음 URL로 브라우저 열기:\n\n[AF1E19]{0}[-],Otwórz przeglądarkę na adres URL:\n\n[AF1E19]{0}[-],Abrir navegador no seguinte URL:\n\n[AF1E19]{0}[-],Открыть браузер со следующим URL:\n\n[AF1E19]{0}[-],Tarayıcıda şu adresi aç:\n\n[AF1E19]{0}[-],打开浏览器访问以下链接：\n\n[AF1E19]{0}[-],打開瀏覽器前往如下URL：\n\n[AF1E19]{0}[-]
 xuiSavegameDeleteConfirmation,UI,XUi Continue Game,x,,Are you sure you want to delete the save game?\n\n[AF1E19]{0}[-],,"Bist du sicher, dass du den folgenden Speicherstand löschen möchtest?\n\n[AF1E19]{0}[-]",¿Seguro que quieres borrar la partida guardada?\n\n[AF1E19]{0}[-],Voulez-vous vraiment supprimer la partie sauvegardée? \n\n[AF1E19]{0}[-] ,Vuoi davvero cancellare la partita salvata?\n\n[AF1E19]{0}[-],本当にセーブゲーム\n\n[AF1E19]{0}[-]を削除しますか？,\n\n[AF1E19]{0}[-] 게임 저장 파일을 삭제하시겠습니까?,Czy na pewno chcesz usunąć tę zapisaną grę?\n\n[AF1E19]{0}[-],Quer mesmo excluir o jogo salvo?\n\n[AF1E19]{0}[-],Вы действительно хотите удалить сохраненную игру?\n\n[AF1E19]{0}[-],Kayıtlı oyunu silmek istediğinden emin misin?\n\n[AF1E19]{0}[-],是否确定删除此存档？\n\n[AF1E19]{0}[-],確定要刪除遊戲檔案嗎？\n\n[AF1E19]{0}[-]
@@ -16,6 +18,11 @@ smxcoreSettingForceSkipNewsTooltip,UI,Menu,x,,Skips the News Screen on starting 
 smxcoreSettingColorBlindMode,UI,Menu,x,,Colorblind Mode,,,,,
 smxcoreSettingColorBlindModeTooltip,UI,Menu,x,,Changes the QL colors to be more colorblind friendly for SMXhud and SMXui.\n\nRequires restarting the game.,,,,,
 
+smxcoreNextVersion,UI,Menu,x,,SMXcore Next Version,,,,,
+smxcoreNextVersionTooltip,UI,Menu,x,,Enables feature for the current Experimental version.\n\nCurrent Experimental Version: [AF1E19]2.3(B6)[-],,,,,
+smxcoreSettingNextVersion,UI,Menu,x,,Current Experimental,,,,,
+smxcoreSettingNextVersionTooltip,UI,Menu,x,,Enable this to play on the current experimental version. Do not use if the current experimental version is not equal to the version in this tooltip!\n\nCurrent Experimental Version: [AF1E19]2.3(B6)[-],,,,,
+
 smxmenuSettingGeneral,UI,Menu,x,,SMXmenu GENERAL SETTINGS,,,,,
 smxmenuSettingGeneralTooltip,UI,Menu,x,,General settings for SMXmenu,,,,,
 smxmenuSettingAnimatedBackground,UI,Menu,x,,Enable Animated Background,,,,,
@@ -27,6 +34,10 @@ smxhudSettingOptionals,UI,Menu,x,,SMXhud OPTIONALS,,,,,
 smxhudSettingOptionalsTooltip,UI,Menu,x,,Turns optional UI elements on/off for SMXhud.,,,,,
 smxhudSettingTargetHealthBar,UI,Menu,x,,Target Health Bar,,,,,
 smxhudSettingTargetHealthBarTooltip,UI,Menu,x,,Turns the Target Health Bar on/off for SMXhud.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingCleanCompass,UI,Menu,x,,Clean Compass,,,,,
+smxhudSettingCleanCompassTooltip,UI,Menu,x,,Turns the numeral degree indication on/off for the compass in SMXhud.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxhudSettingToolbeltNumbers,UI,Menu,x,,Toolbelt Numbers,,,,,
+smxhudSettingToolbeltNumbersTooltip,UI,Menu,x,,Turns hotkey indication on/off for the toolbelt in SMXhud.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
 
 smxhudSettingNoElements,UI,Menu,x,,SMXhud - NO HUD,,,,,
 smxhudSettingNoElementsTooltip,UI,Menu,x,,Turns off ALL HUD elements.,,,,,
@@ -51,6 +62,11 @@ smxhudSettingTipPopup,UI,Menu,x,,Tip Popup,,,,,
 smxhudSettingTipPopupTooltip,UI,Menu,x,,Turns the Tip Popup on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
 smxhudSettingThrowDrawBar,UI,Menu,x,,Draw Bar,,,,,
 smxhudSettingThrowDrawBarTooltip,UI,Menu,x,,Turns the bar when drawing the bow or throwing something on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
+smxhudSettingMinimap,UI,Menu,x,,SMXhud MINIMAP,,,,,
+smxhudSettingMinimapTooltip,UI,Menu,x,,Turns MINIMAP elements on/off.,,,,,
+smxhudSettingMinimapZombies,UI,Menu,x,,Show Zombies,,,,,
+smxhudSettingMinimapZombiesTooltip,UI,Menu,x,,Show zombies on the minimap.\n\nRequires restarting the game.,,,,,
 
 smxhudSMXFeature,UI,Menu,x,,FEATURES,,,,,
 smxhudSMXFeatureTooltip,UI,Menu,x,,Contains SMX Features for SMXhud.,,,,,
@@ -78,6 +94,7 @@ smxuiSettingOptionals,UI,Menu,x,,SMXui OPTIONALS,,,,,
 smxuiSettingOptionalsTooltip,UI,Menu,x,,Turns optional UI elements on/off for SMXui.,,,,,
 smxuiSettingThirdForgeSlot,UI,Menu,x,,Third Forge Slot,,,,,
 smxuiSettingThirdForgeSlotTooltip,UI,Menu,x,,Turns the Third Forge Slot on/off for SMXui.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+
 smxuiSettingBigBags,UI,Menu,x,,SMXui BIGBAG MODS,,,,,
 smxuiSettingBigBagsTooltip,UI,Menu,x,,Turns optional Big Bag Mods on/off for SMXui.,,,,,
 smxuiSettingBigBag100,UI,Menu,x,,100 Slot Backpack,,,,,
