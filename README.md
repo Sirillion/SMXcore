@@ -16,7 +16,7 @@ SMXcore is a library of assets needed by ALL SMX branded modlets. This is the CO
 
 
 <p align="center">
-  <img src="[img]https://i.imgur.com/IdwmiO7.png" width="1080" title="SMXhud - A20">
+  <img src="https://i.imgur.com/IdwmiO7.png" width="1080" title="SMXhud - A20">
 </p>
 
 
