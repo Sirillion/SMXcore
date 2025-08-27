@@ -1,5 +1,5 @@
 # SMXcore - THE CORE MODLET
-> Verified to work with: 1.2b27
+> Verified to work with: 2.2b3
 
 > Dependencies: [Quartz](https://github.com/s7092910/Quartz) by Laydor. (Included)
 
@@ -16,7 +16,7 @@ SMXcore is a library of assets needed by ALL SMX branded modlets. This is the CO
 
 
 <p align="center">
-  <img src="https://7dtd-community.s3.us-east-2.amazonaws.com/monthly_2022_01/a20_banner_forum.png.35ab78c870a912989f716f892c664a60.png" width="1080" title="SMXhud - A20">
+  <img src="[img]https://i.imgur.com/IdwmiO7.png" width="1080" title="SMXhud - A20">
 </p>
 
 
