@@ -1,7 +1,7 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,2.2.3.0
+smxCurrentVersionNumber,UI,Menu,x,,2.3.9.0
 
 smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those red errors spamming the console?\n\nIt seems you have removed the mod called 0_TFP_Harmony! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity...\n\nThen try again...\n\n\n[AF1E19]To exit now[-]: Open the console(F1) then type 'shutdown' and press (enter) to exit the game client.",,,,,
 

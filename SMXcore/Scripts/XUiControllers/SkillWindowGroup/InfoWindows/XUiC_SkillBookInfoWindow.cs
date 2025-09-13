@@ -205,7 +205,7 @@ namespace SMXcore
             return base.ParseAttribute(_name, _value, _parent);
         }
 
-        public override bool GetBindingValue(ref string value, string bindingName)
+        public override bool GetBindingValueInternal(ref string value, string bindingName)
         {
             EntityPlayerLocal entityPlayer = base.xui.playerUI.entityPlayer;
             switch (bindingName)
@@ -253,7 +253,7 @@ namespace SMXcore
 
                     return true;
                 case "skillLevel":
-                    value = ((CurrentSkill != null) ? skillLevelFormatter.Format(ProgressionClass.GetCalculatedLevel(entityPlayer, CurrentSkill)) : "0");
+                    value = ((CurrentSkill != null) ? skillLevelFormatter.Format(CurrentSkill.GetCalculatedLevel(entityPlayer)) : "0");
                     return true;
                 case "maxSkillLevel":
                     value = ((CurrentSkill != null) ? maxSkillLevelFormatter.Format(ProgressionClass.GetCalculatedMaxLevel(entityPlayer, CurrentSkill)) : "0");
@@ -265,8 +265,8 @@ namespace SMXcore
                     value = "false";
                     return true;
                 default:
-                    return false;
-            }
+					return base.GetBindingValueInternal(ref value, bindingName);
+			}
         }
     }
 }

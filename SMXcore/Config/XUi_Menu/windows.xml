@@ -881,7 +881,7 @@
 										<smx_menu_button name="btnSpawnFirstTime" depth="13" width="230" height="65" pivot="center" caption_key="lblSpawnRandom" font_size="18" visible="{# enteringGame and firstTimeSpawn}" />
 										<smx_menu_button name="btnSpawn" depth="13" width="230" height="65" pivot="center" caption_key="lblSpawn" font_size="18" visible="{# enteringGame and !firstTimeSpawn}" />
 
-										<rect width="500" height="42" createuiwidget="true" />
+										<!--rect width="500" height="42" createuiwidget="true" /-->
 
 										<smx_menu_button name="btnLeave" depth="13" width="230" height="65" pivot="center" caption_key="xuiSpawnLeaveGame" font_size="18" visible="{# enteringGame and !is_server}" />
 
