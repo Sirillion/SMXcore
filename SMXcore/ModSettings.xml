@@ -3,9 +3,13 @@
   <Global>
     <Tab name="General" displayKey="" tooltipKey="">
       <Category name="General" displayKey="smxcoreSettingGeneral" tooltipKey="smxcoreSettingGeneralTooltip">
-        <Switch name="ForceSkipNews" displayKey="smxcoreSettingForceSkipNews" tooltipKey="smxcoreSettingForceSkipNewsTooltip" defaultValue="Off" leftValue="Off" rightValue="On" />
+        <Switch name="ForceSkipNews" displayKey="smxcoreSettingForceSkipNews" tooltipKey="smxcoreSettingForceSkipNewsTooltip" value="Off" defaultValue="Off" leftValue="Off" rightValue="On" />
       </Category>
     </Tab>
   </Global>
-  <World />
+  <World>
+    <Category name="General" displayKey="smxcoreSettingGeneral" tooltipKey="smxcoreSettingGeneralTooltip">
+	 <Switch name="ColorBlindMode" displayKey="smxcoreSettingColorBlindMode" tooltipKey="smxcoreSettingColorBlindModeTooltip" value="Off" defaultValue="Off" leftValue="Off" rightValue="On" />
+    </Category>
+  </World>
 </ModSettings>
