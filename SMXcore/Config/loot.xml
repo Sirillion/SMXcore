@@ -2,35 +2,67 @@
 
 <!--	// SMX // Container Size Conversions -->
 
-		<!-- SIRILLION: Due to the new SMXui design for containers and looting we need to fix the width of the containers to 5 wide -->
+		<!-- SIRILLION: Due to the new SMXui design for containers and looting we need to fix the width of the containers to 5 wide.
+						If you want to use the new 8 wide you need to activate that manually for now. -->
 
+		<!-- SIRILLION: The sizes below are adjusted to fit the SMX 5 wide design without the loss of space. All conversions are rounded UP! -->
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
-				<set xpath="/lootcontainers/lootcontainer[@size='6,1']/@size">5,2</set>							<!-- SIRILLION: Adjusts from  6 SLOTS to 10 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='6,2']/@size">5,3</set>							<!-- SIRILLION: Adjusts from 12 SLOTS to 15 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='6,3']/@size">5,4</set>							<!-- SIRILLION: Adjusts from 18 SLOTS to 20 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='6,4']/@size">5,5</set>							<!-- SIRILLION: Adjusts from 24 SLOTS to 25 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='6,1']/@size">5,2</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='6,2']/@size">5,3</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='6,3']/@size">5,4</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='6,4']/@size">5,5</set>
 
-				<set xpath="/lootcontainers/lootcontainer[@size='7,2']/@size">5,3</set>							<!-- SIRILLION: Adjusts from 14 SLOTS to 15 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='7,4']/@size">5,6</set>							<!-- SIRILLION: Adjusts from 28 SLOTS to 30 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='7,10']/@size">5,14</set>						<!-- SIRILLION: Adjusts from 70 SLOTS to 70 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='7,2']/@size">5,3</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='7,4']/@size">5,6</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='7,10']/@size">5,14</set>
 
-				<set xpath="/lootcontainers/lootcontainer[@size='8,2']/@size">5,4</set>							<!-- SIRILLION: Adjusts from 16 SLOTS to 20 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='8,4']/@size">5,7</set>							<!-- SIRILLION: Adjusts from 32 SLOTS to 35 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='8,5']/@size">5,8</set>							<!-- SIRILLION: Adjusts from 40 SLOTS to 40 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='8,6']/@size">5,10</set>						<!-- SIRILLION: Adjusts from 48 SLOTS to 50 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='8,8']/@size">5,13</set>						<!-- SIRILLION: Adjusts from 64 SLOTS to 65 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='8,9']/@size">5,15</set>						<!-- SIRILLION: Adjusts from 72 SLOTS to 75 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='8,10']/@size">5,16</set>						<!-- SIRILLION: Adjusts from 80 SLOTS to 80 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='8,2']/@size">5,4</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='8,4']/@size">5,7</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='8,5']/@size">5,8</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='8,6']/@size">5,10</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='8,8']/@size">5,13</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='8,9']/@size">5,15</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='8,10']/@size">5,16</set>
 
-				<set xpath="/lootcontainers/lootcontainer[@size='9,1']/@size">5,2</set>							<!-- SIRILLION: Adjusts from  9 SLOTS to 10 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='9,3']/@size">5,6</set>							<!-- SIRILLION: Adjusts from 27 SLOTS to 30 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='9,4']/@size">5,8</set>							<!-- SIRILLION: Adjusts from 36 SLOTS to 40 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='9,5']/@size">5,9</set>							<!-- SIRILLION: Adjusts from 45 SLOTS to 45 SLOTS -->
-				<set xpath="/lootcontainers/lootcontainer[@size='9,9']/@size">5,17</set>						<!-- SIRILLION: Adjusts from 81 SLOTS to 85 SLOTS -->
+				<set xpath="/lootcontainers/lootcontainer[@size='10,1']/@size">5,2</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,3']/@size">5,6</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,4']/@size">5,8</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,5']/@size">5,10</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,9']/@size">5,18</set>
 
-				<set xpath="/lootcontainers/lootcontainer[@name='roboticDrone']/@size">5,4</set>				<!-- SIRILLION: The DRONE does not seem to adhere to the size set for it. -->
+				<!--set xpath="/lootcontainers/lootcontainer[@size='6,1']/@size">8,1</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='6,2']/@size">8,2</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='6,3']/@size">8,3</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='6,4']/@size">8,3</set>
+
+				<set xpath="/lootcontainers/lootcontainer[@size='7,2']/@size">8,2</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='7,4']/@size">8,4</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='7,10']/@size">8,9</set>
+
+				<set xpath="/lootcontainers/lootcontainer[@size='10,1']/@size">8,2</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,3']/@size">8,4</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,4']/@size">8,5</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,5']/@size">8,7</set>
+				<set xpath="/lootcontainers/lootcontainer[@size='10,9']/@size">8,12</set-->
+
+		<!-- SIRILLION: The DRONE does not seem to adhere to the size set for it, in fact it crashes dedicated servers if deployed with the size being anything other than this.
+						So here we revert it to normal size. Bear in mind, changing this on an already active drone will ruin your save! -->
+
+				<set xpath="/lootcontainers/lootcontainer[@name='roboticDrone']/@size">8,2</set>
+
+		<!-- SIRILLION: We attempt to force the size of player crafted containers back to SMX sizes if they load before SMX.
+																	The 5W will yield 50(48) for Wood, 65(64) for Iron & 80(80) for Steel. (Original VANILLA values)
+																	The 8W will yield 48(48) for Wood, 64 64) for Iron & 80(80) for Steel. (Original VANILLA values) -->
+
+				<set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">5,10</set>
+				<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">5,13</set>
+				<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">5,16</set>
+
+				<!--set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">8,6</set>
+				<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">8,8</set>
+				<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">8,10</set-->
 
 			</if>
 		</conditional>
@@ -38,15 +70,19 @@
 
 <!--	// SMX // Player Dropped Backpack Size Conversion - Vanilla -->
 
-		<!-- SIRILLION: Due to the new SMXui design for containers and looting we need to fix the width of the containers to 5 wide -->
+		<!-- SIRILLION: Due to the new SMXui design for containers and looting we need to fix the width of the containers to 5 wide.
+						If you want to use the new 8 wide you need to activate that manually for now. -->
 
+		<!-- SIRILLION: Sets the size of the BAG DROPPED on death. 	The 5W will yield 78(67). (Needed)
+																	The 8W will yield 72(67). (Needed) -->
 		<conditional>
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
 					<if cond="mod_loaded('zSMXui')">
 
-						<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,12</set>				<!-- SIRILLION: Specifies the correct bag size for vanilla -->
+						<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,14</set>
+						<!--set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">8,9</set-->
 
 					</if>
 				</conditional>
@@ -57,8 +93,11 @@
 
 <!--	// SMX // Player Dropped Backpack Size Conversion - Big Bag Mods -->
 
-		<!-- SIRILLION: Adding more slots means we need to add more room in the bag that the player drops upon death. (Minimum: BagSize + 14) -->
+		<!-- SIRILLION: Adding more slots means we need to add more room in the bag that the player drops upon death. (Minimum: BagSize + 22)
+						If you want to use the new 8 wide you need to activate that manually for now. -->
 
+		<!-- SIRILLION: Sets the size of the BAG DROPPED on death. 	The 5W will yield 78(67). (Needed)
+																	The 8W will yield 72(67). (Needed) -->
 		<conditional>
 			<if cond="mod_loaded('Gears')">
 
@@ -66,10 +105,10 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
 
-								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,9</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 115 SLOTS, 114 needed -->
+								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,14</set>
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">8,9</set-->
 
 							</if>
 						</conditional>
@@ -80,6 +119,8 @@
 			</if>
 		</conditional>
 
+		<!-- SIRILLION: Sets the size of the BAG DROPPED on death. 	The 5W will yield 125(122). (Needed)
+																	The 8W will yield 128(122). (Needed) -->
 		<conditional>
 			<if cond="mod_loaded('Gears')">
 
@@ -87,10 +128,10 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '100'">
 
-								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,23</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 115 SLOTS, 114 needed -->
+								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,25</set>
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">8,16</set-->
 
 							</if>
 						</conditional>
@@ -101,6 +142,8 @@
 			</if>
 		</conditional>
 
+		<!-- SIRILLION: Sets the size of the BAG DROPPED on death. 	The 5W will yield 225(222). (Needed)
+																	The 8W will yield 224(222). (Needed) -->
 		<conditional>
 			<if cond="mod_loaded('Gears')">
 
@@ -108,10 +151,10 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '200'">
 
-								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,43</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 215 SLOTS, 214 needed -->
+								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,45</set>
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">8,28</set-->
 
 							</if>
 						</conditional>
@@ -122,6 +165,8 @@
 			</if>
 		</conditional>
 
+		<!-- SIRILLION: Sets the size of the BAG DROPPED on death. 	The 5W will yield 325(322). (Needed)
+																	The 8W will yield 328(322). (Needed) -->
 		<conditional>
 			<if cond="mod_loaded('Gears')">
 
@@ -129,10 +174,10 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '300'">
 
-								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,63</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 315 SLOTS, 314 needed -->
+								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,65</set>
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">8,41</set-->
 
 							</if>
 						</conditional>
@@ -143,6 +188,8 @@
 			</if>
 		</conditional>
 
+		<!-- SIRILLION: Sets the size of the BAG DROPPED on death. 	The 5W will yield 425(422). (Needed)
+																	The 8W will yield 424(422). (Needed) -->
 		<conditional>
 			<if cond="mod_loaded('Gears')">
 
@@ -150,10 +197,101 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '400'">
 
-								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,83</set>				<!-- SIRILLION: Adjusts from 60 SLOTS to 415 SLOTS, 414 needed -->
+								<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">5,85</set>
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">8,53</set-->
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Player Crafted Container Size Conversion - Big Container Mods -->
+
+		<!-- SIRILLION: Double or Triple the player crafted container sizes.
+						If you want to use the new 8 wide you need to activate that manually for now. -->
+
+
+		<!-- SIRILLION: Sets the VANILLA sizes for the containers. 	The 5W will yield 50(48) for Wood, 65(64) for Iron & 80(80) for Steel. (Original VANILLA values)
+																	The 8W will yield 48(48) for Wood, 64 64) for Iron & 80(80) for Steel. (Original VANILLA values) -->
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigContainers') == 'Vanilla'">
+
+								<set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">5,10</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">5,13</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">5,16</set>
+
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">8,6</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">8,8</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">8,10</set-->
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<!-- SIRILLION: Sets the DOUBLE sizes for the containers. 	The 5W will yield 100(48) for Wood, 130(64) for Iron & 160(80) for Steel. (Original VANILLA values)
+																	The 8W will yield  96(48) for Wood, 128(64) for Iron & 160(80) for Steel. (Original VANILLA values) -->
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigContainers') == 'Double'">
+
+								<set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">5,20</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">5,26</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">5,32</set>
+
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">8,12</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">8,16</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">8,20</set-->
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+		<!-- SIRILLION: Sets the TRIPLE sizes for the containers. 	The 5W will yield 150(48) for Wood, 195(64) for Iron & 240(80) for Steel. (Original VANILLA values)
+																	The 8W will yield 144(48) for Wood, 192(64) for Iron & 240(80) for Steel. (Original VANILLA values) -->
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigContainers') == 'Triple'">
+
+								<set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">5,30</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">5,39</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">5,48</set>
+
+								<!--set xpath="/lootcontainers/lootcontainer[@name='playerWoodWritableStorage']/@size">8,18</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerIronWritableStorage']/@size">8,24</set>
+								<set xpath="/lootcontainers/lootcontainer[@name='playerSteelWritableStorage']/@size">8,30</set-->
 
 							</if>
 						</conditional>

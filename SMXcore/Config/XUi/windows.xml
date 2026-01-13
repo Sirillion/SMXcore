@@ -78,6 +78,11 @@
 
 						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
 
+						<rect pos="0,378" width="1185" height="780" anchor="CenterCenter">
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+						</rect>
+
 						<smx_confirmation_prompt name="unstuckPrompt" pos="400,220" width="400" height="220" pivot="center" anchor="centercenter" />
 
 						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="11" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
@@ -91,14 +96,20 @@
 							<smx_menu_button name="btnTpPoi" width="230" height="65" pivot="center" caption_key="xuiMenuTeleportPoiButton" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnExportPrefab" width="230" height="65" pivot="center" caption_key="xuiMenuExportPrefab" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnInvite" width="230" height="65" pivot="center" caption_key="xuiMenuInvite" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnOptions" width="230" height="65" pivot="center" caption_key="xuiMenuOptions" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnHelp" width="230" height="65" pivot="center" caption_key="xuiMenuHelp" font_size="28" overflow="ShrinkContent" />
 							<smx_menu_button name="btnSave" width="230" height="65" pivot="center" caption_key="xuiMenuSave" font_size="28" overflow="ShrinkContent" />
 
 							<rect><sprite name="smx_menu_separation" depth="1" pos="-140,-28" width="301" height="5" sprite="smx_sepline_2" color="[smx_element_separation_2]" /></rect>
 
-							<smx_menu_button name="btnExit" width="230" height="65" pivot="center" caption_key="xuiMenuExit" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnOptions" width="230" height="65" pivot="center" caption_key="xuiMenuOptions" font_size="28" overflow="ShrinkContent" />
 
+							<!--smx_menu_button name="btnExit" width="230" height="65" pivot="center" caption_key="xuiMenuExit" font_size="28" overflow="ShrinkContent" /-->
+
+						</grid>
+
+						<grid name="smx_top_menu_grid" depth="3" pos="1411,444" pivot="center" controller="MainMenuButtons" rows="1" cols="4" cell_width="60" cell_height="60" repeat_content="false" arrangement="horizontal">
+							<!--smx_back_button name="btnOptions" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiOptions" /-->
+							<smx_back_button name="btnExit" depth="3" pos="1381,474" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiMenuExit" />
 						</grid>
 
 						<label depth="4" pos="-155,190" width="500" height="40" pivot="bottomleft" text_key="lblAchievementsDisabled" font_size="18" spacing_x="4" color="[gold]" effect="Outline8" effect_color="0,0,0,255" effect_distance="2,2" visible="{creativeenabled}" tooltip_key="ttAchievementsDisabled" platform="!PS5" />
@@ -193,7 +204,7 @@
 								<sprite name="smxhud_stealth_main_background" depth="3" pos="-10,-1" width="210" height="18" sprite="smx_unitframe_background" flip="vertically" color="[smxhud_element_background]" globalopacitymod="1.8" />
 								<sprite name="smxhud_stealth_icon_background" depth="6" pos="-10,-10" width="40" height="50" sprite="smx_icon_background" pivot="center" rotation="90" color="[smxhud_element_background]" globalopacitymod="1.8" />
 								<sprite name="smxhud_stealth_bar_background" depth="4" pos="0,-6" width="180" height="8" sprite="smx_unitframe_healthbar_empty" color="[smxhud_unitframe_bar_background_1]" />
-								<filledsprite name="BarContent" depth="5" pos="0,-6" width="180" height="8" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" color="[smxhud_unitframe_stealth_bar]" tooltip_key="xuiStealthBarHUD" />
+								<filledsprite name="BarContent" depth="5" pos="0,-6" width="180" height="8" sprite="smx_unitframe_healthbar_fill" type="filled" fill="{statfill}" color="[smxhud_unitframe_stealth_bar]" tooltip_key="xuiStealthBarHUD" />
 								<sprite name="Icon" depth="7" pos="-17,-2" size="16,16" sprite="ui_game_symbol_stealth" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 								<label name="TextContent" depth="7" pos="90,-10" style="smx_label_normal" text="{statcurrent}" font_size="14" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" />
 							</rect>
@@ -202,7 +213,7 @@
 							<rect name="smxhud_statbar_health" pos="-14,-8" width="240" height="55" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Health" visible="{statvisible}">
 								<sprite name="smxhud_health_main_background" depth="2" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_empty" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
 								<filledsprite name="background" depth="3" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_empty" type="filled" fill="{statmodifiedmax}" color="[smxhud_unitframe_bar_background_1]" globalopacitymod="1.3" />
-								<filledsprite name="BarContent" depth="5" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" color="[smxhud_unitframe_health_bar]" globalopacitymod="1.8" tooltip_key="xuiHealthBarHUD" />
+								<filledsprite name="BarContent" depth="5" pos="60,-8" width="205" height="28" sprite="smx_unitframe_healthbar_fill" type="filled" fill="{statfill}" color="[smxhud_unitframe_health_bar]" globalopacitymod="1.8" tooltip_key="xuiHealthBarHUD" />
 								<sprite name="Icon" depth="7" pos="82,-13" size="18,18" sprite="ui_game_symbol_add" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 								<label name="TextContent" depth="7" pos="210,-18" width="32" height="26" style="smx_label_normal" text=" [I]{playerhealth}[/I] " font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
 								<label name="TextContent" depth="7" pos="228,-17" width="30" height="26" style="smx_label_normal" text=" / " font_size="16" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
@@ -223,7 +234,7 @@
 							<rect name="smxhud_statbar_stamina" pos="-8,-37" width="240" height="55" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Stamina" visible="{statvisible}">
 								<sprite name="smxhud_stamina_main_background" depth="2" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_empty" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
 								<filledsprite name="background" depth="3" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_empty" type="filled" fill="{statmodifiedmax}" color="[smxhud_unitframe_bar_background_1]" globalopacitymod="1.3" />
-								<filledsprite name="BarContent" depth="5" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_fill" type="filled" fill="0" color="[smxhud_unitframe_stamina_bar]" globalopacitymod="1.8" tooltip_key="xuiStaminaBarHUD" />
+								<filledsprite name="BarContent" depth="5" pos="66,-10" width="184" height="22" sprite="smx_unitframe_staminabar_fill" type="filled" fill="{statfill}" color="[smxhud_unitframe_stamina_bar]" globalopacitymod="1.8" tooltip_key="xuiStaminaBarHUD" />
 								<sprite name="Icon" depth="7" pos="74,-12" size="18,18" sprite="ui_game_symbol_run" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 								<label name="TextContent" depth="7" pos="196,-19" width="32" height="26" style="smx_label_normal" text=" [I]{playerstamina}[/I] " font_size="18" pivot="center" justify="right" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
 								<label name="TextContent" depth="7" pos="214,-18" width="30" height="26" style="smx_label_normal" text=" / " font_size="16" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
@@ -247,7 +258,7 @@
 								<sprite name="smxhud_hunger_main_background" depth="2" pos="-10,9" width="170" height="32" sprite="smx_unitframe_background" color="[smxhud_element_background]" globalopacitymod="1.8" />
 								<sprite name="smxhud_hunger_icon_background" depth="10" pos="-10,-10" width="40" height="50" sprite="smx_icon_background" pivot="center" flip="vertically" color="[smxhud_element_background]" globalopacitymod="1.8" />
 								<sprite name="smxhud_hunger_bar_background" depth="8" pos="-8,-4" width="155" height="12" sprite="smx_unitframe_healthbar_empty" flip="vertically" color="[smxhud_unitframe_bar_background_1]" />
-								<filledsprite name="BarContent" depth="9" pos="-8,-4" width="155" height="12" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" flip="vertically" color="[smxhud_unitframe_hunger_bar]" globalopacitymod="1.8" tooltip_key="xuiHungerBarHUD" />
+								<filledsprite name="BarContent" depth="9" pos="-8,-4" width="155" height="12" sprite="smx_unitframe_healthbar_fill" type="filled" fill="{statfill}" flip="vertically" color="[smxhud_unitframe_hunger_bar]" globalopacitymod="1.8" tooltip_key="xuiHungerBarHUD" />
 								<sprite name="Icon" depth="11" pos="-14,-1" size="18,18" sprite="ui_game_symbol_fork" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 								<label name="TextContent" depth="10" pos="116,-11" width="30" height="26" style="hover, smx_label_normal" text=" [I]{playerfood}[/I] " font_size="14" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" tooltip="You have a deficiency of: {playerhungerdeficiency} food." />
 							</rect>
@@ -264,7 +275,7 @@
 							<!-- SMX COMMENT: This module contains the unitframe thirst bar design in the lower left corner. -->
 							<rect name="smxhud_statbar_thirst" pos="-12,-17" width="90" height="90" controller="SMXcore.HUDStatBar, SMXcore" stat_type="Water" visible="{statvisible}">
 								<sprite name="smxhud_thirst_bar_background" depth="11" pos="0,0" width="69" height="69" sprite="smx_unitframe_thirst_bar" color="[smxhud_unitframe_bar_background_1]" globalopacitymod="1.4" />
-								<sprite name="BarContent" depth="12" pos="0,0" width="69" height="69" sprite="smx_unitframe_thirst_bar" type="filled" fill="0" filldirection="vertical" color="[smxhud_unitframe_thirst_bar]" globalopacitymod="1.8" tooltip_key="xuiThirstBarHUD" />
+								<sprite name="BarContent" depth="12" pos="0,0" width="69" height="69" sprite="smx_unitframe_thirst_bar" type="filled" fill="{statfill}" filldirection="vertical" color="[smxhud_unitframe_thirst_bar]" globalopacitymod="1.8" tooltip_key="xuiThirstBarHUD" />
 								<sprite name="Icon" depth="13" pos="12,-12" size="40,40" sprite="smx_ui_game_symbol_thirst" rotation="0" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 								<label name="TextContent" depth="16" pos="33,-62" width="30" height="26" style="hover, smx_label_normal" text=" {playerwater} " font_size="14" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" tooltip="You have a deficiency of: {playerthirstdeficiency} water." />
 							</rect>
@@ -518,7 +529,7 @@
 								<rect name="smxhud_vehiclestat_health" depth="12" pos="-14,-8" width="240" height="55" controller="SMXcore.HUDStatBar, SMXcore" stat_type="VehicleHealth" visible="{statvisible}">
 									<sprite name="smxhud_vehicle_frameseparator" depth="3" pos="-85,-36" width="195" height="3" sprite="smx_sepline_1" rotation="0" color="[smxhud_unitframe_separation]" globalopacitymod="1.8" />
 									<sprite name="background" depth="2" pos="-95,-8" width="205" height="28" sprite="smx_unitframe_healthbar_empty" flip="horizontally" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
-									<filledsprite name="BarContent" depth="5" pos="-95,-8" width="205" height="28" sprite="smx_unitframe_healthbar_fill" type="filled" fill="0" fillinvert="true" flip="horizontally" color="[smxhud_vehicle_health_bar]" globalopacitymod="1.8" tooltip_key="xuiVehicleHealthBarHUD" />
+									<filledsprite name="BarContent" depth="5" pos="-95,-8" width="205" height="28" sprite="smx_unitframe_healthbar_fill" type="filled" fill="{statfill}" fillinvert="true" flip="horizontally" color="[smxhud_vehicle_health_bar]" globalopacitymod="1.8" tooltip_key="xuiVehicleHealthBarHUD" />
 									<sprite name="Icon" depth="7" pos="74,-12" size="18,18" sprite="ui_game_symbol_wrench" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 									<label name="TextContent" depth="7" pos="-65,-16" width="100" height="26" style="smx_label_normal" text=" [I]{statcurrent} / [C0C0C0]{statmax}[-][/I] " font_size="13" color="[smxhud_element_labelcolor_1]" justify="right" pivot="center" />
 
@@ -534,7 +545,7 @@
 									<sprite name="fuel2" depth="12" pos="50,230" size="15,75" sprite="fuel2" pivot="center" globalopacitymod="1.8" controller="XUiC_DialIndicator, SMXui" indicator_value="{vehiclespeed}" start_angle="135" end_angle="-135" range_min="0" range_max="1" limit_indicator_to_range="true" /-->
 
 									<sprite name="background" depth="2" pos="-103,-38" width="184" height="22" sprite="smx_unitframe_staminabar_empty" flip="horizontally" color="[smxhud_unitframe_main_background]" globalopacitymod="1.8" />
-									<filledsprite name="BarContent" depth="5" pos="-103,-48" width="184" height="22" sprite="smx_unitframe_staminabar_fill" type="filled" fill="0" fillinvert="true" flip="horizontally" color="[smxhud_vehicle_fuel_bar]" globalopacitymod="1.8" tooltip_key="xuiVehicleFuelBarHUD" />
+									<filledsprite name="BarContent" depth="5" pos="-103,-48" width="184" height="22" sprite="smx_unitframe_staminabar_fill" type="filled" fill="{statfill}" fillinvert="true" flip="horizontally" color="[smxhud_vehicle_fuel_bar]" globalopacitymod="1.8" tooltip_key="xuiVehicleFuelBarHUD" />
 									<sprite name="Icon" depth="7" pos="58,-49" size="18,18" sprite="ui_game_symbol_gas" color="[smxhud_element_iconcolor_1]" foregroundlayer="true" />
 
 									<label name="TextContent" depth="7" pos="-100,-56" width="100" height="26" style="smx_label_normal" text=" [I]{statcurrentwithmax}[/I] " font_size="13" color="[smxhud_element_labelcolor_1]" justify="right" pivot="center" />
@@ -675,20 +686,6 @@
 			</if>
 		</conditional>
 
-				<!--append xpath="/windows/window[@name='windowToolbelt']/rect[@name='smxhud_toolbelt_content']">
-					<grid name="inventory" depth="20" pos="43,-63" rows="1" cols="10" cell_width="88" cell_height="20" pivot="center" repeat_content="false">
-						<label name="1" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory1]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="2" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory2]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="3" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory3]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="4" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory4]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="5" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory5]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="6" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory6]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="7" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory7]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="8" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory8]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="9" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory9]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-						<label name="0" depth="1" pos="0,0" pivot="center" text=" [action:local:Inventory10]" color="[white]" font_size="16" justify="center" effect="Outline8" effect_distance="1,1" effect_color="0,0,0,255" parse_actions="true" max_line_count="1" />
-					</grid>
-				</append-->
 
 <!--	// SMX // Radial Menu -->
 
@@ -796,16 +793,25 @@
 				<remove xpath="/windows/window[@name='windowQuestTracker']" />
 
 				<append xpath="/windows">
-					<window name="windowQuestTracker" depth="-20" pos="-255,-300" width="400" height="400" anchor="RightTop" controller="QuestTrackerWindow" visible="{showquest}" force_hide="false">
-						<sprite name="smx_questtracker_background" depth="0" pos="-90,14" width="360" height="182" sprite="smx_questtracker_background" color="[smxhud_element_background]" globalopacitymod="1.5" tooltip_key="xuiQuestTrackerHUD" />
-						<label name="smxhud_questtracker_title" depth="1" pos="105,-15" width="280" height="28" style="smx_label_normal" text="{questtitle}" font_size="26" pivot="center" justify="center" upper_case="true" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
-						<sprite name="windowIcon" depth="1" pos="-75,1" style="icon32px" sprite="{questicon}" justify="left" color="[smxhud_element_iconcolor_1]" />
-						<grid name="objectiveList" depth="1" pos="-60,-50" rows="12" cols="1" cell_width="300" cell_height="26" repeat_content="true" arrangement="vertical" controller="QuestTrackerObjectiveList" complete_icon="ui_game_symbol_check" incomplete_icon="ui_game_symbol_x" complete_color="[green]" incomplete_color="[smxhud_quest_incomplete_color]">
-							<smxhud_quest_objective_tracker_entry />
+					<window name="windowQuestTracker" depth="-98" pos="-145,-147" width="700" height="700" anchor="RightTop" controller="QuestTrackerWindow" visible="{showquest}" force_hide="false">
+
+						<sprite name="verticalArt" pos="0,-200" height="4" width="50" pivot="center" sprite="smx_sepline_1" color="[smxui_element_separation_1]" rotation="90" />
+
+						<rect name="smx_recipetracker_icon_diamond" depth="6" pos="-29,68">
+							<sprite name="smxhud_artbox_background_45" depth="19" pos="30,-232" width="54" height="54" style="hover" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" tooltip="Currently Tracking: {questtitle}" force_hide="false" />
+							<sprite name="smxhud_artbox_foreground_45" depth="20" pos="30,-232" width="48" height="48" style="hover" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" tooltip="Currently Tracking: {questtitle}" force_hide="false" />
+
+							<sprite name="windowIcon" depth="21" pos="30,-230" size="24,24" pivot="center" style="hover" sprite="{questicon}" color="[smxhud_element_iconcolor_1]" tooltip="Currently Tracking: {questtitle}" />
+						</rect>
+
+						<grid name="objectiveList" depth="6" pos="0,-215" rows="12" cols="1" cell_width="40" cell_height="40" repeat_content="true" arrangement="vertical" controller="QuestTrackerObjectiveList" complete_icon="ui_game_symbol_check" incomplete_icon="ui_game_symbol_x" complete_color="[green]" incomplete_color="[smxhud_quest_incomplete_color]">
+							<smx_quest_objective_tracker_entry />
 						</grid>
 
-						<rect pos="-160,{#trackerheight * -1 - 50}" width="400" height="86" visible="{questhintavailable}">
-							<label name="smx_questtracker_hints" depth="3" style="smx_label_outline" text="{questhint}" font_size="20" justify="right" parse_actions="true" actions_default_format="( [e61a16]###[-] )" spacing_y="5" />
+						<rect pos="-270,-138" width="200" height="100" anchor="TopRight" visible="{questhintavailable}">
+							<panel name="bgPanel" depth="1" pos="0,0" width="270" height="50" backgroundspritename="ui_game_panel_header" bordercolor="[transparent]" backgroundcolor="[black_threequarters_alpha]" borderthickness="0" anchor="CenterBottom" globalopacity="false">
+								<label name="smx_questtracker_hints" depth="3" pos="113,-27" width="210" height="50" pivot="center" style="smx_label_outline" text="{questhint}" parse_actions="true" font_size="18" justify="left" actions_default_format="( [e61a16]###[-] )" spacing_y="5" />
+							</panel>
 						</rect>
 					</window>
 				</append>
@@ -822,12 +828,18 @@
 				<remove xpath="/windows/window[@name='windowRecipeTracker']" />
 
 				<append xpath="/windows">
-					<window name="windowRecipeTracker" depth="-20" pos="-255,-300" width="400" height="400" anchor="RightTop" controller="RecipeTrackerWindow" visible="{showrecipe}" force_hide="false">
-						<sprite name="smx_recipetracker_background" depth="0" pos="-90,14" width="360" height="182" sprite="smx_questtracker_background" color="[smxhud_element_background]" globalopacitymod="1.5" tooltip_key="xuiRecipeTrackerHUD" />
-						<label name="smx_recipetracker_title" depth="1" pos="105,-15" width="280" height="28" style="smx_label_normal" text="{recipetitle}" font_size="26" pivot="center" justify="center" upper_case="true" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
-						<sprite name="windowIcon" depth="1" pos="-75,1" style="icon32px" sprite="ui_game_symbol_hammer" justify="left" color="[smxhud_element_iconcolor_1]" />
+					<window name="windowRecipeTracker" depth="-100" pos="-145,-147" width="700" height="700" anchor="RightTop" controller="RecipeTrackerWindow" visible="{showrecipe}" force_hide="false">
 
-						<grid name="recipeList" depth="1" pos="-60,-50" rows="12" cols="1" cell_width="300" cell_height="26" repeat_content="true" arrangement="vertical" controller="RecipeTrackerIngredientsList" complete_icon="ui_game_symbol_check" incomplete_icon="ui_game_symbol_x" complete_color="[green]" incomplete_color="[smxhud_quest_incomplete_color]">
+						<sprite name="horizontalArt" depth="1" pos="-140,100" height="4" width="400" pivot="center" sprite="smx_sepline_1" color="[smxui_element_separation_1]" />
+
+						<rect name="smx_recipetracker_icon_diamond" depth="6" pos="-29,68">
+							<sprite name="smxhud_artbox_background_45" depth="19" pos="-260,32" width="54" height="54" style="hover" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" tooltip="Recipe Tracking: {recipetitle}" force_hide="false" />
+							<sprite name="smxhud_artbox_foreground_45" depth="20" pos="-260,32" width="48" height="48" style="hover" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" tooltip="Recipe Tracking: {recipetitle}" force_hide="false" />
+
+							<sprite name="windowIcon" depth="21" pos="-259,33" size="24,24" pivot="center" style="hover" sprite="ui_game_symbol_hammer" color="[smxhud_element_iconcolor_1]" tooltip="Recipe Tracking: {recipetitle}" />
+						</rect>
+
+						<grid name="recipeList" depth="6" pos="-240,100" rows="1" cols="12" cell_width="40" cell_height="40" repeat_content="true" arrangement="horizontal" controller="RecipeTrackerIngredientsList" complete_icon="ui_game_symbol_check" incomplete_icon="ui_game_symbol_x" complete_color="[green]" incomplete_color="[smxhud_quest_incomplete_color]">
 							<smx_recipe_ingredient_tracker_entry />
 						</grid>
 					</window>
@@ -856,7 +868,7 @@
 				<remove xpath="/windows/window[@name='windowTwitch']" />
 
 				<append xpath="/windows">
-					<window name="windowTwitch" depth="-51" pos="-305,200" width="300" height="400" controller="TwitchWindow" anchor="RightCenter" visible="false">
+					<window name="windowTwitch" depth="-51" pos="-305,0" width="300" height="400" controller="TwitchWindow" anchor="RightCenter" visible="false">
 						<sprite name="smxhud_twitch_background" depth="0" pos="-40,14" width="360" height="182" sprite="smx_questtracker_background" color="[smxhud_element_background]" globalopacitymod="1.5" tooltip_key="xuiTwitchIntegrationHUD" />
 						<label name="smxhud_twitch_title" depth="1" pos="155,-15" width="280" height="28" style="smx_label_normal" text="{status_title}" font_size="26" pivot="center" justify="center" upper_case="true" overflow="ShrinkContent" color="[smxhud_element_labelcolor_1]" />
 						<sprite name="smxhud_twitch_window_icon" depth="1" pos="-15,1" size="40,40" sprite="smx_ui_twitch_symbol_logo" color="[smxhud_element_iconcolor_1]" justify="left" globalopacitymod="1.8" />
@@ -1023,26 +1035,6 @@
 								</rect>
 							</rect>
 
-							<!-- SMX COMMENT: This module contains the environmental icons in the top left corner, under the day and time display. -->
-							<rect name="smxhud_environmental_module" depth="3" pos="80,-80" width="260" height="80">
-								<!--rect name="smxhud_environment_elevation" depth="1" pos="-100,10" width="60" height="60" pivot="center">
-									<sprite name="smxhud_elevation_background" depth="1" pos="0,0" width="62" height="62" sprite="smx_icon_background" pivot="center" rotation="0" color="[smxhud_element_background]" globalopacitymod="1.2" tooltip_key="xuiMapElevationHUD" />
-									<sprite name="smxhud_elevation_icon" depth="2" pos="0,0" size="28,28" sprite="ui_game_symbol_climb" pivot="center" color="[smxhud_element_iconcolor_1]" globalopacitymod="1.4" />
-									<label name="smxhud_elevation_value" depth="2" pos="0,-38" width="60" height="30" style="smx_label_normal" text="{mapelevation} M" font_size="18" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="MapStats" />
-								</rect-->
-
-								<rect name="smxhud_environment_maptemp" depth="1" pos="-100,10" width="60" height="60" pivot="center" force_hide="false">
-									<sprite name="smxhud_maptemp_background" depth="1" pos="0,0" width="62" height="62" sprite="smx_icon_background" pivot="center" rotation="0" color="[smxhud_element_background]" globalopacitymod="1.2" tooltip_key="xuiMapTempHUD" />
-									<sprite name="smxhud_maptemp_icon" depth="2" pos="0,0" size="28,28" sprite="ui_game_symbol_temperature" pivot="center" color="[smxhud_element_iconcolor_1]" globalopacitymod="1.4" />
-									<label name="smxhud_maptemp_value" depth="2" pos="0,-38" width="60" height="30" style="smx_label_normal" text="{maptemperature}" font_size="18" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="MapStats" />
-								</rect>
-
-								<rect name="smxhud_environment_coretemp" depth="1" pos="-40,10" width="60" height="60" pivot="center" force_hide="false">
-									<sprite name="smxhud_coretemp_background" depth="1" pos="0,0" width="62" height="62" sprite="smx_icon_background" pivot="center" rotation="0" color="[smxhud_element_background]" globalopacitymod="1.2" tooltip_key="xuiCoreTempHUD" />
-									<sprite name="smxhud_coretemp_icon" depth="2" pos="0,0" size="28,28" sprite="smx_ui_game_symbol_beanie" pivot="center" color="[smxhud_element_iconcolor_1]" globalopacitymod="1.4" />
-									<label name="smxhud_coretemp_value" depth="2" pos="0,-38" width="60" height="30" style="smx_label_normal" text="{playercoretemp}" font_size="18" pivot="center" justify="center" color="[smxhud_element_labelcolor_1]" controller="SMXcore.PlayerStatWindow, SMXcore" />
-								</rect>
-							</rect>
 						</rect>
 					</window>
 				</append>
@@ -1125,86 +1117,156 @@
 		</conditional>
 
 
-<!--	// SMX // Message Window -->
+<!--	// SMX // Message Popup Window -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
-	<!--window name="messageBox" anchor="CenterCenter" pos="-280,140" width="560" height="279" cursor_area="true" depth="1000">
-		<panel name="noclick" depth="0" createuipanel="true" on_press="true" pos="-4000,4000" width="8000" height="8000" disableautobackground="true" visible="{# !is_modal}" gamepad_selectable="false">
-			<sprite depth="0" name="backgroundMain" sprite="menu_empty" color="0,0,0,200" type="sliced" fillcenter="true" />
-		</panel>
-
-		<panel name="header" pos="0,0" height="43" depth="1" backgroundspritename="ui_game_panel_header" bordercolor="[black]" borderthickness="3" >
-			<label style="header.name" pos="6,-6" width="550" text="{msgTitle}" />
-		</panel>
-		<panel name="content" pos="0,-46" height="194" depth="1" backgroundcolor="[darkGrey]" bordercolor="[black]" borderthickness="3" pivot="center">
-			<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" height="194" color="[black]" type="sliced" fillcenter="false" />	
-			<label depth="3" name="descriptionText" pos="8,-6" width="544" text="{msgText}" font_size="28" overflow="resizeheight" upper_case="false" />
-
-			<rect name="btnLeft" depth="3" pos="0, -243" width="200" height="36" disableautobackground="true" visible="{showleftbutton}">
-				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />	
-				<rect depth="3" pos="0,-3" height="31">
-					<button name="clickable2" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/-->
-					<!-- <sprite depth="2" name="windowIcon" width="24" height="24" pos="45,-2" color="[iconColor]" sprite="ui_game_symbol_check"/> -->
-					<!--label depth="2" name="btnLabel" pos="0,-2" justify="center" text_key="{leftbuttontext}" effect="outline" upper_case="true" />
-				</rect>
-			</rect>
-
-			<rect name="btnRight" depth="3" pos="360, -243" width="200" height="36" disableautobackground="true">
-				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />	
-				<rect depth="3" pos="0,-3" height="31">
-					<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/-->
-					<!-- <sprite depth="2" name="windowIcon" width="24" height="24" pos="45,-2" color="[iconColor]" sprite="ui_game_symbol_check"/> -->
-					<!--label depth="2" name="btnLabel" pos="0,-2" justify="center" text_key="{rightbuttontext}" effect="outline" upper_case="true" />
-				</rect>
-			</rect>
-		</panel>
-	</window-->
-
-
-				<!--remove xpath="/windows/window[@name='messageBox']" /-->
+				<remove xpath="/windows/window[@name='messageBox']" />
 
 				<append xpath="/windows">
-					<window name="messageBoxSMX2" depth="1000" pos="0,400" width="1185" height="780" anchor="CenterCenter" cursor_area="true">
+					<window name="messageBox" depth="1000" pos="0,400" width="1185" height="780" anchor="CenterCenter" cursor_area="true">
 						<panel depth="200" createuipanel="true" disableautobackground="true">
 							<panel name="outclick" depth="1" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false" />
 							
-							<panel name="noclick" depth="2" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false" visible="{# !is_modal}">
-								<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
-							</panel>
+								<panel name="noclick" depth="2" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false" visible="{# !is_modal}">
+									<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+								</panel>
 
-							<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
-								<sprite name="smxPopOutBG" depth="9" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
-								<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
+								<panel name="content" depth="3" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
+									<sprite name="smxPopOutBG" depth="2" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
+									<sprite name="smxPopOutBG" depth="3" pos="-200,350" width="400" height="100" sprite="smx_info_header_overlay2" color="255,255,255,375" flip="horizontally" />
 
-								<label name="title" depth="11" pos="0,-100" width="350" pivot="center" style="smx_label_outline" text="{msgTitle}" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
-								<label name="descriptionText" depth="11" pos="0,-100" width="350" pivot="center" style="smx_label_outline" text="{msgText}" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
+									<label name="title" depth="4" pos="-30,315" width="300" height="28" pivot="center" style="smx_label_outline" text="{msgTitle}" justify="left" font_size="26" upper_case="true" spacing_x="0" color="255,255,255,255" />
 
-								<smx_textfield_serverpw name="txtPassword" depth="13" pos="0,-150" width="230" height="30" pivot="center" font_size="24" password_field="true" open_vk_on_open="false" character_limit="30" />
-							</panel>
-			<rect name="btnLeft" depth="3" pos="0, -243" width="200" height="36" disableautobackground="true" visible="{showleftbutton}">
-				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />	
-				<rect depth="3" pos="0,-3" height="31">
-					<button name="clickable2" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/>
-					<!-- <sprite depth="2" name="windowIcon" width="24" height="24" pos="45,-2" color="[iconColor]" sprite="ui_game_symbol_check"/> -->
-					<label depth="2" name="btnLabel" pos="0,-2" justify="center" text_key="{leftbuttontext}" effect="outline" upper_case="true" />
-				</rect>
-			</rect>
+									<sprite name="smx_panel_separation" depth="4" pos="0,280" width="360" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-			<rect name="btnRight" depth="3" pos="360, -243" width="200" height="36" disableautobackground="true">
-				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />	
-				<rect depth="3" pos="0,-3" height="31">
-					<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/>
-					<!-- <sprite depth="2" name="windowIcon" width="24" height="24" pos="45,-2" color="[iconColor]" sprite="ui_game_symbol_check"/> -->
-					<label depth="2" name="btnLabel" pos="0,-2" justify="center" text_key="{rightbuttontext}" effect="outline" upper_case="true" />
-				</rect>
-			</rect>
+									<label name="descriptionText" depth="11" pos="-180,250" width="360" height="500" pivot="topleft" style="smx_label_outline" text="{msgText}" font_size="24" justify="left" upper_case="false" spacing_x="0" spacing_y="3" overflow="ShrinkContent" />
+									<sprite name="descriptionBackground" depth="10" pos="-190,260" size="380,520" pivot="topleft" sprite="smx_menu_background" color="7,7,7,295" />
 
-							<!--panel name="buttons" depth="6" pos="-10,-560" height="32" borderthickness="3" createuipanel="true" disableautobackground="true" >
-								<smx_back_button name="btnCancel" depth="3" pos="170,550" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" tooltip_key="xuiBack" />
-								<smx_menu_button name="btnSubmit" depth="3" pos="0,0" width="230" height="65" pivot="center" caption_key="xuiSubmit" font_size="28" upper_case="true" />
-							</panel-->
+									<rect name="outline" depth="11" pos="0,0">
+										<sprite name="smxOutlineTop" pos="-200,262" width="395" height="3" sprite="smx_sepline_1" />
+										<sprite name="smxOutlineLeft" pos="-190,-280" width="550" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineRight" pos="190,-285" width="560" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineBottom" pos="-195,-258" width="394" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+									</rect>
+								</panel>
+
+								<panel name="buttons" depth="4" pos="-10,-560" height="32" borderthickness="3" createuipanel="true" disableautobackground="true" >
+
+									<rect name="btnLeft" depth="5" pos="10,-95" width="230" height="65" pivot="center" visible="{showleftbutton}">
+
+										<button	name="clickable2"
+												pos="10,0"
+												size="230,65"
+												sprite="smx_button_background"
+												defaultcolor="[smxmenu_element_button_foreground]"
+												selectedcolor="[smxmenu_element_button_selected]"
+												hoversprite="smx_button_foreground"
+												hovercolor="[smxmenu_element_button_hover]"
+												hoverscale="1.1"
+												pivot="center"
+												tooltip_key=""
+												sound_play_on_hover="[default_hover]"
+												sound="[default_click]" />
+
+										<label name="btnLabel" depth="2" pos="10,-2" pivot="center" style="smx_label_outline" text_key="{leftbuttontext}" font_size="28" spacing_x="2" justify="center" upper_case="true" />
+
+									</rect>
+
+									<rect name="btnRight" depth="5" pos="170,530" width="55" height="55">
+
+										<sprite name="background" pos="0,-5" depth="5" size="55,55" pivot="center" sprite="smx_diamond_background"	color="7,7,7,500" rotation="45" />
+
+										<button	name="clickable"
+												depth="99"
+												pos="0,-5"
+												pivot="center"
+												sprite="smx_diamond_foreground"
+												defaultcolor="255,144,24,196"
+												disabledcolor="[darkGrey]"
+												hoversprite="smx_diamond_foreground"
+												hovercolor="255,255,255,500"
+												selectedsprite="smx_diamond_foreground"
+												selectedcolor="[smxcore_element_accentcolor_2]"
+												foregroundlayer="true"
+												type="sliced"
+												hoverscale="1.1"
+												tooltip_key="{rightbuttontext}"
+												disabled_tooltip_key=""
+												sound_play_on_hover="[default_hover]"
+												sound="[default_click]"
+												rotation="45" />
+
+										<sprite name="smx_window_button_x" depth="10" pos="0,-5" size="24,24" pivot="center" sprite="ui_game_symbol_add" type="sliced" color="[white]" foregroundlayer="true" rotation="45" />
+
+									</rect>		
+								</panel>
+						</panel>
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Tip Popup Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<remove xpath="/windows/window[@name='windowTip']" />
+
+				<append xpath="/windows">
+					<window name="windowTip" depth="100" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="TipWindow" cursor_area="true">
+						<panel depth="200" createuipanel="true" disableautobackground="true">
+							<panel name="outclick" depth="1" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false" />
+							
+								<panel name="noclick" depth="2" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false">
+									<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+								</panel>
+
+								<panel name="content" depth="3" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
+									<sprite name="smxPopOutBG" depth="2" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
+									<sprite name="smxPopOutBG" depth="3" pos="-200,350" width="400" height="100" sprite="smx_info_header_overlay2" color="255,255,255,375" flip="horizontally" />
+
+									<label name="title" depth="4" pos="-30,315" width="300" height="28" pivot="center" style="smx_label_outline" text="{tiptitle}" justify="left" font_size="26" upper_case="true" spacing_x="0" color="255,255,255,255" />
+
+									<sprite name="smx_panel_separation" depth="4" pos="0,280" width="360" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<label name="descriptionText" depth="11" pos="-180,250" width="360" height="500" pivot="topleft" style="smx_label_outline" text="{tiptext}" font_size="24" justify="left" upper_case="false" spacing_x="0" spacing_y="3" overflow="ShrinkContent" />
+									<sprite name="descriptionBackground" depth="10" pos="-190,260" size="380,520" pivot="topleft" sprite="smx_menu_background" color="7,7,7,295" />
+
+									<rect name="outline" depth="11" pos="0,0">
+										<sprite name="smxOutlineTop" pos="-200,262" width="395" height="3" sprite="smx_sepline_1" />
+										<sprite name="smxOutlineLeft" pos="-190,-280" width="550" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineRight" pos="190,-285" width="560" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineBottom" pos="-195,-258" width="394" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+									</rect>
+								</panel>
+
+								<panel name="buttons" depth="4" pos="-10,-560" height="32" borderthickness="3" createuipanel="true" disableautobackground="true" >
+
+									<rect name="btnContinue" depth="5" pos="10,-95" width="230" height="65" pivot="center">
+
+										<button	name="clickable"
+												pos="10,0"
+												size="230,65"
+												sprite="smx_button_background"
+												defaultcolor="[smxmenu_element_button_foreground]"
+												selectedcolor="[smxmenu_element_button_selected]"
+												hoversprite="smx_button_foreground"
+												hovercolor="[smxmenu_element_button_hover]"
+												hoverscale="1.1"
+												pivot="center"
+												tooltip_key=""
+												sound_play_on_hover="[default_hover]"
+												sound="[default_click]" />
+
+										<label name="windowName" depth="2" pos="10,-2" pivot="center" style="smx_label_outline" text="CONTINUE" text_key="btnContinue" font_size="28" spacing_x="2" justify="center" upper_case="true" />
+
+									</rect>
+								</panel>
 						</panel>
 					</window>
 				</append>
@@ -1296,8 +1358,8 @@
 						<label name="Creative" depth="3" pos="1000,-22" size="198,40" style="smx_label_normal" text_key="xuiCreative" font_size="24" pivot="center" justify="center" overflow="ShrinkContent" upper_case="true" color="[smxui_element_labelcolor_1]" visible="{is_creative}" />
 						<label name="Creative" depth="3" pos="1000,-22" size="198,40" style="smx_label_normal" text_key="xuiCreative" font_size="24" pivot="center" justify="center" overflow="ShrinkContent" upper_case="true" color="[smxui_element_labelcolor_2]" visible="{#!is_creative}" />
 
-						<gamepad_icon name="LB_Icon" depth="9" pos="-560,-43" size="35,35" sprite="Button_LB" pivot="center" />
-						<gamepad_icon name="RB_Icon" depth="1" pos="1160,-43" size="35,35" sprite="Button_RB" pivot="center" />
+						<gamepad_icon name="LB_Icon" depth="9" pos="-560,-43" size="35,35" action="GUI Window Paging Up" pivot="center" />
+						<gamepad_icon name="RB_Icon" depth="1" pos="1160,-43" size="35,35" action="GUI Window Paging Down" pivot="center" />
 
 						<label name="smxcore_clock_display" depth="5" pos="1160,-22" size="115,40" style="smx_label_normal" text="{time}" font_size="20" pivot="center" justify="center" overflow="ShrinkContent" upper_case="true" color="[smxui_element_labelcolor_2]" controller="SMXcore.PlayerStatWindow, SMXcore" tooltip="The time of your life! :)" />
 						<label name="smxcore_temp_display" depth="5" pos="-560,-22" size="115,40" style="smx_label_normal" text="{maptemperature}" font_size="20" pivot="center" justify="center" overflow="ShrinkContent" upper_case="true" color="[smxui_element_labelcolor_2]" controller="MapStats" tooltip="Ambient Temperature" />
@@ -1995,9 +2057,11 @@
 
 							<scrollview name="scrollview" depth="5" pos="-50,-10" width="520" height="612" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
 
-									<grid depth="10" name="inventory" rows="9" cols="5" pos="50,0" cell_width="101" cell_height="101" controller="Quartz.Backpack, Quartz" repeat_content="true" arrangement="horizontal">
-										<smx_backpack_item_stack name="0"/>
-									</grid>
+								<grid depth="10" name="inventory" rows="9" cols="5" pos="50,0" cell_width="101" cell_height="101" controller="Quartz.Backpack, Quartz" repeat_content="true" arrangement="horizontal">
+								<!--grid depth="10" name="inventory" rows="6" cols="8" pos="30,0" cell_width="63" cell_height="63" controller="Quartz.Backpack, Quartz" repeat_content="true" arrangement="horizontal"-->
+									<smx_backpack_item_stack_5 name="0"/>
+									<!--smx_backpack_item_stack_8 name="0"/-->
+								</grid>
 
 							</scrollview>
 
@@ -2084,7 +2148,9 @@
 							<scrollview name="scrollview" depth="5" pos="-50,-10" width="520" height="612" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
 
 								<grid depth="10" name="inventory" rows="20" cols="5" pos="50,0" cell_width="101" cell_height="101" controller="Quartz.LootContainer, Quartz" repeat_content="true" arrangement="horizontal">
-									<container_item_stack name="0"/>
+								<!--grid depth="10" name="inventory" rows="20" cols="8" pos="50,0" cell_width="63" cell_height="63" controller="Quartz.LootContainer, Quartz" repeat_content="true" arrangement="horizontal"-->
+									<container_item_stack_5 name="0"/>
+									<!--container_item_stack_8 name="0"/-->
 								</grid>
 
 							</scrollview>
@@ -2171,8 +2237,10 @@
 
 							<scrollview name="scrollview" depth="5" pos="-50,-10" width="520" height="612" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
 
-								<grid depth="10" name="queue" rows="20" cols="5" pos="50,0" cell_width="101" cell_height="101" repeat_content="true" arrangement="horizontal">
-									<container_item_stack name="0"/>
+								<grid depth="10" name="queue" rows="22" cols="5" pos="50,0" cell_width="101" cell_height="101" repeat_content="true" arrangement="horizontal">
+								<!--grid depth="10" name="queue" rows="22" cols="8" pos="50,0" cell_width="63" cell_height="63" repeat_content="true" arrangement="horizontal"-->
+									<container_item_stack_5 name="0"/>
+									<!--container_item_stack_8 name="0"/-->
 								</grid>
 
 							</scrollview>
@@ -2185,7 +2253,7 @@
 		</conditional>
 
 
-<!--	// SMX // Dew Collector Window -->
+<!--	// SMX // Collector Window -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
@@ -2205,7 +2273,7 @@
 
 								<rect name="header" pos="0,0" width="610" height="110">
 
-									<label name="windowName" depth="4" pos="305,-70" width="590" height="52" pivot="center" style="smx_label_outline" text_key="xuiDewCollector" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+									<label name="lootName" depth="4" pos="305,-70" width="590" height="52" pivot="center" style="smx_label_outline" text_key="xuiDewCollector" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 									<sprite name="smx_panel_separation" depth="4" pos="305,-105" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
 									<rect anchor_left="queue,1,-300" anchor_right="queue,1,0" pivot="topleft" pos="0,0" controller="ContainerStandardControls" createuiwidget="true" visible="false">
@@ -2229,7 +2297,44 @@
 		</conditional>
 
 
-<!--	// SMX // Dew Collector Window - Mods -->
+<!--	// SMX // Collector Window - FUEL -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<remove xpath="/windows/window[@name='windowCollectorFuel']" />
+
+				<append xpath="/windows">
+					<window name="windowCollectorFuel" depth="4" pos="-920,475" width="610" height="880" anchor="CenterCenter" cursor_area="true">
+
+						<sprite name="smx_menu_separation" depth="2" pos="305,-250" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+						<rect name="content" depth="0" pos="185,-30" height="101" disablefallthrough="true">
+
+								<grid rows="1" cols="3" pos="0,-145" cell_width="121" cell_height="101" controller="CollectorFuelGrid" repeat_content="true">
+									<general_item_stack name="0"/>
+								</grid>
+
+								<grid name="slot_preview" depth="1" rows="1" cols="3" pos="0,-145" cell_width="121" cell_height="101" controller="SlotPreview">
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="plantedGoldenrod3HarvestPlayer" atlas="ItemIconAtlasGreyscale" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="plantedChrysanthemum3Harvest" atlas="ItemIconAtlasGreyscale" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="plantedCotton3Harvest" atlas="ItemIconAtlasGreyscale" pivot="center" foregroundlayer="true" />
+									</rect>
+								</grid>
+						</rect>
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Collector Window - Mods -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
@@ -2241,7 +2346,7 @@
 
 						<rect name="content" depth="0" pos="185,-620" height="101" disablefallthrough="true">
 
-							<grid name="inventory" pos="0,-145" rows="1" cols="3" cell_width="121" cell_height="101" controller="DewCollectorModGrid" repeat_content="true" required_mods="toolDewGatherer,toolDewTarp,toolDewFilter" required_mods_only="true">
+							<grid name="inventory" pos="0,-145" rows="1" cols="3" cell_width="121" cell_height="101" controller="DewCollectorModGrid" repeat_content="true">
 								<general_item_stack controller="RequiredItemStack" name="0"/>
 							</grid>
 						</rect>
@@ -2278,152 +2383,163 @@
 
 								</rect>
 
-								<rect name="searchControls" depth="2" pos="357,-140" width="500" height="44">
+								<rect name="tabs" depth="2" pos="357,-140" width="500" height="704" controller="TabSelector" select_tab_contents_on_open="true" use_page_buttons="true">
+									<rect name="tabsHeader" height="43" depth="0">
 
-									<grid name="categories" depth="2" pos="23,-22" rows="1" cols="9" width="500" height="44" cell_width="150" cell_height="45" repeat_content="false" controller="CategoryList" pivot="center">
-										<button name="characterButton" depth="4" size="130,45" pivot="center" style="press" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" tooltip="Description" tooltip_key="lblWornEquipment" sound="[paging_click]" collider_scale="1.1" hoverscale="1.04" selected="true" />
-										<button name="statButton" depth="4" size="130,45" pivot="center" style="press" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStats1" collider_scale="1.1" hoverscale="1.04" />
-										<button name="coreStatButton" depth="4" size="130,45" pivot="center" style="press" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStats2" collider_scale="1.1" hoverscale="1.04" />
-									</grid>
+										<rect pos="-200,0">
 
-									<grid name="labels" depth="3" pos="23,-23" rows="1" cols="9" width="500" height="44" cell_width="150" cell_height="45" repeat_content="false" controller="CategoryList" pivot="center">
-										<label name="characterButton" depth="4" size="130,45" pivot="center" style="smx_label_outline" text="WORN EQUIPMENT" font_size="18" justify="center" upper_case="true" spacing_x="1" />
-										<label name="statButton" depth="4" size="130,45" pivot="center" style="smx_label_outline" text="CORE STATS" font_size="18" justify="center" upper_case="true" spacing_x="1" />
-										<label name="coreStatButton" depth="4" size="130,45" pivot="center" style="smx_label_outline" text="EXTENDED STATS" font_size="18" justify="center" upper_case="true" spacing_x="1" />
-									</grid>
+											<rect name="armor" controller="TabSelectorButton" pos="0,0">
+												<button name="armor" depth="4" pos="0,0" size="130,45" pivot="center" style="press" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" tooltip="Description" tooltip_key="lblWornEquipment" sound="[paging_click]" sound_play_on_hover="[default_hover]" collider_scale="1.1" hoverscale="1.04" selected="{tab_selected}" />
+												<label name="armor" depth="5" pos="0,-1" size="130,45" pivot="center" style="smx_label_outline" text="{tab_name_localized}" font_size="18" justify="center" upper_case="true" spacing_x="1" />
+											</rect>
 
-									<rect name="coreStatMovementModes" depth="4" pos="175,22" width="43" height="43" visible="{showcore}">
-										<button name="coreStatsMovementIdleButton" depth="4" pos="5,-22" size="30,30" pivot="center" style="press" foregroundlayer="true" sprite="ui_game_symbol_player" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStatsMovementIdle" visible="{movementmodeidle}" />
-										<button name="coreStatsMovementWalkingButton" depth="4" pos="5,-22" size="30,30" pivot="center" style="press" foregroundlayer="true" sprite="server_z_never_run" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStatsMovementWalking" visible="{movementmodewalking}" />
-										<button name="coreStatsMovementRunningButton" depth="4" pos="5,-22" size="30,30" pivot="center" style="press" foregroundlayer="true" sprite="server_z_always_run" tooltip="Stats" sound="[paging_click]" tooltip_key="lblCharacterStatsMovementRunning" visible="{movementmoderunning}" />
+											<rect name="clothing" controller="TabSelectorButton" pos="145,0">
+												<button name="clothing" depth="4" pos="0,0" size="130,45" pivot="center" style="press" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" tooltip="Description" tooltip_key="lblWornEquipment" sound="[paging_click]" sound_play_on_hover="[default_hover]" collider_scale="1.1" hoverscale="1.04" selected="{tab_selected}" />
+												<label name="clothing" depth="5" pos="0,-1" size="130,45" pivot="center" style="smx_label_outline" text="{tab_name_localized}" font_size="18" justify="center" upper_case="true" spacing_x="1" />
+											</rect>
+
+											<rect name="survival" controller="TabSelectorButton" pos="290,0">
+												<button name="survival" depth="4" pos="0,0" size="130,45" pivot="center" style="press" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" tooltip="Description" tooltip_key="lblWornEquipment" sound="[paging_click]" sound_play_on_hover="[default_hover]" collider_scale="1.1" hoverscale="1.04" selected="{tab_selected}" />
+												<label name="survival" depth="5" pos="0,-1" size="130,45" pivot="center" style="smx_label_outline" text="{tab_name_localized}" font_size="18" justify="center" upper_case="true" spacing_x="1" />
+											</rect>
+
+											<rect name="coreStats" depth="24" pos="-93,0" width="43" height="43" controller="TabSelectorButton">
+												<button depth="2" pos="0,0" width="26" height="26" style="smx_icon_colors, press" pivot="center" sprite="{tab_sprite}" hoversprite="{tab_sprite}" hoverscale="1.05" tooltip="{tab_name_localized}" sound="[paging_click]" sound_play_on_hover="[default_hover]" selected="{tab_selected}" />
+											</rect>
+											<rect name="extendedStats" depth="24" pos="380,0" width="43" height="43" controller="TabSelectorButton">
+												<button depth="2" pos="0,0" width="26" height="26" style="smx_icon_colors, press" pivot="center" sprite="{tab_sprite}" hoversprite="{tab_sprite}" hoverscale="1.05" tooltip="{tab_name_localized}" sound="[paging_click]" sound_play_on_hover="[default_hover]" selected="{tab_selected}" />
+											</rect>
+
+											<button name="coreStatsMovementModeToggle" depth="4" pos="420,0" width="30" height="30" style="smx_icon_colors, press" pivot="center" sprite="{# movementmode=='Idle' ? 'ui_game_symbol_challenge_basics_wear_clothing' : (movementmode=='Walking' ? 'server_z_never_run' : 'server_z_always_run' ) }" sound="[paging_click]" sound_play_on_hover="[default_hover]" controller="SimpleButton" tooltip_key="{# movementmode=='Idle' ? 'lblCharacterStatsMovementIdle' : (movementmode=='Walking' ? 'lblCharacterStatsMovementWalking' : 'lblCharacterStatsMovementRunning' ) }" visible="{# selected_tab == 'stats2'}" />
+
+											<rect name="btnCosmetics" depth="24" pos="-132,0" height="43" width="43" controller="SimpleButton">
+												<button name="clickable" width="30" height="30" style="smx_icon_colors, press" pivot="center" sprite="ui_game_symbol_wardrobe" tooltip_key="xuiCosmetics" hoversprite="ui_game_symbol_wardrobe" hoverscale="1.05" sound="[paging_click]" sound_play_on_hover="[default_hover]" />
+											</rect>
+
+										</rect>
+
 									</rect>
 
-								</rect>
+									<rect name="tabsContents" depth="8" pos="150,-95">
+										<rect controller="TabSelectorTab" tab_key="armor" tab_caption_key="lblCategoryArmor" tab_sprite="ui_game_symbol_armor_iron">
+											<panel name="equipment" depth="10" pos="4,0" width="101" height="404" disableautobackground="true" >
+												<grid name="inventory" rows="4" cols="1" cell_width="101" cell_height="141" controller="EquipmentStackGrid">
+													<smx_equipment_stack_sdcs slot="Head" empty_sprite="armorRogueHelmet" text="HEAD" empty_tooltip="lblHeadgear" />
+													<smx_equipment_stack_sdcs slot="Chest" empty_sprite="armorRogueOutfit" text="CHEST" empty_tooltip="lblChestArmor" />
+													<smx_equipment_stack_sdcs slot="Hands" empty_sprite="armorRogueGloves" text="HANDS" empty_tooltip="lblGloves" />
+													<smx_equipment_stack_sdcs slot="Feet" empty_sprite="armorRogueBoots" text="FEET" empty_tooltip="lblFootwear" />
+												</grid>
+											</panel>
+										</rect>
+										
+										<rect controller="TabSelectorTab" tab_key="clothing" tab_caption_key="lblCategoryClothing" tab_sprite="ui_game_symbol_shirt">
+											<rect>
+												<grid name="clothingSlots" rows="4" pos="4,0" cols="1" cell_width="101" cell_height="141">
+													<smx_equipment_stack_sdcs slot="ClothingHead" empty_sprite="clothingHeadT2" text="HEAD" empty_tooltip="lblClothingHead" />
+													<smx_equipment_stack_sdcs slot="ClothingChest" empty_sprite="clothingOutfitT2" text="CHEST" empty_tooltip="lblClothingChest" />
+													<smx_equipment_stack_sdcs slot="ClothingHands" empty_sprite="clothingHandsT2" text="HANDS" empty_tooltip="lblClothingHand" />
+													<smx_equipment_stack_sdcs slot="ClothingFeet" empty_sprite="clothingFeetT2" text="FEET" empty_tooltip="lblClothingFeet" />
+												</grid>
+											</rect>
+										</rect>
+										
+										<rect controller="TabSelectorTab" tab_key="gear" tab_caption_key="lblCategoryGear" tab_sprite="ui_game_symbol_radiation">
+											<rect>
+												<grid name="badgeSlots" rows="4" pos="4,0" cols="1" cell_width="101" cell_height="141">
+													<smx_equipment_stack_sdcs_survival slot="BiomeBadge" empty_sprite="biomeWeatherItem1" text="SMOKE" empty_tooltip="biomeWeatherItem1" />
+													<smx_equipment_stack_sdcs_survival slot="BiomeBadge2" empty_sprite="biomeWeatherItem2" text="DESERT" empty_tooltip="biomeWeatherItem2" />
+													<smx_equipment_stack_sdcs_survival slot="BiomeBadge3" empty_sprite="biomeWeatherItem3" text="SNOW" empty_tooltip="biomeWeatherItem3" />
+													<smx_equipment_stack_sdcs_survival slot="BiomeBadge4" empty_sprite="biomeWeatherItem4" text="RADIATION" empty_tooltip="biomeWeatherItem4" />
+												</grid>
+											</rect>
+										</rect>
 
-							</rect>
-						</rect>
+										<rect pos="-200,-220" controller="TabSelectorTab" tab_key="stats1" tab_caption_key="lblCharacterStats1" tab_sprite="ui_game_symbol_ping">
+											<sprite name="backgroundMain" depth="2" pos="0,0" size="510,564" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
 
-						<rect pos="50,-160" visible="{showcharactersdcs}">
+											<grid depth="0" pos="0,264" width="504" rows="18" cols="1" cell_height="31" repeat_content="false" arrangement="vertical">
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_add" textcontent="{playerhealthtitle}" valuecontent="{playerhealth} / {playermaxhealth}" tooltip="{playerhealthtitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="server_z_always_run" textcontent="{playerstaminatitle}" valuecontent="{playerstamina} / {playermaxstamina}" tooltip="{playerstaminatitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_fork" textcontent="{playerfoodtitle}" valuecontent="{playermodifiedcurrentfood} / {playerfoodmax}" tooltip="{playerfoodtitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_water" textcontent="{playerwatertitle}" valuecontent="{playermodifiedcurrentwater} / {playerwatermax}" tooltip="{playerwatertitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_zombie" textcontent="{playerzombiekillstitle}" valuecontent="{playerzombiekills}" tooltip="{playerzombiekillstitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="server_z_never_run" textcontent="{playerpvpkillstitle}" valuecontent="{playerpvpkills}" tooltip="{playerpvpkillstitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_death" textcontent="{playerdeathstitle}" valuecontent="{playerdeaths}" tooltip="{playerdeathstitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_bicycle" textcontent="{playertravelledtitle}" valuecontent="{playertravelled}" tooltip="{playertravelledtitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_wrench" textcontent="{playeritemscraftedtitle}" valuecontent="{playeritemscrafted}" tooltip="{playeritemscraftedtitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_clock" textcontent="{playerlongestlifetitle}" valuecontent="{playerlongestlife}" tooltip="{playerlongestlifetitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_clock" textcontent="{playercurrentlifetitle}" valuecontent="{playercurrentlife}" tooltip="{playercurrentlifetitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_xp" textcontent="{playerxptonextleveltitle}" valuecontent="{playerxptonextlevel}" tooltip="{playerxptonextleveltitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_challenge_category1" textcontent="{playergamestagetitle}" valuecontent="{playergamestage}" tooltip="{playergamestagetitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_loot_sack" textcontent="{playerlootstagetitle}" valuecontent="{playerlootstage}" tooltip="{playerlootstagetitle}" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="" textcontent="" valuecontent="" tooltip="" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="" textcontent="" valuecontent="" tooltip="" />
+												<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="" textcontent="" valuecontent="" tooltip="" />
+												<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="" textcontent="" valuecontent="" tooltip="" />
+											</grid>
+										</rect>
 
-							<rect pos="160,-50">
-								<sprite name="background" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
-								<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+										<rect pos="-200,-220" controller="TabSelectorTab" tab_key="stats2" tab_caption_key="lblCharacterStats2" tab_sprite="ui_game_symbol_trophy">
+											<sprite name="backgroundMain" depth="2" pos="0,0" size="510,564" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
 
-								<sprite name="background2" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+											<grid depth="0" pos="0,264" width="294" rows="23" cols="1" cell_height="31" repeat_content="false" arrangement="vertical">
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_drop" index="1" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_drop" index="2" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_light_armor2" index="3" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_explosion" index="4" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_twitch_crit_immune" index="5" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_agility" index="6" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_healing_factor" index="7" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_pills" index="8" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_cold" index="9" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_hot" index="10" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="server_z_always_run" index="11" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_twitch_jump" index="12" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_shopping_cart" index="13" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_challenge_basics_craft_club" index="14" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_challenge_homesteading_place_building_block" index="15" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_candy_recog" index="16" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_challenge_basics_gather_resources" index="17" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="" index="18" tooltip="" />
+												<!--smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_add" index="19" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_add" index="20" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_add" index="21" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_add" index="22" tooltip="" />
+												<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" index="23" /-->
+											</grid>
+										</rect>
 
-								<label name="levelNumber" depth="4" pos="0,-14" width="590" height="52" pivot="center" style="smx_label_outline" text="" font_size="36" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
-							</rect>
+										<rect pos="-455,75">
+											<panel name="previewFrameSDCS" depth="0" pos="256,-294" width="327" on_press="true" on_hover="true" disableautobackground="true" snap="false" gamepad_selectable="false" visible="{# selected_tab == 'armor' or selected_tab == 'clothing' or selected_tab == 'gear' }">
+												<rect name="armorstats" depth="5" pos="-203,220" width="101" height="404" >
+													<grid name="inventory" rows="4" cols="1" cell_width="101" cell_height="141" repeat_content="false" arrangement="vertical">
+														<smx_equipment_stack_info2 name="0" icon="ui_game_symbol_light_armor2" text="{playerstat3}" tooltip_key="{playerstattitle3}" />
+														<smx_equipment_stack_info2 name="0" icon="ui_game_symbol_death" text="{playerstat5}" tooltip_key="{playerstattitle5}" />
+														<smx_equipment_stack_info2 name="0" icon="ui_game_symbol_explosion" text="{playerstat4}" tooltip_key="{playerstattitle4}" />
+														<smx_equipment_stack_info2 name="0" icon="server_z_always_run" text="{playerstat6}" tooltip_key="{playerstattitle6}" />
+													</grid>
+												</rect>
 
-							<panel name="previewFrameSDCS" depth="0" pos="256,-294" width="327" on_press="true" on_hover="true" disableautobackground="true" snap="false" gamepad_selectable="false">
-								<rect>
-									<sprite name="backgroundMain" depth="2" pos="0,0" size="300,564" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+												<rect pos="-98,242">
+													<sprite name="background" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+													<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
 
-									<texture name="playerPreviewSDCS" depth="3" size="294,560" pivot="center" material="Materials/Transparent Colored" globalopacity="false" />
-								</rect>
+													<sprite name="background2" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
 
-								<rect name="btnCosmetic" pos="-255,330" depth="3" height="83" width="83">
-									<rect depth="3" pos="3,-3" width="80" height="80">
-										<button name="clickable" width="30" height="30" sprite="ui_game_symbol_wardrobe" defaultcolor="[white]" tooltip_key="xuiCosmetics" hoversprite="ui_game_symbol_wardrobe" hovercolor="[mediumGrey]" hoverscale="1.0" />
+													<label name="levelNumber" depth="4" pos="0,-14" width="590" height="52" pivot="center" style="smx_label_outline" text="" font_size="36" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+												</rect>
+
+												<rect>
+													<sprite name="backgroundMain" depth="2" pos="0,0" size="300,564" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+													<texture name="playerPreviewSDCS" depth="3" size="294,560" pivot="center" material="Materials/Transparent Colored" globalopacity="false" />
+												</rect>
+											</panel>
+										</rect>
 									</rect>
 								</rect>
-
-							</panel>
-
-						</rect>
-
-						<rect pos="-352,-160">
-							<panel name="biomebadges" depth="10" pos="457,-75" width="101" height="404" disableautobackground="true" >
-								<grid depth="0" pos="0,0" width="41" cols="1" cell_width="101" cell_height="141" repeat_content="false" arrangement="vertical">
-									<smx_equipment_weather_stack name="biomeBadgeSlot1" text="SMOKE" />
-									<smx_equipment_weather_stack name="biomeBadgeSlot2" text="DESERT" />
-									<smx_equipment_weather_stack name="biomeBadgeSlot3" text="SNOW" />
-									<smx_equipment_weather_stack name="biomeBadgeSlot4" text="RADIATION" />
-								</grid>
-							</panel>
-						</rect>
-
-						<rect name="armorstats" pos="210,-736" width="75" height="75" >
-							<grid name="inventory" rows="1" cols="4" cell_width="65" cell_height="65" repeat_content="false" arrangement="horizontal">
-								<smx_equipment_stack_info name="0" icon="smx_ui_skill_symbol_mediumarmor" text="{playerstat3}" tooltip_key="{playerstattitle3}" />
-								<smx_equipment_stack_info name="0" icon="ui_game_symbol_death" text="{playerstat5}" tooltip_key="{playerstattitle5}" />
-								<smx_equipment_stack_info name="0" icon="ui_game_symbol_explosion" text="{playerstat4}" tooltip_key="{playerstattitle4}" />
-								<smx_equipment_stack_info name="0" icon="smx_ui_skill_symbol_agility" text="{playerstat6}" tooltip_key="{playerstattitle6}" />
-							</grid>
-						</rect>
-
-						<rect pos="50,-160">
-							<panel name="equipment" depth="10" pos="457,-75" width="101" height="404" disableautobackground="true" >
-								<grid name="inventory" rows="4" cols="1" cell_width="101" cell_height="141" controller="EquipmentStackGrid" repeat_content="false">
-									<smx_equipment_stack_sdcs name="0" text="HEAD" />
-									<smx_equipment_stack_sdcs name="0" text="CHEST" />
-									<smx_equipment_stack_sdcs name="0" text="HANDS" />
-									<smx_equipment_stack_sdcs name="0" text="FEET" />
-								</grid>
-							</panel>
-						</rect>
-
-						<rect pos="50,-160" visible="{showstats}">
-
-							<rect name="adjustment" pos="256,-294">
-								<sprite name="backgroundMain" depth="2" pos="0,0" size="300,564" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
-
-								<grid depth="0" pos="0,264" width="294" rows="18" cols="1" cell_height="31" repeat_content="false" arrangement="vertical">
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_add" textcontent="{playerhealthtitle}" valuecontent="{playerhealth} / {playermaxhealth}" tooltip="{playerhealthtitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_run" textcontent="{playerstaminatitle}" valuecontent="{playerstamina} / {playermaxstamina}" tooltip="{playerstaminatitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_fork" textcontent="{playerfoodtitle}" valuecontent="{playermodifiedcurrentfood} / {playerfoodmax}" tooltip="{playerfoodtitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_water" textcontent="{playerwatertitle}" valuecontent="{playermodifiedcurrentwater} / {playerwatermax}" tooltip="{playerwatertitle}" />
-									<!--smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_temperature" textcontent="{playercoretemptitle}" valuecontent="{playercoretemp}" tooltip="{playercoretemptitle}" /-->
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_zombie" textcontent="{playerzombiekillstitle}" valuecontent="{playerzombiekills}" tooltip="{playerzombiekillstitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_player" textcontent="{playerpvpkillstitle}" valuecontent="{playerpvpkills}" tooltip="{playerpvpkillstitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_death" textcontent="{playerdeathstitle}" valuecontent="{playerdeaths}" tooltip="{playerdeathstitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_bicycle" textcontent="{playertravelledtitle}" valuecontent="{playertravelled}" tooltip="{playertravelledtitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_wrench" textcontent="{playeritemscraftedtitle}" valuecontent="{playeritemscrafted}" tooltip="{playeritemscraftedtitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_clock" textcontent="{playerlongestlifetitle}" valuecontent="{playerlongestlife}" tooltip="{playerlongestlifetitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_clock" textcontent="{playercurrentlifetitle}" valuecontent="{playercurrentlife}" tooltip="{playercurrentlifetitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]" iconcontent="ui_game_symbol_xp" textcontent="{playerxptonextleveltitle}" valuecontent="{playerxptonextlevel}" tooltip="{playerxptonextleveltitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]"    iconcontent="ui_game_symbol_loot_sack" textcontent="{playergamestagetitle}" valuecontent="{playergamestage}" tooltip="{playergamestagetitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_loot_sack" textcontent="{playerlootstagetitle}" valuecontent="{playerlootstage}" tooltip="{playerlootstagetitle}" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="" textcontent="" valuecontent="" tooltip="" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="" textcontent="" valuecontent="" tooltip="" />
-									<smx_player_stats_entry backgroundcolor="[darkestGrey]" iconcontent="" textcontent="" valuecontent="" tooltip="" />
-									<smx_player_stats_entry backgroundcolor="[darkGrey]"    iconcontent="" textcontent="" valuecontent="" tooltip="" />
-								</grid>
 							</rect>
 						</rect>
-
-						<rect pos="50,-160" visible="{showcore}">
-
-							<rect name="adjustment" pos="256,-294">
-								<sprite name="backgroundMain" depth="2" pos="0,0" size="300,564" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
-
-								<grid depth="0" pos="0,264" width="294" rows="23" cols="1" cell_height="31" repeat_content="false" arrangement="vertical">
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_drop" index="1" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_drop" index="2" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_light_armor2" index="3" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_explosion" index="4" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_twitch_crit_immune" index="5" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_agility" index="6" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_healing_factor" index="7" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_pills" index="8" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_cold" index="9" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_hot" index="10" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="server_z_always_run" index="11" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_twitch_jump" index="12" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_shopping_cart" index="13" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_challenge_basics_craft_club" index="14" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_challenge_homesteading_place_building_block" index="15" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_candy_recog" index="16" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_challenge_basics_gather_resources" index="17" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="" index="18" tooltip="" />
-									<!--smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_add" index="19" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_add" index="20" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" iconcontent="ui_game_symbol_add" index="21" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkGrey]"    iconcontent="ui_game_symbol_add" index="22" tooltip="" />
-									<smx_player_stats_generic_entry backgroundcolor="[darkestGrey]" index="23" /-->
-								</grid>
-							</rect>
-						</rect>
-
 					</window>
 				</append>
 
@@ -2995,11 +3111,12 @@
 							</rect>
 
 							<grid name="parts" depth="9" rows="5" cols="1" pos="265,-60" cell_width="55" cell_height="55" repeat_content="false" controller="SMXcore.PartList, SMXcore">
-								<smx_mod_stack name="0" pos="-230,-80" icon="ui_game_symbol_paint_brush" />
+								<smx_mod_stack name="0" pos="-230,-56" icon="ui_game_symbol_paint_brush" />
 								<smx_mod_stack name="0" pos="0,0" icon="ui_game_symbol_modded" />
 								<smx_mod_stack name="0" pos="0,0" icon="ui_game_symbol_modded" />
 								<smx_mod_stack name="0" pos="0,0" icon="ui_game_symbol_modded" />
 								<smx_mod_stack name="0" pos="0,0" icon="ui_game_symbol_modded" />
+								<smx_mod_stack name="0" pos="-230,56" icon="ui_game_symbol_modded" />
 							</grid>
 
 							<rect pos="150,-370" width="300" height="90" visible="{shownormaloptions}">
@@ -3476,84 +3593,176 @@
 				<remove xpath="/windows/window[@name='windowTrader']" />
 
 				<append xpath="/windows">
-					<window name="windowTrader" depth="4" pos="-920,475" width="645" height="688" anchor="CenterCenter" controller="TraderWindow" cursor_area="true">
+					<window name="windowTrader" depth="4" pos="-920,475" width="610" height="880" anchor="CenterCenter" controller="Quartz.TraderWindow, Quartz" cursor_area="true">
 
-						<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
-							<sprite pos="4,-5" depth="2" name="windowIcon" style="icon32px" sprite="ui_game_symbol_map_trader"/>
-							<player_name pos="42,0" width="350" height="32" />
-							<label depth="2" pos="340,-8" width="300" height="28" text="{restocklabel}: {timeleft}" justify="right" visible="{showrestock}" />
+						<sprite name="smx_menu_separation" depth="2" pos="305,-850" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-							<label pos="600, -6" depth="2" name="availableMoney" width="64" height="32" text="{availablemoney}" font_size="32" justify="right" pivot="topright" visible="{isowner}"/>
-							<sprite pos="638, -5" depth="2" name="coinIcon" style="icon32px" sprite="ui_game_symbol_coin" pivot="topright" visible="{isowner}"/>
-						</panel>
+						<rect name="leftPanel" pos="0,0" width="610" height="880">
 
-						<panel name="content" width="100%" height="650" depth="1" pos="0,-43" on_scroll="true" disableautobackground="true">
+							<rect name="newContent">
 
-							<rect depth="2" name="categorySelector" width="645" height="44" pos="3,-6">
-								<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="645" height="49" color="[black]" type="sliced" fillcenter="false" />
-								<sprite color="[mediumGrey]" type="sliced" width="639" />
-								<grid name="categories" pos="23,-21" rows="1" cols="15" width="390" height="43" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList">
-									<category_icon />
-								</grid>
+								<sprite name="smx_panel_background" depth="1" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_left="#cam,0,-10" anchor_right="#cam,1,-1235" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,-50" />
+
+								<rect name="header" pos="0,0" width="610" height="110">
+									<sprite name="windowIcon" depth="2" pos="4,-5" size="32,32" sprite="ui_game_symbol_map_trader" force_hide="true" />
+									<player_name_trader depth="4" pos="150,-35" width="590" height="52" />
+									<sprite name="smx_panel_separation" depth="4" pos="305,-105" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<label name="availableMoney" depth="2" pos="375,-15" width="120" height="44" style="smx_label_outline" text="{availablemoney}" justify="right" visible="{isowner}"/>
+									<sprite name="coinIcon" depth="2" pos="508,-10" size="32,32" atlas="ItemIconAtlasGreyscale" sprite="casinoCoin" color="[white]" foregroundlayer="true" visible="{isowner}"/>
+								</rect>
+
+								<rect name="categorySelector" depth="2" pos="305,-130" width="500" height="44">
+									<grid name="categories" pos="23,-22" rows="1" cols="15" width="500" height="44" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList" pivot="center">
+										<smx_crafting_category_icon />
+									</grid>
+								</rect>
+
+								<button name="collect" depth="4" pos="422,-187" pivot="center" size="32,32" style="press" atlas="ItemIconAtlasGreyscale" sprite="casinoCoin" tooltip="COLLECT" tooltip_key="btnCollect" sound="[paging_click]" visible="{isownerorrentable}" />
+								<button name="takeAll" depth="4" pos="465,-187" pivot="center" size="32,32" style="press" sprite="ui_game_symbol_hand" tooltip="TAKE ALL" tooltip_key="btnTakeAll" sound="[paging_click]" visible="{isownerorrentable}" />
+								<button name="rent" depth="4" pos="508,-187" pivot="center" size="32,32" style="press" sprite="ui_game_symbol_vending" tooltip="RENT" tooltip_key="lblContextActionRent" sound="[paging_click]" visible="{isrentable|once}" />
+
+								<button name="showAll" depth="4" pos="475,-187" size="130,45" pivot="center" style="press, hover" sprite="smx_button_background" selectedsprite="smx_button_foreground" defaultcolor="[smx_element_button_foreground]" selectedcolor="[smx_element_button_selected]" hovercolor="[smx_element_button_hover]" disabledcolor="[lightGrey]" sound="[paging_click]" sound_play_on_hover="[default_hover]" tooltip_key="Show All" collider_scale="1.1" hoverscale="1.04" visible="{is_debug}" />
+								<label name="showAll" depth="5" pos="475,-188" size="130,45" pivot="center" style="smx_label_outline" text_key="Show All" font_size="18" justify="center" upper_case="true" spacing_x="1" visible="{is_debug}" />
+
+								<rect name="searchControls" depth="4" pos="20,-160" height="42" width="400">
+									<sprite name="searchIcon" depth="4" pos="75,-27" size="25,25" pivot="center" sprite="ui_game_symbol_search" />
+									<smx_textfield_outline name="searchInput" depth="5" pos="192,-25" width="275" height="40" font_size="18" search_field="true" />
+								</rect>
+
+								<rect name="content" depth="0" pos="100,-210" width="100%" height="100%">
+									<sprite name="arrowUp" depth="6" pos="-65,-40" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+									<sprite name="arrowDown" depth="6" pos="-65,-590" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+									<scrollbar	name="scrollbar"
+												depth="6"
+												pos="-65,-315"
+												width="12"
+												height="500"
+												padding="4"
+												foregroundname="handler"
+												foregroundsprite="smx_scrollbar_handler"
+												foregroundcolor="[smxui_scrollbar_handler]"
+												backgroundname="background"
+												backgroundsprite="smx_scrollbar_background"
+												backgroundcolor="[smxui_scrollbar_background]"
+												pivot="center">
+
+										<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+										<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+									</scrollbar>
+
+									<scrollview name="scrollview" depth="5" pos="-50,-10" width="520" height="612" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+										<grid depth="10" name="items" rows="50" cols="5" pos="50,0" cell_width="101" cell_height="101" controller="TraderItemList" repeat_content="true" arrangement="horizontal">
+											<smx_trader_item name="0"/>
+										</grid>
+
+									</scrollview>
+								</rect>
+
+								<rect name="footer" pos="0,-740" width="610" height="110">
+									<label depth="2" pos="300,-132" width="300" height="44" style="smx_label_outline" pivot="center" text="{restocklabel}:  {timeleft}" color="[smx_element_accentcolor_2]" font_size="18" justify="center" spacing_x="2" upper_case="true" visible="{showrestock}" />
+									<label depth="2" pos="300,-132" width="300" height="44" style="smx_label_outline" pivot="center" text="{renttimeleft}" color="[smx_element_accentcolor_2]" font_size="18" justify="center" spacing_x="2" upper_case="true" visible="{isrenter}" />
+								</rect>
+
 							</rect>
+						</rect>
+					</window>
+				</append>
 
-							<rect depth="3" name="searchControls" width="645" height="44" pos="3,-52">
-								<sprite name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="645" height="49" color="[black]" type="sliced" fillcenter="false" />
-								<sprite color="[darkGrey]" type="sliced" width="639" />
+			</if>
+		</conditional>
 
-								<button depth="4" name="collect" style="icon30px, press" pos="22,-22" sprite="ui_game_symbol_coin" pivot="center" tooltip="COLLECT" tooltip_key="btnCollect" sound="[paging_click]" visible="{isownerorrentable}" />
-								<button depth="4" name="takeAll" style="icon30px, press" pos="65,-22" sprite="ui_game_symbol_hand" pivot="center" tooltip="TAKE ALL" tooltip_key="btnTakeAll" sound="[paging_click]" visible="{isownerorrentable}" />
-								<button depth="4" name="rent" style="icon30px, press" pos="108,-22" sprite="ui_game_symbol_vending" pivot="center" tooltip="RENT" tooltip_key="lblContextActionRent" sound="[paging_click]" visible="{isrentable|once}" />
-								
-								<button depth="4" name="showAll" style="icon30px, press, hover" pos="293,-22" sprite="ui_game_symbol_computer" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="Show All" sound="[paging_click]" visible="{is_debug}" />
 
-								<label depth="5" pos="135,-8" width="180" height="28" text="{renttimeleft}" visible="{isrenter}" />
+<!--	// SMX // Trader Window - Quest Offer -->
 
-								<panel pos="334,0" width="200" disableautobackground="true">
-									<sprite depth="4" name="searchIcon" style="icon30px" pos="0,-22" sprite="ui_game_symbol_search" pivot="center"/>
-									<textfield depth="5" name="searchInput" pos="22,-7" width="140" height="30" virtual_keyboard_prompt="vkPromptSearchTerm" search_field="true" close_group_on_tab="true" />
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<remove xpath="/windows/window[@name='windowQuestOffer']" />
+
+				<append xpath="/windows">
+					<window name="windowQuestOffer" depth="4" pos="0,400" width="1185" height="780" pivot="center" anchor="CenterCenter" controller="QuestOfferWindow" cursor_area="true">
+						<panel depth="200" createuipanel="true" disableautobackground="true">
+							<panel name="outclick" depth="1" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false" />
+							
+								<panel name="noclick" depth="2" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false">
+									<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
 								</panel>
 
-								<panel pos="516,0" width="104" height="43" disableautobackground="true">
-									<pager name="pager" pos="4,-6" contents_parent="content"/>
+								<panel name="content" depth="3" pos="0,-350" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true">
+									<sprite name="smxPopOutBG" depth="2" height="700" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
+									<sprite name="smxPopOutBG" depth="3" pos="-200,350" width="400" height="100" sprite="smx_info_header_overlay2" color="255,255,255,375" flip="horizontally" />
+
+									<label name="title" depth="4" pos="-30,315" width="300" height="28" pivot="center" style="smx_label_outline" text="{questname}" justify="left" font_size="26" upper_case="true" color="255,255,255,255" />
+									<label name="title" depth="4" pos="-30,290" width="300" height="28" pivot="center" style="smx_label_outline" text="{tieradd}" justify="left" font_size="12" upper_case="true" color="255,255,255,255" />
+
+									<sprite name="windowIcon" depth="5" pos="-215,365" size="32,32" sprite="ui_game_symbol_quest_limited" color="[red]" visible="{tieraddlimited}" />
+
+									<sprite name="smx_panel_separation" depth="4" pos="0,280" width="360" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<label name="descriptionText" depth="11" pos="-180,250" width="360" height="500" pivot="topleft" style="smx_label_outline" text="{questoffer}" font_size="24" justify="left" upper_case="false" spacing_x="0" spacing_y="3" overflow="ShrinkContent" />
+									<sprite name="descriptionBackground" depth="10" pos="-190,260" size="380,520" pivot="topleft" sprite="smx_menu_background" color="7,7,7,295" />
+
+									<rect name="outline" depth="11" pos="0,0">
+										<sprite name="smxOutlineTop" pos="-200,262" width="395" height="3" sprite="smx_sepline_1" />
+										<sprite name="smxOutlineLeft" pos="-190,-280" width="550" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineRight" pos="190,-285" width="560" height="3" sprite="smx_sepline_1" rotation="90" />
+										<sprite name="smxOutlineBottom" pos="-195,-258" width="394" height="3" sprite="smx_sepline_1" flip="Horizontally" />
+									</rect>
 								</panel>
-							</rect>
 
-							<rect name="tableHeader" pos="2,-98" width="642" height="43">
-								<sprite depth="1" name="background" color="[lightGrey]" type="sliced"/>
+								<panel name="buttons" depth="4" pos="-10,-560" height="32" borderthickness="3" createuipanel="true" disableautobackground="true" >
 
-								<rect depth="1" width="416" height="40">
-									<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-2,3" width="421" height="46" color="[black]" type="sliced" fillcenter="false" />
+									<rect name="btnAccept" depth="5" pos="10,-95" width="230" height="65" pivot="center" visible="{showleftbutton}">
 
-									<sprite depth="1" pos="3,-3" style="icon32px" sprite="ui_game_symbol_shopping_cart"/>
-									<label depth="1" pos="40,-5" text_key="xuiProductName" width="240"/>
-								</rect>
+										<button	name="clickable"
+												pos="10,0"
+												size="230,65"
+												sprite="smx_button_background"
+												defaultcolor="[smxmenu_element_button_foreground]"
+												selectedcolor="[smxmenu_element_button_selected]"
+												hoversprite="smx_button_foreground"
+												hovercolor="[smxmenu_element_button_hover]"
+												hoverscale="1.1"
+												pivot="center"
+												tooltip_key=""
+												sound_play_on_hover="[default_hover]"
+												sound="[default_click]" />
 
-								<rect depth="1" pos="419,0" width="120" height="40" >
-									<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="126" height="46" color="[black]" type="sliced" fillcenter="false" />
+										<label name="btnLabel" depth="2" pos="10,-2" pivot="center" style="smx_label_outline" text_key="xuiAccept" font_size="28" spacing_x="2" justify="center" upper_case="true" />
 
-									<sprite depth="1" pos="3,-3" style="icon32px" sprite="ui_game_symbol_diamond"/>
-									<label depth="1" pos="40,-5" text_key="xuiQuality" width="70"/>
-								</rect>
+									</rect>
 
-								<rect depth="1" pos="542,0" width="97" height="40">
-									<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="104" height="46" color="[black]" type="sliced" fillcenter="false" />
+									<rect name="btnDecline" depth="5" pos="170,530" width="55" height="55">
 
-									<sprite depth="1" pos="3,-3" style="icon32px" sprite="ui_game_symbol_coin"/>
-									<label depth="1" pos="40,-5" text_key="xuiCost" width="55"/>
-								</rect>
+										<sprite name="background" pos="0,-5" depth="5" size="55,55" pivot="center" sprite="smx_diamond_background"	color="7,7,7,500" rotation="45" />
 
-								<!-- <rect depth="1" pos="585,0" width="149" height="40">
-									<sprite depth="0" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="154" height="46" color="[black]" type="sliced" fillcenter="false" />
+										<button	name="clickable"
+												depth="99"
+												pos="0,-5"
+												pivot="center"
+												sprite="smx_diamond_foreground"
+												defaultcolor="255,144,24,196"
+												disabledcolor="[darkGrey]"
+												hoversprite="smx_diamond_foreground"
+												hovercolor="255,255,255,500"
+												selectedsprite="smx_diamond_foreground"
+												selectedcolor="[smxcore_element_accentcolor_2]"
+												foregroundlayer="true"
+												type="sliced"
+												hoverscale="1.1"
+												tooltip_key="xuiDecline"
+												disabled_tooltip_key=""
+												sound_play_on_hover="[default_hover]"
+												sound="[default_click]"
+												rotation="45" />
 
-									<sprite depth="1" pos="3,-3" style="icon32px, press, hover" sprite="ui_game_symbol_check"/>
-									<label depth="1" pos="42,-8" text="Required" text_key="xuiRequired" width="100"/>
-								</rect> -->
-							</rect>
+										<sprite name="smx_window_button_x" depth="10" pos="0,-5" size="24,24" pivot="center" sprite="ui_game_symbol_add" type="sliced" color="[white]" foregroundlayer="true" rotation="45" />
 
-							<grid name="items" rows="13" cols="1" pos="3,-141" width="639" height="552" cell_width="390" cell_height="46" repeat_content="true" arrangement="vertical" controller="TraderItemList" >
-								<trader_item name="0"/>
-							</grid>
+									</rect>		
+								</panel>
 						</panel>
 					</window>
 				</append>
@@ -3570,27 +3779,49 @@
 				<remove xpath="/windows/window[@name='windowQuestTurnInDescription']" />
 
 				<append xpath="/windows">
-					<window name="windowQuestTurnInDescription" depth="4" pos="-920,475" width="653" height="312" anchor="CenterCenter" cursor_area="true" controller="QuestTurnInDetailsWindow">
+					<window name="windowQuestTurnInDescription" depth="4" pos="-920,475" width="610" height="880" anchor="CenterCenter" controller="QuestTurnInDetailsWindow" cursor_area="true">
 
-						<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
-							<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
-							<label style="header.name" text="{questtitle}" width="500" />
-							<!-- <label depth="2" pos="545,-8" width="100" height="28" text="{sharedbyname}" color="[lightGrey]" justify="right" upper_case="true" /> -->
-						</panel>
-						<rect name="content" pos="0,-46" width="150" height="266" depth="1">
-							<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="150" height="266" color="[black]" type="sliced" fillcenter="false" />
-							<sprite color="[lightGrey]" type="sliced" />
-							<sprite depth="8" name="portrait" pos="6,-6" width="138" height="138" sprite="{npcportrait}" type="sliced" />
-							<sprite depth="8" name="portrait" sprite="menu_empty3px" pos="6,-6" width="138" height="138" color="[black]" type="sliced" fillcenter="false" />
+						<sprite name="smx_menu_separation" depth="2" pos="305,-750" width="401" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-							<label pos="6,-146" depth="3" name="traderName" width="100%" height="30" text="{npcname}" font_size="28" />
-							<!-- <label pos="6,-186" depth="3" name="traderRepTitle" width="100%" height="30" text="TRADER REP:" font_size="28" /> -->
-							<!-- <label pos="6,-213" depth="3" name="traderRep" width="100%" height="30" text="TRUSTED" font_size="28" /> -->
-						</rect>
-						<rect name="content" pos="147,-46" height="266" width="503" depth="1">
-							<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="503" height="266" color="[black]" type="sliced" fillcenter="false" />
-							<sprite color="[darkGrey]" type="sliced" />
-							<label depth="3" name="descriptionText" pos="8,-8" text="{questcompletetext}" width="480" height="205" font_size="28" overflow="resizeheight" />
+						<rect name="leftPanel" pos="0,0" width="610" height="880">
+
+							<rect name="newContent">
+
+								<sprite name="smx_panel_background" depth="1" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_left="#cam,0,-10" anchor_right="#cam,1,-1235" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,-50" />
+
+								<rect name="header" pos="0,0" width="610" height="110">
+
+									<label name="questTitle" depth="4" pos="305,-70" width="590" height="52" pivot="center" style="smx_label_outline" text="{questtitle}" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" overflow="ShrinkContent" />
+									<sprite name="smx_panel_separation" depth="4" pos="305,-105" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<sprite name="smx_panel_separation" depth="4" pos="305,-425" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<label depth="2" pos="480,-125" width="100" height="28" pivot="center" style="smx_label_outline" text="{sharedbyname}" font_size="18" spacing_x="2" spacing_y="2" justify="right" upper_case="false" color="[lightGrey]" />
+
+								</rect>
+
+								<rect name="content" pos="50,-160">
+									<rect name="traderFrame" depth="2" pos="85,-70">
+										<sprite name="smx_respondent_background" depth="7" pos="0,0" width="165" height="165" pivot="center" sprite="menu_empty" type="sliced" color="7,7,7,325" />
+										<sprite name="smx_respondent_portrait" depth="8" pos="0,0" width="165" height="165" pivot="center" atlas="uiAtlas" sprite="{npcportrait}" controller="SMXcore.PlayerStatWindow, SMXcore" />
+										<sprite name="smx_respondent_frame" depth="9" pos="0,0" width="178" height="178" pivot="center" sprite="smx_slot_frame_narrow" color="7,7,7,325" />
+
+										<sprite name="smx_statement_background" depth="6" pos="165,-40" width="530" height="275" pivot="center" sprite="smx_chat_background" color="7,7,7,500" />
+
+										<label name="traderName" depth="7" pos="0,-100" width="165" height="30" pivot="center" style="smx_label_outline" text="{npcname}" font_size="18" spacing_x="2" spacing_y="2" justify="center" upper_case="true" color="98,98,98,255" overflow="ShrinkContent" />
+
+										<!--label name="traderRepTitle" depth="7" pos="0,-150" width="165" height="30" pivot="center" style="smx_label_outline" text="TRADER REP:" font_size="18" spacing_x="2" spacing_y="2" justify="left" upper_case="true" color="38,38,38,255" overflow="resizeheight" />
+										<label name="traderRep" depth="7" pos="0,-150" width="165" height="30" pivot="center" style="smx_label_outline" text="TRUSTED" font_size="18" spacing_x="2" spacing_y="2" justify="right" upper_case="true" color="38,38,38,255" overflow="resizeheight" /-->
+									</rect>
+
+
+									<rect name="traderStatement" depth="5" pos="340,-110" width="300" height="240">
+										<label name="descriptionText" depth="3" pos="-150,120" width="300" height="240" pivot="TopLeft" style="smx_label_outline" text="{questcompletetext}" font_size="20" spacing_x="2" spacing_y="2" justify="left" color="255,255,255,255" overflow="ShrinkContent" />
+									</rect>
+
+								</rect>
+
+							</rect>
 						</rect>
 					</window>
 				</append>
@@ -3607,44 +3838,47 @@
 				<remove xpath="/windows/window[@name='windowQuestTurnInRewards']" />
 
 				<append xpath="/windows">
-					<window name="windowQuestTurnInRewards" depth="4" pos="-920,100" width="653" height="454" anchor="CenterCenter" cursor_area="true" controller="QuestTurnInRewardsWindow"> <!--item_format="{0}: [DECEA3]{1}[-]" item_bonus_format="{0}: [DECEA3]{1}[-] ([DECEA3]{2}[-] {3})"-->
-						<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
-							<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_treasure"/>
-							<label style="header.name" text_key="xuiRewards" width="500" />
-							<label depth="2" pos="545,-8" width="100" height="28" text="{sharedbyname}" color="[lightGrey]" justify="right" upper_case="true" />
-						</panel>
-						<rect name="content" pos="0,-46" height="70" depth="1">
-							<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" height="418" color="[black]" type="sliced" fillcenter="false" />
-							<sprite color="[darkGrey]" type="sliced" />
-							<label pos="10,-6" depth="3" height="30" text="{questxptitle}: {questxpreward}" font_size="28" visible="{questhasxpreward}" />
-							<label pos="10,-32" depth="3" height="30" text="{questitemrewardstitle}: {questitemrewards}" font_size="28" visible="{questhasitemrewards}" />
+					<window name="windowQuestTurnInRewards" depth="5" pos="-920,50" width="610" height="880" anchor="CenterCenter" controller="QuestTurnInRewardsWindow" cursor_area="true" xp_format="[A0A0A0]{0}[-]" xp_bonus_format="[A0A0A0]{0}[-]" item_bonus_format=""> <!--item_format="{0}: [DECEA3]{1}[-]" item_bonus_format="{0}: [DECEA3]{1}[-] ([DECEA3]{2}[-] {3})"-->
+
+						<!--label depth="2" pos="545,-8" width="100" height="28" text="{sharedbyname}" color="[lightGrey]" justify="right" upper_case="true" /-->
+
+						<rect name="content" depth="6" pos="390,40" width="300" height="30">
+
+							<sprite depth="3" pos="-150,45" size="30,30" sprite="ui_game_symbol_xp" visible="{questhasxpreward}" />
+							<label depth="3" pos="-115,40" height="30" width="300" style="smx_label_outline" text="{questxpreward}" font_size="24" spacing_x="2" spacing_y="2" justify="left" visible="{questhasxpreward}" />
+
+							<sprite depth="3" pos="-150,15" size="30,30" atlas="ItemIconAtlas" sprite="casinoCoin" visible="{questhasitemrewards}" />
+							<label depth="3" pos="-115,12" height="30" width="300" style="smx_label_outline" text="{questitemrewards}" font_size="24" spacing_x="2" spacing_y="2" justify="left" visible="{questhasitemrewards}" />
 						</rect>
 
-						<rect pos="0,-111" height="50" depth="1">
-							<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" color="[black]" type="sliced" fillcenter="false" />
-							<sprite color="[lightGrey]" type="sliced" />
-							<label pos="10,-10" depth="3" text="{chosentitle}" font_size="28" />
-						</rect>
-
-						<rect name="rectOptions" height="150" width="653" depth="1">
-							<grid name="gridOptions" rows="5" cols="1" pos="0,-158" width="653" cell_height="47" cell_width="650" arrangement="vertical">
-								<quest_turnin_entry pos="0,0" />
-								<quest_turnin_entry pos="0,-50" />
-								<quest_turnin_entry pos="0,-92" />
-								<quest_turnin_entry pos="0,-142" />
-								<quest_turnin_entry pos="0,-192" />
+						<rect name="rectOptions" depth="1" pos="100,-155" height="101" width="505">
+							<grid name="gridOptions" rows="1" cols="5" width="505" cell_height="101" cell_width="101" arrangement="vertical">
+								<smx_quest_turnin_entry />
+								<smx_quest_turnin_entry />
+								<smx_quest_turnin_entry />
+								<smx_quest_turnin_entry />
+								<smx_quest_turnin_entry />
 							</grid>
 						</rect>
 
 						<rect name="rectAccept" pos="0,-394" height="70" depth="1">
-							<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" color="[black]" type="sliced" fillcenter="false" />
-							<sprite color="[lightGrey]" type="sliced" />
 
-							<rect name="btnAccept" depth="3" pos="239,-17" width="175" height="36">
-								<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0" />
+							<rect name="btnAccept" depth="5" pos="290,0" width="230" height="65" pivot="center">
+								<button	name="clickable"
+										pos="10,0"
+										size="230,65"
+										sprite="smx_button_background"
+										defaultcolor="[smxmenu_element_button_foreground]"
+										selectedcolor="[smxmenu_element_button_selected]"
+										hoversprite="smx_button_background"
+										hovercolor="[[smxmenu_element_button_hover]]"
+										hoverscale="1.1"
+										pivot="center"
+										tooltip_key=""
+										sound_play_on_hover="[default_hover]"
+										sound="[default_click]" />
 
-								<label depth="2" name="lblOnOff" pos="0,-6" justify="center" text="{acceptbuttontext}" font_size="24" /> <!-- text_key="xuiTurnOn" -->
-								<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+								<label name="lblOnOff" depth="2" pos="10,-2" pivot="center" style="smx_label_outline" text="{acceptbuttontext}" font_size="28" spacing_x="2" justify="center" upper_case="true" /> <!-- text_key="xuiTurnOn" -->
 							</rect>
 
 						</rect>
@@ -5458,37 +5692,50 @@
 			<if cond="mod_loaded('zSMXhud')">
 
 				<append xpath="/windows">
-					<window name="smxMiniMapWindow" depth="-99" pos="760,370" width="700" height="700" anchor="CenterCenter" cursor_area="true">
+					<window name="smxMiniMapWindow" depth="-99" pos="-145,-147" width="700" height="700" anchor="RightTop" cursor_area="true">
 
 						<rect name="minimap" pos="0,0" depth="0" controller="Quartz.MiniMap, Quartz" zoomscalesteps="0.5,1,2,5" iconsize="20" iconscalemin="20" iconscalemax="100" forceicontextoff="true" visible="{isminimapenabled}">
 
-							<sprite name="smx_minimap_smokeeffect_bg" depth="-2" pos="0,0" width="290" height="290" sprite="smx_icon_background" pivot="center" color="7,7,7,235" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="0.3" />
-							<sprite name="smx_minimap_smokeeffect_mg" depth="-1" pos="0,0" width="289" height="289" sprite="smx_icon_background" pivot="center" color="7,7,7,325" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="-0.7" />
-							<sprite name="smx_minimap_smokeeffect_fg" depth="0" pos="0,0" width="288" height="288" sprite="smx_icon_background" pivot="center" color="7,7,7,375" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="1" />
+							<sprite name="smx_minimap_smokeeffect_bg" depth="-2" pos="0,0" width="250" height="250" sprite="smx_icon_background" pivot="center" color="7,7,7,235" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="0.3" />
+							<sprite name="smx_minimap_smokeeffect_mg" depth="-1" pos="0,0" width="249" height="249" sprite="smx_icon_background" pivot="center" color="7,7,7,325" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="-0.7" />
+							<sprite name="smx_minimap_smokeeffect_fg" depth="0" pos="0,0" width="248" height="248" sprite="smx_icon_background" pivot="center" color="7,7,7,375" controller="Quartz.Spinner, Quartz" spin="true" angle_per_second="1" />
 
-							<sprite name="mapViewTextureBackground" depth="1" width="280" height="280" pivot="center" sprite="smx_minimap_background" color="7,7,7,325" />
+							<sprite name="mapViewTextureBackground" depth="1" width="240" height="240" pivot="center" sprite="smx_minimap_background" color="7,7,7,325" />
 
-							<maskedtexture name="mapViewTexture" depth="2" width="226" height="226" pivot="center" mask="@modfolder(SMXcore)://Textures/misc/server_zombie.png" material="Materials/MaskableMainmap" />
-							<maskedpanel name="clippingPanel" depth="3" pos="-113,113" width="226" height="226" pivot="center" mask="@modfolder(SMXcore)://Textures/misc/server_zombie.png" disableautobackground="true" createuipanel="true" clipping="SoftClip" clippingsoftness="4,4" clippingsize="226,226" clippingcenter="113,-113"/>
+							<maskedtexture name="mapViewTexture" depth="2" width="196" height="196" pivot="center" mask="@modfolder(SMXcore)://Textures/misc/server_zombie.png" material="Materials/MaskableMainmap" />
+							<maskedpanel name="clippingPanel" depth="3" pos="-98,98" width="196" height="196" pivot="center" mask="@modfolder(SMXcore)://Textures/misc/server_zombie.png" disableautobackground="true" createuipanel="true" clipping="SoftClip" clippingsoftness="4,4" clippingsize="196,196" clippingcenter="98,-98" />
 
-							<sprite name="mapViewTextureBackground" depth="4" pos="0,4" width="282" height="282" pivot="center" sprite="smx_minimap_foreground" color="7,7,7,375" />
+							<sprite name="mapViewTextureBackground" depth="4" pos="0,4" width="242" height="242" pivot="center" sprite="smx_minimap_foreground" color="7,7,7,375" />
 
-							<rect name="smx_minimap_zoomin_button" depth="6" pos="-120,-20">
-								<sprite name="smx_zoomin_background" depth="4" pos="43,-80" width="45" height="45" sprite="ui_game_header_fill" type="sliced" color="[white]" pivot="center" />
-								<sprite name="smx_zoomin_foreground" depth="5" pos="43,-80" width="43" height="43" sprite="ui_game_header_fill" type="sliced" color="[black]" pivot="center" globalopacitymod="1.8" />
-								<label name="smx_zoomin_label" depth="6" pos="43,-75" width="43" height="23" style="smx_label_outline" text="NUM" font_size="16" pivot="center" justify="center" upper_case="true" color="[lightGrey]" /> 
-								<label name="smx_zoomin_label" depth="6" pos="43,-91" width="43" height="23" style="smx_label_outline" text="+" font_size="22" pivot="center" justify="center" upper_case="true" color="[white]" /> 
+							<sprite name="horizontalArt" pos="0,0" height="4" width="280" pivot="center" sprite="smx_sepline_1" color="[smxui_element_separation_1]" />
+							<sprite name="verticalArt"   pos="0,-25" height="4" width="330" pivot="center" sprite="smx_sepline_1" color="[smxui_element_separation_1]" rotation="90" />
+
+							<rect name="smx_minimap_north_diamond" depth="6" pos="-29,68">
+								<sprite name="smxhud_artbox_background_45" depth="19" pos="30,32" width="57" height="57" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" force_hide="false" />
+								<sprite name="smxhud_artbox_foreground_45" depth="20" pos="30,32" width="53" height="53" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" force_hide="false" />
+								<label name="smx_zoomin_label" depth="21" pos="29,31" width="53" height="53" style="smx_label_outline" text="N" font_size="32" pivot="center" justify="center" upper_case="true" color="[white]" tooltip="North" /> 
 							</rect>
 
-							<rect name="smx_minimap_zoomout_button" depth="6" pos="30,-20">
-								<sprite name="smx_zoomout_background" depth="4" pos="43,-80" width="45" height="45" sprite="ui_game_header_fill" type="sliced" color="[white]" pivot="center" />
-								<sprite name="smx_zoomout_foreground" depth="5" pos="43,-80" width="43" height="43" sprite="ui_game_header_fill" type="sliced" color="[black]" pivot="center" globalopacitymod="1.8" />
-								<label name="smx_zoomout_label" depth="6" pos="43,-75" width="43" height="23" style="smx_label_outline" text="NUM" font_size="16" pivot="center" justify="center" upper_case="true" color="[lightGrey]" /> 
-								<label name="smx_zoomout_label" depth="6" pos="43,-91" width="43" height="23" style="smx_label_outline" text="-" font_size="22" pivot="center" justify="center" upper_case="true" color="[white]" /> 
+							<rect name="smx_minimap_zoomin_button" depth="6" pos="-135,-32">
+								<sprite name="smxhud_artbox_background_45" depth="19" pos="30,32" width="37" height="37" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" force_hide="false" />
+								<sprite name="smxhud_artbox_foreground_45" depth="20" pos="30,32" width="33" height="33" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" force_hide="false" />
+								<label name="smx_zoomin_label" depth="21" pos="29,32" width="33" height="33" style="smx_label_outline" text="+" font_size="26" pivot="center" justify="center" upper_case="true" color="[white]" tooltip="Press NUM+ to zoom in, NUMEnter to HIDE" /> 
 							</rect>
 
-							<!--curvedlabel name="smx_minimap_zoomin" depth="6" pos="50,-60" width="120" height="22" style="smx_curved_label" text="NUM+" font_size="18" color="[mediumGrey]" justify="center" radius="50" arc_degrees="180" angular_offset="-140" flip="true" draw_outwards="true" />
-							<curvedlabel name="smx_minimap_zoomin" depth="6" pos="28,-72" width="120" height="22" style="smx_curved_label" text="NUM-" font_size="18" color="[mediumGrey]" justify="center" radius="50" arc_degrees="180" angular_offset="-110" flip="true" draw_outwards="true" /-->
+							<rect name="smx_minimap_zoomout_button" depth="6" pos="75,-32">
+								<sprite name="smxhud_artbox_background_45" depth="19" pos="30,32" width="37" height="37" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" force_hide="false" />
+								<sprite name="smxhud_artbox_foreground_45" depth="20" pos="30,32" width="33" height="33" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" force_hide="false" />
+								<label name="smx_zoomout_label" depth="21" pos="29,33" width="33" height="33" style="smx_label_outline" text="-" font_size="26" pivot="center" justify="center" upper_case="true" color="[white]" tooltip="Press NUM+ to zoom out, NUMEnter to HIDE" /> 
+							</rect>
+
+							<rect name="smx_minimap_temp_diamond" depth="6" pos="-29,-135">
+								<sprite name="smxhud_artbox_background_45" depth="19" pos="30,32" width="53" height="53" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" force_hide="false" />
+								<sprite name="smxhud_artbox_foreground_45" depth="20" pos="30,32" width="48" height="48" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smxhud_element_accentcolor_2]" globalopacitymod="1.2" force_hide="false" />
+								<sprite depth="21" pos="500,0" sprite="" color="255,255,255,255" globalopacitymod="1.8" controller="CompassWindow">
+									<label depth="21" pos="-472,32" width="48" height="48" text=" [{outsidetempcolor}]{outsidetemp}[-]" font_size="13" pivot="center" style="smx_label_outline" upper_case="true" justify="center" tooltip="Ambient Temperature" />
+								</sprite>
+							</rect>
+
 						</rect>
 					</window>
 
@@ -5751,7 +5998,7 @@
 
 <!--	// SMX // GEARS // SMXhud Mod Setting - Feature - Ambient Temp -->
 
-		<conditional>
+		<!--conditional>
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
@@ -5769,12 +6016,12 @@
 				</conditional>
 
 			</if>
-		</conditional>
+		</conditional-->
 
 
 <!--	// SMX // GEARS // SMXhud Mod Setting - Feature - Player Temp -->
 
-		<conditional>
+		<!--conditional>
 			<if cond="mod_loaded('Gears')">
 
 				<conditional>
@@ -5792,7 +6039,7 @@
 				</conditional>
 
 			</if>
-		</conditional>
+		</conditional-->
 
 
 <!--	// SMX // GEARS // SMXhud Mod Setting - Feature - Bloodmoon Indicator -->
@@ -5920,6 +6167,75 @@
 		</conditional>
 
 
+<!--	// SMX // GEARS // SMXui Mod Setting - BigContainers - Big Container Mod VANILLA -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigContainers') == 'Vanilla'">
+
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // GEARS // SMXui Mod Setting - BigContainers - Big Container Mod DOUBLE -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigContainers') == 'Double'">
+
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // GEARS // SMXui Mod Setting - BigContainers - Big Container Mod Triple -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXui')">
+
+						<conditional>
+							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigContainers') == 'Triple'">
+
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
 <!--	// SMX // GEARS // SMXui Mod Setting - BigBags - Big Bag Mod VANILLA -->
 
 		<conditional>
@@ -5929,11 +6245,11 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
 
-								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">9</set>
-								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">20</set>
+								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">6</set>
+								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">9</set-->
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
 
 							</if>
 						</conditional>
@@ -5954,11 +6270,11 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag100') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '100'">
 
 								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">20</set>
-								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">23</set>
+								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">13</set-->
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
 
 							</if>
 						</conditional>
@@ -5979,11 +6295,11 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag200') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '200'">
 
 								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">40</set>
-								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">63</set>
+								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">25</set-->
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
 
 							</if>
 						</conditional>
@@ -6004,11 +6320,11 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag300') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '300'">
 
 								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">60</set>
-								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">83</set>
+								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">38</set-->
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
 
 							</if>
 						</conditional>
@@ -6029,45 +6345,11 @@
 					<if cond="mod_loaded('zSMXui')">
 
 						<conditional>
-							<!--if cond="modsetting('zSMXui', 'global', 'Optionals.BigBags.BigBag400') == 'On'"-->
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == '400'">
 
 								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">80</set>
-								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">103</set>
-
-							</if>
-						</conditional>
-
-					</if>
-				</conditional>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // GEARS // SMXcore Mod Setting - Next Version Conversion -->
-
-		<conditional>
-			<if cond="mod_loaded('Gears')">
-
-				<conditional>
-					<if cond="mod_loaded('zSMXcore')">
-
-						<conditional>
-							<if cond="modsetting('zSMXcore', 'world', 'NextVersion.NextVersion') == 'On'">
-
-								<remove xpath="/windows/window[@name='CharacterFrameWindow']/rect/rect[@name='biomebadges']" />
-
-								<insertBefore xpath="/windows/window[@name='CharacterFrameWindow']/rect/panel[@name='previewFrameSDCS']">
-									<rect name="biomebadges" pos="353,-50" width="75" height="75" >
-										<grid depth="0" pos="0,0" width="41" cols="1" cell_width="75" cell_height="90" repeat_content="false" arrangement="vertical">
-											<smx_equipment_weather_stack name="biomeBadgeSlot1" />
-											<smx_equipment_weather_stack name="biomeBadgeSlot2" />
-											<smx_equipment_weather_stack name="biomeBadgeSlot3" />
-											<smx_equipment_weather_stack name="biomeBadgeSlot4" />
-										</grid>
-									</rect>
-								</insertBefore>
+								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">50</set-->
+								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
 
 							</if>
 						</conditional>
@@ -6092,11 +6374,9 @@
 
 						<set xpath="/windows/window[@name='ingameMenu']/@controller">Gears.UI.InGameMenu, Gears</set>
 
-						<append xpath="/windows/window[@name='ingameMenu']">
-							<grid name="smx_mod_grid" depth="3" pos="50,380" pivot="bottomleft" rows="1" cols="3" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
-								<smx_mod_button name="btnMods" width="40" height="40" pivot="center" sprite="smx_progress_cog" font_size="18" overflow="ShrinkContent" tooltip_key="Gears" />
-							</grid>
-						</append>
+						<insertBefore xpath="/windows/window[@name='ingameMenu']/grid[@name='smx_top_menu_grid']">
+							<smx_back_button name="btnMods" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
+						</insertBefore>
 
 					</if>
 				</conditional>

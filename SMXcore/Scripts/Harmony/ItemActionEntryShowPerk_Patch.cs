@@ -65,7 +65,7 @@ namespace SMXcore.HarmonyPatches
 
             if (xuiC_SkillListWindow != null)
             {
-                xuiC_SkillListWindow.SetSelectedByUnlockData(__instance.UnlockData);
+                xuiC_SkillListWindow.SetSelectedByUnlockData(__instance.unlockData);
             }
 
             return false;

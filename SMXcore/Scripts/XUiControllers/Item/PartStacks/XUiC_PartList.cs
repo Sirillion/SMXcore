@@ -27,29 +27,27 @@ namespace SMXcore
 
         public new void SetSlots(ItemValue[] parts, int startIndex = 0)
         {
-            if (startIndex == 0 && HasCosemticMods())
+            if (startIndex == 0)
             {
-                SetSlot(mainItem.itemValue.CosmeticMods[0], 0);
+                if (HasCosemticMods())
+                {
+                    SetSlot(mainItem.itemValue.CosmeticMods[0], 0);
+                }
+
                 startIndex = 1;
             }
 
             for (int i = 0; i < itemControllers.Length - startIndex; i++)
             {
-                int num = i + startIndex;
-                if (parts.Length > i && parts[i] != null && !parts[i].IsEmpty())
-                {
-                    ItemStack itemStack = new ItemStack(parts[i].Clone(), 1);
-                    itemControllers[num].ItemStack = itemStack;
-                    itemControllers[num].GreyedOut = false;
+                int slotIndex = i + startIndex;
+                if (parts.Length > i) 
+                { 
+                    SetSlot(parts[i], slotIndex);
                 }
                 else
                 {
-                    itemControllers[num].ItemStack = ItemStack.Empty.Clone();
-                    itemControllers[num].GreyedOut = false;
+                    SetSlot(null, slotIndex);
                 }
-
-                itemControllers[num].ViewComponent.EventOnPress = false;
-                itemControllers[num].ViewComponent.EventOnHover = false;
             }
         }
 

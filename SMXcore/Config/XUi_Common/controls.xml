@@ -38,6 +38,64 @@
 <!--	> > > > > > > > > > > > > > > > > > > > | SMXmenu | < < < < < < < < < < < < < < < < < < < <	-->
 
 
+<!--	// SMX // Player Names -->
+
+				<!--	// SMX // Player Name Trader -->
+
+				<append xpath="/controls">
+
+					<player_name_trader	depth="${depth}"
+										pos="${pos}"
+										width="${width}"
+										height="${height}">
+
+						<rect	name="playerName"
+								controller="PlayerName"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								on_press="true"
+								disablefallthrough="true">
+
+							<label	name="name"
+									depth="${depth}"
+									pos="${pos}"
+									width="${width}"
+									height="${height}"
+									pivot="center"
+									style="smx_label_outline"
+									text=""
+									font_size="50"
+									spacing_x="2"
+									justify="center"
+									upper_case="true" 
+									color="255,255,255,255" />
+
+							<sprite	name="iconCrossplay"
+									depth="50"
+									pos="5,-10"
+									width="25"
+									height="25"
+									globalopacity="false" />
+
+							<label	name="nameCrossplay"
+									depth="1"
+									pos="40,-23"
+									width="${width-40}"
+									height="${height}"
+									pivot="left"
+									text=""
+									font_size="26"
+									justify="left" />
+
+						</rect>
+					</player_name_trader>
+
+				</append>
+
+	<!--label name="windowName" depth="4" pos="305,-70" width="590" height="52" pivot="center" style="smx_label_outline" text="basics" text_key="xuiBasics" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" /-->
+
+
 <!--	// SMX // Button Designs -->
 
 				<!--	// SMX // Menu Button -->
@@ -100,6 +158,80 @@
 										parse_actions="${parse_actions}" />
 						</rect>
 					</smx_menu_button>
+
+
+				<!--	// SMX // Default Button -->
+
+					<smx_default_button	depth="3"
+										pos="0,0"
+										height="32"
+										enabled_font_color="[labelColor]"
+										hovered_font_color="[labelColor]"
+										disabled_font_color="[disabledLabelColor]"
+										visible="true"
+										enabled="true"
+										pivot="left"
+										defaultsprite="server_refresh"
+										defaultcolor="[mediumGrey]"
+										hoversprite="server_refresh"
+										hovercolor="[white]"
+										selectedsprite="server_refresh"
+										selectedcolor="[mediumGrey]"
+										foregroundlayer="true"
+										tooltip_key=""
+										disabled_tooltip_key=""
+										sound="[default_click]"
+										justify="center"
+										caption=""
+										caption_key=""
+										font_size="28"
+										upper_case="false"
+										parse_actions="false">
+
+						<rect	name="${name}"
+								depth="${depth}"
+								pos="${pos}"
+								width="${width}"
+								height="${height}"
+								controller="SimpleButton"
+								visible="${visible}"
+								button_enabled="${enabled}">
+
+							<button	name="clickable"
+									pos="0,${Round(-height/2,0)}"
+									sprite="${defaultsprite}"
+									defaultcolor="${defaultcolor}"
+									disabledcolor="[darkGrey]"
+									hoversprite="${hoversprite}"
+									hovercolor="${hovercolor}"
+									selectedsprite="${selectedsprite}"
+									selectedcolor="${selectedcolor}"
+									foregroundlayer="${foregroundlayer}"
+									type="sliced"
+									hoverscale="1.0"
+									pivot="${pivot}"
+									tooltip_key="${tooltip_key}"
+									disabled_tooltip_key="${disabled_tooltip_key}"
+									sound_play_on_hover="[default_hover]"
+									sound="${sound}" />
+
+							<label	depth="2"
+									name="btnLabel"
+									width="${width}"
+									height="${height-2}"
+									pos="0,${Round(-height/2,0)}"
+									justify="${justify}"
+									text="${caption}"
+									text_key="${caption_key}"
+									effect="outline"
+									pivot="${pivot}"
+									font_size="${font_size}"
+									color="{# enabled ? ( hovered ? '${hovered_font_color}' : '${enabled_font_color}' ) : '${disabled_font_color}' }"
+									upper_case="${upper_case}"
+									parse_actions="${parse_actions}" />
+						</rect>
+					</smx_default_button>
+
 
 				<!--	// SMX // Edit Menu Button -->
 
@@ -455,7 +587,7 @@
 									tooltip_key="${tooltip_key}"
 									gamepad_selectable="false"
 									enabled="{can_backward}"
-									visible="{# !hascontrollershortcuts or !is_controller_input}" />
+									visible="{# show_buttons and !hascontrollershortcuts or !is_controller_input}" />
 
 							<gamepad_icon	name="gamepadIconBack"
 											depth="${1+depth}"
@@ -464,7 +596,7 @@
 											height="${0+height+gamepad_callout_size_increase}"
 											pivot="center"
 											color="{# can_backward ? '255,255,255' : '160,160,160'}"
-											visible="{# hascontrollershortcuts and is_controller_input}"
+											visible="{# show_buttons and hascontrollershortcuts and is_controller_input}"
 											action="${gamepad_decrease}" />
 
 							<rect name="regularFill" pos="${2+height},0" width="${width-height*2-4}" height="${height}" force_hide="${ segmented_fill }">
@@ -481,8 +613,8 @@
 
 							<label name="currentValue" depth="${3+depth}" pos="${2+height},${-height/2}" width="${width-height*2-4}" height="${height-2}" pivot="left" text="{valuetext}" font_size="${Defined(font_size) ? font_size : height-4}" justify="center" color="{valuecolor}" effect="outline" effect_color="[black]" effect_distance="1,1" />
 
-							<button name="forward" depth="${1+depth}" style="icon30px, press, hover" pos="${width-height/2+5},${-height/2}" width="${height}" height="${height}" pivot="center" sprite="ui_game_symbol_arrow_menu" disabledcolor="[disabledColor]" sound="[paging_click]" tooltip_key="${tooltip_key}" flip="Horizontally" gamepad_selectable="false" enabled="{can_forward}" visible="{# !hascontrollershortcuts or !is_controller_input}" />
-							<gamepad_icon name="gamepadIconForward" depth="${1+depth}" pos="${width-height/2+gamepad_callout_size_increase/2},${-height/2}" width="${0+height+gamepad_callout_size_increase}" height="${0+height+gamepad_callout_size_increase}" pivot="center" visible="{# hascontrollershortcuts and is_controller_input}" color="{# can_forward ? '255,255,255' : '160,160,160'}" action="${gamepad_increase}" />
+							<button name="forward" depth="${1+depth}" style="icon30px, press, hover" pos="${width-height/2+5},${-height/2}" width="${height}" height="${height}" pivot="center" sprite="ui_game_symbol_arrow_menu" disabledcolor="[disabledColor]" sound="[paging_click]" tooltip_key="${tooltip_key}" flip="Horizontally" gamepad_selectable="false" enabled="{can_forward}" visible="{# show_buttons and !hascontrollershortcuts or !is_controller_input}" />
+							<gamepad_icon name="gamepadIconForward" depth="${1+depth}" pos="${width-height/2+gamepad_callout_size_increase/2},${-height/2}" width="${0+height+gamepad_callout_size_increase}" height="${0+height+gamepad_callout_size_increase}" pivot="center" visible="{# show_buttons and hascontrollershortcuts and is_controller_input}" color="{# can_forward ? '255,255,255' : '160,160,160'}" action="${gamepad_increase}" />
 
 							<panel name="directvalue" pos="${2+height},0" width="${width-height*2-4}" height="${height}" pivot="topleft" style="press, scroll, hover, drag" disableautobackground="true" tooltip_key="${tooltip_key}" gamepad_selectable="${gamepad_selectable}" />
 							
@@ -568,7 +700,7 @@
 									tooltip_key="${tooltip_key}"
 									gamepad_selectable="false"
 									enabled="{can_backward}"
-									visible="{# !hascontrollershortcuts or !is_controller_input}" />
+									visible="{# show_buttons and !hascontrollershortcuts or !is_controller_input}" />
 
 							<gamepad_icon	name="gamepadIconBack"
 											depth="${1+depth}"
@@ -576,7 +708,7 @@
 											width="${0+height+gamepad_callout_size_increase}"
 											height="${0+height+gamepad_callout_size_increase}"
 											pivot="center"
-											visible="{# hascontrollershortcuts and is_controller_input}"
+											visible="{# show_buttons and hascontrollershortcuts and is_controller_input}"
 											color="{# can_backward ? '255,255,255' : '160,160,160'}"
 											action="${gamepad_decrease}" />
 
@@ -660,7 +792,7 @@
 									flip="Horizontally"
 									gamepad_selectable="false"
 									enabled="{can_forward}"
-									visible="{# !hascontrollershortcuts or !is_controller_input}" />
+									visible="{# show_buttons and !hascontrollershortcuts or !is_controller_input}" />
 
 							<gamepad_icon	name="gamepadIconForward"
 											depth="${1+depth}"
@@ -668,7 +800,7 @@
 											width="${0+height+gamepad_callout_size_increase}"
 											height="${0+height+gamepad_callout_size_increase}"
 											pivot="center"
-											visible="{# hascontrollershortcuts and is_controller_input}"
+											visible="{# show_buttons and hascontrollershortcuts and is_controller_input}"
 											color="{# can_forward ? '255,255,255' : '160,160,160'}"
 											action="${gamepad_increase}" />
 
@@ -683,9 +815,9 @@
 									gamepad_selectable="${gamepad_selectable}"/>
 							
 							<rect	name="indexMarkers"
-									pos="${2+height},${-height+5}"
+									pos="${2+height},${-height+3}"
 									width="${width-height*2-4}"
-									height="5"
+									height="3"
 									visible="{usesmarkers}"
 									active_color="[white]"
 									inactive_color="[darkGrey]"
@@ -783,8 +915,10 @@
 											effect_distance="1,1"
 											effect_color="[black]"
 											pivot="center"
+											enabled="true"
 											visible="true"
 											on_return="submit"
+											select_on_tab=""
 											tooltip="${tooltip}"
 											tooltip_key=""
 											search_field="false"
@@ -819,8 +953,10 @@
 								virtual_keyboard_prompt="${virtual_keyboard_prompt}"
 								disableautobackground="true"
 								pivot="${pivot}"
+								input_enabled="${enabled}"
 								visible="${visible}"
 								on_return="${on_return}"
+								select_on_tab="${select_on_tab}"
 								tooltip_key="${tooltip_key}"
 								search_field="${search_field}"
 								password_field="${password_field}"
@@ -856,7 +992,8 @@
 									tooltip_key="${tooltip_key}"
 									style="press, select"
 									on_hover="${on_hover}"
-									on_scroll="${on_scroll}" />
+									on_scroll="${on_scroll}"
+									enabled="${enabled}" />
 
 							<button	name="btnShowPassword"
 									pos="${width/2+10},0"
@@ -907,8 +1044,10 @@
 											effect_distance="1,1"
 											effect_color="[black]"
 											pivot="center"
+											enabled="true"
 											visible="true"
 											on_return="submit"
+											select_on_tab=""
 											tooltip_key=""
 											search_field="false"
 											password_field="false"
@@ -942,8 +1081,10 @@
 								virtual_keyboard_prompt="${virtual_keyboard_prompt}"
 								disableautobackground="true"
 								pivot="${pivot}"
+								input_enabled="${enabled}"
 								visible="${visible}"
 								on_return="${on_return}"
+								select_on_tab="${select_on_tab}"
 								tooltip_key="${tooltip_key}"
 								search_field="${search_field}"
 								password_field="${password_field}"
@@ -978,7 +1119,8 @@
 									tooltip_key="${tooltip_key}"
 									style="press, select"
 									on_hover="${on_hover}"
-									on_scroll="${on_scroll}" />
+									on_scroll="${on_scroll}"
+									enabled="${enabled}" />
 
 							<button name="btnShowPassword"
 									pos="${Round(width-height/2-5,0)},-${Round(height/2,0)}"
@@ -1037,8 +1179,10 @@
 											effect_distance="1,1"
 											effect_color="[black]"
 											pivot="topleft"
+											enabled="true"
 											visible="true"
 											on_return="submit"
+											select_on_tab=""
 											tooltip_key=""
 											search_field="false"
 											password_field="false"
@@ -1071,8 +1215,10 @@
 								virtual_keyboard_prompt="${virtual_keyboard_prompt}"
 								disableautobackground="true"
 								pivot="${pivot}"
+								input_enabled="${enabled}"
 								visible="${visible}"
 								on_return="${on_return}"
+								select_on_tab="${select_on_tab}"
 								tooltip_key="${tooltip_key}"
 								search_field="${search_field}"
 								password_field="${password_field}"
@@ -1105,7 +1251,8 @@
 									tooltip_key="${tooltip_key}"
 									style="press, select"
 									on_hover="${on_hover}"
-									on_scroll="${on_scroll}" />
+									on_scroll="${on_scroll}"
+									enabled="${enabled}" />
 
 							<button name="btnShowPassword"
 									depth="99"

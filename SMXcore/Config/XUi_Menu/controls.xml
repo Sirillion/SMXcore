@@ -103,7 +103,6 @@
 													value_max="${value_max}"
 													value_wrap="${value_wrap}"
 													value_increment="${value_increment}"
-													values="${values}"
 													reverse_list="${reverse_list}"
 													localization_prefix="${localization_prefix}"
 													format_string="${format_string}"
@@ -124,6 +123,112 @@
 										tooltip_key="${tooltip_key == '' ? title + 'Desc' : tooltip_key}" />
 						</rect>
 					</smx_game_option>
+
+				<!--	// SMX // Video Options -->
+
+					<smx_general_option	pos="0,0"
+										width="570"
+										visible="true"
+										enabled="true"
+										value_min="@DEF"
+										value_max="@DEF"
+										value_wrap="@DEF"
+										value_increment="@DEF"
+										values="@DEF"
+										reverse_list="@DEF"
+										localization_prefix=""
+										format_string=""
+										tooltip_key="">
+
+						<rect	pos="${pos}"
+								width="${width}"
+								height="32">
+
+							<label	depth="4"
+									pos="-8,-4"
+									width="262"
+									height="30"
+									style="hover"
+									tooltip_key="${tooltip_key == '' ? 'xuiOptionsGeneral' + name + 'Tooltip' : tooltip_key}"
+									text_key="xuiOptionsGeneral${name}"
+									font_size="24"
+									color="[white]"
+									justify="right"
+									pivot="topleft"
+									visible="${visible}" />
+
+							<smx_combobox_default	name="${name}"
+													type="${type}"
+													tooltip_key="${tooltip_key == '' ? 'xuiOptionsGeneral' + name + 'Tooltip' : tooltip_key}"
+													value_min="${value_min}"
+													value_max="${value_max}"
+													value_wrap="${value_wrap}"
+													value_increment="${value_increment}"
+													values="${values}"
+													reverse_list="${reverse_list}"
+													localization_prefix="${localization_prefix}"
+													format_string="${format_string}"
+													pos="269,0"
+													width="${width-270}"
+													height="32"
+													font_size="24"
+													visible="${visible}"
+													enabled="${enabled}" />
+						</rect>
+					</smx_general_option>
+
+				<!--	// SMX // Video Options -->
+
+					<smx_video_option	pos="0,0"
+										width="570"
+										visible="true"
+										enabled="true"
+										value_min="@DEF"
+										value_max="@DEF"
+										value_wrap="@DEF"
+										value_increment="@DEF"
+										values="@DEF"
+										reverse_list="@DEF"
+										localization_prefix=""
+										format_string="">
+										
+						<rect	pos="${pos}"
+								width="${width}"
+								height="32">
+
+							<label	depth="4"
+									pos="-8,-4"
+									width="262"
+									height="30"
+									style="hover"
+									tooltip_key="xuiOptionsVideo${name}Tooltip"
+									text_key="xuiOptionsVideo${name}"
+									font_size="24"
+									color="[white]"
+									justify="right"
+									pivot="topleft"
+									visible="${visible}" />
+
+							<smx_combobox_default	name="${name}"
+													type="${type}"
+													tooltip_key="xuiOptionsVideo${name}Tooltip"
+													value_min="${value_min}"
+													value_max="${value_max}"
+													value_wrap="${value_wrap}"
+													value_increment="${value_increment}"
+													values="${values}"
+													reverse_list="${reverse_list}"
+													localization_prefix="${localization_prefix}"
+													format_string="${format_string}"
+													pos="269,0"
+													width="${width-270}"
+													height="32"
+													font_size="24"
+													visible="${visible}"
+													enabled="${enabled}"
+													index_markers="true" />
+						</rect>
+					</smx_video_option>
 
 				<!--	// SMX // Savegames List Entry -->
 
@@ -303,7 +408,6 @@
 													value_max="${value_max}"
 													value_wrap="${value_wrap}"
 													value_increment="${value_increment}"
-													values="${values}"
 													reverse_list="${reverse_list}"
 													localization_prefix="${localization_prefix}"
 													format_string="${format_string}"
