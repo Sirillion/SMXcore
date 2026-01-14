@@ -1,7 +1,7 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,2.5.23.0
+smxCurrentVersionNumber,UI,Menu,x,,2.5.23.1
 
 smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those red errors spamming the console?\n\nIt seems you have removed the mod called 0_TFP_Harmony! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity...\n\nThen try again...\n\n\n[AF1E19]To exit now[-]: Open the console(F1) then type 'shutdown' and press (enter) to exit the game client.",,,,,
 
@@ -97,7 +97,7 @@ smxuiSettingOptionalsTooltip,UI,Menu,x,,Turns optional UI elements on/off for SM
 smxuiSettingThirdForgeSlot,UI,Menu,x,,Third Forge Slot,,,,,
 smxuiSettingThirdForgeSlotTooltip,UI,Menu,x,,Turns the Third Forge Slot on/off for SMXui.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
 
-smxuiSettingBigBags,UI,Menu,x,,SMXui BIGBAG MODS,,,,,
+smxuiSettingBigBags,UI,Menu,x,,SMXui INVENTORY MODS,,,,,
 smxuiSettingBigBagsTooltip,UI,Menu,x,,Turns optional Big Bag Mods on/off for SMXui.,,,,,
 smxuiSettingBigBag100,UI,Menu,x,,100 Slot Backpack,,,,,
 smxuiSettingBigBag100Tooltip,UI,Menu,x,,Turns the 100 Slot Backpack on/off for SMXui.\n\nYou can only have one Big Bag Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,
@@ -108,7 +108,7 @@ smxuiSettingBigBag300Tooltip,UI,Menu,x,,Turns the 300 Slot Backpack on/off for S
 smxuiSettingBigBag400,UI,Menu,x,,400 Slot Backpack,,,,,
 smxuiSettingBigBag400Tooltip,UI,Menu,x,,Turns the 400 Slot Backpack on/off for SMXui.\n\nYou can only have one Big Bag Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,
 
-smxuiSettingBigContainers,UI,Menu,x,,SMXui BIGCONTAINER MODS,,,,,
+smxuiSettingBigContainers,UI,Menu,x,,SMXui CONTAINER MODS,,,,,
 smxuiSettingBigContainersTooltip,UI,Menu,x,,Turns optional Big Container Mods on/off for SMXui.,,,,,
 smxuiSettingBigDoubleContainer,UI,Menu,x,,Double the container size,,,,,
 smxuiSettingBigContainerTooltip,UI,Menu,x,,Turns the double container size on/off for SMXui.\n\nYou can only have one Big Container Mod active.\nPick one and stick with it!\n\nRequires restarting the game.,,,,,

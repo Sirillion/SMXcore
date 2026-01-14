@@ -6247,8 +6247,8 @@
 						<conditional>
 							<if cond="modsetting('zSMXui', 'world', 'BigBags.BigBags') == 'Vanilla'">
 
-								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">6</set>
-								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">9</set-->
+								<set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">9</set>
+								<!--set xpath="/windows/window[@name='windowBackpack']/rect[@name='content']/scrollview/grid/@rows">6</set-->
 								<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/scrollview/grid/@rows">100</set>
 
 							</if>
