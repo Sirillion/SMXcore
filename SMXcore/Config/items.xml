@@ -1,5 +1,16 @@
 <SMXcore name="items.xml">
 
+<!--	// SMX // Mod Slot Increase - FOR TESTING ONLY -->
+
+		<!--conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/items/item[@name='armorCommandoHelmet']/effect_group/passive_effect[@name='ModSlots']/@value">2,2,3,3,4,8</set>
+
+			</if>
+		</conditional-->
+
+
 <!--	// SMX // Item Type Identifier - Tools -->
 
 		<conditional>
@@ -87,11 +98,11 @@
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
-				<append xpath="/items/item[contains (@name, 'gunHandgunT0') or (contains (@name, 'gunHandgunT1')) or (contains (@name, 'gunHandgunT3DesertVulture'))]">
+				<append xpath="/items/item[contains (@name, 'gunHandgunT1') or (contains (@name, 'gunHandgunT3DesertVulture'))]">
 					<property name="WeaponType" value="Pistol" />
 				</append>
 
-				<append xpath="/items/item[contains (@name, 'gunHandgunT2')]">
+				<append xpath="/items/item[contains (@name, 'gunHandgunT0') or (contains (@name, 'gunHandgunT2'))]">
 					<property name="WeaponType" value="Revolver" />
 				</append>
 
@@ -180,6 +191,14 @@
 
 				<append xpath="/items/item[contains (@name, 'ammo') and (contains (@name, 'Exploding'))]">
 					<property name="WeaponType" value="Ammunition (Explosive)" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'GasCan')]">
+					<property name="WeaponType" value="Fuel" />
+				</append>
+
+				<append xpath="/items/item[contains (@name, 'thrown') and not (contains (@name, 'Molotov'))]">
+					<property name="WeaponType" value="Throwable Explosive" />
 				</append>
 
 			</if>

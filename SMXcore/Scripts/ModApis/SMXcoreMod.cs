@@ -14,7 +14,7 @@ public class SMXcoreMod : IModApi, IGearsModApi
         Log.Out($"[{TAG}] Loading Patch");
         var harmony = SMXHarmonyPatcher.GetHarmonyInstance();
 
-        //Patching SMXlib
+        //Patching SMXcore
         harmony.PatchAll(Assembly.GetExecutingAssembly());
 
         Log.Out($"[{TAG}] Loaded Patch");

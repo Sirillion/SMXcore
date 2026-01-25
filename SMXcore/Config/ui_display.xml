@@ -1,267 +1,204 @@
 <SMXcore name="ui_display.xml">
 
-<!--	// SMX // Item Display Icon Inject - EntityDamage -->
+<!--	// SMX // Iteminfo Icon Inject -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXui')">
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='EntityDamage']" name="icon">EntityDamage</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='EntityDamage']" name="icon">EntityDamage</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='EntityDamage']" name="icon">EntityDamage</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExEntityDamage']" name="icon">EntityDamage</setattribute>
+			<!--	// SMX // EntityDamage -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@title_key='statEntityDamageRanged']" name="icon">smx_ui_iteminfo_entitydamage</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@title_key='statEntityDamageRanged']" name="icon">smx_ui_iteminfo_entitydamage</setattribute>
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@title_key='statEntityDamageShotgun']" name="icon">smx_ui_iteminfo_entitydamage</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@title_key='statEntityDamageShotgun']" name="icon">smx_ui_iteminfo_entitydamage</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - MagazineSize -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@title_key='statEntityDamageMelee']" name="icon">smx_ui_iteminfo_entitydamage</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@title_key='statEntityDamageRangedImpact']" name="icon">smx_ui_iteminfo_entitydamage</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // EntityDamage, PowerAttack -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='MagazineSize']" name="icon">MagazineSize</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='MagazineSize']" name="icon">MagazineSize</setattribute> <!-- MOTOR TOOL - GAS -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@title_key='statPowerAttack']" name="icon">smx_ui_iteminfo_entitydamage_power</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // MagazineSize -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='MagazineSize']" name="icon">smx_ui_iteminfo_magazinesize_ranged</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='MagazineSize']" name="icon">smx_ui_iteminfo_magazinesize_gasoline</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - RoundsPerMinute -->
+			<!--	// SMX // RoundsPerMinute -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='RoundsPerMinute']" name="icon">smx_ui_iteminfo_rpm_ranged</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='RoundsPerMinute']" name="icon">smx_ui_iteminfo_rpm_melee</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='RoundsPerMinute']" name="icon">RoundsPerMinute</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='RoundsPerMinute']" name="icon">RoundsPerMinute</setattribute>
+			<!--	// SMX // DamageFalloffRange -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='DamageFalloffRange']" name="icon">smx_ui_iteminfo_damagefalloffrange</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='DamageFalloffRange']" name="icon">smx_ui_iteminfo_damagefalloffrange</setattribute> <!-- SIRILLION: Melee icon? -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='DamageFalloffRange']" name="icon">smx_ui_iteminfo_damagefalloffrange</setattribute>
 
+			<!--	// SMX // DegradationMax -->
 
-<!--	// SMX // Item Display Icon Inject - DamageFalloffRange -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='DegradationMax']" name="icon">smx_ui_iteminfo_degradationmax</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='DegradationMax']" name="icon">smx_ui_iteminfo_degradationmax</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='DegradationMax']" name="icon">smx_ui_iteminfo_degradationmax</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // RoundRayCount -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='DamageFalloffRange']" name="icon">ui_game_symbol_twitch_dont_miss</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='DamageFalloffRange']" name="icon">ui_game_symbol_twitch_dont_miss</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='DamageFalloffRange']" name="icon">ui_game_symbol_twitch_dont_miss</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='RoundRayCount']" name="icon">smx_ui_iteminfo_roundraycount</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='RoundRayCount']" name="icon">smx_ui_iteminfo_roundraycount</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // dStatStunEffect -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='dStatStunEffect']" name="icon">smx_ui_iteminfo_dstatstuneffect</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - DegradationMax -->
+			<!--	// SMX // ProjectileVelocity -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='ProjectileVelocity']" name="icon">smx_ui_iteminfo_projectilevelocity</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='ProjectileVelocity']" name="icon">smx_ui_iteminfo_projectilevelocity</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='DegradationMax']" name="icon">ui_game_symbol_drop</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='DegradationMax']" name="icon">ui_game_symbol_drop</setattribute>
+			<!--	// SMX // ProjectileVelocity -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='dEntityDamageSneak']" name="icon">smx_ui_iteminfo_dentitydamagesneak</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dEntityDamageSneak']" name="icon">smx_ui_iteminfo_dentitydamagesneak</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dEntityDamageSneak']" name="icon">smx_ui_iteminfo_dentitydamagesneak</setattribute>
 
+			<!--	// SMX // BlockDamage -->
 
-<!--	// SMX // Item Display Icon Inject - RoundRayCount -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='BlockDamage']" name="icon">smx_ui_iteminfo_blockdamage</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='BlockDamage']" name="icon">smx_ui_iteminfo_blockdamage</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='BlockDamage']" name="icon">smx_ui_iteminfo_blockdamage</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // MaxRange -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='RoundRayCount']" name="icon">ui_game_symbol_twitch_minion_ammotype_shotgun_overhead</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='RoundRayCount']" name="icon">ui_game_symbol_twitch_minion_ammotype_shotgun_overhead</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='MaxRange']" name="icon">smx_ui_iteminfo_maxrange</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // StaminaLoss -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='StaminaLoss']" name="icon">smx_ui_iteminfo_staminaloss</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - dStatStunEffect -->
+			<!--	// SMX // AttacksPerMinute -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='AttacksPerMinute']" name="icon">smx_ui_iteminfo_attacksperminute</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='dStatStunEffect']" name="icon">ui_game_symbol_stunned</setattribute>
+			<!--	// SMX // dTargetArmor -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dTargetArmor']" name="icon">smx_ui_iteminfo_dtargetarmor</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dTargetArmor']" name="icon">smx_ui_iteminfo_dtargetarmor</setattribute>
 
+			<!--	// SMX // dBlockRepairAmount -->
 
-<!--	// SMX // Item Display Icon Inject - ProjectileVelocity -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dBlockRepairAmount']" name="icon">smx_ui_iteminfo_dblockrepairamount</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // dBurning -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='ProjectileVelocity']" name="icon">ui_game_symbol_twitch_progression</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='ProjectileVelocity']" name="icon">ui_game_symbol_twitch_progression</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dBurning']" name="icon">smx_ui_iteminfo_dburning</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // HypothermalResist -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='HypothermalResist']" name="icon">smx_ui_iteminfo_hypothermalresist</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='HypothermalResist']" name="icon">smx_ui_iteminfo_hypothermalresist</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - dEntityDamageSneak -->
+			<!--	// SMX // HyperthermalResist -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='HyperthermalResist']" name="icon">smx_ui_iteminfo_hyperthermalresist</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='HyperthermalResist']" name="icon">smx_ui_iteminfo_hyperthermalresist</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='dEntityDamageSneak']" name="icon">ui_game_symbol_light_armor</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dEntityDamageSneak']" name="icon">ui_game_symbol_light_armor</setattribute>
+			<!--	// SMX // dTargetPenetration -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dTargetPenetration']" name="icon">smx_ui_iteminfo_dtargetpenetration</setattribute>
 
+			<!--	// SMX // dDamageDoor -->
 
-<!--	// SMX // Item Display Icon Inject - BlockDamage -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dDamageDoor']" name="icon">smx_ui_iteminfo_ddoordamage</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // dEntityDamageFire -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='BlockDamage']" name="icon">BlockDamage</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='BlockDamage']" name="icon">BlockDamage</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='BlockDamage']" name="icon">BlockDamage</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dEntityDamageFire']" name="icon">smx_ui_iteminfo_dentitydamagefire</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // dDuration -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dDuration']" name="icon">smx_ui_iteminfo_dduration</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupConsumables']/display_entry[@name='dDuration']" name="icon">smx_ui_iteminfo_dduration</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - MaxRange -->
+			<!--	// SMX // dExEntityDamage -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExEntityDamage']" name="icon">smx_ui_iteminfo_dexentitydamage</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupRanged']/display_entry[@name='MaxRange']" name="icon">ui_game_symbol_arrow_max</setattribute>
+			<!--	// SMX // dExBlockDamage -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExBlockDamage']" name="icon">smx_ui_iteminfo_dexblockdamage</setattribute>
 
+			<!--	// SMX // dExRadius -->
 
-<!--	// SMX // Item Display Icon Inject - StaminaLoss -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExRadius']" name="icon">smx_ui_iteminfo_dexradius</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // dFuseTime -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='StaminaLoss']" name="icon">ui_game_symbol_fatigued</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dFuseTime']" name="icon">smx_ui_iteminfo_dfusetime</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // dExDamageFire -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExDamageFire']" name="icon">smx_ui_iteminfo_dexdamagefire</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - AttacksPerMinute -->
+			<!--	// SMX // dCarryCapacity -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='dCarryCapacity']" name="icon">smx_ui_iteminfo_dcarrycapacity</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dCarryCapacity']" name="icon">smx_ui_iteminfo_dcarrycapacity</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='AttacksPerMinute']" name="icon">ui_game_symbol_knunchuck</setattribute>
+			<!--	// SMX // dNoiseMultiplier -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='dNoiseMultiplier']" name="icon">smx_ui_iteminfo_dnoisemultiplier</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dNoiseMultiplier']" name="icon">smx_ui_iteminfo_dnoisemultiplier</setattribute>
 
+			<!--	// SMX // dStaminaChangeOT -->
 
-<!--	// SMX // Item Display Icon Inject - dTargetArmor -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dStaminaChangeOT']" name="icon">smx_ui_iteminfo_staminaloss</setattribute>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // Mobility -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dTargetArmor']" name="icon">ui_game_symbol_light_armor2</setattribute>
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dTargetArmor']" name="icon">ui_game_symbol_light_armor2</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='Mobility']" name="icon">smx_ui_iteminfo_mobility</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='Mobility']" name="icon">smx_ui_iteminfo_mobility</setattribute>
 
-			</if>
-		</conditional>
+			<!--	// SMX // PhysicalDamageResist -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='PhysicalDamageResist']" name="icon">smx_ui_iteminfo_physicaldamageresist</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='PhysicalDamageResist']" name="icon">smx_ui_iteminfo_physicaldamageresist</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - dBurning -->
+			<!--	// SMX // ElementalDamageResist -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='ElementalDamageResist']" name="icon">smx_ui_iteminfo_elementaldamageresist</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='ElementalDamageResist']" name="icon">smx_ui_iteminfo_elementaldamageresist</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='dBurning']" name="icon">ui_game_symbol_fire</setattribute>
+			<!--	// SMX // dHarvestCount -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dHarvestCount']" name="icon">smx_ui_iteminfo_dharvestcount</setattribute>
 
+			<!--	// SMX // dLumberJackDamage -->
 
-<!--	// SMX // Item Display Icon Inject - HypothermalResist -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dLumberJackDamage']" name="icon">smx_ui_iteminfo_dlumberjackdamage</setattribute>
 
-		<!--conditional>
-			<if cond="mod_loaded('zSMXui')">
+			<!--	// SMX // dStaminaRegen -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupMelee']/display_entry[@name='HypothermalResist']" name="icon">ui_game_symbol_cold</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dStaminaRegen']" name="icon">smx_ui_iteminfo_dstaminaregen</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupConsumables']/display_entry[@name='dStaminaRegen']" name="icon">smx_ui_iteminfo_dstaminaregen</setattribute>
 
-			</if>
-		</conditional-->
+			<!--	// SMX // dBartering -->
 
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dBartering']" name="icon">smx_ui_iteminfo_dbartering</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupConsumables']/display_entry[@name='dBartering']" name="icon">smx_ui_iteminfo_dbartering</setattribute>
 
-<!--	// SMX // Item Display Icon Inject - dTargetPenetration -->
+			<!--	// SMX // dDamageResist -->
 
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dDamageResist']" name="icon">smx_ui_iteminfo_ddamageresist</setattribute>
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dTargetPenetration']" name="icon">ui_game_symbol_paint_copy_block</setattribute>
+			<!--	// SMX // dEntityDamage -->
 
-			</if>
-		</conditional>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dEntityDamage']" name="icon">smx_ui_iteminfo_entitydamage</setattribute> <!-- SIRILLION: Consider new icon. -->
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupConsumables']/display_entry[@name='dEntityDamage']" name="icon">smx_ui_iteminfo_entitydamage</setattribute> <!-- SIRILLION: Consider new icon. -->
 
+			<!--	// SMX // dTreatedCritHealing -->
 
-<!--	// SMX // Item Display Icon Inject - dDamageDoor -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dDamageDoor']" name="icon">ui_game_symbol_door</setattribute>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Item Display Icon Inject - dEntityDamageFire -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dEntityDamageFire']" name="icon">ui_game_symbol_twitch_boss_bar_fire</setattribute>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Item Display Icon Inject - dDuration -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dDuration']" name="icon">ui_game_symbol_clock</setattribute>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Item Display Icon Inject - dExBlockDamage -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExBlockDamage']" name="icon">ui_game_symbol_twitch_no_explosives</setattribute>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Item Display Icon Inject - dExRadius -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dExRadius']" name="icon">ui_game_symbol_archery</setattribute>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Item Display Icon Inject - dFuseTime -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXui')">
-
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAmmo']/display_entry[@name='dFuseTime']" name="icon">ui_game_symbol_twitch_no_time</setattribute>
+				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='dTreatedCritHealing']" name="icon">smx_ui_iteminfo_dtreatedcrithealing</setattribute>
 
 			</if>
 		</conditional>

@@ -76,6 +76,21 @@
 		</conditional>
 
 
+<!--	// SMX // SMX Info Window -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<append xpath="/xui/ruleset[@name='default']">
+					<window_group name="serverinfowindow">
+						<window name="serverinfowindow" />
+					</window_group>
+				</append>
+
+			</if>
+		</conditional>
+
+
 <!--	// SMX // Progress Window -->
 
 		<conditional>
@@ -635,6 +650,87 @@
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='keypadEdit']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Power Devices - Trigger -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='powertrigger']">
+					<window name="windowPowerDummyBackground" />
+					<window name="windowPowerTriggerOptions" />
+					<window name="windowPowerCameraControlPreview" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='powertrigger']" name="controller">XUiC_PowerTriggerWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powertrigger']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powertrigger']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powertrigger']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Power Devices - Ranged Trap -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='powerrangedtrap']">
+					<window name="windowPowerDummyBackground" />
+					<window name="windowPowerRangedTrapOptions" />
+					<window name="windowPowerTrapSlots" />
+					<window name="windowPowerCameraControlPreview" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='powerrangedtrap']" name="controller">XUiC_PowerRangedTrapWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powerrangedtrap']" name="open_backpack_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powerrangedtrap']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powerrangedtrap']" name="defaultSelected">content</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Power Devices - Camera -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='powercamera']">
+					<window name="windowPowerCameraControl" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='powercamera']" name="controller">XUiC_PowerCameraWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powercamera']" name="actionSet">controller</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powercamera']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powercamera']" name="defaultSelected">cameraDrag</setattribute>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Power Devices - Spotlight -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='powerspotlight']">
+					<window name="windowPowerDummyBackground" />
+					<window name="windowPowerCameraControlPreview" />
+					<window name="windowNonPagingHeader" />
+				</set>
+
+				<setattribute xpath="/xui//window_group[@name='powerspotlight']" name="controller">XUiC_PoweredSpotlightWindowGroup</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powerspotlight']" name="close_compass_on_open">true</setattribute>
+				<setattribute xpath="/xui//window_group[@name='powerspotlight']" name="defaultSelected">cameraClick</setattribute>
 
 			</if>
 		</conditional>

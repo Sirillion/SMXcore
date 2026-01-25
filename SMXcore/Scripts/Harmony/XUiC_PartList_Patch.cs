@@ -60,6 +60,30 @@ namespace SMXcore.HarmonyPatches
             }
         }
 
+        public static void PatchSetSlotMethod()
+        {
+            Harmony harmony = SMXHarmonyPatcher.GetHarmonyInstance();
+
+            MethodInfo original = AccessTools.Method(typeof(global::XUiC_PartList), "SetSlot");
+            MethodInfo prefix = AccessTools.Method(typeof(XUiC_PartList_Patch), "SetSlot");
+
+            bool alreadyPatched = false;
+            IEnumerable<MethodBase> OriginalMethods = harmony.GetPatchedMethods();
+            foreach (MethodBase method in OriginalMethods)
+            {
+                if (method.Equals(original))
+                {
+                    alreadyPatched = true;
+                    break;
+                }
+            }
+
+            if (!alreadyPatched)
+            {
+                harmony.Patch(original, prefix: new HarmonyMethod(prefix));
+            }
+        }
+
         public static void SetMainItem(global::XUiC_PartList __instance, ItemStack itemStack)
         {
             if(__instance is XUiC_PartList partList)
@@ -73,6 +97,17 @@ namespace SMXcore.HarmonyPatches
             if (__instance is XUiC_PartList partList)
             {
                 partList.SetSlots(parts, startIndex);
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool SetSlot(global::XUiC_PartList __instance, ItemValue part, int index)
+        {
+            if (__instance is XUiC_PartList partList)
+            {
+                partList.SetSlot(part, index);
                 return false;
             }
 

@@ -234,11 +234,14 @@
 							<sprite name="smxhud_artbox_background_45" depth="1" pos="1,0" width="37" height="37" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" visible="{hasobjective}" />
 							<sprite name="smxhud_artbox_foreground_45" depth="2" pos="1,0" width="33" height="33" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smx_element_accentcolor_3]" globalopacitymod="1.2" visible="{hasobjective}" />
 
-							<sprite name="iconTrack" depth="3" pos="1,0" width="18" height="18" sprite="smx_diamond_background" pivot="center" rotation="45" color="{objectivecompletecolor}" tooltip="{objectiveoptional}{objectivedescription}" />
-							<!--sprite name="iconTrack" depth="3" pos="1,0" size="22,22" pivot="center" style="hover" sprite="{objectivecompletesprite}" color="{objectivecompletecolor}" tooltip="{objectiveoptional}{objectivedescription} " visible="{objectiveshowicon}" /-->
+							<sprite name="iconTrack" depth="3" pos="1,0" width="22" height="22" style="hover" sprite="smx_diamond_background" pivot="center" rotation="45" color="{objectivecompletecolor}" tooltip="{objectiveoptional}{objectivedescription}" />
 
-							<label name="smxhud_questtracker_objective" depth="3" pos="85,6" width="120" height="12" pivot="center" style="smx_label_outline" text=" {objectiveoptional}{objectivedescription} " font_size="10" justify="left" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasobjective}" />
-							<label name="smx_recipetracker_ingredient" depth="3" pos="85,-6" width="120" height="12" pivot="center" style="smx_label_outline" text=" [{objectivecompletehexcolor}]{objectivestate}[-]" font_size="10" justify="left" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasobjective}" />
+							<panel name="bgPanel" depth="1" pos="-180,17" width="180" height="34" backgroundspritename="ui_game_panel_header" bordercolor="[transparent]" backgroundcolor="[black_threequarters_alpha]" borderthickness="0" anchor="CenterBottom" globalopacity="false" force_hide="true">
+								<label name="smxhud_questtracker_objective" depth="3" pos="75,-8" width="150" height="16" pivot="center" style="smx_label_outline" text=" {objectiveoptional}{objectivedescription} " font_size="14" justify="left" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasobjective}" />
+								<label name="smx_recipetracker_ingredient" depth="3" pos="75,-26" width="150" height="16" pivot="center" style="smx_label_outline" text=" [{objectivecompletehexcolor}]{objectivestate}[-]" font_size="14" justify="left" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasobjective}" />
+							</panel>
+
+							<label name="smx_recipetracker_ingredient" depth="3" pos="85,0" width="120" height="16" pivot="center" style="smx_label_outline" text=" [{objectivecompletehexcolor}]{objectivestate}[-]" font_size="14" justify="left" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasobjective}" force_hide="false" />
 						</rect>
 					</smx_quest_objective_tracker_entry>
 				</append>
@@ -258,9 +261,9 @@
 							<sprite name="smxhud_artbox_background_45" depth="1" pos="0,0" width="37" height="37" sprite="smx_diamond_background" pivot="center" rotation="45" color="[smxhud_element_background]" globalopacitymod="1.8" visible="{hasingredient}" />
 							<sprite name="smxhud_artbox_foreground_45" depth="2" pos="0,0" width="33" height="33" sprite="smx_diamond_foreground" pivot="center" rotation="45" color="[smx_element_accentcolor_3]" globalopacitymod="1.2" visible="{hasingredient}" />
 
-							<sprite name="iconTrack" depth="3" pos="0,0" size="22,22" pivot="center" style="hover" atlas="ItemIconAtlas" sprite="{itemicon}" color="{objectivecompletecolor}" tooltip="{itemname}: [{ingredientcompletehexcolor}]{itemcount}[-]" visible="{hasingredient}" />
+							<sprite name="iconTrack" depth="3" pos="0,0" size="32,32" pivot="center" style="hover" atlas="ItemIconAtlas" sprite="{itemicon}" color="255,255,255,375" tooltip="{itemname}: [{ingredientcompletehexcolor}]{itemcount}[-]" visible="{hasingredient}" />
 
-							<label name="smx_recipetracker_ingredient" depth="3" pos="-2,-25" width="40" height="12" pivot="center" style="smx_label_outline" text=" [{ingredientcompletehexcolor}]{itemcount}[-]" font_size="10" justify="center" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasingredient}" />
+							<label name="smx_recipetracker_ingredient" depth="3" pos="-2,-30" width="40" height="16" pivot="center" style="smx_label_outline" text=" [{ingredientcompletehexcolor}]{itemcount}[-]" font_size="14" justify="center" upper_case="true" color="[smxhud_element_labelcolor_1]" visible="{hasingredient}" />
 						</rect>
 					</smx_recipe_ingredient_tracker_entry>
 				</append>
@@ -704,7 +707,7 @@
 						<rect	depth="3"
 								size="60,60"
 								pivot="center"
-								style="press, hover, scroll"
+								style="press, hover"
 								controller="SMXcore.PerkSkillEntry, SMXcore"
 								enabled_color="[iconColor]"
 								disabled_color="[disabledLabelColor]"
@@ -1006,16 +1009,16 @@
 					<smx_quest_turnin_entry>
 						<rect	pos="0,0"
 								width="100"
-								height="100"
+								height="120"
 								pivot="center"
-								style="press, hover"
+								style="itemStack, press, hover"
 								controller="QuestTurnInEntry"
 								selected_color="[smx_element_accentcolor_2]"
 								default_color="[darkGrey]"
 								tooltip="{rewardname}"
 								sound_play_on_hover="[default_hover]">
 
-							<sprite name="backgroundMain" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+							<sprite name="backgroundMain" depth="2" pos="0,5" size="100,160" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
 
 							<sprite name="background2" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{namecolor}" rotation="45" />
 							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" force_hide="true" />
@@ -1026,6 +1029,10 @@
 							<sprite name="background2" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{durabilitycolor}" rotation="-45" visible="{hasdurability}" />
 
 							<sprite name="ItemIcon" depth="7" pos="0,0" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{rewardicon}" color="{rewardicontint}" foregroundlayer="true" visible="{hasitemreward}" />
+
+							<sprite name="textBackground" depth="3" pos="0,72" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContent" depth="4" pos="0,72" width="100" height="25" pivot="center" style="smx_label_outline" text="{rewardname}" color="255,255,255,255" font_size="12" spacing_x="3" justify="center" upper_case="true" force_hide="false" visible="{hasentry}" />
 
 							<sprite depth="2" name="windowIcon" style="icon30px" pos="20,-10" sprite="{rewardicon}" visible="{hasotherreward}"/>
 
@@ -1038,20 +1045,6 @@
 
 							<sprite name="smallBackgroundMain" depth="14" pos="0,-34" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" visible="{hasdurability}" />
 							<sprite name="smallBackgroundMain2" depth="13" pos="0,-34" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" visible="{hasdurability}" />
-
-							<!--label  depth="4" name="durabilityValue" height="28"  width="120" text="{durabilityvalue}" font_size="28" justify="center" pos="550,-6"  /-->
-
-							<!--sprite name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" /-->
-							<!--sprite depth="2" name="background" color="[darkGrey]" pos="2,-3" width="${width-4}" height="44" type="sliced" /-->
-							<!--sprite depth="4" name="ItemIcon" atlas="ItemIconAtlas" sprite="{rewardicon}" color="{rewardicontint}" size="38,38" pos="34,-25" pivot="center" foregroundlayer="true" visible="{hasitemreward}" /-->
-							<!--sprite depth="2" name="windowIcon" style="icon30px" pos="20,-10" sprite="{rewardicon}" visible="{hasotherreward}"/-->
-							<!--sprite depth="8" name="itemtypeicon" width="12" height="12" sprite="ui_game_symbol_{itemtypeicon}" pos="6,-6" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" /-->
-							<!-- <sprite depth="2" name="windowIcon" style="icon30px" pos="600,-10" sprite="{chosenicon}" visible="{hasreward}" color="[green]" /> -->
-							<!--label pos="65,-10" depth="3" text="{rewardname}" color="{namecolor}" font_size="28" /-->
-
-							<!--sprite depth="3" name="durabilityBackground" width="50" height="6" sprite="menu_empty3px" color="[black_half_alpha]" type="sliced" pos="585, -36" foregroundlayer="true" visible="{hasdurability}"/>
-							<sprite depth="4" name="durabilityBar" height="6" width="50" color="{durabilitycolor}" type="filled" fill="{durabilityfill}" pos="585, -36" visible="{hasdurability}" />
-							<label  depth="4" name="durabilityValue" height="28"  width="120" text="{durabilityvalue}" font_size="28" justify="center" pos="550,-6"  /-->
 						</rect>
 					</smx_quest_turnin_entry>
 				</append>
@@ -1975,7 +1968,8 @@
 								selectedcolor="196,196,196,196"
 								nonselectedcolor="[darkGrey]"
 								sound="[recipe_click]"
-								sound_play_on_hover="[default_hover]" tooltip="{recipename}" >
+								sound_play_on_hover="[default_hover]"
+								tooltip="{recipename}">
 
 							<sprite name="mainBackground" depth="2" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
 
@@ -2074,7 +2068,7 @@
 
 							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" visible="{#!isempty}" />
 
-							<sprite name="slotForeground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{hasingredientsstatecolor}" rotation="-45" visible="{#!isempty}" />
+							<sprite name="slotForeground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[mediumGrey]" rotation="-45" visible="{#!isempty}" />
 
 							<sprite name="Icon" depth="7" pos="0,-10" size="65,65" pivot="center" sprite="ui_game_symbol_pen" foregroundlayer="true" />
 
@@ -2183,6 +2177,418 @@
 		</conditional>
 
 
+<!--	// SMX // Challenges - List Entries -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_challenge_list_entry>
+						<rect width="505" height="260" controller="ChallengeGroupEntry">
+							<sprite name="smx_panel_background" depth="1" pos="211,-138" width="518" height="270" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" />
+
+							<sprite name="smx_menu_separation" depth="2" pos="211,-55" width="505" height="4" pivot="center" sprite="smx_sepline_1" color="[smx_element_separation_2]" />
+							<sprite name="smx_menu_separation" depth="2" pos="211,-278" width="505" height="4" pivot="center" sprite="smx_sepline_1" color="[smx_element_separation_2]" />
+
+							<label name="groupName" depth="4" pos="210,-20" width="485" height="30" pivot="center" style="smx_label_outline" text="{groupname}" color="255,255,255,255" justify="left" font_size="24" />
+							<label name="groupObjective" depth="4" pos="210,-20" width="485" height="30" pivot="center" style="smx_label_outline" text="{groupobjective}" color="[mediumGrey]" justify="right" font_size="14" />
+							<label name="resetTime" depth="4" pos="210,-40" width="485" height="30" pivot="center" style="smx_label_outline" text="Resets: Day {resetday}" color="[mediumGrey]" justify="left" font_size="14" visible="{hasreset}" />
+							<label name="groupReward" depth="4" pos="210,-40" width="485" height="30" pivot="center" style="smx_label_outline" text=" [FFFFFF]Rewards:[-]  [606060]{groupreward}.[-]" justify="right" font_size="14" />
+
+							<grid depth="6" name="newList" rows="2" cols="5" pos="8,-110" width="505" height="101" cell_width="101" cell_height="101" repeat_content="true" arrangement="horizontal" controller="ChallengeEntryList">
+								<smx_challenge_entry name="0" />
+							</grid>
+						</rect>
+					</smx_challenge_list_entry>
+
+					<smx_challenge_entry>
+						<rect	width="60"
+								height="60"
+								pivot="center"
+								style="itemStack, hover"
+								controller="ChallengeEntry"
+								collider_scale="1.0"
+								enabled_color="[iconColor]"
+								disabled_color="[smx_element_accentcolor_green]"
+								failed_color="255,0,0,255"
+								row_color="[mediumGrey]"
+								hover_color="[lightGrey]"
+								selected_color="196,196,196,196" 
+								sound="[recipe_click]"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{entrytitle}"
+								visible="{hasentry}">
+
+							<sprite name="mainBackground" depth="1" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="BarContent" depth="0" pos="0,-7" size="100,100" pivot="center" sprite="smx_menu_background" type="filled" fill="{fillamount}" filldirection="vertical" color="0,128,128,196" visible="{fillactive}" />
+
+							<sprite name="background" depth="3" pos="0,-4" size="75,75" pivot="center" sprite="smx_diamond_background" color="{rowstatecolor}" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-3" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-4" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="60,60" pivot="center" sprite="{iconname}" color="{iconcolor}" foregroundlayer="true" />
+
+							<sprite name="highlightOverlay" depth="2" pos="0,-4" width="61" height="61" pivot="center" color="[mediumGrey]" type="sliced" rotation="45" globalopacity="true" force_hide="true" />
+
+						</rect>
+					</smx_challenge_entry>
+
+					<smx_challenge_objective_entry>
+						<rect depth="2" width="101" height="181" controller="Quartz.ChallengeEntryObjectiveEntry, Quartz" visible="{hasobjective}">
+							<rect	pos="0,0"
+									width="100"
+									height="120"
+									pivot="center"
+									style="itemStack, hover"
+									sound="[recipe_click]"
+									sound_play_on_hover="[default_hover]"
+									tooltip="{objective}">
+
+								<sprite name="mainBackground" depth="1" pos="0,0" size="100,175" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+								<sprite name="BarContent" depth="0" pos="0,0" size="100,107" pivot="center" sprite="smx_menu_background" type="filled" fill="{objectivefill}" filldirection="vertical" color="0,128,128,196" />
+
+								<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="[mediumGrey]" rotation="45" />
+
+								<sprite name="backgroundArt" depth="4" pos="-1,-1" size="61,61" pivot="center" sprite="smx_slot_durability" flip="horizontally" color="0,0,0,275" rotation="45" />
+
+								<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+								<sprite name="itemIcon" depth="7" pos="0,0" size="60,60" pivot="center" sprite="{entryicon}" color="{iconcolor}" foregroundlayer="true" />
+
+								<sprite name="textBackground" depth="4" pos="0,72" size="100,35" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+								<sprite name="textBackground" depth="4" pos="0,-72" size="100,35" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+								<label name="TextContent" depth="5" pos="0,72" width="100" height="35" pivot="center" style="smx_label_outline" text="{description}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[lightGrey]" force_hide="false" visible="{hasentry}" />
+								<label name="TextContent" depth="5" pos="0,-72" width="100" height="35" pivot="center" style="smx_label_outline" text="{status}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[lightGrey]" force_hide="false" visible="{hasentry}" />
+
+							</rect>
+						</rect>
+					</smx_challenge_objective_entry>
+
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Vehicles - Assembly - Parts -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_item_part_slot_dummy>
+						<rect	pos="0,0"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								sound_play_on_hover="[default_hover]">
+
+							<sprite name="mainBackground" depth="1" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[mediumGrey]" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-44" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-44" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+							<sprite name="slotIndicator" depth="15" pos="0,-44" height="22" width="22" pivot="center" sprite="ui_game_symbol_x" color="[smx_element_accentcolor_1]" />
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="DYESLOT" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[white]" />
+						</rect>
+					</smx_item_part_slot_dummy>
+
+					<smx_item_part_slot_entry>
+						<smx_item_part_slot textcontent="MODSLOT ${index}" />
+					</smx_item_part_slot_entry>
+
+					<smx_item_part_slot>
+						<rect	pos="0,0"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								controller="${controller}"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{partname}">
+
+							<sprite name="mainBackground" depth="1" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background2" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+							<sprite name="background" depth="2" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[mediumGrey]" rotation="45" force_hide="true" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,-10" size="60,60" pivot="center" atlas="{partatlas}" sprite="{particon}" color="{particoncolor}" foregroundlayer="true" visible="{partvisible}" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-44" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-44" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+							<sprite name="slotIndicator" depth="15" pos="0,-44" height="22" width="22" pivot="center" sprite="${slotindicator}" color="255,255,255,255" />
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="${textcontent}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[white]" />
+						</rect>
+					</smx_item_part_slot>
+
+					<smx_power_part_slot_entry>
+						<smx_power_part_slot textcontent="SOURCE ${index}" />
+					</smx_power_part_slot_entry>
+
+					<smx_power_part_slot on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+						<rect	pos="0,0"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								controller="${controller}"
+								enabled_font_color="255,255,255,255"
+								disabled_font_color="[darkGrey]"
+								selectedbackground="smx_diamond_background"
+								nonselectedbackground="smx_diamond_background"
+								collider_scale="1.0"
+								on_scroll="${on_scroll}"
+								allow_dropping="${allow_dropping}"
+								prefix_id="${prefix_id}"
+								show_favorites="${show_favorites}"
+								enabled="{# !defined('userlockmode') or !userlockmode}"
+								visible="{# !defined('container_slots') or (int(${repeat_i}) &lt; int(container_slots)) }" 
+								sound_play_on_hover="[default_hover]"
+								tooltip="{tooltip}">
+
+							<sprite name="mainBackground" depth="1" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background2" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+							<sprite name="background" depth="2" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[mediumGrey]" rotation="45" force_hide="true" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+							<sprite name="foreground2" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="{durabilitycolor}" rotation="-45" visible="{hasdurability}" />
+
+							<sprite name="itemIcon" depth="7" pos="0,-10" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-44" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-44" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+							<sprite name="slotIndicator" depth="15" pos="0,-44" height="22" width="22" pivot="center" sprite="${slotindicator}" color="255,255,255,255" />
+
+							<sprite name="durabilityBackground" depth="23" pos="0,-60" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="[darkGrey]" type="sliced" foregroundlayer="true" visible="{hasdurability}" />
+							<sprite name="durability" depth="24" pos="0,-60" width="90" height="7" pivot="center" sprite="smx_item_durability_bar" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" foregroundlayer="true" visible="{hasdurability}" />
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="${textcontent}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[white]" />
+
+							<sprite name="assembleIcon" depth="13" pos="34,30" size="22,22" pivot="center" sprite="{stacklockicon}" color="{stacklockcolor}" foregroundlayer="true" visible="{isassemblelocked}" />
+
+							<button name="rectSlotLock" depth="15" style="press, hover" width="90" height="90" pivot="center" visible="{# defined('userlockmode') and userlockmode}" sprite="" hoverscale="1" use_selection_box="true">
+								<sprite name="slotLockIcon" depth="16" pos="-34,30" width="16" height="16" pivot="center" sprite="{# !defined('userlockmode') ? '' : (userlockedslot ? 'ui_game_symbol_lock' : 'ui_game_symbol_unlock') }" color="{# !defined('userlockmode') ? '128,128,128' : (userlockedslot ? '222,206,163' : '255,255,255') }" />
+							</button>
+
+							<sprite name="iconSlotLock" depth="15" width="16" height="16" sprite="ui_game_symbol_lock" pos="-34,30" pivot="center" visible="{# defined('userlockmode') and !userlockmode and userlockedslot }" color="[lightGrey]" />
+						</rect>
+					</smx_power_part_slot>
+
+					<!--smx_vehicle_part_slot--> <!-- REMOVE? -->
+						<!--rect	pos="0,0"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								controller="${controller}"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{partname}">
+
+							<sprite name="mainBackground" depth="1" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[mediumGrey]" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,-10" size="60,60" pivot="center" atlas="{partatlas}" sprite="{particon}" color="{particoncolor}" foregroundlayer="true" visible="{partvisible}" />
+
+							<sprite name="smallBackgroundMain" depth="14" pos="0,-44" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-44" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+							<sprite name="slotIndicator" depth="15" pos="0,-44" height="22" width="22" pivot="center" sprite="ui_game_symbol_modded" color="255,255,255,255" />
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="MODSLOT" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[white]" />
+						</rect>
+					</smx_vehicle_part_slot-->
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Vehicles - Stat Entries -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_trap_part_slot_entry>
+						<smx_trap_part_slot textcontent="AMMOSLOT ${index}" />
+					</smx_trap_part_slot_entry>
+
+					<smx_trap_part_slot>
+						<rect	pos="0,0"
+								width="100"
+								height="140"
+								pivot="center"
+								style="smx_item_stack, hover"
+								controller="${controller}"
+								sound_play_on_hover="[default_hover]"
+								tooltip="{partname}">
+
+							<sprite name="mainBackground" depth="1" pos="0,-7" size="100,140" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background2" depth="3" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+							<sprite name="background" depth="2" pos="0,-14" size="75,75" pivot="center" sprite="smx_diamond_background" color="[mediumGrey]" rotation="45" force_hide="true" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-13" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,-14" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,-10" size="75,75" pivot="center" atlas="ItemIconAtlas" sprite="{itemicon}" color="{iconcolor}" foregroundlayer="true" />
+
+							<label name="stackValue" depth="17" pos="0,-43" width="90" height="28" pivot="center" style="smx_label_outline" text="{itemcount}" font_size="20" justify="right" />
+
+							<!--sprite name="smallBackgroundMain" depth="14" pos="0,-44" size="27,27" pivot="center" sprite="smx_slot_frame_narrow" color="255,255,255,255" rotation="-45" />
+							<sprite name="smallBackgroundMain2" depth="13" pos="0,-44" size="37,37" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" /-->
+
+							<!--sprite name="slotIndicator" depth="15" pos="0,-44" height="22" width="22" pivot="center" atlas="ItemIconAtlasGreyscale" sprite="${slotindicator}" color="255,255,255,255" /-->
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,50" size="100,25" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,50" width="100" height="25" pivot="center" style="smx_label_outline" text="${textcontent}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[white]" />
+						</rect>
+					</smx_trap_part_slot>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Vehicles - Stat Entries -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_vehicle_stat_entry>
+						<rect	pos="0,0"
+								width="100"
+								height="120"
+								pivot="center"
+								style="itemStack, hover"
+								tooltip_key="${tooltip_key}">
+
+							<sprite name="mainBackground" depth="1" pos="0,0" size="100,175" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-1" size="61,61" pivot="center" sprite="smx_slot_durability" flip="horizontally" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="60,60" pivot="center" sprite="${icon}" color="[white]" foregroundlayer="true" />
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,72" size="100,35" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+							<sprite name="textBackgroundSub" depth="3" pos="0,-72" size="100,35" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,72" width="100" height="35" pivot="center" style="smx_label_outline" text="${text}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[lightGrey]" />
+
+							<label name="TextContentValue" depth="4" pos="0,-72" width="100" height="35" pivot="center" style="smx_label_outline" text="${text2}" font_size="14" spacing_x="3" justify="center" upper_case="true" color="[lightGrey]" />
+
+						</rect>
+					</smx_vehicle_stat_entry>
+
+					<smx_item_stat_entry>
+						<smx_assembly_stat_entry textcontent="{itemstattitle${index}}" valuecontent="{itemstat${index}}" staticon="{icon}" />
+					</smx_item_stat_entry>
+
+					<smx_assembly_stat_entry>
+						<rect	pos="0,0"
+								width="100"
+								height="120"
+								pivot="center"
+								style="itemStack, hover"
+								controller="Quartz.AssembleItemStatEntry, Quartz"
+								visible="{hasentry}">
+
+							<sprite name="mainBackground" depth="1" pos="0,0" size="100,175" pivot="center" sprite="smx_menu_background" color="0,0,0,275" />
+
+							<sprite name="background" depth="3" pos="0,0" size="75,75" pivot="center" sprite="smx_diamond_background" color="[darkGrey]" rotation="45" />
+
+							<sprite name="backgroundArt" depth="4" pos="-1,-1" size="61,61" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45" />
+
+							<sprite name="foreground" depth="6" pos="0,0" size="65,65" pivot="center" sprite="smx_slot_frame_narrow" color="[darkGrey]" rotation="-45" />
+
+							<sprite name="itemIcon" depth="7" pos="0,0" size="60,60" pivot="center" sprite="${staticon}" color="[white]" foregroundlayer="true" />
+
+							<sprite name="textBackgroundMain" depth="3" pos="0,72" size="100,35" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+							<sprite name="textBackgroundSub" depth="3" pos="0,-72" size="100,35" pivot="center" sprite="smx_menu_background" color="7,7,7,325" />
+
+							<label name="TextContentTitle" depth="4" pos="0,72" width="100" height="35" pivot="center" style="smx_label_outline" text="${textcontent}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="[white]" />
+
+							<label name="TextContentValue" depth="4" pos="0,-72" width="100" height="25" pivot="center" style="smx_label_outline" text="${valuecontent}" font_size="16" spacing_x="3" justify="center" upper_case="true" color="[lightGrey]" />
+
+						</rect>
+					</smx_assembly_stat_entry>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Option Selector -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXui')">
+
+				<append xpath="/controls">
+					<smx_option_selector>
+						<rect depth="3" controller="OptionsSelector">
+
+							<label name="lblTitle" depth="5" pos="100,-16" width="200" height="32" pivot="center" style="smx_label_outline" text="Start Time" font_size="24" color="255,255,255,255" justify="right" />
+
+							<button name="leftArrow" depth="4" pos="218,-16" size="18,18" pivot="center" style="press" sprite="ui_game_symbol_arrow_menu" sound="[paging_click]" gamepad_selectable="false" />
+
+							<rect name="textArea" depth="4" pos="345,-16" pivot="center">
+								<rect name="clickable" pos="0,0" width="220" height="30" gamepad_selectable="true" />
+								<sprite name="background" pos="0,0" width="220" height="30" pivot="center" color="[black]" type="sliced" />
+								<label name="lblText" depth="5" pos="0,-3" width="220" height="30" pivot="center" text="Test Stuff" font_size="24" color="[lightGrey]" justify="center" />
+							</rect>
+
+							<button name="rightArrow" depth="4" pos="474,-16" size="18,18" pivot="center" style="press" sprite="ui_game_symbol_arrow_menu" sound="[paging_click]" gamepad_selectable="false" flip="horizontally" />
+
+						</rect>
+					</smx_option_selector>
+				</append>
+
+			</if>
+		</conditional>
+
+
 <!--	> > > > > > > > > > > > > > > > > > > > | SMX MS | < < < < < < < < < < < < < < < < < < < <	-->
 
 
@@ -2198,6 +2604,54 @@
 							<if cond="modsetting('zSMXhud', 'global', 'Optionals.Optionals.ToolbeltNumbers') == 'On'">
 
 								<set xpath="/controls/smxui_toolbelt_item_stack/rect/label[@name='toolbeltNumbers']/@force_hide">false</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // GEARS // SMXhud Mod Setting - Quest Tracker - Minimalistic -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXhud')">
+
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'Optionals.Optionals.QuestTracker') == 'Minimalistic'">
+
+								<set xpath="/controls/smx_quest_objective_tracker_entry/rect/panel[@name='bgPanel']/@force_hide">true</set>
+								<set xpath="/controls/smx_quest_objective_tracker_entry/rect/label[@name='smx_recipetracker_ingredient']/@force_hide">false</set>
+
+							</if>
+						</conditional>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // GEARS // SMXhud Mod Setting - Quest Tracker - Detailed -->
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXhud')">
+
+						<conditional>
+							<if cond="modsetting('zSMXhud', 'global', 'Optionals.Optionals.QuestTracker') == 'Detailed'">
+
+								<set xpath="/controls/smx_quest_objective_tracker_entry/rect/panel[@name='bgPanel']/@force_hide">false</set>
+								<set xpath="/controls/smx_quest_objective_tracker_entry/rect/label[@name='smx_recipetracker_ingredient']/@force_hide">true</set>
 
 							</if>
 						</conditional>

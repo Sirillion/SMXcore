@@ -1011,15 +1011,16 @@
 									selected="{showpassword}"
 									visible="{passwordfield}" />
 
-							<button	name="btnClearInput"
-									pos="${password_field ? width-height-Round(min(height,36)/2,0)-12 : width-Round(min(height,36)/2,0)-3},-${Round(height/2,0)}"
-									width="${4+min(height,36)}"
-									height="${min(height,36)-4}"
+							<button name="btnClearInput"
+									pos="135,0"
+									width="34"
+									height="28"
 									pivot="center"
 									sprite="ui_game_symbol_clear_textfield"
 									hoverscale="1.1"
 									tooltip_key="xuiClearTextInput"
 									visible="{clearbutton}" />
+
 						</panel>
 					</smx_textfield_default>
 
@@ -1272,7 +1273,7 @@
 									visible="{passwordfield}" />
 
 							<button name="btnClearInput"
-									pos="95,35"
+									pos="75,0"
 									width="34"
 									height="28"
 									pivot="center"

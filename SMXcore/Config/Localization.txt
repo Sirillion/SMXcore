@@ -1,7 +1,10 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,2.5.23.1
+smxCurrentVersionNumber,UI,Menu,x,,2.5.27.0
+
+smxCoreIssuesEntry1Issue,UI,Menu,x,,You are most likely experiencing this issue because: \n\nA - You have installed and use the mod on an existing save.\nB - You use some kind of container size mod that is not SMX compatible. \n\nThis issue happens because existing containers retain their size values and cannot be changed after they have been placed.,,,,,
+smxCoreIssuesEntry1Solution,UI,Menu,x,,If the issue is A then you have to replace or upgrade the containers.\nIf the issue is B then you have to remove the container size mod in question.,,,,,
 
 smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those red errors spamming the console?\n\nIt seems you have removed the mod called 0_TFP_Harmony! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity...\n\nThen try again...\n\n\n[AF1E19]To exit now[-]: Open the console(F1) then type 'shutdown' and press (enter) to exit the game client.",,,,,
 
@@ -29,6 +32,9 @@ smxmenuSettingGeneral,UI,Menu,x,,SMXmenu GENERAL SETTINGS,,,,,
 smxmenuSettingGeneralTooltip,UI,Menu,x,,General settings for SMXmenu,,,,,
 smxmenuSettingAnimatedBackground,UI,Menu,x,,Enable Animated Background,,,,,
 smxmenuSettingAnimatedBackgroundTooltip,UI,Menu,x,,Enables an Animated Background by Mumpfy.\n\nRequires restarting the game.,,,,,
+
+smxmenuSettingSMXInfoWindow,UI,Menu,x,,Enable SMX InfoWindow,,,,,
+smxmenuSettingSMXInfoWindowTooltip,UI,Menu,x,,Enables the SMX Info Window which doubles as a Server Info Window.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
 
 smxhudOptionalDownloads,UI,Menu,x,,Optionals,,,,,
 smxhudOptionalDownloadsTooltip,UI,Menu,x,,Contains optional UI elements for SMXhud.,,,,,
@@ -89,6 +95,8 @@ smxhudSettingLootStage,UI,Menu,x,,Lootstage,,,,,
 smxhudSettingLootStageTooltip,UI,Menu,x,,Turns the Current Lootstage Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
 smxhudSettingLockedSlots,UI,Menu,x,,Locked Slots,,,,,
 smxhudSettingLockedSlotsTooltip,UI,Menu,x,,Turns the Current Locked Slots Indicator on/off.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
+smxuiSettingQuestTracker,UI,Menu,x,,Quest Tracker,,,,,
+smxuiSettingQuestTrackerTooltip,UI,Menu,x,,Select betwen a minimalistic or detailed version of the Quest Tracker.\n\nMinimalistic show the tracker but has details on tooltip. Hold TAB and mouseover to access.\n\nDetailed show the tracker but also detailed information about the quest and it's steps.\n\nIf in-game press F1 for console and run xui reload to activate.,,,,,
 
 smxuiOptionalDownloads,UI,Menu,x,,Optionals,,,,,
 smxuiOptionalDownloadsTooltip,UI,Menu,x,,Contains optional UI elements for SMXui.,,,,,

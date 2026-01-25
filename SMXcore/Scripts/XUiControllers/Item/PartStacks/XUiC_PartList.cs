@@ -1,4 +1,5 @@
-﻿using SMXcore.HarmonyPatches;
+﻿using Quartz;
+using SMXcore.HarmonyPatches;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,27 @@ namespace SMXcore
             base.Init();
             XUiC_PartList_Patch.PatchSetMainItemMethod();
             XUiC_PartList_Patch.PatchSetSlotsMethod();
+            XUiC_PartList_Patch.PatchSetSlotMethod();
+        }
+
+        public new void SetSlot(ItemValue part, int index)
+        {
+            XUiC_ItemStack xUiC_ItemStack = itemControllers[index];
+            xUiC_ItemStack.ViewComponent.IsVisible = true;
+            if (part != null && !part.IsEmpty())
+            {
+                ItemStack itemStack = new ItemStack(part.Clone(), 1);
+                xUiC_ItemStack.ItemStack = itemStack;
+                xUiC_ItemStack.GreyedOut = false;
+            }
+            else
+            {
+                xUiC_ItemStack.ItemStack = ItemStack.Empty.Clone();
+                xUiC_ItemStack.GreyedOut = false;
+            }
+
+            itemControllers[index].ViewComponent.EventOnPress = false;
+            itemControllers[index].ViewComponent.EventOnHover = false;
         }
 
         public new void SetSlots(ItemValue[] parts, int startIndex = 0)
@@ -33,21 +55,44 @@ namespace SMXcore
                 {
                     SetSlot(mainItem.itemValue.CosmeticMods[0], 0);
                 }
+                else
+                {
+                    itemControllers[0].ItemStack = ItemStack.Empty.Clone();
+                    itemControllers[0].ViewComponent.IsVisible = false;
 
-                startIndex = 1;
+                }
+                    startIndex = 1;
             }
 
             for (int i = 0; i < itemControllers.Length - startIndex; i++)
             {
-                int slotIndex = i + startIndex;
-                if (parts.Length > i) 
-                { 
-                    SetSlot(parts[i], slotIndex);
-                }
+                int num = i + startIndex;
+                XUiC_ItemStack xUiC_ItemStack = itemControllers[num];
+                if(parts.Length > i)
+                {
+                    xUiC_ItemStack.ViewComponent.IsVisible = true;
+                    if (parts[i] != null && !parts[i].IsEmpty())
+                    {
+                        ItemStack itemStack = new ItemStack(parts[i].Clone(), 1);
+                        xUiC_ItemStack.ItemStack = itemStack;
+                        xUiC_ItemStack.GreyedOut = false;
+                        xUiC_ItemStack.ViewComponent.IsVisible = true;
+                    }
+                    else
+                    {
+                        xUiC_ItemStack.ItemStack = ItemStack.Empty.Clone();
+                        xUiC_ItemStack.GreyedOut = false;
+                    }
+                } 
                 else
                 {
-                    SetSlot(null, slotIndex);
+                    xUiC_ItemStack.ItemStack = ItemStack.Empty.Clone();
+                    xUiC_ItemStack.GreyedOut = false;
+                    xUiC_ItemStack.ViewComponent.IsVisible = false;
                 }
+
+                xUiC_ItemStack.ViewComponent.EventOnPress = false;
+                xUiC_ItemStack.ViewComponent.EventOnHover = false;
             }
         }
 

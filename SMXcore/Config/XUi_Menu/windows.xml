@@ -136,7 +136,9 @@
 
 						<rect pos="0,378" width="1185" height="780" anchor="CenterCenter">
 							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<!--sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_top="#cam,1.0,5" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0.948,-5" /-->
 							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<!--sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_top="#cam,1.0,-50" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0.948,60" /-->
 						</rect>
 
 						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" controller="MainMenuButtons" rows="8" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
@@ -1524,11 +1526,6 @@
 									<label name="saveGameOptions" depth="4" pos="620,70" width="590" height="50" pivot="center" style="smx_label_outline" text="Save Game Options" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{iscontinuegame}" />
 
 									<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-
-									<!--label name="smxModOptionsHint" depth="4" pos="175,-25" width="200" height="30" pivot="center" style="smx_label_outline" text="GEARS MOD OPTIONS ARE HERE" font_size="14" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{iscontinuegame}" />
-									<label name="smxModOptionsHint" depth="4" pos="175,-38" width="200" height="30" pivot="center" style="smx_label_outline" text="(includes smx bigbag mods)" font_size="8" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{iscontinuegame}" />
-									<sprite name="arrowUp" depth="6" pos="290,-25" size="13,11" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="180" />
-									<sprite name="arrowUp" depth="6" pos="298,-25" size="18,18" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="180" /-->
 
 									<grid name="tabButtons" depth="2" pos="395,-3" rows="1" cols="4" cell_width="145" cell_height="90" repeat_content="true" arrangement="horizontal">
 										<rect controller="TabSelectorButton">

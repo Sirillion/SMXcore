@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SMXcore name="item_modifiers.xml">
+	<conditional>
+		<if cond="mod_loaded('zSMXui')">
+			<append xpath="/item_modifiers/item_modifier[@name='modVehicleStorage']">
+				<property name="containerRowIncrease" value="2"/>
+			</append>
+		</if>
+	</conditional>
+</SMXcore>
