@@ -53,8 +53,9 @@
 			<if cond="mod_loaded('zSMXmenu')">
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='ingameMenu']">
-					<window name="ingameMenu" anchor="LeftBottom" />
+					<window name="ingameMenu" />
 					<window name="ingameMenuLogo" />
+					<!--window name="ingameMenuQuit" /-->
 					<window name="smxmenuCleanBG" />
 				</set>
 

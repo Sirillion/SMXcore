@@ -1,0 +1,15 @@
+<SMXcore name="quests.xml">
+
+<!--	// SMX // Quest ICON Injection -->
+
+		<!--setattribute xpath="/quests/quest[@id='challengegroup_reward_homesteading']/property[@name='icon']" name="param1">icon</setattribute> 
+
+		<append xpath="/quests/quest[@id='quest_reward_coyote_hunter']">
+			<variable name="icon" value="ui_game_symbol_tracking_wolf" />
+		</append>
+
+		<append xpath="/quests/quest[@id='quest_reward_deer_hunter']">
+			<variable name="icon" value="ui_game_symbol_tracking_deer" />
+		</append-->
+
+</SMXcore>

@@ -1,0 +1,29 @@
+<SMXcore file="XUi_Menu/smx_includes/gears.xml">
+
+		<conditional>
+			<if cond="mod_loaded('Gears')">
+
+				<conditional>
+					<if cond="mod_loaded('zSMXmenu')">
+
+						<!--set xpath="/windows/window[@name='mainMenuQuit']/@controller">Gears.UI.MainMenu, Gears</set-->
+
+						<insertBefore xpath="/windows/window[@name='mainMenuQuit']/smx_back_button[@name='btnQuit']">
+<rect controller="Gears.UI.MainMenu, Gears">
+							<smx_back_button name="btnMods" depth="3" pos="-161,-28" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
+</rect>
+						</insertBefore>
+
+						<!--set xpath="/windows/window[@name='mainMenu']/@controller">Gears.UI.MainMenu, Gears</set>
+
+						<insertBefore xpath="/windows/window[@name='mainMenu']/grid[@name='smx_top_menu_grid']">
+							<smx_back_button name="btnMods" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
+						</insertBefore-->
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+</SMXcore>

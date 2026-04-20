@@ -100,7 +100,7 @@
 
 			<!--	// SMX // HyperthermalResist -->
 
-				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='HyperthermalResist']" name="icon">smx_ui_iteminfo_hyperthermalresist</setattribute>
+				<!--setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='modAttire']/display_entry[@name='HyperthermalResist']" name="icon">smx_ui_iteminfo_hyperthermalresist</setattribute-->
 				<setattribute xpath="/ui_display_info/item_display/item_display_info[@display_group='groupAttire']/display_entry[@name='HyperthermalResist']" name="icon">smx_ui_iteminfo_hyperthermalresist</setattribute>
 
 			<!--	// SMX // dTargetPenetration -->

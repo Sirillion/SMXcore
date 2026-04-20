@@ -34,19 +34,46 @@
 		// CONTRIBUTORS:	Mumpfy (art)
 -->
 
+<!--	// SMX // SMXcore and TFP_Harmony Check - Injects a warning window into the mainmenu if TFP_Harmony is missing. -->
+
+		<conditional>
+			<if cond="mod_loaded('SMXcore')">
+
+				<conditional>
+					<if cond="not mod_loaded('TFP_Harmony')">
+
+						<insertAfter xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenu']/window[@name='mainMenuLogo']">
+							<window name="0tfpHarmonyMissing" anchor="CenterCenter" />
+						</insertAfter>
+
+					</if>
+				</conditional>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Does NOT load SMX if TFP_Harmony is missing -->
+
+<conditional>
+	<if cond="mod_loaded('TFP_Harmony')">
+
+
 <!--	// SMX // File Attribute Restore -->
 
 		<!-- These values restore the UI to it's default scale settings to try and override other mods that might set scales that will mess with the UI. -->
 
 		<set xpath="/xui/ruleset/@name">default</set>
-		<set xpath="/xui/ruleset[@name='default']/@scale">1.255</set> 										<!-- The scale value with change the size for the entire UI -->
+		<set xpath="/xui/ruleset[@name='default']/@scale">1.255</set> 										<!-- The scale value will change the size for the entire UI -->
 		<set xpath="/xui/ruleset[@name='default']/@stackpanel_scale">1.05</set> 							<!-- The stackpanel_scale will change the size for the windows attached to panels only. -->
 
 
-<!--	// SMX // Mouseover Tooltip -->
+<!--	// SMX // SMXmenu Check - Window Structure Restore -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
+
+		<!--	// SMX // Global - Mouseover Tooltip -->
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='toolTip']">
 					<window name="toolTip" />
@@ -55,14 +82,7 @@
 
 				<setattribute xpath="/xui//window_group[@name='toolTip']" name="actionSet">false</setattribute>
 
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Menu Background -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+		<!--	// SMX // Main Menu - Menu Background -->
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='menuBackground']">
 					<window name="menuBackground" />
@@ -70,48 +90,34 @@
 
 				<setattribute xpath="/xui//window_group[@name='menuBackground']" name="actionSet">false</setattribute>
 
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Main Menu Logo -->
-<!--
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
-
-				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenuLogo']">
-					<window name="mainMenuLogo" />
-				</set>
-
-				<setattribute xpath="/xui//window_group[@name='mainMenuLogo']" name="actionSet">false</setattribute>
-
-			</if>
-		</conditional>
--->
-
-<!--	// SMX // Main Menu Window -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+		<!--	// SMX // Main Menu - Menu -->
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenu']">
-					<window name="mainMenu" anchor="LeftBottom" />
-					<!--window name="mainMenu2" /-->
+					<window name="mainMenu" />
+					<window name="mainMenuQuit" />
 					<window name="mainMenuLogo" />
-					<window name="0tfpHarmonyMissing" anchor="CenterCenter" />
 				</set>
 
-			</if>
-		</conditional>
+				<setattribute xpath="/xui//window_group[@name='mainMenu']" name="defaultSelected">btnNewGame</setattribute>
 
+		<!--	// SMX // Main Menu - Player Name -->
 
-<!--	// SMX // Options Menu Window -->
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenuPlayerName']">
+					<window name="mainMenuPlayerName" />
+				</set>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+				<setattribute xpath="/xui//window_group[@name='mainMenuPlayerName']" name="actionSet">false</setattribute>
+
+		<!--	// SMX // Main Menu - Discord Button -->
+
+				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenuDiscordButton']">
+					<window name="mainMenuDiscordButton" />
+				</set>
+
+		<!--	// SMX // Options Menu - Menu -->
 
 				<set xpath="/xui/ruleset[@name='default']/window_group[@name='optionsMenu']">
-					<window name="optionsMenu" anchor="LeftBottom" />
+					<window name="optionsMenu" />
 					<window name="mainMenuLogo" />
 				</set>
 
@@ -119,6 +125,9 @@
 
 			</if>
 		</conditional>
+
+
+<!-- CLEAN ABOVE -->
 
 
 <!--	// SMX // Editing Tools Menu Window -->
@@ -131,21 +140,6 @@
 				</set>
 
 				<setattribute xpath="/xui//window_group[@name='editingTools']" name="defaultSelected">btnRwgPreviewer</setattribute>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Player Menu Name -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
-
-				<set xpath="/xui/ruleset[@name='default']/window_group[@name='mainMenuPlayerName']">
-					<window name="mainMenuPlayerName" />
-				</set>
-
-				<setattribute xpath="/xui//window_group[@name='mainMenuPlayerName']" name="actionSet">false</setattribute>
 
 			</if>
 		</conditional>
@@ -309,5 +303,8 @@
 
 			</if>
 		</conditional>
+
+	</if>
+</conditional>
 
 </SMXcore>

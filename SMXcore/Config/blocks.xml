@@ -1,0 +1,10 @@
+<SMXcore file="blocks.xml">
+
+<!--	// SMX // Dew Collector Size Restore -->
+
+		<!-- SIRILLION: THE NEW SIZE OF THE DEW COLLECTOR MESSED WITH THE SMX DESIGN FOR THE WINDOW, RESTORING IT WAS THE "QUICKEST" OPTION. -->
+
+		<set xpath="/blocks/block[@name='cntDewCollector']/property[@name='FuelGridHeight']/@value">1</set>
+		<set xpath="/blocks/block[@name='cntDewCollector']/property[@name='OutputGridHeight']/@value">1</set>
+
+</SMXcore>

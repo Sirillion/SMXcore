@@ -34,12 +34,14 @@
 		// CONTRIBUTORS:	Mumpfy (art)
 -->
 
+
 <!--	//SMX // FOR ADDING SERVER INFORMATION SCROLL DOWN TO THE "serverinfoWindow" WINDOW OR SEARCH FOR "ADD SERVER INFORMATION" -->
+
 
 <!--	> > > > > > > > > > > > > > > > > > > > | SMXmenu | < < < < < < < < < < < < < < < < < < < <	-->
 
 
-<!-- 	// SMX // Moving InGame Debug Menu & Friends -->
+<!-- 	// SMX // Global - Moving InGame Debug Menu & Friends -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
@@ -52,7 +54,7 @@
 		</conditional>
 
 
-<!-- 	// SMX // In-Game Menu Clean Background -->
+<!-- 	// SMX // In-Game Menu - Clean Background -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
@@ -65,7 +67,7 @@
 		</conditional>
 
 
-<!-- 	// SMX // In-Game Menu Logo -->
+<!-- 	// SMX // In-Game Menu - Logo Injection -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
@@ -80,7 +82,7 @@
 		</conditional>
 
 
-<!-- 	// SMX // In-Game Menu -->
+<!-- 	// SMX // In-Game Menu - Menu -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
@@ -88,14 +90,14 @@
 				<remove xpath="/windows/window[@name='ingameMenu']" />
 
 				<append xpath="/windows">
-					<window name="ingameMenu" depth="15" pos="360,540" size="408,1080" controller="InGameMenuWindow" cursor_area="true">
+					<window name="ingameMenu" depth="15" pos="360,540" size="408,1080" anchor="LeftBottom" controller="InGameMenuWindow" cursor_area="true">
 
 						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
 
-						<rect pos="0,378" width="1185" height="780" anchor="CenterCenter">
+						<!--rect pos="0,378" width="1185" height="780" anchor="CenterCenter">
 							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
 							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						</rect>
+						</rect-->
 
 						<smx_confirmation_prompt name="unstuckPrompt" pos="400,220" width="400" height="220" pivot="center" anchor="centercenter" />
 
@@ -121,10 +123,31 @@
 
 						</grid>
 
-						<grid name="smx_top_menu_grid" depth="3" pos="1411,444" pivot="center" controller="MainMenuButtons" rows="1" cols="4" cell_width="60" cell_height="60" repeat_content="false" arrangement="horizontal">
+						<!--grid name="smx_top_menu_grid" depth="3" pos="1411,444" pivot="center" controller="MainMenuButtons" rows="1" cols="4" cell_width="60" cell_height="60" repeat_content="false" arrangement="horizontal"-->
 							<!--smx_back_button name="btnOptions" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiOptions" /-->
-							<smx_back_button name="btnExit" depth="3" pos="1381,474" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiMenuExit" />
-						</grid>
+
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-234" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+						</widget>
+
+						<widget name="smx_top_menu_btn1" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+							<smx_back_button name="btnExit" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiMenuExit" />
+
+						</widget>
+
+						<!--widget pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+
+						<smx_back_button name="btnExit" depth="3" pos="-101,-22" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiMenuExit"  /-->
+							<!--smx_back_button name="btnExit" depth="3" pos="1381,474" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiMenuExit" force_hide="false" /-->
+
+						<!--/widget-->
+
+						<!--/grid-->
 
 						<label depth="4" pos="-155,190" width="500" height="40" pivot="bottomleft" text_key="lblAchievementsDisabled" font_size="18" spacing_x="4" color="[gold]" effect="Outline8" effect_color="0,0,0,255" effect_distance="2,2" visible="{creativeenabled}" tooltip_key="ttAchievementsDisabled" platform="!PS5" />
 						<label depth="4" pos="-155,190" width="500" height="40" pivot="bottomleft" text_key="lblAchievementsDisabledPS5" font_size="18" spacing_x="4" color="[gold]" effect="Outline8" effect_color="0,0,0,255" effect_distance="2,2" visible="{creativeenabled}" tooltip_key="ttAchievementsDisabledPS5" platform="PS5" />
@@ -133,6 +156,31 @@
 							<label name="smx_edition_info" depth="9" pos="60,-503" size="300,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionBranch" font_size="14" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
 							<label name="smx_version_info" depth="9" pos="60,-520" size="200,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionNumber" font_size="14" spacing_x="2" justify="center" upper_case="false" color="255,255,255,255" overflow="ShrinkContent" />
 						</rect>
+
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // In-Game Menu - Quit & Gears Buttons -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<append xpath="/windows">
+					<window name="ingameMenuQuit" depth="16" pos="0,0" size="5000,100" anchor="RightTop" controller="MainMenuButtons">
+
+						<rect name="smxTopMenuArt" depth="1" pos="0,-117" width="1185" height="780" anchor="CenterCenter">
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+						</rect>
+
+						<!--grid name="smx_top_menu_grid" depth="3" pos="-71,-51" pivot="center" controller="MainMenuButtons" rows="1" cols="4" cell_width="60" cell_height="60" repeat_content="false" arrangement="horizontal" flip="horizontally"-->
+							<!--smx_back_button name="btnOptions" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiOptions" /-->
+						<smx_back_button name="btnExit" depth="3" pos="-101,-22" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiMenuExit"  />
+						<!--/grid-->
 
 					</window>
 				</append>
@@ -1078,9 +1126,9 @@
 							</panel>
 						</rect>
 
-						<rect pos="-270,-138" width="200" height="100" anchor="TopRight" visible="{questhintavailable}">
-							<panel name="bgPanel" depth="1" pos="0,0" width="270" height="50" backgroundspritename="ui_game_panel_header" bordercolor="[transparent]" backgroundcolor="[black_threequarters_alpha]" borderthickness="0" anchor="CenterBottom" globalopacity="false">
-								<label name="smx_questtracker_hints" depth="3" pos="113,-27" width="210" height="50" pivot="center" style="smx_label_outline" text="{questhint}" parse_actions="true" font_size="18" justify="left" actions_default_format="( [e61a16]###[-] )" spacing_y="5" />
+						<rect pos="-270,-136" width="200" height="100" anchor="TopRight" visible="{questhintavailable}">
+							<panel name="bgPanel" depth="1" pos="-30,0" width="300" height="55" backgroundspritename="ui_game_panel_header" bordercolor="[transparent]" backgroundcolor="[black_threequarters_alpha]" borderthickness="0" anchor="CenterBottom" globalopacity="false">
+								<label name="smx_questtracker_hints" depth="3" pos="138,-29" width="270" height="57" pivot="center" style="smx_label_outline" text="{questhint}" parse_actions="true" font_size="18" justify="left" actions_default_format="( [e61a16]###[-] )" spacing_y="5" />
 							</panel>
 						</rect>
 					</window>
@@ -2624,7 +2672,7 @@
 						</rect>
 
 						<rect name="content" pos="185,-620" >
-							<grid depth="12" name="queue" rows="1" cols="3" cell_width="121" cell_height="101" repeat_content="true" controller="DewCollectorContainer" required_item="drinkJarEmpty">
+							<grid depth="12" name="queue" rows="3" cols="3" cell_width="121" cell_height="101" repeat_content="true" controller="DewCollectorContainer" required_item="drinkJarEmpty">
 								<smx_dewcollector_stack controller="DewCollectorStack" override_stack_count="1" name="0"/>
 							</grid>
 						</rect>
@@ -2647,24 +2695,47 @@
 
 						<sprite name="smx_menu_separation" depth="2" pos="305,-250" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
+						<sprite name="windowCollectorFuelSprite" sprite="" style="header.icon" force_hide="true" />
+						<label name="windowCollectorFuelTitle" style="header.name.iconright" text="Default" text_key="" force_hide="true" />
+
 						<rect name="content" depth="0" pos="185,-30" height="101" disablefallthrough="true">
 
-								<grid rows="1" cols="3" pos="0,-145" cell_width="121" cell_height="101" controller="CollectorFuelGrid" repeat_content="true">
+
+								<grid rows="3" cols="3" pos="0,-145" cell_width="121" cell_height="101" controller="CollectorFuelGrid" repeat_content="true">
 									<general_item_stack name="0"/>
 								</grid>
 
-								<grid name="slot_preview" depth="1" rows="1" cols="3" pos="0,-145" cell_width="121" cell_height="101" controller="SlotPreview">
+								<grid name="slot_preview" depth="1" rows="3" cols="3" pos="0,-145" cell_width="121" cell_height="101" controller="SlotPreview">
 									<rect>
-										<sprite name="slot" depth="2" width="75" height="75" sprite="plantedGoldenrod3HarvestPlayer" atlas="ItemIconAtlasGreyscale" pivot="center" foregroundlayer="true" />
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
 									</rect>
 									<rect>
-										<sprite name="slot" depth="2" width="75" height="75" sprite="plantedChrysanthemum3Harvest" atlas="ItemIconAtlasGreyscale" pivot="center" foregroundlayer="true" />
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
 									</rect>
 									<rect>
-										<sprite name="slot" depth="2" width="75" height="75" sprite="plantedCotton3Harvest" atlas="ItemIconAtlasGreyscale" pivot="center" foregroundlayer="true" />
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
+									</rect>
+									<rect>
+										<sprite name="slot" depth="2" width="75" height="75" sprite="" pivot="center" foregroundlayer="true" />
 									</rect>
 								</grid>
 						</rect>
+
 					</window>
 				</append>
 
@@ -4490,6 +4561,7 @@
 												</rect>
 		<!-- PERKS: GENERAL -->
 												<rect name="General">
+													<smx_skills_attribute_entry_hidden name="General Perks" pos="0,2" size="90,90" rotation="0" />
 													<smx_skills_attribute_entry_dummy name="General Perks" pos="0,2" size="90,90" rotation="0" />
 													<smx_skills_perk_grid pos="130,91" perkCount="7" groupName="General" />
 												</rect>
@@ -5940,6 +6012,166 @@
 
 				</append>
 
+				<append xpath="/windows">
+					<window name="windowQuestListWIP" depth="13" pos="-920,475" width="610" height="{# questsautoaccept ? 880 : 880}" controller="QuestListWindow" cursor_area="true" visible_quest_count="{# questsautoaccept ? 50 : 9}">
+
+						<panel name="noclick" depth="-2" pos="-2000,2000" width="8000" height="8000" on_press="true" createuipanel="true" disableautobackground="true" gamepad_selectable="false">
+							<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,250" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+						</panel>
+
+						<sprite name="smx_menu_separation" depth="2" pos="305,-850" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+						<widget name="smx_left_panel_content" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
+
+							<rect name="leftPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="leftContent">
+
+									<sprite name="smx_panel_background" depth="1" pos="-20,0" width="630" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" />
+
+									<rect pos="296,-158">
+										<label name="windowName" depth="4" pos="10,95" width="590" height="50" pivot="center" style="smx_label_outline" text_key="xuiQuests" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+										<label name="smx_quest_tier" depth="10" pos="10,42" width="590" height="22" pivot="center" style="smx_label_outline" text="{queststier}" font_size="18" color="[mediumGrey]" justify="center" upper_case="true" spacing_x="4" />
+
+										<sprite name="smx_panel_separation" depth="4" pos="10,60" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									</rect>
+
+									<rect pos="315,-158">
+
+										<rect name="searchControls" depth="4" pos="-294,5" height="42" width="400" console_enabled="false">
+											<sprite name="searchIcon" depth="4" pos="75,-27" size="25,25" pivot="center" sprite="ui_game_symbol_search" />
+											<smx_textfield_outline name="searchInput" depth="5" pos="192,-25" width="275" height="40" font_size="18" search_field="true" close_group_on_tab="true" clear_button="false" virtual_keyboard_prompt="vkPromptSearchTerm" />
+										</rect>
+
+							<rect depth="3" name="searchControls" width="450" height="43" pos="6,-6">
+								<!--sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="450" height="46" color="[black]" type="sliced" fillcenter="false" /-->
+
+								<button depth="1" name="trackBtn" style="icon32px, press, hover" pivot="center" pos="66,-21" sprite="ui_game_symbol_compass" tooltip="Toggle Active" tooltip_key="lblToggleActive" sound="[paging_click]" />
+								<button depth="1" name="showOnMapBtn" style="icon32px, press, hover" pivot="center" pos="109,-21" sprite="ui_game_symbol_map" tooltip="Show on Map" tooltip_key="lblShowOnMap" sound="[paging_click]" />
+								<button depth="1" name="questRemoveBtn" style="icon32px, press, hover" pivot="center" pos="152,-21" sprite="ui_game_symbol_quest_remove" tooltip="Remove Quest" tooltip_key="lblRemoveQuest" sound="[paging_click]" />
+								<button depth="1" name="questShareBtn" style="icon32px, press, hover" pivot="center" pos="195,-21" sprite="ui_game_symbol_players" tooltip="Share Quest" tooltip_key="lblShareQuest" sound="[paging_click]" />
+
+								<!--sprite color="[darkGrey]" type="sliced" width="446" pos="-1,0" />
+								<sprite depth="4" name="searchIcon" style="icon30px" pos="210,-20" sprite="ui_game_symbol_search" pivot="center" console_enabled="false"/-->
+
+								<!--panel pos="233,-6" depth="1" width="120" disableautobackground="true" console_enabled="false">
+									<textfield depth="1" pos="0,0" width="100" height="30" name="searchInput" virtual_keyboard_prompt="vkPromptSearchTerm" search_field="true" close_group_on_tab="true" clear_button="true" />
+								</panel-->
+
+								<!--panel pos="338,0" width="104" height="43" disableautobackground="true">
+									<pager name="pager" pos="4,-6" contents_parent="content"/>
+								</panel-->
+							</rect>
+
+								<!--rect name="categorySelector" depth="2" pos="305,-130" width="500" height="44">
+									<grid name="categories" pos="23,-22" rows="1" cols="9" width="500" height="44" cell_width="43" cell_height="43" repeat_content="true" controller="CategoryList" pivot="center">
+										<smx_crafting_category_icon />
+									</grid>
+								</rect-->
+
+							<!--grid name="questList" rows="14" cols="1" pos="6,-49" width="450" height="{# questsautoaccept ? 598 : 368}" cell_width="390" cell_height="46" controller="QuestList" repeat_content="true" arrangement="vertical" normal_color="[iconColor]" disabled_color="[iconColor]" >
+								<quest_entry name="0" />
+							</grid-->
+
+								<rect name="content" depth="0" pos="-210,-60" width="100%" height="100%">
+
+									<sprite name="arrowUp" depth="6" pos="-75,-30" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+									<sprite name="arrowDown" depth="6" pos="-75,-540" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+									<scrollbar	name="scrollbar"
+												depth="6"
+												pos="-75,-285"
+												width="12"
+												height="470"
+												padding="4"
+												foregroundname="handler"
+												foregroundsprite="smx_scrollbar_handler"
+												foregroundcolor="[smxui_scrollbar_handler]"
+												backgroundname="background"
+												backgroundsprite="smx_scrollbar_background"
+												backgroundcolor="[smxui_scrollbar_background]"
+												pivot="center">
+
+										<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+										<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+									</scrollbar>
+
+									<scrollview name="scrollview" depth="5" pos="-59,-2" width="520" height="564" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+										<grid name="questList" depth="2" pos="55,-49" width="450" height="{# questsautoaccept ? 598 : 368}" rows="10" cols="5" cell_width="101" cell_height="141" repeat_content="true" arrangement="horizontal" normal_color="[iconColor]" disabled_color="[iconColor]" controller="QuestList">
+											<smx_quest_entry name="0" />
+										</grid>
+
+									</scrollview>
+
+
+								</rect>
+							</rect>
+						</rect>
+
+									</rect>
+
+<!-- Vertical Helper Lines -->
+<!--sprite depth="9999999" type="sliced" color="[red]" width="1" height="4000" pos="0,2000" />
+<sprite depth="9999999" type="sliced" color="[red]" width="1" height="4000" pos="325,2000" />
+<sprite depth="9999999" type="sliced" color="[red]" width="1" height="4000" pos="650,2000" />
+<sprite depth="9999999" type="sliced" color="[yellow]" width="1" height="4000" pos="725,2000" />
+<sprite depth="9999999" type="sliced" color="[gold]" width="1" height="4000" pos="925,2000" />
+<sprite depth="9999999" type="sliced" color="[yellow]" width="1" height="4000" pos="1115,2000" />
+<sprite depth="9999999" type="sliced" color="[yellow]" width="1" height="4000" pos="1740,2000" /-->
+
+<!-- Horizontal Helper Lines -->
+<!--sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,51" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,2" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-84" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-138" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-227" />
+<sprite depth="9999999" type="sliced" color="[gold]" width="4000" height="1" pos="-2000,-467" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-787" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-824" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-900" />
+<sprite depth="9999999" type="sliced" color="[red]" width="4000" height="1" pos="-2000,-985" /-->
+
+								<!--/rect>
+							</rect-->
+
+						</widget>
+
+						<!--panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+							<sprite depth="1" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
+							<label style="header.name" text="QUESTS" text_key="xuiQuests" />
+							<label depth="2" pos="245,-8" width="200" height="28" text="{queststier}" justify="right" upper_case="true" />
+						</panel-->
+
+						<!--rect name="content" depth="0" pos="0,-43" height="{# questsautoaccept ? 694 : 464}">
+
+							<rect depth="3" name="searchControls" width="450" height="43" pos="6,-6">
+								<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="450" height="46" color="[black]" type="sliced" fillcenter="false" />
+
+								<button depth="1" name="trackBtn" style="icon32px, press, hover" pivot="center" pos="26,-21" sprite="ui_game_symbol_compass" tooltip="Toggle Active" tooltip_key="lblToggleActive" sound="[paging_click]" />
+								<button depth="1" name="showOnMapBtn" style="icon32px, press, hover" pivot="center" pos="69,-21" sprite="ui_game_symbol_map" tooltip="Show on Map" tooltip_key="lblShowOnMap" sound="[paging_click]" />
+								<button depth="1" name="questRemoveBtn" style="icon32px, press, hover" pivot="center" pos="112,-21" sprite="ui_game_symbol_quest_remove" tooltip="Remove Quest" tooltip_key="lblRemoveQuest" sound="[paging_click]" />
+								<button depth="1" name="questShareBtn" style="icon32px, press, hover" pivot="center" pos="155,-21" sprite="ui_game_symbol_players" tooltip="Share Quest" tooltip_key="lblShareQuest" sound="[paging_click]" />
+
+								<sprite color="[darkGrey]" type="sliced" width="446" pos="-1,0" />
+								<sprite depth="4" name="searchIcon" style="icon30px" pos="210,-20" sprite="ui_game_symbol_search" pivot="center" console_enabled="false"/>
+
+								<panel pos="233,-6" depth="1" width="120" disableautobackground="true" console_enabled="false">
+									<textfield depth="1" pos="0,0" width="100" height="30" name="searchInput" virtual_keyboard_prompt="vkPromptSearchTerm" search_field="true" close_group_on_tab="true" clear_button="true" />
+								</panel>
+
+								<panel pos="338,0" width="104" height="43" disableautobackground="true">
+									<pager name="pager" pos="4,-6" contents_parent="content"/>
+								</panel>
+							</rect-->
+
+							<!--grid name="questList" rows="14" cols="1" pos="6,-49" width="450" height="{# questsautoaccept ? 598 : 368}" cell_width="390" cell_height="46" controller="QuestList" repeat_content="true" arrangement="vertical" normal_color="[iconColor]" disabled_color="[iconColor]" >
+								<quest_entry name="0" />
+							</grid-->
+						<!--/rect-->
+					</window>
+
+				</append>
+
 			</if>
 		</conditional>
 
@@ -5953,6 +6185,47 @@
 
 				<append xpath="/windows">
 					<window name="windowQuestSharedList" width="450" height="213" panel="Left" cursor_area="true" controller="QuestSharedListWindow" visible="{# !questsautoaccept}">
+
+						<panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+							<sprite depth="1" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
+							<label style="header.name" text="SHARED QUESTS" text_key="xuiSharedQuests" />
+						</panel>
+
+						<rect name="content" depth="0" pos="0,-43" height="464">
+
+							<rect depth="3" name="searchControls" width="450" height="43" pos="6,-6">
+								<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="450" height="46" color="[black]" type="sliced" fillcenter="false" />
+
+								<button depth="1" name="acceptBtn" style="icon32px, press, hover" pivot="center" pos="26,-21" sprite="ui_game_symbol_check" tooltip="Accept Quest" tooltip_key="lblAcceptQuest" sound="[paging_click]" />
+								<button depth="1" name="showOnMapBtn" style="icon32px, press, hover" pivot="center" pos="69,-21" sprite="ui_game_symbol_map" tooltip="Show on Map" tooltip_key="lblShowOnMap" sound="[paging_click]" />
+								<button depth="1" name="questRemoveBtn" style="icon32px, press, hover" pivot="center" pos="112,-21" sprite="ui_game_symbol_x" tooltip="Cancel Quest" tooltip_key="lblCancelQuest" sound="[paging_click]" />
+
+								<sprite color="[darkGrey]" type="sliced" width="446" pos="-1,0" />
+								<!--#$-IGS BEGIN: Hiding search field on consoles. -$#-->
+								<sprite depth="4" name="searchIcon" style="icon30px" pos="210,-20" sprite="ui_game_symbol_search" pivot="center" console_enabled="false"/>
+								<!--*#$-IGS END.-$#-->
+
+								<!--#$-IGS BEGIN: Hiding search field on consoles. -$#-->
+								<panel pos="233,-6" depth="1" width="120" disableautobackground="true" console_enabled="false">
+									<textfield depth="1" pos="0,0" width="100" height="30" name="searchInput" virtual_keyboard_prompt="vkPromptSearchTerm" close_group_on_tab="true" />
+								</panel>
+								<!--*#$-IGS END.-$#-->
+
+								<panel pos="338,0" width="104" height="43" disableautobackground="true">
+									<pager name="pager" pos="4,-6" contents_parent="content" />
+								</panel>
+							</rect>
+
+							<grid name="questList" rows="4" cols="1" pos="6,-49" width="450" height="368" cell_width="390" cell_height="46" controller="QuestSharedList" repeat_content="true" arrangement="vertical" normal_color="[iconColor]" disabled_color="[iconColor]" >
+								<quest_entry name="0" />
+							</grid>
+						</rect>
+					</window>
+
+				</append>
+
+				<append xpath="/windows">
+					<window name="windowQuestSharedListWIP" width="450" height="213" panel="Left" cursor_area="true" controller="QuestSharedListWindow" visible="{# !questsautoaccept}">
 
 						<panel name="header" pos="3,0" height="43" depth="1" backgroundspritename="ui_game_panel_header">
 							<sprite depth="1" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
@@ -6023,6 +6296,81 @@
 
 				</append>
 
+				<append xpath="/windows">
+					<window name="windowQuestDescriptionWIP" depth="14" pos="920,475" width="610" height="880" controller="QuestDescriptionWindow" cursor_area="true">
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-50">
+
+							<rect name="rightPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="rightContent">
+						<!--rect name="rightpanel" pos="0,0" width="610" height="880">
+
+							<rect name="newContent"-->
+
+									<!--sprite name="smx_panel_background" depth="1" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_left="#cam,0,1235" anchor_right="#cam,1,10" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,-50" /-->
+
+									<sprite name="smx_panel_background" depth="1" pos="0,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" flip="horizontally" />
+									<!--sprite name="smx_panel_background" depth="1" pos="20,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" /-->
+
+									<sprite name="smx_menu_separation" depth="2" pos="325,-818" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<rect pos="-296,-158">
+
+										<label name="generalSettingsRight" depth="4" pos="625,70" width="590" height="50" pivot="center" style="smx_label_outline" text="{questtitle}" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+<!--sprite depth="9999999" type="sliced" color="[green]" width="590" height="50" pos="625,70" pivot="center" /-->
+
+										<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+<!--sprite depth="9999999" type="sliced" color="[green]" width="500" height="10" pos="625,25" pivot="center" /-->
+
+								<!--rect name="header" pos="0,0" width="610" height="110">
+
+									<label name="windowName" depth="4" pos="-305,-70" width="590" height="52" pivot="center" style="smx_label_outline" text="{questtitle}" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+									<sprite name="smx_panel_separation" depth="4" pos="-305,-105" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+								</rect-->
+
+									</rect>
+
+									<rect name="smx_quest_icon" depth="3" pos="0,-133">
+										<sprite name="backgroundMain" depth="1" pos="0,-4" size="120,120" pivot="center" sprite="smx_diamond_background" color="7,7,7,235" rotation="45" />
+
+										<sprite name="background" depth="2" pos="0,-5" size="115,115" pivot="center" sprite="smx_diamond_background" color="96,96,96" rotation="45" />
+
+										<sprite name="backgroundArt" depth="4" pos="0,-5" size="98,98" sprite="smx_slot_durability" flip="horizontally" pivot="center" color="0,0,0,275" rotation="45"/>
+
+										<sprite name="foreground" depth="6" pos="0,-4" size="100,100" pivot="center" sprite="smx_slot_frame_narrow" color="[white]" rotation="-45" />
+
+										<sprite name="smallBackgroundMain" depth="9" pos="0,-52" size="40,40" pivot="center" sprite="smx_slot_frame_narrow" color="[white]" rotation="-45" />
+										<sprite name="smallBackgroundMain2" depth="8" pos="0,-52" size="50,50" pivot="center" sprite="smx_diamond_background" color="7,7,7,500" rotation="45" />
+
+										<!--sprite name="smallIndicator" depth="10" pos="0,-52" size="40,40" pivot="center" sprite="smx_diamond_background" color="[smx_element_accentcolor_1]" rotation="45" visible="{enabletrack}" />
+										<sprite name="smallIndicator" depth="10" pos="0,-52" size="40,40" pivot="center" sprite="smx_diamond_background" color="[smx_element_accentcolor_green]" rotation="45" visible="{#!enabletrack}" /-->
+
+										<sprite name="windowIcon" depth="7" pos="0,6" size="90,90" pivot="center" sprite="ui_game_symbol_quest" foregroundlayer="true" />
+
+									</rect>
+
+								</rect>
+							</rect>
+
+							<!--panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+								<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
+								<label style="header.name" text="{questtitle}" width="500" />
+								<label depth="2" pos="545,-8" width="100" height="28" text="{sharedbyname}" justify="right" upper_case="true" />
+							</panel-->
+							<rect name="content" pos="0,-246" height="266" depth="1">
+								<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="653" height="266" color="[black]" type="sliced" fillcenter="false" />
+								<sprite color="[darkGrey]" type="sliced" />
+								<label depth="3" name="descriptionText" pos="8,-8" text="{questdescription}" width="630" height="255" font_size="28" />
+								<rect visible="{showempty}">
+									<label pos="0,-125" depth="3" name="descriptionText" width="100%" height="255" text="DESCRIPTION NOT AVAILABLE AT THIS TIME." text_key="xuiDescriptionNotAvailable" justify="center" pivot="left" font_size="28" />
+								</rect>
+							</rect>
+						</widget>
+					</window>
+
+				</append>
+
 			</if>
 		</conditional>
 
@@ -6062,6 +6410,37 @@
 
 				</append>
 
+				<append xpath="/windows">
+					 <window name="windowQuestObjectivesWIP" depth="14" pos="920,475" width="610" height="880" controller="QuestObjectivesWindow" cursor_area="true" quest_limited_color="[red]" quest_limited_complete_color="[white]">
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-400">
+
+							<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+								<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_quest"/>
+								<label style="header.name" text="OBJECTIVES" text_key="xuiObjectives" />
+								<!-- <label depth="2" pos="545,-8" width="100" height="28" text="{questdifficulty}" color="[lightGrey]" justify="right" upper_case="true" /> -->
+								<label depth="2" pos="445,-8" width="200" height="28" text="{tieradd}" justify="right" upper_case="true" />
+								<sprite depth="2" name="windowIcon" style="icon32px" pos="610,-5" sprite="ui_game_symbol_quest_limited" color="{tieraddlimitedcolor}" visible="{tieraddlimited}" />
+							</panel>
+							<rect name="content" pos="0,-46" height="194" depth="1">
+								<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+								<sprite color="[darkGrey]" type="sliced" />
+								<rect visible="{showquest}">
+									<grid name="objectiveList" rows="5" cols="2" pos="12,-10" width="300" height="184" cell_width="300" cell_height="30" repeat_content="true" arrangement="horizontal" controller="QuestObjectiveList">
+										<quest_objective_entry name="0" />
+									</grid>
+									<!-- <sprite depth="8" name="backgroundMain2" sprite="menu_empty3px" pos="0,-220" width="653" height="40" color="[black]" type="sliced" fillcenter="false" visible="{showqequirements}" />	 -->
+									<label depth="3" pos="8, -165" text="{questrequirementstitle}: {questrequirements}" width="590" visible="{showrequirements}" height="30" />
+								</rect>
+								<rect visible="{showempty}">
+									<label pos="0,-70" depth="3" name="descriptionText" width="100%" height="65" text="OBJECTIVES NOT AVAILABLE AT THIS TIME." text_key="xuiObjectivesNotAvailable" justify="center" font_size="28" />
+								</rect>
+							</rect>
+						</widget>
+					</window>
+
+				</append>
+
 			</if>
 		</conditional>
 
@@ -6095,6 +6474,35 @@
 								<label pos="0,-70" depth="3" name="descriptionText" width="100%" height="145" text="REWARDS NOT AVAILABLE AT THIS TIME." text_key="xuiRewardsNotAvailable" justify="center" pivot="left" font_size="28" />
 							</rect>
 						</rect>
+					</window>
+
+				</append>
+
+				<append xpath="/windows">
+					<window name="windowQuestRewardsWIP" depth="14" pos="920,475" width="610" height="880" controller="QuestRewardsWindow" cursor_area="true">
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-650">
+
+							<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+								<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_treasure"/>
+								<label style="header.name" text="REWARDS" text_key="xuiRewards" />
+								<label depth="2" pos="345,-8" width="300" height="28" text="{finishtime}" justify="right" upper_case="true" />
+							</panel>
+							<rect name="content" pos="0,-46" height="153" depth="1">
+								<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+								<sprite color="[darkGrey]" type="sliced" />
+								<rect visible="{showquest}">
+									<!-- <grid name="rewardList" rows="5" cols="1" pos="12,-10" width="600" height="368" cell_width="300" cell_height="30" repeat_content="true" arrangement="vertical" controller="QuestRewardList"> -->
+										<!-- <quest_reward_entry2 name="0" /> -->
+									<!-- </grid> -->
+									<label pos="6,-6" depth="3" name="descriptionText" text="{commonrewards}
+									{chaintitle}{chainrewards}" font_size="28" width="648" height="145" />
+								</rect>
+								<rect visible="{showempty}">
+									<label pos="0,-70" depth="3" name="descriptionText" width="100%" height="145" text="REWARDS NOT AVAILABLE AT THIS TIME." text_key="xuiRewardsNotAvailable" justify="center" pivot="left" font_size="28" />
+								</rect>
+							</rect>
+						</widget>
 					</window>
 
 				</append>
@@ -7037,8 +7445,24 @@
 
 						<set xpath="/windows/window[@name='ingameMenu']/@controller">Gears.UI.InGameMenu, Gears</set>
 
-						<insertBefore xpath="/windows/window[@name='ingameMenu']/grid[@name='smx_top_menu_grid']">
+						<!--insertBefore xpath="/windows/window[@name='ingameMenu']/grid[@name='smx_top_menu_grid']">
 							<smx_back_button name="btnMods" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
+						</insertBefore-->
+
+						<!--append xpath="/windows/window[@name='ingameMenu']">
+
+							<widget name="smx_top_menu_btn2" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+								<rect controller="Gears.UI.InGameMenu, Gears">
+									<smx_back_button name="btnMods" depth="3" pos="-161,91" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" controller="Gears.UI.InGameMenu, Gears"/>
+								</rect>
+							</widget>
+
+						</append-->
+
+						<insertBefore xpath="/windows/window[@name='ingameMenu']/widget[@name='smx_top_menu_btn1' ]/smx_back_button[@name='btnExit']">
+							<!--rect controller="Gears.UI.InGameMenu, Gears"-->
+								<smx_back_button name="btnMods" depth="3" pos="-161,91" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
+							<!--/rect-->
 						</insertBefore>
 
 					</if>

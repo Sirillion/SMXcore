@@ -38,7 +38,7 @@
 <!--	> > > > > > > > > > > > > > > > > > > > | SMXmenu | < < < < < < < < < < < < < < < < < < < <	-->
 
 
-<!--	// SMX // Main Menu Background -->
+<!--	// SMX // SMXcore and TFP_Harmony Check -->
 
 		<conditional>
 			<if cond="mod_loaded('SMXcore')">
@@ -50,16 +50,34 @@
 							<window name="0tfpHarmonyMissing" depth="99999" pos="0,400" width="1185" height="780" anchor="CenterCenter" cursor_area="true">
 								<panel depth="200" createuipanel="true" disableautobackground="true">
 
-									<panel name="content" pos="0,-350" width="400" height="600" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
-										<sprite name="smxPopOutBG" depth="9" height="900" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,335" />
-										<texture name="smxPopOutArt" depth="10" pos="0,230" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
+									<texture name="bgTexture" depth="-99" texture="@:Textures/UI/news_background.jpg" color="255,255,255,290" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
 
-										<label name="lblTFPMissing" depth="11" pos="0,-200" width="350" height="850" pivot="center" style="smx_label_outline" text_key="smxCoreFTPMissing" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" />
+									<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+									<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+									<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+
+									<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="MISSING MOD" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+
+									<panel name="content" pos="0,-430" width="400" height="1000" depth="3" pivot="center" createuipanel="true" disableautobackground="true">
+										<sprite name="smxPopOutBG" depth="9" height="900" width="400" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,295" />
+										<texture name="smxPopOutArt" depth="10" pos="0,240" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/password_zombie.png" />
+										<sprite name="smxPopOutArtFG" depth="11" pos="0,245" size="430,430" pivot="center" sprite="smx_minimap_foreground" color="7,7,7,375" />
+
+										<label name="lblTFPMissing" depth="11" pos="-175,30" width="350" height="850" pivot="topleft" style="smx_label_outline" text_key="smxCoreFTPMissing" font_size="24" justify="center" upper_case="true" overflow="ShrinkContent" spacing_x="2" spacing_y="2" />
 									</panel>
-
 								</panel>
 							</window>
 						</append>
+
+						<remove xpath="/windows/window[@name='mainMenuQuit']" />
+
+						<append xpath="/windows">
+							<window name="mainMenuQuit" depth="999999" pos="820,496" width="60" height="60" pivot="center" controller="MainMenuButtons">
+								<smx_back_button name="btnQuit" depth="3" pos="0,0" width="55" height="55" pivot="center" on_hover="true" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiQuit" platform="!CONSOLE" nav_up="btnDlc" nav_down="btnNewGame" />
+							</window>
+						</append>
+
+						<setattribute xpath="/windows/window[@name='mainMenu']" name="force_hide">true</setattribute>
 
 					</if>
 				</conditional>
@@ -68,43 +86,18 @@
 		</conditional>
 
 
-<!--	// SMX // Does NOT load SMX if Harmony is missing -->
+<!--	// SMX // Does NOT load SMX if TFP_Harmony is missing -->
 
 <conditional>
 	<if cond="mod_loaded('TFP_Harmony')">
 
 
-<!--	// SMX // Main Menu Background -->
+<!--	// SMX // SMXmenu Check - Removes & Injects Windows -->
 
 		<conditional>
 			<if cond="mod_loaded('zSMXmenu')">
 
-				<set xpath="/windows/window[@name='menuBackground']/texture/@texture">@modfolder(SMXcore)://Textures/smx_mainmenu_background.png</set>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Main Menu Logo -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
-
-				<set xpath="/windows/window[@name='mainMenuLogo']/@depth">3</set>
-
-				<set xpath="/windows/window[@name='mainMenuLogo']/texture[@name='gameLogo']/@anchor_left">#cam,0,120</set>
-				<set xpath="/windows/window[@name='mainMenuLogo']/texture[@name='gameLogo']/@anchor_bottom">#cam,0.5,150</set>
-				<set xpath="/windows/window[@name='mainMenuLogo']/texture[@name='gameLogo']/@anchor_right">#cam,0,700</set>
-				<set xpath="/windows/window[@name='mainMenuLogo']/texture[@name='gameLogo']/@anchor_top">#cam,0.5,450</set>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Mouseover Tooltip -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+		<!--	// SMX // Global - Mouseover Tooltip -->
 
 				<remove xpath="/windows/window[@name='toolTip']" />
 
@@ -118,28 +111,34 @@
 					</window>
 				</append>
 
-			</if>
-		</conditional>
+		<!--	// SMX // Main Menu - Background -->
 
+				<remove xpath="/windows/window[@name='menuBackground']" />
 
-<!--	// SMX // Main Menu -->
+				<append xpath="/windows">
+					<window name="menuBackground" depth="-3" pos="0,0" width="1050" height="780" anchor="CenterCenter">
+						<texture name="bgTexture" depth="1" texture="@modfolder(SMXcore)://Textures/smx_mainmenu_background.png" color="[white]" anchor_left="#cam,0,-5" anchor_bottom="#cam,0,-5" anchor_right="#cam,1,5" anchor_top="#cam,1,5" />
+					</window>
+				</append>
 
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+		<!--	// SMX // Main Menu - Logo -->
+
+				<remove xpath="/windows/window[@name='mainMenuLogo']" />
+
+				<append xpath="/windows">
+					<window name="mainMenuLogo" depth="3"  pos="0,0" width="1050" height="780" anchor="CenterCenter">
+						<texture name="gameLogo" depth="3" pivot="center" texture="@:Textures/UI/7DTD_logo.tga" color="[white]" anchor_left="#cam,0,120" anchor_bottom="#cam,0.5,150" anchor_right="#cam,0,700" anchor_top="#cam,0.5,450" keep_aspect_ratio="BasedOnHeight" aspect_ratio="2.3" />
+					</window>
+				</append>
+
+		<!--	// SMX // Main Menu - Menu -->
 
 				<remove xpath="/windows/window[@name='mainMenu']" />
 
 				<append xpath="/windows">
-					<window name="mainMenu" pos="360,540" size="408,1080" controller="MainMenu" cursor_area="true" windows_to_open_globally="menuBackground,mainMenuDiscordButton,-discordInteractions">
+					<window name="mainMenu" depth="1" pos="360,540" size="408,1080" anchor="LeftBottom" controller="MainMenu" cursor_area="true" windows_to_open_globally="menuBackground,mainMenuDiscordButton,-discordInteractions">
 
 						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
-
-						<rect pos="0,378" width="1185" height="780" anchor="CenterCenter">
-							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-							<!--sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_top="#cam,1.0,5" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0.948,-5" /-->
-							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-							<!--sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_top="#cam,1.0,-50" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0.948,60" /-->
-						</rect>
 
 						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" controller="MainMenuButtons" rows="8" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
 
@@ -159,12 +158,7 @@
 
 						</grid>
 
-						<grid name="smx_top_menu_grid" depth="3" pos="1411,444" pivot="center" controller="MainMenuButtons" rows="1" cols="4" cell_width="60" cell_height="60" repeat_content="false" arrangement="horizontal">
-							<!--smx_back_button name="btnOptions" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiOptions" /-->
-							<smx_back_button name="btnQuit" depth="3" pos="1381,474" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiQuit" platform="!CONSOLE" nav_up="btnDlc" nav_down="btnNewGame" />
-						</grid>
-
-						<!--rect pos="1330,-70" width="320" height="702" depth="2" controller="SDCSPreviewWindow" can_zoom="false" force_hide="true">
+						<!--rect pos="1330,-70" width="320" height="702" depth="2" controller="SDCSPreviewWindow" can_zoom="false" force_hide="false">
 							<sprite name="smxPopOutBG" depth="9" pos="0,-20" width="200" height="450" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,255" />
 							<texture name="playerPreview" depth="100" pos="5,-20" size="160,351" pivot="center" material="Materials/Transparent Colored" globalopacity="false"/>
 							<label name="mainMenuPlayerNameLabel" depth="101" pos="0,180" width="320" pivot="center" style="smx_label_outline" text="PLAYER NAME: EMPTY STR" font_size="24" justify="center" upper_case="true" color="[white]" controller="MainMenuPlayerName" overflow="ShrinkContent" />
@@ -183,52 +177,24 @@
 					</window>
 				</append>
 
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Main Menu - Other --> <!-- REMOVE? -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+		<!--	// SMX // Main Menu - Quit & Gears Buttons -->
 
 				<remove xpath="/windows/window[@name='mainMenuQuit']" />
 
 				<append xpath="/windows">
-					<window name="mainMenu2" pos="-240,75" width="210" height="100" anchor="RightBottom" controller="MainMenuButtons">
-						<!--mainmenubutton name="btnQuit" pivot="center" width="400" height="50" caption_key="xuiQuit" platform="!CONSOLE" align_right="true" nav_up="btnDlc" nav_down="btnNewGame"/-->
-						<!--smx_menu_button name="btnDLC" width="230" height="65" pivot="center" caption_key="xuiMMDlc" font_size="28" overflow="ShrinkContent" sprite_color_default="110,0,0,180" sprite_color_hover="110,0,0,255" nav_down="btnQuit" platform="!CONSOLE"/>
-						<smx_menu_button name="btnDLC" width="230" height="65" pivot="center" caption_key="xuiMMDlc" font_size="28" overflow="ShrinkContent" sprite_color_default="110,0,0,180" sprite_color_hover="110,0,0,255" platform="CONSOLE"/-->
+					<window name="mainMenuQuit" depth="2" pos="0,0" size="5000,100" anchor="RightTop" controller="MainMenuButtons">
+
+						<rect name="smxTopMenuArt" depth="1" pos="0,-118" width="1185" height="780" anchor="CenterCenter">
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+						</rect>
+
+						<smx_back_button name="btnQuit" depth="3" pos="-101,-22" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiQuit" platform="!CONSOLE" nav_up="btnDlc" nav_down="btnNewGame" />
+
 					</window>
 				</append>
 
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Main Menu - Discord Main Menu Button -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
-
-				<remove xpath="/windows/window[@name='mainMenuDiscordButton']" />
-
-				<append xpath="/windows">
-					<window name="mainMenuDiscordButton" depth="10" pos="0,0" width="55" height="55" anchor="CenterCenter" controller="DiscordMainMenuButton">
-						<button name="button" depth="3" pos="-881,494" width="40" height="30" pivot="center" sprite="discord-mark-white_scaled" defaultcolor="[white]" hovercolor="" selectedcolor="88,101,242" selected="{discord_open}" hoverscale="1.25" use_selection_box="false" sound_play_on_hover="[default_hover]" sound="[default_click]" visible="{discord_ready}" />
-						<label name="lblActionCount" depth="4" pos="19,15" height="30" font_size="20" color="[white]" pivot="center" justify="center" max_line_count="1" text="{pending_actions}" overflow="resizefreely" overflow_width="260" visible="{# pending_actions &gt; 0}" />
-						<sprite name="lblBg" depth="3" anchor_left="lblActionCount,0,-4" anchor_right="lblActionCount,1,4" anchor_bottom="lblActionCount,0,-3" anchor_top="lblActionCount,1,2" type="sliced" sprite="Button" color="[red]" visible="{# pending_actions &gt; 0}" />
-					</window>
-				</append>
-
-			</if>
-		</conditional>
-
-
-<!--	// SMX // Player Name -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
+		<!--	// SMX // Main Menu - Player Name -->
 
 				<remove xpath="/windows/window[@name='mainMenuPlayerName']" />
 
@@ -240,8 +206,71 @@
 					</window>
 				</append>
 
+		<!--	// SMX // Main Menu - Discord Button -->
+
+				<remove xpath="/windows/window[@name='mainMenuDiscordButton']" />
+
+				<append xpath="/windows">
+					<window name="mainMenuDiscordButton" depth="10" pos="35,-25" width="55" height="55" anchor="LeftTop" controller="DiscordMainMenuButton">
+						<button name="button" depth="3" pos="0,0" width="40" height="30" pivot="center" sprite="discord-mark-white_scaled" defaultcolor="[white]" hovercolor="" selectedcolor="88,101,242" selected="{discord_open}" hoverscale="1.25" use_selection_box="false" sound_play_on_hover="[default_hover]" sound="[default_click]" visible="{discord_ready}" />
+						<label name="lblActionCount" depth="4" pos="19,12" height="30" pivot="center" style="smx_label_outline" text="{pending_actions}" font_size="18" justify="center" max_line_count="1" color="[white]" overflow="resizefreely" overflow_width="260" visible="{# pending_actions &gt; 0}" />
+						<sprite name="lblBg" depth="3" pos="0,-2" size="30,30" sprite="ui_game_filled_circle" color="175,30,25,325" anchor_left="lblActionCount,0,-6" anchor_right="lblActionCount,1,6" anchor_bottom="lblActionCount,0,-2" anchor_top="lblActionCount,1,2" visible="{# pending_actions &gt; 0}" />
+					</window>
+				</append>
+
+		<!--	// SMX // Options Menu - Menu -->
+
+				<remove xpath="/windows/window[@name='optionsMenu']" />
+
+				<append xpath="/windows">
+					<window name="optionsMenu" pos="360,540" size="408,1080" anchor="LeftBottom" controller="OptionsMenu" cursor_area="true">
+
+						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
+
+						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="9" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
+
+							<smx_menu_button name="btnGeneral" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsGeneral" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnVideo" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsVideo" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnAudio" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsAudio" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnControls" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsKeyboard" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnController" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsController" font_size="28" overflow="ShrinkContent" />
+							<smx_menu_button name="btnAccount" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsAccount" font_size="28" overflow="ShrinkContent" visible="{notreleaseingame}" />
+
+							<rect><sprite name="smx_menu_separation" depth="1" pos="-140,-28" width="301" height="5" sprite="smx_sepline_2" color="[smx_element_separation_2]" /></rect>
+
+							<smx_menu_button name="btnTwitch" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsTwitch" font_size="28" overflow="ShrinkContent" visible="{ingamenoteditor}" />
+							<smx_menu_button name="btnProfiles" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsProfiles" font_size="28" overflow="ShrinkContent" visible="{notingame}" />
+							<smx_menu_button name="btnBlockList" width="230" height="65" pivot="center" caption_key="xuiBlockedPlayers" font_size="28" overflow="ShrinkContent" visible="{# showblocklist and notingame}" />
+
+						</grid>
+
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-235" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+						</widget>
+
+						<widget name="smx_top_menu" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+							<smx_back_button name="btnBack" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" visible="{ingame}" />
+							<smx_back_button name="btnBack" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" visible="{notingame}" />
+
+						</widget>
+
+						<rect name="smx_version_control">
+							<label name="smx_edition_info" depth="9" pos="60,-503" size="300,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionBranch" font_size="14" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
+							<label name="smx_version_info" depth="9" pos="60,-520" size="200,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionNumber" font_size="14" spacing_x="2" justify="center" upper_case="false" color="255,255,255,255" overflow="ShrinkContent" />
+						</rect>
+
+					</window>
+				</append>
+
 			</if>
 		</conditional>
+
+
+<!-- CLEAN ABOVE -->
 
 
 <!--	// SMX // Main Menu - Discord Interactions Menu -->
@@ -287,59 +316,6 @@
 		</conditional>
 
 
-<!--	// SMX // Options Menu -->
-
-		<conditional>
-			<if cond="mod_loaded('zSMXmenu')">
-
-				<remove xpath="/windows/window[@name='optionsMenu']" />
-
-				<append xpath="/windows">
-					<window name="optionsMenu" pos="360,540" size="408,1080" controller="OptionsMenu" cursor_area="true">
-
-						<sprite name="smx_menu_background" depth="2" pos="60,0" width="408" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,330" anchor_top="#cam,0.5,1000" anchor_bottom="#cam,0.5,-1000" />
-
-						<rect pos="0,378" width="1185" height="780" anchor="CenterCenter">
-							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						</rect>
-
-						<grid name="smx_menu_grid" depth="3" pos="50,-430" pivot="bottomleft" rows="9" cell_width="230" cell_height="70" repeat_content="false" arrangement="vertical">
-
-							<smx_menu_button name="btnGeneral" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsGeneral" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnVideo" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsVideo" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnAudio" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsAudio" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnControls" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsKeyboard" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnController" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsController" font_size="28" overflow="ShrinkContent" />
-							<smx_menu_button name="btnAccount" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsAccount" font_size="28" overflow="ShrinkContent" visible="{notreleaseingame}" />
-
-							<rect><sprite name="smx_menu_separation" depth="1" pos="-140,-28" width="301" height="5" sprite="smx_sepline_2" color="[smx_element_separation_2]" /></rect>
-
-							<smx_menu_button name="btnTwitch" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsTwitch" font_size="28" overflow="ShrinkContent" visible="{ingamenoteditor}" />
-							<smx_menu_button name="btnProfiles" width="230" height="65" pivot="center" caption_key="xuiBtnOptionsProfiles" font_size="28" overflow="ShrinkContent" visible="{notingame}" />
-							<smx_menu_button name="btnBlockList" width="230" height="65" pivot="center" caption_key="xuiBlockedPlayers" font_size="28" overflow="ShrinkContent" visible="{# showblocklist and notingame}" />
-
-							<!--smx_menu_button name="btnBack" width="230" height="65" pivot="center" caption_key="xuiBack" overflow="ShrinkContent" font_size="28" visible="{ingame}" />
-							<smx_menu_button name="btnBack" width="230" height="65" pivot="center" caption_key="xuiBack" overflow="ShrinkContent" font_size="28" visible="{notingame}" /-->
-
-						</grid>
-
-						<grid name="smx_top_menu_grid" depth="3" pos="1411,444" pivot="center" controller="MainMenuButtons" rows="1" cols="4" cell_width="60" cell_height="60" repeat_content="false" arrangement="horizontal">
-							<!--smx_back_button name="btnOptions" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiOptions" /-->
-							<smx_back_button name="btnBack" depth="3" pos="1381,474" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" visible="{ingame}" />
-							<smx_back_button name="btnBack" depth="3" pos="1381,474" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" visible="{notingame}" />
-						</grid>
-
-						<rect name="smx_version_control">
-							<label name="smx_edition_info" depth="9" pos="60,-503" size="300,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionBranch" font_size="14" spacing_x="2" justify="center" upper_case="true" color="255,255,255,150" />
-							<label name="smx_version_info" depth="9" pos="60,-520" size="200,33" pivot="center" style="smx_label_normal" text_key="smxCurrentVersionNumber" font_size="14" spacing_x="2" justify="center" upper_case="false" color="255,255,255,255" overflow="ShrinkContent" />
-						</rect>
-
-					</window>
-				</append>
-
-			</if>
-		</conditional>
 
 
 <!--	// SMX // General Options -->
@@ -354,105 +330,133 @@
 
 						<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
 
-						<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+						<widget name="smx_left_panel_content" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
 
-						<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsGeneral" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+							<rect name="leftPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="leftContent">
 
-						<!--sprite name="smx_menu_separation" depth="2" pos="-610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" /-->
-						<sprite name="smx_menu_separation" depth="2" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									<sprite name="smx_panel_background" depth="1" pos="-20,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" />
 
-						<rect name="leftPanel" pos="-600,-50" height="650" width="590" force_hide="false">
-							<rect name="newContent">
-
-								<sprite name="smx_panel_background" depth="1" pos="-20,0" width="670" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
-
-								<rect pos="-340,-40">
-
-									<label name="videoSettings" depth="4" pos="315,70" width="590" height="50" pivot="center" style="smx_label_outline" text="SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{isnewgame}" />
-									<sprite name="smx_panel_separation" depth="4" pos="320,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-
-								</rect>
-
-							</rect>
-						</rect>
-
-						<rect name="rightPanel" pos="0,-90" width="590" height="650">
-							<rect name="mainContent">
-
-								<sprite name="smx_panel_background" depth="1" pos="620,0" width="670" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
-
-								<rect name="content" height="39" depth="0">
-
-									<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
-
-									<rect name="generalContents" depth="2" pos="300,0">
-
-										<label name="generalSettings" depth="4" pos="320,70" width="590" height="50" pivot="center" style="smx_label_outline" text="GENERAL SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
-
-										<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
-										<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
-
-										<scrollbar	name="scrollbar"
-													depth="6"
-													pos="605,-350"
-													width="12"
-													height="500"
-													padding="4"
-													foregroundname="handler"
-													foregroundsprite="smx_scrollbar_handler"
-													foregroundcolor="[smxui_scrollbar_handler]"
-													backgroundname="background"
-													backgroundsprite="smx_scrollbar_background"
-													backgroundcolor="[smxui_scrollbar_background]"
-													pivot="center">
-
-											<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
-											<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
-										</scrollbar>
-
-										<scrollview name="scrollview" depth="5" pos="5,-60" width="585" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
-
-											<sprite type="sliced" color="[transparent]" />
-
-											<grid pos="10,-18" rows="14" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
-												<smx_general_option name="Language" type="ComboBoxList`1[XUiC_OptionsGeneral+LanguageInfo]" value_wrap="false" />
-
-												<rect />
-
-												<smx_general_option name="UseEnglishCompass" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
-												<smx_general_option name="TempCelsius" type="ComboBoxBool" localization_prefix="xuiBoolCelsius" />
-
-												<rect />
-
-												<smx_general_option name="AutoParty" type="ComboBoxBool" localization_prefix="xuiComboOnOff" />
-												<smx_general_option name="QuestsAutoShare" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
-												<smx_general_option name="QuestsAutoAccept" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
-
-												<rect />
-
-												<smx_general_option name="ChatComms" type="ComboBoxBool" localization_prefix="xuiComboOnOff" />
-												<smx_general_option name="Crossplay" type="ComboBoxBool" localization_prefix="xuiComboOnOff" tooltip_key="{crossplayTooltip}"/>
-
-												<rect />
-
-												<smx_general_option name="DisableXmlEvents" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
-												<smx_general_option name="ShowConsoleButton" type="ComboBoxBool" localization_prefix="xuiComboOnOff" />
-
-											</grid>
-										</scrollview>
-
-										<smx_menu_button name="btnEula" depth="3" pos="-936,-3" width="230" height="65" pivot="center" caption_key="xuiEula" font_size="28" />
-										<smx_menu_button name="btnBugReport" depth="3" pos="-936,-73" width="230" height="65" pivot="center" caption_key="xuiBugReportHeader" font_size="28" visible="{bug_reporting}"/>
+									<rect pos="296,-158">
+										<label name="generalSettingsLeft" depth="4" pos="30,70" width="590" height="50" pivot="center" style="smx_label_outline" text="SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{isnewgame}" />
+										<sprite name="smx_panel_separation" depth="4" pos="30,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 									</rect>
+
+									<rect pos="315,-158">
+										<smx_menu_button name="btnEula" depth="3" pos="0,-3" width="230" height="65" pivot="center" caption_key="xuiEula" font_size="28" />
+										<smx_menu_button name="btnBugReport" depth="3" pos="0,-73" width="230" height="65" pivot="center" caption_key="xuiBugReportHeader" font_size="28" visible="{bug_reporting}"/>
+									</rect>
+
 								</rect>
 							</rect>
-						</rect>
 
-						<smx_back_button name="btnBack" depth="3" pos="820,96" width="55" height="55" sprite="ui_game_symbol_add" size="24,24" rotation="45" tooltip_key="xuiBack" />
-						<smx_menu_button name="btnDefaults" depth="3" pos="602,-800" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" visible="{isTabUi}" />
-						<smx_menu_button name="btnApply" depth="3" pos="-10,-790" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" sound="[start]" parse_actions="true" />
+						</widget>
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-50">
+
+							<rect name="rightPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="rightContent">
+
+									<sprite name="smx_panel_background" depth="1" pos="0,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" flip="horizontally" />
+
+									<sprite name="smx_menu_separation" depth="2" pos="325,-818" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<rect pos="-296,-158">
+
+										<label name="generalSettingsRight" depth="4" pos="625,70" width="590" height="50" pivot="center" style="smx_label_outline" text="GENERAL SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+										<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+										<rect name="generalContents" depth="2" pos="326,0">
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="-20,-60" width="610" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+												<!--sprite type="sliced" color="[red]" /-->
+
+												<grid pos="35,-18" rows="14" cell_width="525" cell_height="45" repeat_content="false" arrangement="vertical" >
+													<smx_general_option name="Language" type="ComboBoxList`1[XUiC_OptionsGeneral+LanguageInfo]" value_wrap="false" />
+
+													<rect />
+
+													<smx_general_option name="UseEnglishCompass" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+													<smx_general_option name="TempCelsius" type="ComboBoxBool" localization_prefix="xuiBoolCelsius" />
+
+													<rect />
+
+													<smx_general_option name="AutoParty" type="ComboBoxBool" localization_prefix="xuiComboOnOff" />
+													<smx_general_option name="QuestsAutoShare" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+													<smx_general_option name="QuestsAutoAccept" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+
+													<rect />
+
+													<smx_general_option name="ChatComms" type="ComboBoxBool" localization_prefix="xuiComboOnOff" />
+													<smx_general_option name="Crossplay" type="ComboBoxBool" localization_prefix="xuiComboOnOff" tooltip_key="{crossplayTooltip}"/>
+
+													<rect />
+
+													<smx_general_option name="DisableXmlEvents" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+													<smx_general_option name="ShowConsoleButton" type="ComboBoxBool" localization_prefix="xuiComboOnOff" />
+
+												</grid>
+											</scrollview>
+
+										</rect>
+									</rect>
+
+								</rect>
+							</rect>
+						</widget>
+
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-235" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+							<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+
+							<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsGeneral" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+
+						</widget>
+
+						<widget name="smx_top_menu_btn" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+							<smx_back_button name="btnBack" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn1" depth="4" pivot="center" anchor_left="#bottom,1,0" anchor_bottom="#bottom,1,255" anchor_right="#bottom,1,0" anchor_top="#bottom,1,0">
+
+							<smx_menu_button name="btnApply" depth="3" pos="-10,0" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" sound="[start]" parse_actions="true" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn2" depth="4" pivot="center" anchor_left="#bottomright,1,0" anchor_bottom="#bottomright,1,255" anchor_right="#bottomright,1,0" anchor_top="#bottomright,1,0">
+
+							<smx_menu_button name="btnDefaults" depth="3" pos="-335,-10" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" visible="{isTabUi}" />
+
+						</widget>
 
 					</window>
 				</append>
@@ -473,51 +477,53 @@
 
 						<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
 
-						<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
-						<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+						<widget name="smx_left_panel_content" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
 
-						<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsVideo" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+							<rect name="leftPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="leftContent">
 
-						<!--sprite name="smx_menu_separation" depth="2" pos="-610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" /-->
-						<sprite name="smx_menu_separation" depth="2" pos="610,-750" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									<sprite name="smx_panel_background" depth="1" pos="-20,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" />
 
-						<rect name="leftPanel" pos="-600,-50" height="650" width="590" >
-							<rect name="newContent">
+									<rect pos="296,-158">
+										<label name="videoSettingsLeft" depth="4" pos="30,70" width="590" height="50" pivot="center" style="smx_label_outline" text="SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{isnewgame}" />
+										<sprite name="smx_panel_separation" depth="4" pos="30,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									</rect>
 
-								<sprite name="smx_panel_background" depth="1" pos="-40,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
-
-								<rect pos="-340,-40">
-
-									<label name="videoSettings" depth="4" pos="315,70" width="590" height="50" pivot="center" style="smx_label_outline" text="SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{isnewgame}" />
-									<sprite name="smx_panel_separation" depth="4" pos="320,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									<rect pos="315,-158">
+									</rect>
 
 								</rect>
-
 							</rect>
-						</rect>
 
-						<rect name="rightPanel" pos="0,-90" width="590" height="650">
+						</widget>
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-50">
+
+						<rect name="rightPanel" pos="0,0" width="590" height="650">
 							<rect name="tabs" controller="TabSelector" select_tab_contents_on_open="true">
 
-								<sprite name="smx_panel_background" depth="1" pos="640,0" width="650" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,219" anchor_top="#cam,0.5,467" anchor_bottom="#cam,0.5,-600" />
+								<sprite name="smx_panel_background" depth="1" pos="0,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" flip="horizontally" />
 
-								<rect name="tabsHeader" height="39" depth="0">
+								<sprite name="smx_menu_separation" depth="2" pos="325,-818" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-									<!--label name="videoSettings" depth="4" pos="620,70" width="590" height="50" pivot="center" style="smx_label_outline" text="New Game Options" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" /-->
+								<rect name="tabsHeader" depth="0" height="39">
 
-									<sprite name="smx_panel_separation" depth="4" pos="625,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									<sprite name="smx_panel_separation" depth="4" pos="320,-133" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
 
-									<grid name="tabButtons" depth="2" pos="-635,-3" rows="4" cols="1" cell_width="230" cell_height="70" repeat_content="true" arrangement="horizontal">
-										<rect controller="TabSelectorButton">
-											<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="230" height="65" pivot="center" caption_key="{tab_name_localized}" font_size="28" foregroundlayer="false" />
-										</rect>
-									</grid>
+									<widget name="smx_tab_buttons_left_side" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
 
-									<rect name="tabsContents" depth="2" pos="300,0">
+										<grid name="tabButtons" depth="2" pos="316,-161" rows="4" cols="1" cell_width="230" cell_height="70" repeat_content="true" arrangement="horizontal">
+											<rect controller="TabSelectorButton">
+												<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="230" height="65" pivot="center" caption_key="{tab_name_localized}" font_size="28" foregroundlayer="false" />
+											</rect>
+										</grid>
+
+									</widget>
+
+									<rect name="tabsContents" depth="2" pos="30,-158">
 									
 										<rect tab_key="xuiOptionsVideoDisplay" controller="TabSelectorTab">
-											<label name="videoSettings" depth="4" pos="320,70" width="590" height="50" pivot="center" style="smx_label_outline" text="DISPLAY SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+											<label name="videoSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="DISPLAY SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 
 											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
 											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
@@ -604,7 +610,7 @@
 										</rect>
 
 										<rect controller="TabSelectorTab" tab_key="xuiOptionsVideoQuality">
-											<label name="videoSettings" depth="4" pos="320,70" width="590" height="50" pivot="center" style="smx_label_outline" text="QUALITY SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+											<label name="videoSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="QUALITY SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 
 											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
 											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
@@ -689,7 +695,7 @@
 										</rect>
 								
 										<rect controller="TabSelectorTab" tab_key="xuiOptionsVideoUI">
-											<label name="videoSettings" depth="4" pos="320,70" width="590" height="50" pivot="center" style="smx_label_outline" text="UI SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+											<label name="videoSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="UI SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 
 											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
 											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
@@ -739,7 +745,7 @@
 
 
 										<rect controller="TabSelectorTab" tab_key="xuiOptionsDynamicMesh">
-											<label name="videoSettings" depth="4" pos="320,70" width="590" height="50" pivot="center" style="smx_label_outline" text="DYNAMIC MESH SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+											<label name="videoSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="DYNAMIC MESH SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
 
 											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
 											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
@@ -787,20 +793,810 @@
 											</scrollview>
 										</rect>
 									</rect>
-						
+
 								</rect>
 							</rect>
 						</rect>
 
-						<smx_back_button name="btnBack" depth="3" pos="820,96" width="55" height="55" sprite="ui_game_symbol_add" size="24,24" rotation="45" tooltip_key="xuiBack" />
-						<smx_menu_button name="btnDefaults" depth="3" pos="602,-800" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" visible="{isTabUi}" />
-						<smx_menu_button name="btnApply" depth="3" pos="-10,-790" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" sound="[start]" parse_actions="true" />
+						</widget>
+
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-235" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+							<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+
+							<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsVideo" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+
+						</widget>
+
+						<widget name="smx_top_menu_btn" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+							<smx_back_button name="btnBack" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn1" depth="4" pivot="center" anchor_left="#bottom,1,0" anchor_bottom="#bottom,1,255" anchor_right="#bottom,1,0" anchor_top="#bottom,1,0">
+
+							<smx_menu_button name="btnApply" depth="3" pos="-10,0" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" sound="[start]" parse_actions="true" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn2" depth="4" pivot="center" anchor_left="#bottomright,1,0" anchor_bottom="#bottomright,1,255" anchor_right="#bottomright,1,0" anchor_top="#bottomright,1,0">
+
+							<smx_menu_button name="btnDefaults" depth="3" pos="-335,-10" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" visible="{isTabUi}" />
+
+						</widget>
 
 					</window>
 				</append>
 
 			</if>
 		</conditional>
+
+
+<!--	// SMX // Audio Options -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<remove xpath="/windows/window[@name='optionsAudio']" />
+
+				<append xpath="/windows">
+					<window name="optionsAudio" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="OptionsAudio" cursor_area="true">
+
+						<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+
+						<widget name="smx_left_panel_content" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
+
+							<rect name="leftPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="leftContent">
+
+									<sprite name="smx_panel_background" depth="1" pos="-20,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" />
+									<rect pos="296,-158">
+										<label name="audioSettingsLeft" depth="4" pos="30,70" width="590" height="50" pivot="center" style="smx_label_outline" text="SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{isnewgame}" />
+
+										<sprite name="smx_panel_separation" depth="4" pos="30,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									</rect>
+
+									<rect pos="315,-158">
+									</rect>
+								</rect>
+							</rect>
+
+						</widget>
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-50">
+
+							<rect name="rightPanel" pos="0,0" width="590" height="650">
+								<rect name="tabs" controller="TabSelector" select_tab_contents_on_open="true">
+
+									<sprite name="smx_panel_background" depth="1" pos="0,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" flip="horizontally" />
+
+									<sprite name="smx_menu_separation" depth="2" pos="325,-818" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<rect name="tabsHeader" depth="0" height="39">
+
+										<sprite name="smx_panel_separation" depth="4" pos="320,-133" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+										<widget name="smx_tab_buttons_left_side" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
+
+											<grid name="tabButtons" depth="2" pos="316,-161" rows="4" cols="1" cell_width="230" cell_height="70" repeat_content="true" arrangement="horizontal">
+												<rect controller="TabSelectorButton">
+													<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="230" height="65" pivot="center" caption_key="{tab_name_localized}" font_size="28" foregroundlayer="false" />
+												</rect>
+											</grid>
+
+										</widget>
+									</rect>
+
+									<rect name="tabsContents" depth="2" pos="30,-158">
+									
+										<rect tab_key="xuiOptionsAudioGame" controller="TabSelectorTab">
+											<label name="audioSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="GAME SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid pos="-10,-18" rows="11" cell_width="700" cell_height="45" repeat_content="false" arrangement="vertical" >
+													<smx_audio_option name="OverallAudioVolumeLevel" type="ComboBoxFloat" value_increment="0.05" value_wrap="false" format_string="0%" />
+													<smx_audio_option name="AmbientVolumeLevel" type="ComboBoxFloat" value_increment="0.05" value_wrap="false" format_string="0%" />
+
+													<rect />
+
+													<smx_audio_option name="InGameMusicVolumeLevel" type="ComboBoxFloat" value_increment="0.05" value_wrap="false" format_string="0%" />
+													<smx_audio_option name="MenuMusicVolumeLevel" type="ComboBoxFloat" value_increment="0.05" value_wrap="false" format_string="0%" visible="{notingame}" />
+
+													<rect />
+
+													<smx_audio_option name="DynamicMusicEnabled" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+													<smx_audio_option name="DynamicMusicDailyTimeAllotted" type="ComboBoxFloat" value_increment="0.05" value_wrap="false" format_string="0%" />
+
+													<rect />
+
+													<smx_audio_option name="SubtitlesEnabled" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+													<smx_audio_option name="ProfanityFilter" type="ComboBoxBool" localization_prefix="xuiComboYesNo"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+										<rect controller="TabSelectorTab" tab_key="xuiOptionsAudioGameVoice" tab_visible="{# (commsallowed and voiceavailable) or !is_console }">
+											<label name="audioSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="VOICE SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid pos="-10,-18" rows="14" cell_width="700" cell_height="45" repeat_content="false" arrangement="vertical" >
+													<smx_audio_option name="MumblePositionalAudioSupportEnabled" type="ComboBoxBool" localization_prefix="xuiComboYesNo" platform="!CONSOLE" />
+
+													<rect />
+
+													<smx_audio_option name="VoiceChatEnabled" type="ComboBoxBool" localization_prefix="xuiComboYesNo" visible="{# commsallowed and voiceavailable}" />
+
+													<rect />
+
+													<smx_audio_option name="VoiceOutputDevice" type="ComboBoxList`1[Platform.IPartyVoice+VoiceAudioDevice]" value_wrap="false" visible="{# commsallowed and voiceavailable}" platform="!PS5" />
+													<smx_audio_option name="VoiceInputDevice" type="ComboBoxList`1[Platform.IPartyVoice+VoiceAudioDevice]" value_wrap="false" visible="{# commsallowed and voiceavailable}" platform="!PS5" />
+
+													<rect />
+
+													<smx_audio_option name="VoiceVolumeLevel" type="ComboBoxFloat" value_increment="0.05" value_max="2" value_wrap="false" format_string="0%" visible="{# commsallowed and voiceavailable}" />
+
+													<!-- <smx_audio_option name="MicVolumeLevel" type="ComboBoxFloat" value_increment="0.05" value_wrap="false" format_string="0%" visible="{commsallowed}" /> -->
+												</grid>
+											</scrollview>
+										</rect>
+
+										<rect controller="TabSelectorTab" tab_key="xuiOptionsAudioDiscord" tab_visible="{# is_online and commsallowed and multiplayerallowed }">
+											<label name="audioSettings" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="DISCORD SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid pos="-10,-18" rows="17" cell_width="700" cell_height="45" repeat_content="false" arrangement="vertical" >
+													<smx_audio_option name="DiscordEnabled" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+													
+													<rect width="700" height="120" visible="{# discord_enabled and !discord_is_ready }">
+														<label depth="2" pos="450,-100" width="700" height="40" pivot="center" style="smx_label_outline" text_key="xuiOptionsAudioDiscordFurtherOptionsWhenInitialized" font_size="24" />
+														<smx_menu_button name="btnDiscordInitialize" depth="2" pos="300,-150" width="230" height="65" pivot="center" caption_key="xuiOptionsAudioDiscordInitializeNow" font_size="28" foregroundlayer="false" />
+													</rect>
+													
+													<rect visible="{# discordinitialized and discord_supports_full_accounts and discord_supports_provisional_accounts}">
+														<discord_button name="btnDiscordLinkAccount" pos="130,-15" width="350" height="44" caption_key="xuiOptionsAudioDiscordLinkAccount" visible="{# discord_is_ready and !discordaccountlinked}" />
+														<discord_button name="btnDiscordUnlinkAccount" pos="130,-15" width="350" height="44" caption_key="xuiOptionsAudioDiscordUnlinkAccount" visible="{# discord_is_ready and discordaccountlinked}" gradient_start="135,135,135" gradient_end="116,116,116" />
+													</rect>
+													<rect visible="{# discordinitialized and discord_supports_full_accounts and discord_supports_provisional_accounts}">
+														<!-- just reserving a second grid entry so that the above buttons properly fit in the space -->
+													</rect>
+													
+													<smx_audio_option name="DiscordDmPrivacyMode" type="ComboBoxBool" localization_prefix="xuiComboOnOff" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordAutoJoinVoice" type="ComboBoxEnum`1[DiscordManager+EAutoJoinVoiceMode]" value_wrap="false" localization_prefix="xuiOptionsAudioDiscordAutoJoinVoice" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordOutputDevice" type="ComboBoxList`1[Platform.IPartyVoice+VoiceAudioDevice]" value_wrap="false" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordOutputVolume" type="ComboBoxFloat" value_increment="0.05" value_max="2" value_wrap="false" format_string="0%" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordInputDevice" type="ComboBoxList`1[Platform.IPartyVoice+VoiceAudioDevice]" value_wrap="false" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordInputVolume" type="ComboBoxFloat" value_increment="0.05" value_max="2" value_wrap="false" format_string="0%" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordVoiceButtonMode" type="ComboBoxBool" localization_prefix="xuiComboPttVa" visible="{discord_is_ready}" />
+													<smx_audio_option name="DiscordVADThresholdAuto" type="ComboBoxBool" localization_prefix="xuiComboVADThresholdAuto" visible="{discord_is_ready}" enabled="{# !discord_ptt}" />
+													<rect name="VadThreshold">
+														<smx_audio_option name="DiscordVADThreshold" type="ComboBoxInt" value_increment="5" value_min="-100" value_max="0" value_wrap="false" format_string="0 'dB'" visible="{discord_is_ready}" enabled="{# !discord_ptt and discord_vad_threshold_manual}" />
+														<sprite name="vadTest" pos="1350,-16" width="36" height="36" depth="2" pivot="center" on_hover="true" visible="{discord_is_ready}"
+															sprite="{# discord_in_call ? 'ui_game_symbol_mic' : 'ui_game_symbol_twitch_deafen' }"
+															tooltip_key="{# discord_in_call ? '' : 'xuiOptionsAudioDiscordNotInCall' }"
+															color="{# discord_is_speaking ? '255,255,255,255' : '160,160,160,255' }" />
+													</rect>
+
+													<rect />
+
+													<rect visible="{# discord_is_ready and discordaccountlinked }">
+														<discord_button name="btnDiscordManageSocialSettings" pos="130,-15" width="350" height="44" caption_key="xuiOptionsAudioDiscordManageSocialButton" tooltip_key="xuiOptionsAudioDiscordManageSocialLabelTooltip" />
+													</rect>
+
+													<rect />
+
+													<rect visible="{discord_is_ready}">
+														<discord_button name="btnDiscordManageBlockedUsers" pos="130,-15" width="350" height="44" caption_key="xuiOptionsAudioDiscordManageBlockedUsersButton" tooltip_key="xuiOptionsAudioDiscordManageBlockedUsersTooltip" />
+													</rect>
+												</grid>
+											</scrollview>
+										</rect>
+									</rect>
+								</rect>
+							</rect>
+						</widget>
+
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-235" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+							<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+
+							<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsAudio" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+
+						</widget>
+
+						<widget name="smx_top_menu_btn" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+							<smx_back_button name="btnBack" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn1" depth="4" pivot="center" anchor_left="#bottom,1,0" anchor_bottom="#bottom,1,255" anchor_right="#bottom,1,0" anchor_top="#bottom,1,0">
+
+							<smx_menu_button name="btnApply" depth="3" pos="-10,0" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" sound="[start]" parse_actions="true" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn2" depth="4" pivot="center" anchor_left="#bottomright,1,0" anchor_bottom="#bottomright,1,255" anchor_right="#bottomright,1,0" anchor_top="#bottomright,1,0">
+
+							<smx_menu_button name="btnDefaults" depth="3" pos="-335,-10" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" />
+
+						</widget>
+
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // Controls Options -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<remove xpath="/windows/window[@name='optionsControls']" />
+
+				<append xpath="/windows">
+					<window name="optionsControls" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="OptionsControls" cursor_area="true">
+
+						<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+
+						<widget name="smx_left_panel_content" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
+
+							<rect name="leftPanel" pos="0,0" width="590" height="650" force_hide="false">
+								<rect name="leftContent">
+
+									<sprite name="smx_panel_background" depth="1" pos="-20,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" />
+									<rect pos="296,-158">
+										<label name="controlsSettingsLeft" depth="4" pos="30,70" width="590" height="50" pivot="center" style="smx_label_outline" text="SETTINGS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" visible="{isnewgame}" />
+
+										<sprite name="smx_panel_separation" depth="4" pos="30,25" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+									</rect>
+
+									<rect pos="315,-158">
+									</rect>
+								</rect>
+							</rect>
+
+						</widget>
+
+						<!--panel name="header" pos="0,0" height="43" depth="1" backgroundspritename="ui_game_panel_header" bordercolor="[black]" borderthickness="3" >
+							<label style="header.name" pos="6,-6" width="750" text_key="xuiOptionsKeyboard" />
+						</panel-->
+
+						<widget name="smx_right_panel_content" depth="4" anchor_left="#topright,1,-651" anchor_bottom="#topright,1,-5" anchor_right="#topright,0,0" anchor_top="#topright,0,-50">
+
+							<rect name="rightPanel" pos="0,0" width="590" height="650">
+								<rect name="tabs" controller="TabSelector" select_tab_contents_on_open="true">
+
+									<sprite name="smx_panel_background" depth="1" pos="0,0" width="670" height="1500" sprite="smx_menu_background" type="sliced" color="7,7,7,219" flip="horizontally" />
+
+									<sprite name="smx_menu_separation" depth="2" pos="325,-818" width="301" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+									<rect name="tabsHeader" depth="0" height="39">
+
+										<sprite name="smx_panel_separation" depth="4" pos="320,-133" width="500" height="5" pivot="center" sprite="smx_sepline_2" color="[smx_element_separation_2]" />
+
+										<widget name="smx_tab_buttons_left_side" depth="4" anchor_left="#topleft,0,0" anchor_bottom="#topleft,0,-5" anchor_right="#topleft,1,5" anchor_top="#topleft,1,-50">
+
+											<grid name="tabButtons" depth="2" pos="316,-161" rows="12" cols="1" cell_width="230" cell_height="70" repeat_content="true" arrangement="horizontal">
+												<rect controller="TabSelectorButton">
+													<smx_menu_button name="tabButton" depth="2" pos="-1,0" width="230" height="65" pivot="center" caption_key="{tab_name_localized}" font_size="28" foregroundlayer="false" />
+												</rect>
+											</grid>
+
+										</widget>
+									</rect>
+
+				<!--	// SMX // Control Options -->
+
+									<rect name="tabsContents" depth="2" pos="30,-158">
+									
+										<rect tab_key="xuiOptionsControlsGeneric" controller="TabSelectorTab">
+											<label name="controlsSettingsGeneric" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="CONTROL OPTIONS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid pos="-10,-18" cols="1" rows="11" cell_width="700" cell_height="45" repeat_content="false" arrangement="vertical" >
+													<smx_control_option name="LookSensitivity" type="ComboBoxFloat" value_increment="0.01" value_wrap="false" format_string="0.00" />
+													<smx_control_option name="ZoomSensitivity" type="ComboBoxFloat" value_increment="0.01" value_wrap="false" format_string="0.00" />
+
+													<rect />
+
+													<smx_control_option name="ZoomAccel" type="ComboBoxFloat" value_increment="0.01" value_wrap="false" format_string="0.00" />
+													<smx_control_option name="VehicleSensitivity" type="ComboBoxFloat" value_increment="0.01" value_wrap="false" format_string="0.00" />
+
+													<rect />
+
+													<smx_control_option name="WeaponAiming" type="ComboBoxBool" localization_prefix="xuiWeaponAimingCombo" />
+													<smx_control_option name="InvertMouseLookY" type="ComboBoxBool" localization_prefix="xuiComboYesNo" />
+
+													<rect />
+
+													<smx_control_option name="SprintLock" type="ComboBoxList`1[System.String]" values="Hold,Toggle,Autorun" localization_prefix="xuiSprintLock" />
+													<smx_control_option name="QuickAction" type="ComboBoxList`1[System.String]" values="ChangeCamera, ToggleItem" localization_prefix="xuiQuickAction" />
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Movement Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsMovement" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="MOVEMENT KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="20" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Toolbelt Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsToolbelt" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="TOOLBELT KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="12" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Vehicle Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsVehicle" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="VEHICLE KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="12" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Menu Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsMenu" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="MENUS KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="12" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // UI Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsUI" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="UI KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="14" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Misc Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsMisc" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="MISC KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="10" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Edit Mode Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsEdit" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="EDIT MODE KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="20" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+
+				<!--	// SMX // Global Keybinds -->
+
+										<rect controller="TabSelectorTab">
+											<label name="controlsSettingsGlobal" depth="4" pos="295,70" width="590" height="50" pivot="center" style="smx_label_outline" text="GLOBAL KEYBINDS" font_size="50" spacing_x="2" justify="center" upper_case="true" color="255,255,255,255" />
+
+											<sprite name="arrowUp" depth="6" pos="605,-75" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" rotation="-90" />
+											<sprite name="arrowDown" depth="6" pos="605,-625" size="12,12" sprite="ui_game_symbol_arrow_menu" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="255,255,255,255" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" rotation="90" />
+
+											<scrollbar	name="scrollbar"
+														depth="6"
+														pos="605,-350"
+														width="12"
+														height="500"
+														padding="4"
+														foregroundname="handler"
+														foregroundsprite="smx_scrollbar_handler"
+														foregroundcolor="[smxui_scrollbar_handler]"
+														backgroundname="background"
+														backgroundsprite="smx_scrollbar_background"
+														backgroundcolor="[smxui_scrollbar_background]"
+														pivot="center">
+
+												<button name="handler" sprite="smx_scrollbar_handler" pivot="center" hovercolor="[smxui_scrollbar_handler_hover]" color="[smxui_scrollbar_handler]" defaultcolor="[smxui_scrollbar_handler]" hoverscale="1" />
+												<button name="background" sprite="smx_scrollbar_background" pivot="center" hovercolor="[smxui_scrollbar_background_hover]" color="[smxui_scrollbar_background]" defaultcolor="[smxui_scrollbar_background]" hoverscale="1" sound_play_on_press_down="[paging_click]" />
+											</scrollbar>
+
+											<scrollview name="scrollview" depth="5" pos="25,-60" width="565" height="550" scrollbar="scrollbar" reset_position="true" over_scroll="false" scroll_speed="2.5">
+
+												<sprite type="sliced" color="[transparent]" />
+
+												<grid name="controlsGrid" pos="-35,-18" cols="1" rows="14" cell_width="700" cell_height="45" repeat_content="true" arrangement="vertical" >
+													<smx_keyboard_binding_entry name="bindingEntry"/>
+												</grid>
+											</scrollview>
+										</rect>
+									</rect>
+								</rect>
+							</rect>
+						</widget>
+
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-235" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+							<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+
+							<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsKeyboard" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+
+						</widget>
+
+						<widget name="smx_top_menu_btn" depth="4" pivot="center" anchor_left="#topright,0,0" anchor_bottom="#topright,0,-235" anchor_right="#topright,0,0" anchor_top="#topright,0,0">
+
+							<smx_back_button name="btnBack" depth="3" pos="-101,97" width="55" height="55" pivot="center" sprite="ui_game_symbol_add" size="24,24" rotation="45" caption_key="" font_size="32" upper_case="true" tooltip_key="xuiBack" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn1" depth="4" pivot="center" anchor_left="#bottom,1,0" anchor_bottom="#bottom,1,255" anchor_right="#bottom,1,0" anchor_top="#bottom,1,0">
+
+							<smx_menu_button name="btnApply" depth="3" pos="-10,0" width="300" height="85" pivot="center" caption_key="xuiApply" font_size="40" sound="[start]" parse_actions="true" />
+
+						</widget>
+
+						<widget name="smx_bottom_menu_btn2" depth="4" pivot="center" anchor_left="#bottomright,1,0" anchor_bottom="#bottomright,1,255" anchor_right="#bottomright,1,0" anchor_top="#bottomright,1,0">
+
+							<smx_menu_button name="btnDefaults" depth="3" pos="-335,-10" width="230" height="65" pivot="center" caption_key="xuiDefaults" font_size="28" />
+
+						</widget>
+
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
+
+<!--	// SMX // New Keybinding Pop-Up -->
+
+		<conditional>
+			<if cond="mod_loaded('zSMXmenu')">
+
+				<remove xpath="/windows/window[@name='optionsControlsNewBinding']" />
+
+				<append xpath="/windows">
+					<window name="optionsControlsNewBinding" depth="400" pos="0,400" width="1185" height="780" anchor="CenterCenter" controller="OptionsControlsNewBinding" cursor_area="true">
+
+						<texture name="bgTexture" depth="0" texture="@:Textures/UI/news_background.jpg" color="255,255,255,240" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" anchor_bottom="#cam,0,-5" anchor_top="#cam,1,5" />
+						
+						<panel name="content" depth="2" pos="0,-320" width="400" height="600" pivot="center" createuipanel="true" disableautobackground="true" padding="6">
+							<sprite name="smxPopOutBG" depth="9" pos="0,-100" height="900" pivot="center" sprite="smx_menu_background" type="sliced" color="7,7,7,325" />
+							<texture name="smxPopOutArt" depth="10" pos="0,140" width="350" height="350" pivot="center" texture="@modfolder(SMXcore)://Textures/misc/server_zombie.png" />
+
+							<label name="descriptionText" depth="11" pos="0,-120" width="350" height="50" pivot="center" style="smx_label_outline" text_key="xuiNewBindingAction" font_size="22" justify="center" upper_case="true" support_urls="HTTP" overflow="ClampContent" />
+							<label name="forAction" depth="11" pos="0,-200" width="350" height="100" pivot="center" style="smx_label_outline" font_size="22" justify="center" upper_case="false" overflow="ClampContent" />
+							<label name="newBindingAbort" depth="11" pos="0,-520" width="350" height="50" pivot="center" style="smx_label_outline" text_key="xuiNewBindingAbort" font_size="22" justify="center" upper_case="false" overflow="ClampContent" />
+
+							<rect name="inUse" depth="99" width="400" height="600" pivot="center">
+								<!--label pos="0,0" width="760" height="32" name="inUseBy" justify="center" on_hover="true" /-->
+								<label name="inUseBy" depth="11" pos="0,-270" width="350" height="50" pivot="center" style="smx_label_outline, hover" font_size="22" justify="center" upper_case="false" overflow="ClampContent" />
+
+								<grid pos="0,-330" rows="3" cols="1" cell_width="150" cell_height="50" repeat_content="false" arrangement="vertical" >
+									<smx_menu_button name="btnGrabBinding" depth="3" pos="0,0" width="130" height="45" pivot="center" caption_key="xuiGrabBinding" font_size="20" />
+									<smx_menu_button name="btnNewBinding" depth="3" pos="0,0" width="130" height="45" pivot="center" caption_key="xuiNewBinding" font_size="20" />
+									<smx_menu_button name="btnCancel" depth="3" pos="0,0" width="130" height="45" pivot="center" caption_key="xuiCancel" font_size="20" />
+								</grid>
+							</rect>
+						</panel>
+						
+						<widget name="smx_top_menu_art" depth="4" pivot="center" anchor_left="#top,0,0" anchor_bottom="#top,0,-235" anchor_right="#top,0,0" anchor_top="#top,0,0">
+
+							<sprite name="smx_window_top_background" depth="1" pos="0,118" width="1844" height="57" sprite="smx_title_background" flip="vertically" color="7,7,7,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+							<sprite name="smx_window_top_separator" depth="2" pos="0,70" width="1844" height="3" sprite="smx_sepline_1" flip="vertically" color="255,255,255,500" anchor_left="#cam,0,-5" anchor_right="#cam,1,5" />
+
+							<sprite name="smx_window_top_title_background" depth="4" pos="0,90" width="415" height="88" pivot="center" sprite="smx_button_background" color="175,30,25,500" />
+
+							<label name="windowheader" depth="5" pos="0,85" size="1000,40" pivot="center" style="smx_label_normal" text_key="xuiOptionsControlsNewBinding" font_size="42" justify="center" upper_case="true" overflow="ShrinkContent" />
+
+						</widget>
+
+					</window>
+				</append>
+
+			</if>
+		</conditional>
+
 
 
 <!--	// SMX // News Screen -->
@@ -2990,9 +3786,6 @@
 			</if>
 		</conditional>
 
-	</if>
-</conditional>
-
 
 <!--	> > > > > > > > > > > > > > > > > > > > | SMX CC | < < < < < < < < < < < < < < < < < < < <	-->
 
@@ -3005,11 +3798,19 @@
 				<conditional>
 					<if cond="mod_loaded('zSMXmenu')">
 
-						<set xpath="/windows/window[@name='mainMenu']/@controller">Gears.UI.MainMenu, Gears</set>
+						<!--set xpath="/windows/window[@name='mainMenuQuit']/@controller">Gears.UI.MainMenu, Gears</set-->
+
+						<insertBefore xpath="/windows/window[@name='mainMenuQuit']/smx_back_button[@name='btnQuit']">
+							<rect controller="Gears.UI.MainMenu, Gears">
+								<smx_back_button name="btnMods" depth="3" pos="-161,-28" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
+							</rect>
+						</insertBefore>
+
+						<!--set xpath="/windows/window[@name='mainMenu']/@controller">Gears.UI.MainMenu, Gears</set>
 
 						<insertBefore xpath="/windows/window[@name='mainMenu']/grid[@name='smx_top_menu_grid']">
 							<smx_back_button name="btnMods" depth="3" pos="1321,468" width="44" height="44" pivot="center" sprite="smx_progress_cog" size="20,20" rotation="0" caption_key="" font_size="32" upper_case="true" tooltip_key="Gears" />
-						</insertBefore>
+						</insertBefore-->
 
 					</if>
 				</conditional>
@@ -3263,5 +4064,8 @@
 
 			</if>
 		</conditional>
+
+	</if>
+</conditional>
 
 </SMXcore>

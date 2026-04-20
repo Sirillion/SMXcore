@@ -1,12 +1,12 @@
 Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
 
 smxCurrentVersionBranch,UI,Menu,x,,SMXCORE STABLE VERSION
-smxCurrentVersionNumber,UI,Menu,x,,2.5.27.0
+smxCurrentVersionNumber,UI,Menu,x,,2.6.14.0
 
 smxCoreIssuesEntry1Issue,UI,Menu,x,,You are most likely experiencing this issue because: \n\nA - You have installed and use the mod on an existing save.\nB - You use some kind of container size mod that is not SMX compatible. \n\nThis issue happens because existing containers retain their size values and cannot be changed after they have been placed.,,,,,
 smxCoreIssuesEntry1Solution,UI,Menu,x,,If the issue is A then you have to replace or upgrade the containers.\nIf the issue is B then you have to remove the container size mod in question.,,,,,
 
-smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those red errors spamming the console?\n\nIt seems you have removed the mod called 0_TFP_Harmony! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity...\n\nThen try again...\n\n\n[AF1E19]To exit now[-]: Open the console(F1) then type 'shutdown' and press (enter) to exit the game client.",,,,,
+smxCoreFTPMissing,UI,Menu,x,,"Ooops! Did you see all those [AF1E19]red[-] errors spamming the console?\n\nIt seems you have removed the mod called [AF1E19]0_TFP_Harmony[-]! This mod comes with the game and is needed to play modded with custom code.\n\nTo get it back you will need to right click the game in Steam, select Properties, go to Installed Files and then select Verify Integrity... Then try again...\n\n\n[AF1E19]To exit now[-]: Press the 'X' in the upper right corner to exit the game client.",,,,,
 
 xuiDiscordOpen,UI,Menu,x,,"Open Discord",,,,,
 
